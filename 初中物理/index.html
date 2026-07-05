@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初中物理 · 总目录</title>
+  <style>
+    :root {
+      --done: #16a34a; --current: #2563eb; --pending: #94a3b8; --attention: #f59e0b;
+      --text: #1a1a2e; --bg: #fafafa; --border: #e2e8f0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; color: var(--text); background: var(--bg); line-height: 1.8; }
+    h1 { font-size: 2rem; margin-bottom: 0.25rem; letter-spacing: -0.02em; }
+    .subtitle { color: #64748b; font-size: 0.95rem; margin-bottom: 2rem; }
+
+    .mission-box { background: linear-gradient(135deg, #f0f7ff, #e8f4f8); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; }
+    .mission-box h2 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--current); }
+    .mission-box p { font-size: 0.9rem; color: #475569; }
+
+    .standards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 2rem; }
+    .standard { border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 1rem; background: #fff; }
+    .standard .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; color: #fff; margin-bottom: 0.35rem; }
+    .standard.pass .badge { background: var(--done); }
+    .standard.good .badge { background: var(--attention); }
+    .standard.master .badge { background: #dc2626; }
+    .standard p { font-size: 0.8rem; color: #64748b; margin-bottom: 0; }
+
+    .section-title { font-size: 1.1rem; margin: 2rem 0 0.75rem; border-bottom: 2px solid var(--border); padding-bottom: 0.3rem; letter-spacing: 0.02em; }
+    .section-title .tag { display: inline-block; font-size: 0.7rem; background: var(--current); color: #fff; padding: 0.1rem 0.5rem; border-radius: 4px; margin-left: 0.5rem; vertical-align: middle; }
+
+    .chapter { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 0.75rem; background: #fff; overflow: hidden; }
+    .chapter-header { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; cursor: default; }
+    .chapter-header .num { width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .chapter.active .num { background: var(--current); }
+    .chapter.pending .num { background: var(--pending); }
+    .chapter.done .num { background: var(--done); }
+    .chapter-header .info { flex: 1; }
+    .chapter-header .info .name { font-weight: 600; font-size: 0.95rem; }
+    .chapter-header .info .scope { font-size: 0.75rem; color: #94a3b8; }
+    .chapter-header .chip { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 4px; }
+    .chapter.active .chip { background: #eff6ff; color: var(--current); }
+    .chapter.pending .chip { background: #f8fafc; color: var(--pending); }
+
+    .lesson-list { list-style: none; padding: 0 1rem 0.75rem 1rem; }
+    .lesson-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.4rem 0.5rem; border-radius: 6px; font-size: 0.88rem; }
+    .lesson-item:hover { background: #f8fafc; }
+    .lesson-item .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .lesson-item .dot.done { background: var(--done); }
+    .lesson-item .dot.current { background: var(--current); }
+    .lesson-item .dot.pending { background: var(--pending); }
+    .lesson-item .desc { color: #64748b; font-size: 0.78rem; }
+    a { color: var(--current); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .progress-tag { font-size: 0.75rem; margin-left: 0.5rem; }
+    .footer { margin-top: 2.5rem; border-top: 1px solid var(--border); padding-top: 1rem; font-size: 0.85rem; color: #94a3b8; }
+  </style>
+</head>
+<body>
+
+<h1>初中物理 · 总目录</h1>
+<p class="subtitle">人教版（八年级全一册） | 目标：家长能用自己的话讲清楚每一个概念，辅导孩子通过中考</p>
+
+<div class="mission-box">
+  <h2>🎯 学习目标</h2>
+  <p>辅导孩子学习初中物理全部内容。学员为高中物理竞赛保送背景，20 年未接触，重点在于<strong>激活已遗忘的知识 + 转换成初中生能听懂的讲法</strong>。涵盖声、光、热、力、电、磁六大板块。</p>
+  <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--current);">📍 当前位置：力学板块 · 第一章 机械运动</p>
+</div>
+
+<h2 style="font-size: 1rem; margin-bottom: 0.75rem;">📋 考核标准</h2>
+<div class="standards">
+  <div class="standard pass"><div class="badge">✅ 合格</div><p>能独立复述知识点框架，不含混、不遗漏关键概念</p></div>
+  <div class="standard good"><div class="badge">⭐ 良好</div><p>能解释每一条规则的底层逻辑，回答"为什么是这样"</p></div>
+  <div class="standard master"><div class="badge">🏆 精通</div><p>能自主举例、发现漏洞、写出执行条件（即能教给孩子）</p></div>
+</div>
+
+<!-- ==================== 板块：力学 ==================== -->
+<h2 class="section-title">📐 力学 <span class="tag">进行中</span></h2>
+
+<div class="chapter active">
+  <div class="chapter-header">
+    <span class="num">1</span>
+    <div class="info">
+      <div class="name"><a href="lessons/0001-机械运动.html">第一章 机械运动</a></div>
+      <div class="scope">长度与时间的测量 · 参照物 v=s/t · s-t图/v-t图 · 平均速度实验</div>
+    </div>
+    <span class="chip">第 1 课 ✅</span>
+  </div>
+</div>
+
+<div class="chapter pending">
+  <div class="chapter-header">
+    <span class="num">7</span>
+    <div class="info">
+      <div class="name">第七章 力</div>
+      <div class="scope">力的作用效果、三要素、示意图 · 弹力、弹簧测力计 · 重力 G=mg · 受力分析</div>
+    </div>
+    <span class="chip">第 2 课</span>
+  </div>
+</div>
+
+<div class="chapter pending">
+  <div class="chapter-header">
+    <span class="num">7</span>
+    <div class="info">
+      <div class="name">第七章 力</div>
+      <div class="scope">力的概念、弹力、重力、力的示意图、受力分析初步</div>
+    </div>
+    <span class="chip">第 2~3 课</span>
+  </div>
+</div>
+
+<div class="chapter pending">
+  <div class="chapter-header">
+    <span class="num">8</span>
+    <div class="info">
+      <div class="name">第八章 运动和力</div>
+      <div class="scope">牛顿第一定律、惯性、二力平衡、摩擦力</div>
+    </div>
+    <span class="chip">第 4~5 课</span>
+  </div>
+</div>
+
+<div class="chapter pending">
+  <div class="chapter-header">
+    <span class="num">9</span>
+    <div class="info">
+      <div class="name">第九章 压强</div>
+      <div class="scope">固体压强 p=F/S、液体压强 p=ρgh、大气压强、流体压强与流速关系</div>
+    </div>
+    <span class="chip">第 7 课</span>
+  </div>
+</div>
+
+<div class="chapter pending">
+  <div class="chapter-header">
+    <span class="num">10</span>
+    <div class="info">
+      <div class="name"><a href="lessons/0008-浮力.html">第十章 浮力</a></div>
+      <div class="scope">阿基米德原理 · 浮沉条件 · 轮船/潜水艇/热气球</div>
+    </div>
+    <span class="chip">第 8 课 ✅</span>
+  </div>
+</div>
+
+<div class="chapter pending">
+  <div class="chapter-header">
+    <span class="num">11</span>
+    <div class="info">
+      <div class="name">第十一章 功和机械能</div>
+      <div class="scope">功 W=Fs、功率 P=W/t、动能、势能、机械能及其转化</div>
+    </div>
+    <span class="chip">第 9~10 课</span>
+  </div>
+</div>
+
+<div class="chapter pending">
+  <div class="chapter-header">
+    <span class="num">12</span>
+    <div class="info">
+      <div class="name">第十二章 简单机械</div>
+      <div class="scope">杠杆（平衡条件）、滑轮（定/动/滑轮组）、机械效率 η=W<sub>有</sub>/W<sub>总</sub></div>
+    </div>
+    <span class="chip">第 11~12 课</span>
+  </div>
+</div>
+
+<!-- ==================== 板块：声学 ==================== -->
+<h2 class="section-title">🔊 声学 <span class="tag">待开始</span></h2>
+
+<div class="chapter pending">
+  <div class="chapter-header">
+    <span class="num">2</span>
+    <div class="info">
+      <div class="name">第二章 声现象</div>
+      <div class="scope">声音的产生与传播、声音的特性（音调/响度/音色）、声的利用、噪声</div>
+    </div>
+    <span class="chip">第 14~15 课</span>
+  </div>
+</div>
+
+<!-- ==================== 板块：热学 ==================== -->
+<h2 class="section-title">🌡️ 热学 <span class="tag">待开始</span></h2>
+
+<div class="chapter pending">
+  <div class="chapter-header">
+    <span class="num">3</span>
+    <div class="info">
+      <div class="name">第三章 物态变化</div>
+      <div class="scope">温度计、熔化与凝固、汽化与液化、升华与凝华、三态六变图</div>
+    </div>
+    <span class="chip">第 16~17 课</span>
+  </div>
+</div>
+
+<div class="chapter pending">
+  <div class="chapter-header">
+    <span class="num">6</span>
+    <div class="info">
+      <div class="name">第六章 质量与密度</div>
+      <div class="scope">质量（天平）、密度 ρ=m/V、密度的测量、空心实心判断</div>
+    </div>
+    <span class="chip">第 18~19 课</span>
+  </div>
+</div>
+
+<!-- ==================== 板块：光学 ==================== -->
+<h2 class="section-title">💡 光学 <span class="tag">待开始</span></h2>
+
+<div class="chapter pending">
+  <div class="chapter-header">
+    <span class="num">4</span>
+    <div class="info">
+      <div class="name">第四章 光现象</div>
+      <div class="scope">光的直线传播、反射定律（镜面/漫反射）、平面镜成像、折射、色散</div>
+    </div>
+    <span class="chip">第 20~22 课</span>
+  </div>
+</div>
+
+<div class="chapter pending">
+  <div class="chapter-header">
+    <span class="num">5</span>
+    <div class="info">
+      <div class="name">第五章 透镜及其应用</div>
+      <div class="scope">凸透镜/凹透镜、三条特殊光线、成像规律（u>2f 等）、眼睛与眼镜、显微镜/望远镜</div>
+    </div>
+    <span class="chip">第 23~25 课</span>
+  </div>
+</div>
+
+<!-- ==================== 板块：电磁学 ==================== -->
+<h2 class="section-title">⚡ 电磁学 <span class="tag">进行中</span></h2>
+
+<div class="chapter active">
+  <div class="chapter-header">
+    <span class="num">20</span>
+    <div class="info">
+      <div class="name"><a href="lessons/电磁学-电与磁.html">第二十章 电与磁</a></div>
+      <div class="scope">磁现象 · 电生磁（奥斯特） · 电磁铁 · 电动机 · 电磁感应（法拉第） · 发电机</div>
+    </div>
+    <span class="chip">第 1 课 ⚡</span>
+  </div>
+</div>
+
+<div class="chapter pending">
+  <div class="chapter-header">
+    <span class="num">15~19</span>
+    <div class="info">
+      <div class="name">电路 · 欧姆定律 · 电功率 · 生活用电</div>
+      <div class="scope">电流 电压 电阻 · 欧姆定律 · 电功电功率 · 安全用电</div>
+    </div>
+    <span class="chip">待添加</span>
+  </div>
+</div>
+
+<!-- ==================== 进度总览 ==================== -->
+<h2 style="font-size:1rem;margin:2rem 0 0.75rem;">📊 进度总览</h2>
+<div style="border:1px solid var(--border);border-radius:8px;padding:1rem;background:#fff;">
+  <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+    <tr><th style="text-align:left;padding:0.25rem 0.5rem;">板块</th><th style="text-align:left;padding:0.25rem 0.5rem;">章节</th><th style="text-align:center;padding:0.25rem 0.5rem;">课数</th><th style="text-align:center;padding:0.25rem 0.5rem;">状态</th></tr>
+    <tr><td style="padding:0.25rem 0.5rem;"><strong>📐 力学</strong></td><td style="padding:0.25rem 0.5rem;">第 1、7~12 章</td><td style="text-align:center;padding:0.25rem 0.5rem;">7</td><td style="text-align:center;padding:0.25rem 0.5rem;color:var(--current);">▸ 进行中</td></tr>
+    <tr><td style="padding:0.25rem 0.5rem;"><strong>🔊 声学</strong></td><td style="padding:0.25rem 0.5rem;">第 2 章</td><td style="text-align:center;padding:0.25rem 0.5rem;">1</td><td style="text-align:center;padding:0.25rem 0.5rem;color:var(--pending);">—</td></tr>
+    <tr><td style="padding:0.25rem 0.5rem;"><strong>🌡️ 热学</strong></td><td style="padding:0.25rem 0.5rem;">第 3、6 章</td><td style="text-align:center;padding:0.25rem 0.5rem;">2</td><td style="text-align:center;padding:0.25rem 0.5rem;color:var(--pending);">—</td></tr>
+    <tr><td style="padding:0.25rem 0.5rem;"><strong>💡 光学</strong></td><td style="padding:0.25rem 0.5rem;">第 4、5 章</td><td style="text-align:center;padding:0.25rem 0.5rem;">2</td><td style="text-align:center;padding:0.25rem 0.5rem;color:var(--pending);">—</td></tr>
+    <tr><td style="padding:0.25rem 0.5rem;"><strong>⚡ 电磁学</strong></td><td style="padding:0.25rem 0.5rem;">第 15~20 章</td><td style="text-align:center;padding:0.25rem 0.5rem;">1 ⚡</td><td style="text-align:center;padding:0.25rem 0.5rem;color:var(--current);">▸ 进行中</td></tr>
+  </table>
+  <p style="font-size:0.8rem;color:var(--pending);margin-top:0.75rem;text-align:right;">总计约 12 课时（每章 1 课） · 力学阶段 7 课时</p>
+</div>
+
+<div class="footer">
+  <p>📁 D:\@VSwork\VSteach\初中物理\ | 力学 lessons/ · 电磁学 lessons/<br>
+📚 <a href="reference/力学心智模型总览.html">🧠 力学心智模型总览</a> · <a href="reference/机械运动速查.html">⚡ 机械运动速查</a> · <a href="reference/浮力速查.html">🌊 浮力速查</a><br>
+🗺️ <a href="roadmap.html">费曼学习路线图</a> · <a href="diagnostic.html">🧐 弱点诊断</a></p>
+</div>
+
+</body>
+</html>
