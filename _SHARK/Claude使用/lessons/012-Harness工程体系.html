@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第10课 · 用 Claude 实现 Harness 工程体系</title><style>body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:800px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}h1{font-size:1.6rem;border-left:4px solid #2563eb;padding-left:1rem;margin-bottom:1.5rem}h2{font-size:1.2rem;margin-top:2rem;margin-bottom:0.5rem;color:#2563eb}h3{font-size:1.05rem;margin-top:1.5rem;margin-bottom:0.3rem;color:#1e293b}p{margin-bottom:1rem}ul{margin-bottom:1rem;padding-left:1.5rem}li{margin-bottom:0.3rem}.tip{background:#f0f9ff;border-left:3px solid #2563eb;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}.highlight{background:#f0fdf4;border-left:3px solid #16a34a;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}code{background:#f1f5f9;padding:0.15rem 0.4rem;border-radius:3px;font-size:0.85rem}table{width:100%;border-collapse:collapse;margin:1rem 0}th,td{border:1px solid #e2e8f0;padding:0.5rem 0.75rem;text-align:left;font-size:0.9rem}th{background:#f1f5f9;font-weight:600}.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}.nav a{color:#2563eb;text-decoration:none;font-weight:600}.box{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin:1rem 0}.box .step{font-weight:700;color:#2563eb;margin-bottom:0.3rem}</style></head><body>
+<h1>第 10 课 · 用 Claude 实现 Harness 工程体系</h1>
+
+<p>前面 9 课讲了"怎么用好 Claude"，这一课讲"怎么管好 Claude"——Harness 工程体系。</p>
+
+<h2>为什么需要 Harness？</h2>
+
+<p>AI 编程最大的问题是<b>不可控</b>：</p>
+<ul>
+  <li>你让它写一个功能，它可能把整个项目结构改了</li>
+  <li>它用的技术栈可能和你的完全不搭</li>
+  <li>写出来的代码看着能跑，实际全是 Bug</li>
+  <li>改了三轮之后，回不到最初的版本了</li>
+</ul>
+
+<p>Harness（缰绳）就是用传统软件工程的成熟经验，给 AI 套上缰绳——让它发挥创造力的同时，不至于失控。</p>
+
+<div class="highlight">
+<strong>✅ VSteach 实践：</strong>
+本项目的 Harness 配置就是使用 Claude 本身来完成的——
+包括 CLAUDE.md 规则、settings.json 权限白名单、_test/run_verify.py 验证脚本、pre-commit 钩子，全部由 Claude 创建。
+</div>
+
+<h2>三层演进体系</h2>
+<table>
+  <tr><th>层级</th><th>说明</th><th>效果</th></tr>
+  <tr><td><strong>1. 提示词工程</strong></td><td>写好 Prompt，让 Claude 理解你要什么</td><td>单次对话质量提升</td></tr>
+  <tr><td><strong>2. 上下文工程</strong></td><td>配置 CLAUDE.md、项目知识，让 Claude 记住背景</td><td>跨对话一致性好</td></tr>
+  <tr><td><strong>3. Harness 工程</strong></td><td>权限、钩子、验证、MCP、Skills 全套体系</td><td>项目级可控</td></tr>
+</table>
+
+<h2>五条核心方法（用 Claude 实现）</h2>
+
+<div class="box">
+  <div class="step">方法一：AGENTS.md 规则文件</div>
+  <p><b>目标</b>：给 AI 划边界，从源头避免乱改技术选型、代码风格混乱。</p>
+  <p><b>用 Claude 实现</b>：</p>
+  <ul>
+    <li>让 Claude 分析你的项目，生成一份 <code>CLAUDE.md</code>，包含项目背景、技术栈、代码规范</li>
+    <li>Claude 读一遍你的代码库，就能自动总结出合适的规则</li>
+    <li>规则文件放在项目根目录，Claude 每次进入项目自动读取</li>
+  </ul>
+  <p><b>效果</b>：不用每次重复说明，Claude 自动知道"这个项目用什么 Python 版本、数据放哪里、不要改什么文件"。</p>
+</div>
+
+<div class="box">
+  <div class="step">方法二：先方案后编码</div>
+  <p><b>目标</b>：减少 50% 以上返工，不做不需要的功能。</p>
+  <p><b>用 Claude 实现</b>：</p>
+  <ul>
+    <li>新需求来了，先让 Claude 出方案："我想加个功能，先出个方案我看看"</li>
+    <li>Claude 给出要改哪些文件、怎么改、影响范围</li>
+    <li>你过一遍，砍掉不需要的部分，确认后再让 Claude 动手</li>
+    <li>或者使用 Plan 模式，Claude 先出规划，你确认后再进入编码</li>
+  </ul>
+  <p><b>效果</b>：避免 Claude 做了一堆你不需要的功能，或者方向错了改半天。</p>
+</div>
+
+<div class="box">
+  <div class="step">方法三：MCP + Skills 配齐工具</div>
+  <p><b>目标</b>：让 Claude 能自主查资料、操作文件、调用外部工具。</p>
+  <p><b>用 Claude 实现</b>：</p>
+  <ul>
+    <li><b>MCP</b>：在 <code>settings.json</code> 中配置 MCP 服务器（文件系统、搜索、数据库等），Claude 可以帮你配置</li>
+    <li><b>Skills</b>：把常用工作流（如每日计划、代码审查）封装成 <code>.claude/skills/</code> 下的 Skill 文件，Claude 帮你写这个文件</li>
+  </ul>
+  <p><b>效果</b>：Claude 不再局限于对话，能操作文件、查资料、运行工具。</p>
+</div>
+
+<div class="box">
+  <div class="step">方法四：自动测试验证</div>
+  <p><b>目标</b>：避免"表面写完实际全是 Bug"。</p>
+  <p><b>用 Claude 实现</b>：</p>
+  <ul>
+    <li>让 Claude 创建一个验证脚本（如 <code>_test/run_verify.py</code>），自动检查语法、文件完整性</li>
+    <li>配置 Git pre-commit 钩子，每次提交前自动运行验证</li>
+    <li>Claude 每次改完代码，你只需要说"跑一下验证"，它就会自动运行</li>
+  </ul>
+  <p><b>效果</b>：语法错误、文件缺失在提交前就被发现，不会出现"写完跑不了"的情况。</p>
+</div>
+
+<div class="box">
+  <div class="step">方法五：文档 + Git 存档</div>
+  <p><b>目标</b>：每功能一提交，随时可回滚。</p>
+  <p><b>用 Claude 实现</b>：</p>
+  <ul>
+    <li>完成一个功能后，让 Claude 更新进度文档</li>
+    <li>让 Claude 执行 <code>git add + git commit</code>，提交信息按规范格式（feat/fix/docs）</li>
+    <li>所有临时文件放入 <code>__temp/</code> 目录，不污染主目录</li>
+  </ul>
+  <p><b>效果</b>：任何时候出问题，都能回到上一个稳定版本，项目不会失控。</p>
+</div>
+
+<h2>实际落地步骤（以 VSteach 为例）</h2>
+
+<p>这是我们在 VSteach 项目中实际执行的过程，可以作为参考模板：</p>
+
+<table>
+  <tr><th>步骤</th><th>做什么</th><th>让 Claude 做什么</th></tr>
+  <tr><td>1</td><td>创建 settings.json</td><td>"帮我创建项目的 .claude/settings.json，配置权限白名单和 hooks"</td></tr>
+  <tr><td>2</td><td>强化 CLAUDE.md</td><td>"在现有的 CLAUDE.md 末尾追加 AI 开发规则章节"</td></tr>
+  <tr><td>3</td><td>创建验证脚本</td><td>"创建 _test/run_verify.py，检查 Python 语法和文件完整性"</td></tr>
+  <tr><td>4</td><td>配置 MCP</td><td>"在 settings.json 中添加 filesystem 和 sequential-thinking MCP 服务器"</td></tr>
+  <tr><td>5</td><td>创建 Skills</td><td>"把 xxx 工作流封装成 Skill"</td></tr>
+  <tr><td>6</td><td>pre-commit 钩子</td><td>"创建 .git/hooks/pre-commit，提交前自动跑验证"</td></tr>
+  <tr><td>7</td><td>完善 .gitignore</td><td>"帮我完善 .gitignore，排除日志和临时文件"</td></tr>
+</table>
+
+<div class="tip">
+<strong>💡 关键原则：</strong>
+<ol>
+  <li><b>从易到难</b> — 先做 settings.json + CLAUDE.md（10 分钟），再做验证脚本（15 分钟），再做 MCP 和 Skills（按需）</li>
+  <li><b>触发条件</b> — 不提前做还没用到的东西，等需要的时候再配置</li>
+  <li><b>让 Claude 做</b> — 这些配置大部分都可以让 Claude 自己创建，你只需要说"帮我做"</li>
+  <li><b>先方案后编码</b> — 让 Claude 出方案，你确认，再执行——这条本身就是 Harness 的核心</li>
+</ol>
+</div>
+
+<h2>效果对比</h2>
+<table>
+  <tr><th>场景</th><th>没有 Harness</th><th>有 Harness</th></tr>
+  <tr><td>新需求</td><td>直接写代码，改完发现方向错了</td><td>先出方案，你确认，再编码</td></tr>
+  <tr><td>改代码</td><td>Claude 可能改了不该改的文件</td><td>CLAUDE.md 约束了边界，不会越界</td></tr>
+  <tr><td>提交代码</td><td>语法错误被提交到仓库</td><td>pre-commit 钩子阻止了错误提交</td></tr>
+  <tr><td>查资料</td><td>Claude 用训练数据里的旧知识</td><td>MCP 联网搜索，拿到最新信息</td></tr>
+  <tr><td>重复工作</td><td>每次都要重新描述规则</td><td>Skill 封装好，一句话调用</td></tr>
+  <tr><td>出问题</td><td>回退困难，不知道改了哪里</td><td>每功能一提交，随时回滚</td></tr>
+</table>
+
+<div class="highlight">
+<strong>🎯 总结：</strong>
+Harness 不是一次性的配置工作，而是一种工作习惯。
+每次开发前想一下"我有没有套好缰绳"——时间长了就成了肌肉记忆。
+</div>
+
+<div class="nav">
+  <a href="011-高级Prompt模式.html">← 上一课</a>
+  <a href="013-Harness实施实战.html">下一课 →</a>
+</div>
+</body></html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第14课 · Superpowers 实现 Harness 工程</title><style>body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:800px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}h1{font-size:1.6rem;border-left:4px solid #2563eb;padding-left:1rem;margin-bottom:1.5rem}h2{font-size:1.2rem;margin-top:2rem;margin-bottom:0.5rem;color:#2563eb}h3{font-size:1.05rem;margin-top:1.2rem;margin-bottom:0.3rem;color:#1e293b}p{margin-bottom:1rem}ul,ol{margin-bottom:1rem;padding-left:1.5rem}li{margin-bottom:0.3rem}table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem}th,td{border:1px solid #e2e8f0;padding:0.5rem 0.75rem;text-align:left}th{background:#f1f5f9;color:#1e293b}.tip{background:#f0f9ff;border-left:3px solid #2563eb;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}code{background:#f1f5f9;padding:0.15rem 0.4rem;border-radius:3px;font-size:0.85rem}pre{background:#1e293b;color:#e2e8f0;padding:1rem;border-radius:6px;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin:0.75rem 0}pre code{background:transparent;padding:0;color:inherit}.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}.nav a{color:#2563eb;text-decoration:none;font-weight:600}.highlight{background:#f0fdf4;border-left:3px solid #16a34a;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}.warn{background:#fffbeb;border-left:3px solid #d97706;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}.quote{background:#f8fafc;border-left:4px solid #64748b;padding:0.75rem 1.25rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem;color:#334155;font-style:italic}strong{color:#0f172a}</style></head><body>
+
+<h1>第 14 课 · Superpowers — 把 Harness 工程自动化的插件</h1>
+
+<p>前两课我们讲了 Harness 工程的 5 条核心方法。这一课介绍一个能<strong>自动执行</strong>这些方法的插件——<strong>Superpowers</strong>。</p>
+
+<p>Superpowers 是 Anthropic 官方插件市场收录的开源方法论插件，由 Prime Radiant 团队维护。它不是教你"应该怎么做"，而是给 AI 一套<strong>硬性规则</strong>，让 AI 自动按 Harness 方法工作。</p>
+
+<div class="highlight">
+<strong>✅ 本环境已安装：</strong>
+<code>/plugin install superpowers@claude-plugins-official</code>
+安装位置：<code>~/.claude/plugins/cache/claude-plugins-official/superpowers/6.1.0/</code>
+</div>
+
+<h2>一、Superpowers 是怎么工作的</h2>
+
+<p>Superpowers 的核心机制是：<strong>Skill 自动触发</strong>。你不需要手动输入 <code>/skill-name</code>，AI 在对话开始时会自动检查所有 Skill，发现适用的就自动执行。</p>
+
+<p>它的源代码里写死了这条规则：</p>
+
+<div class="quote">
+"如果你觉得有哪怕 1% 的可能某个 Skill 适用，你绝对必须调用它。<br>
+如果一个 Skill 适用于你的任务，你没有选择权。你必须使用它。<br>
+这是不可谈判的。你不能找借口绕过它。"
+</div>
+
+<p>这意味着：你提出需求 → AI 自动触发 brainstorming（先方案）→ writing-plans（拆解任务）→ subagent-driven-development（多 Agent 实现）→ verification-before-completion（验证）→ finishing-a-development-branch（提交）——一条龙自动完成。</p>
+
+<h2>二、Superpowers 完整 Skill 清单</h2>
+
+<table>
+  <tr><th>分类</th><th>Skill</th><th>作用</th></tr>
+  <tr><td rowspan="2"><strong>设计</strong></td><td><code>brainstorming</code></td><td>需求澄清 + 设计方案输出</td></tr>
+  <tr><td><code>writing-plans</code></td><td>将设计拆解为可执行任务</td></tr>
+  <tr><td rowspan="2"><strong>开发</strong></td><td><code>subagent-driven-development</code></td><td>子代理实现 + 审查</td></tr>
+  <tr><td><code>executing-plans</code></td><td>批量执行带检查点</td></tr>
+  <tr><td><strong>测试</strong></td><td><code>test-driven-development</code></td><td>RED-GREEN-REFACTOR 循环</td></tr>
+  <tr><td><strong>调试</strong></td><td><code>systematic-debugging</code></td><td>4 阶段根因分析</td></tr>
+  <tr><td><strong>验证</strong></td><td><code>verification-before-completion</code></td><td>证据闭环，不验证不通过</td></tr>
+  <tr><td rowspan="2"><strong>并行</strong></td><td><code>dispatching-parallel-agents</code></td><td>独立任务并行派发</td></tr>
+  <tr><td><code>using-git-worktrees</code></td><td>Git Worktree 隔离开发</td></tr>
+  <tr><td><strong>审查</strong></td><td><code>requesting-code-review</code></td><td>按严重级别报告问题</td></tr>
+  <tr><td><strong>收尾</strong></td><td><code>finishing-a-development-branch</code></td><td>合并/PR/清理决策</td></tr>
+  <tr><td><strong>元能力</strong></td><td><code>writing-skills</code></td><td>创建新 Skill</td></tr>
+</table>
+
+<h2>三、每条 Harness 方法如何被 Superpowers 落地</h2>
+
+<h3>方法 ② 先方案后编码 → <code>brainstorming</code> + <code>writing-plans</code></h3>
+
+<p><code>brainstorming</code> 源代码中写了一个<strong>硬性门禁（HARD GATE）</strong>：</p>
+
+<div class="quote">
+"在提交设计并获得用户批准之前，不允许调用任何实现技能、写代码、搭建项目。<br>
+这适用于每个项目，无论看起来多简单。"
+</div>
+
+<p>它甚至明确列出了<strong>反模式</strong>：</p>
+
+<div class="warn">
+❌ "这太简单了不需要设计" — 这是反模式。<br>
+简单项目正是隐藏假设导致最多返工的地方。<br>
+设计可以很短（几行字），但你必须展示并让用户批准。
+</div>
+
+<p><strong>完整流程：</strong></p>
+<pre><code>探索项目上下文 → 逐个提问澄清需求
+→ 提出 2-3 个方案（含推荐）
+→ 分块展示设计 → 用户确认
+→ 写设计文档并提交
+→ 用户审查文档
+→ 只有确认后，才能调用 writing-plans 进入编码</code></pre>
+
+<p>设计批准后，<code>writing-plans</code> 将需求拆解为 <strong>2-5 分钟/个</strong> 的可执行任务，每个任务包含精确的文件路径、完整代码和验证步骤。</p>
+
+<h3>方法 ③ MCP + Skills → <code>using-superpowers</code></h3>
+
+<p>对话开始时，AI 在回答之前必须先检查所有可用的 Skill，如果有适用的就自动执行。这确保你安装的所有 Skill 和 MCP 都会被用上，不会闲置。</p>
+
+<div class="tip"><strong>💡 互补关系：</strong>MCP 提供工具（浏览器、查文档、分步推理），Superpowers 确保 AI 会正确使用这些工具。两者搭配效果最好。</div>
+
+<h3>方法 ④ 自动测试验证 → <code>test-driven-development</code> + <code>verification-before-completion</code></h3>
+
+<p>TDD 的铁律：</p>
+
+<div class="quote">
+"没有失败的测试，就不能写生产代码。<br>
+先写了代码再写测试？删掉。重新开始。<br>
+没有例外。"
+</div>
+
+<p><code>verification-before-completion</code> 的铁律：</p>
+
+<div class="quote">
+"没有新鲜的验证证据，就不能声称完成。<br>
+跳过任何一步 = 在撒谎，不是在验证。"
+</div>
+
+<p>执行流程：</p>
+<pre><code>1. 识别：什么命令能证明这个声称？
+2. 运行：执行完整命令
+3. 读取：完整输出，检查退出码
+4. 验证：输出是否确认了声称？
+   - 否 → 用证据说明实际状态
+   - 是 → 用证据一起声明结果</code></pre>
+
+<p>红旗警示（看到这些要警惕）：</p>
+<ul>
+  <li>"应该能通过"、"大概没问题"、"看起来可以"</li>
+  <li>在验证之前就表达满意（"太棒了！""完美！"）</li>
+  <li>相信 agent 的报告而不是自己验证</li>
+</ul>
+
+<h3>方法 ⑤ 文档+Git 存档 → <code>finishing-a-development-branch</code></h3>
+
+<p>实现完成后的标准化收尾流程：</p>
+<pre><code>Step 1：验证测试 → 不通过就停下
+Step 2：检测环境（普通 repo / worktree）
+Step 3：确定基准分支
+Step 4：展示 4 个选项：
+   ① 合并到主分支
+   ② 创建 PR
+   ③ 保留分支
+   ④ 丢弃改动
+Step 5：执行选择 + 清理工作区</code></pre>
+
+<h2>四、多 Agent 协作</h2>
+
+<h3>方案 A：subagent-driven-development（推荐）</h3>
+<p>主会话内启动子代理，一个实现、一个审查，循环推进：</p>
+<pre><code>读取 plan → 创建任务列表
+→ 循环：
+  ① 启动 implementer 子代理（独立上下文）
+  ② implementer 实现、测试、提交、自审
+  ③ 启动 task reviewer 子代理审查
+  ④ 有 critical 问题 → 启动 fix 子代理修复
+  ⑤ 通过 → 标记任务完成
+→ 全部完成后 → 启动最终代码审查
+→ 调用 finishing-a-development-branch 收尾</code></pre>
+
+<h3>方案 B：dispatching-parallel-agents（独立并行）</h3>
+<p>适用于互不相关的任务同时进行：</p>
+<pre><code>有多个独立问题？
+  ├─ 有关联 → 一个 agent 全部处理
+  └─ 无关联 → 可以并行？
+               ├─ 是 → 并行派发（每个问题一个 agent）
+               └─ 否 → 串行 agent</code></pre>
+
+<p>每个 agent 获得<strong>独立的上下文</strong>，互不干扰，也不消耗主会话的 Context。</p>
+
+<h2>五、安装与使用</h2>
+
+<h3>安装</h3>
+<pre><code># 从官方插件市场安装
+/plugin install superpowers@claude-plugins-official
+
+# 从 Superpowers 自有市场安装（备选）
+/plugin marketplace add obra/superpowers-marketplace
+/plugin install superpowers@superpowers-marketplace
+
+# 重载使生效
+/reload-plugins</code></pre>
+
+<h3>使用方式</h3>
+<p><strong>什么都不用做。</strong> Superpowers 的 Skill 在对话中自动触发。你只需要像平常一样提出需求：</p>
+
+<pre><code>你："帮我做一个股票分析工具"
+→ brainstorming 自动启动：追问需求、输出设计方案
+→ 你确认后：writing-plans 自动拆解任务
+→ subagent-driven-development 自动调度多个 agent 实现
+→ 完成后：自动测试验证 + 提交代码</code></pre>
+
+<h3>查看已安装的 Superpowers</h3>
+<pre><code># 检查插件是否已安装
+ls ~/.claude/plugins/cache/claude-plugins-official/superpowers/
+
+# 查看所有可用的 Superpowers Skill
+ls ~/.claude/plugins/cache/claude-plugins-official/superpowers/6.1.0/skills/</code></pre>
+
+<h2>六、对照表：Harness 方法 → Superpowers Skill</h2>
+
+<table>
+  <tr><th>Harness 方法</th><th>Superpowers Skill</th><th>核心机制</th></tr>
+  <tr><td>① 规则文件</td><td>本身是范例 + 强制遵循</td><td>CLAUDE.md / AGENTS.md 模板</td></tr>
+  <tr><td>② 先方案后编码</td><td><code>brainstorming</code> + <code>writing-plans</code></td><td>HARD GATE 禁止先写代码</td></tr>
+  <tr><td>③ 工具能力</td><td><code>using-superpowers</code></td><td>"1% 可能也必须调用"</td></tr>
+  <tr><td>④ 测试验证</td><td><code>test-driven-development</code> +<br><code>verification-before-completion</code></td><td>RED→GREEN 铁律 + 证据闭环</td></tr>
+  <tr><td>⑤ 文档+Git</td><td><code>finishing-a-development-branch</code></td><td>标准化 4 选项收尾流程</td></tr>
+  <tr><td>多 Agent</td><td><code>subagent-driven-development</code> +<br><code>dispatching-parallel-agents</code></td><td>实现+审查双代理 / 独立并行</td></tr>
+</table>
+
+<div class="tip"><strong>💡 核心理解：</strong>
+Superpowers 不是给你一个新工具，而是给 AI 一套"工程纪律"——用硬性规则强制 AI 必须先计划、先测试、先验证、再交付。这正是 Harness 工程的本质。</div>
+
+<div class="nav">
+  <a href="013-Harness实施实战.html">← 上一课</a>
+  <a href="index.html">返回目录</a>
+</div>
+</body></html>

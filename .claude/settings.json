@@ -1,0 +1,52 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash: cd *",
+      "Bash: python *",
+      "Bash: python3 *",
+      "Bash: pip *",
+      "Bash: git *",
+      "Bash: mkdir *",
+      "Bash: rm *",
+      "Bash: cp *",
+      "Bash: mv *",
+      "Bash: type *",
+      "Bash: dir *",
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep"
+    ],
+    "allowWarningReminders": false
+  },
+  "hooks": {
+    "preToolUse": {
+      "Bash": {
+        "command": "cd /d/@VSwork/VSteach"
+      }
+    }
+  },
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "D:\\@VSwork\\VSteach",
+        "D:\\@VSwork\\VSteach\\_CHRIS",
+        "D:\\@VSwork\\VSteach\\_GRACE",
+        "D:\\@VSwork\\VSteach\\_SHARK",
+        "D:\\@VSwork\\VSteach\\_邦共用",
+        "D:\\@VSwork\\VSteach\\__temp"
+      ]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    }
+  }
+}

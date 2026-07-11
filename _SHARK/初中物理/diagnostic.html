@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧐 力学弱点诊断</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#2563eb; --done:#16a34a; --warn:#f59e0b; --danger:#dc2626; --border:#e2e8f0; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:780px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.7; font-size:1rem; }
+    h1 { font-size:1.8rem; }
+    .sub { color:#64748b; font-size:0.9rem; margin-bottom:1.5rem; }
+    .intro { background:#f0f7ff; border:1px solid var(--border); border-radius:8px; padding:0.8rem 1rem; margin-bottom:1.2rem; font-size:0.9rem; }
+    .intro strong { color:var(--accent); }
+
+    .qblock { border:2px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin-bottom:1rem; background:#fff; }
+    .qblock h3 { font-size:0.95rem; margin-bottom:0.3rem; color:var(--accent); }
+    .qblock .q { font-weight:600; margin-bottom:0.3rem; font-size:0.93rem; }
+    .qopts { display:flex; flex-direction:column; gap:0.35rem; margin:0.4rem 0; }
+    .qopts label { display:flex; align-items:center; gap:0.5rem; padding:0.35rem 0.7rem; border:1px solid var(--border); border-radius:6px; cursor:pointer; font-size:0.88rem; }
+    .qopts label:hover { background:#f1f5f9; }
+    .qopts input[type="radio"] { accent-color:var(--accent); }
+    .qbtn { background:var(--accent); color:#fff; border:none; padding:0.3rem 1rem; border-radius:6px; cursor:pointer; font-size:0.85rem; }
+    .qbtn:hover { opacity:0.9; }
+    .qfb { margin-top:0.4rem; padding:0.4rem 0.7rem; border-radius:6px; display:none; font-size:0.85rem; }
+    .qfb.ok { display:block; background:#f0fdf4; border:1px solid var(--done); }
+    .qfb.no { display:block; background:#fef2f2; border:1px solid var(--danger); }
+
+    /* Result section */
+    .result-box { display:none; margin-top:1.5rem; }
+    .result-box.show { display:block; }
+    .result-header { background:linear-gradient(135deg,#1e293b,#334155); color:#e2e8f0; border-radius:10px; padding:1rem; text-align:center; }
+    .result-header .grade { font-size:2.5rem; font-weight:700; }
+    .result-header .grade.A { color:#16a34a; }
+    .result-header .grade.B { color:#22c55e; }
+    .result-header .grade.C { color:#f59e0b; }
+    .result-header .grade.D { color:#ef4444; }
+
+    .weak-card { border:1px solid var(--border); border-radius:8px; padding:0.8rem 1rem; margin-bottom:0.8rem; background:#fff; }
+    .weak-card h3 { font-size:0.95rem; color:var(--accent); }
+    .weak-card .area { display:inline-block; background:#fee2e2; color:#dc2626; padding:0.15rem 0.5rem; border-radius:4px; font-size:0.75rem; margin-top:0.3rem; }
+    .weak-card .fix { font-size:0.85rem; background:#f8fafc; padding:0.4rem; border-radius:4px; margin-top:0.3rem; }
+    a { color:var(--accent); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .footer { border-top:1px solid var(--border); padding-top:1rem; margin-top:1.5rem; font-size:0.85rem; color:#94a3b8; }
+  </style>
+</head>
+<body>
+
+<h1>🧐 力学弱点诊断</h1>
+<p class="sub">回答下面12道问题 → 自动分析你的薄弱环节 → 生成针对性复习计划</p>
+
+<div class="intro">
+  <strong>💡 怎么用：</strong> 每题选你认为正确的答案。答错不是坏事——它会告诉我们你的知识盲点在哪。<br>
+  诊断范围：力学七章全部内容。完整体验约 10 分钟。
+</div>
+
+<form id="diagnostic">
+
+<!-- AUTO -->
+<div class="qblock" data-area="参照物">
+  <h3>📍 主题：参照物</h3>
+  <div class="q">1. 小明坐在向东匀速行驶的公交车上，他感觉路边的小树在向后退。小明是以什么为参照物？</div>
+  <div class="qopts">
+    <label><input type="radio" name="d1" value="A"> A. 地面</label>
+    <label><input type="radio" name="d1" value="B"> B. 小树</label>
+    <label><input type="radio" name="d1" value="C"> C. 公交车</label>
+    <label><input type="radio" name="d1" value="D"> D. 路边的行人</label>
+  </div>
+  <button type="button" class="qbtn" onclick="check(1,'C','参照物','✅ 正确！以公交车为参照物，小树位置在改变；以地面为参照物，是小明在移动。')">提交</button>
+  <div id="fb1" class="qfb"></div>
+</div>
+
+<div class="qblock" data-area="s-t图">
+  <h3>📈 主题：s-t 图像</h3>
+  <div class="q">2. 甲、乙两辆车的 s-t 图像中，甲的图线是过原点的斜线（更陡），乙的图线也是过原点的斜线（较平）。这说明？</div>
+  <div class="qopts">
+    <label><input type="radio" name="d2" value="A"> A. 甲车比乙车跑得远</label>
+    <label><input type="radio" name="d2" value="B"> B. 甲车运动时间比乙车短</label>
+    <label><input type="radio" name="d2" value="C"> C. 甲车速度比乙车大</label>
+    <label><input type="radio" name="d2" value="D"> D. 甲车在做加速运动</label>
+  </div>
+  <button type="button" class="qbtn" onclick="check(2,'C','s-t图','✅ 正确！s-t 图中斜率=速度。线越陡=相同时间内路程越大=速度越大。')">提交</button>
+  <div id="fb2" class="qfb"></div>
+</div>
+
+<div class="qblock" data-area="重力vs质量">
+  <h3>⚖️ 主题：重力与质量</h3>
+  <div class="q">3. 地球上重 600 N 的人到了月球上（g<sub>月</sub> = g<sub>地</sub>/6），他的重力和质量分别约为？</div>
+  <div class="qopts">
+    <label><input type="radio" name="d3" value="A"> A. 重力 600 N，质量 60 kg</label>
+    <label><input type="radio" name="d3" value="B"> B. 重力 100 N，质量 60 kg</label>
+    <label><input type="radio" name="d3" value="C"> C. 重力 600 N，质量 10 kg</label>
+    <label><input type="radio" name="d3" value="D"> D. 重力 100 N，质量 10 kg</label>
+  </div>
+  <button type="button" class="qbtn" onclick="check(3,'B','重力vs质量','✅ 正确！质量不随位置变（60kg）；重力 G=mg，g 变成 1/6 → G=100N。这是区分质量/重力的经典题。')">提交</button>
+  <div id="fb3" class="qfb"></div>
+</div>
+
+<div class="qblock" data-area="牛顿第一定律">
+  <h3>🔄 主题：牛顿第一定律</h3>
+  <div class="q">4. 牛顿第一定律是通过以下哪种方式得出的？</div>
+  <div class="qopts">
+    <label><input type="radio" name="d4" value="A"> A. 实验直接验证</label>
+    <label><input type="radio" name="d4" value="B"> B. 纯理论推导</label>
+    <label><input type="radio" name="d4" value="C"> C. 实验 + 科学推理（理想实验）</label>
+    <label><input type="radio" name="d4" value="D"> D. 日常经验总结</label>
+  </div>
+  <button type="button" class="qbtn" onclick="check(4,'C','牛顿第一定律','✅ 正确！因为无法制造\"不受力\"的环境，所以必须有伽利略的理想实验推理。考试最爱考这个！')">提交</button>
+  <div id="fb4" class="qfb"></div>
+</div>
+
+<div class="qblock" data-area="惯性">
+  <h3>💫 主题：惯性</h3>
+  <div class="q">5. 以下关于惯性的说法，正确的是？</div>
+  <div class="qopts">
+    <label><input type="radio" name="d5" value="A"> A. 运动的物体有惯性，静止的物体没有惯性</label>
+    <label><input type="radio" name="d5" value="B"> B. 刹车时，乘客受到惯性作用向前倾倒</label>
+    <label><input type="radio" name="d5" value="C"> C. 质量越大，惯性越大</label>
+    <label><input type="radio" name="d5" value="D"> D. 速度越大，惯性越大</label>
+  </div>
+  <button type="button" class="qbtn" onclick="check(5,'C','惯性','✅ 正确！惯性只与质量有关。A错（一切物体都有惯性），B错（惯性是性质不是\"力\"），D错（惯性大小与速度无关）。')">提交</button>
+  <div id="fb5" class="qfb"></div>
+</div>
+
+<div class="qblock" data-area="平衡力vs相互作用力">
+  <h3>🤝 主题：平衡力 vs 相互作用力</h3>
+  <div class="q">6. 放在水平桌面上的书静止不动。以下哪一对是平衡力？</div>
+  <div class="qopts">
+    <label><input type="radio" name="d6" value="A"> A. 书的重力和桌面对书的支持力</label>
+    <label><input type="radio" name="d6" value="B"> B. 书的重力和书对桌面的压力</label>
+    <label><input type="radio" name="d6" value="C"> C. 桌面对书的支持力和书对桌面的压力</label>
+    <label><input type="radio" name="d6" value="D"> D. 书的重力和桌子的重力</label>
+  </div>
+  <button type="button" class="qbtn" onclick="check(6,'A','平衡力vs相互作用力','✅ 正确！重力和支持力都作用在同一物体（书）上，等大反向共线。C是相互作用力（作用在不同物体上）。区别：看作用对象是否相同。')">提交</button>
+  <div id="fb6" class="qfb"></div>
+</div>
+
+<div class="qblock" data-area="摩擦力方向">
+  <h3>👣 主题：摩擦力方向</h3>
+  <div class="q">7. 人向前走路时，脚受到地面摩擦力的方向是？</div>
+  <div class="qopts">
+    <label><input type="radio" name="d7" value="A"> A. 向前</label>
+    <label><input type="radio" name="d7" value="B"> B. 向后</label>
+    <label><input type="radio" name="d7" value="C"> C. 向上</label>
+    <label><input type="radio" name="d7" value="D"> D. 没有摩擦力</label>
+  </div>
+  <button type="button" class="qbtn" onclick="check(7,'A','摩擦力方向','✅ 正确！脚向后蹬地→相对地面有向后趋势→摩擦力方向向前。摩擦力帮你往前走，不是阻碍你。孩子在冰上走不了就是因为摩擦力太小。')">提交</button>
+  <div id="fb7" class="qfb"></div>
+</div>
+
+<div class="qblock" data-area="压强">
+  <h3>📊 主题：压强</h3>
+  <div class="q">8. 人从站立改为单脚站立，对地面的压强如何变化？</div>
+  <div class="qopts">
+    <label><input type="radio" name="d8" value="A"> A. 不变</label>
+    <label><input type="radio" name="d8" value="B"> B. 变为原来的 1/2</label>
+    <label><input type="radio" name="d8" value="C"> C. 变为原来的 2 倍</label>
+    <label><input type="radio" name="d8" value="D"> D. 无法确定</label>
+  </div>
+  <button type="button" class="qbtn" onclick="check(8,'C','压强','✅ 正确！压力不变（体重相同），受力面积减半 → p=F/S → 压强翻倍。')">提交</button>
+  <div id="fb8" class="qfb"></div>
+</div>
+
+<div class="qblock" data-area="液体压强">
+  <h3>🌊 主题：液体压强</h3>
+  <div class="q">9. 一个潜水员从水下 3 m 处下潜到 10 m 处，他受到水的压强如何变化？</div>
+  <div class="qopts">
+    <label><input type="radio" name="d9" value="A"> A. 不变</label>
+    <label><input type="radio" name="d9" value="B"> B. 增大为原来的约 3.3 倍</label>
+    <label><input type="radio" name="d9" value="C"> C. 减小</label>
+    <label><input type="radio" name="d9" value="D"> D. 翻倍</label>
+  </div>
+  <button type="button" class="qbtn" onclick="check(9,'B','液体压强','✅ 正确！p=ρgh，h 从 3→10，压强比为 10/3 ≈ 3.3 倍。深层潜水需要特殊装备就是这个原因。')">提交</button>
+  <div id="fb9" class="qfb"></div>
+</div>
+
+<div class="qblock" data-area="浮力">
+  <h3>🚢 主题：浮力</h3>
+  <div class="q">10. 一艘轮船从长江驶入大海（ρ<sub>海</sub> > ρ<sub>江</sub>），轮船受到的浮力和排开水的体积如何变化？</div>
+  <div class="qopts">
+    <label><input type="radio" name="d10" value="A"> A. 浮力变大，V<sub>排</sub> 变大</label>
+    <label><input type="radio" name="d10" value="B"> B. 浮力不变，V<sub>排</sub> 变小</label>
+    <label><input type="radio" name="d10" value="C"> C. 浮力变小，V<sub>排</sub> 变小</label>
+    <label><input type="radio" name="d10" value="D"> D. 浮力不变，V<sub>排</sub> 不变</label>
+  </div>
+  <button type="button" class="qbtn" onclick="check(10,'B','浮力','✅ 正确！轮船始终漂浮 → F<sub>浮</sub>=G<sub>船</sub> → 重力不变所以浮力不变。ρ<sub>海</sub>更大 → F<sub>浮</sub>=ρ<sub>海</sub>gV<sub>排</sub>中，ρ 变大→V<sub>排</sub> 变小（船上浮一些）。')">提交</button>
+  <div id="fb10" class="qfb"></div>
+</div>
+
+<div class="qblock" data-area="浮沉条件">
+  <h3>⬆️⬇️ 主题：浮沉条件</h3>
+  <div class="q">11. 同一物体漂浮在液体表面，露出 1/3 的体积。该物体密度与液体密度之比为？</div>
+  <div class="qopts">
+    <label><input type="radio" name="d11" value="A"> A. 1 : 3</label>
+    <label><input type="radio" name="d11" value="B"> B. 2 : 3</label>
+    <label><input type="radio" name="d11" value="C"> C. 3 : 2</label>
+    <label><input type="radio" name="d11" value="D"> D. 1 : 1</label>
+  </div>
+  <button type="button" class="qbtn" onclick="check(11,'B','浮沉条件','✅ 正确！漂浮时 F<sub>浮</sub>=G → ρ<sub>液</sub>gV<sub>排</sub>=ρ<sub>物</sub>gV<sub>物</sub> → ρ<sub>物</sub>/ρ<sub>液</sub> = V<sub>排</sub>/V<sub>物</sub> = 2/3。能推出来说明真的理解了！')">提交</button>
+  <div id="fb11" class="qfb"></div>
+</div>
+
+<div class="qblock" data-area="功和机械能">
+  <h3>⚡ 主题：功和能</h3>
+  <div class="q">12. 以下哪种情况人对物体做了功？</div>
+  <div class="qopts">
+    <label><input type="radio" name="d12" value="A"> A. 人用力推墙，墙没动</label>
+    <label><input type="radio" name="d12" value="B"> B. 人提着水桶在水平路面上匀速前进</label>
+    <label><input type="radio" name="d12" value="C"> C. 人扛着米袋从一楼走上三楼</label>
+    <label><input type="radio" name="d12" value="D"> D. 人举着杠铃静止不动</label>
+  </div>
+  <button type="button" class="qbtn" onclick="check(12,'C','功和机械能','✅ 正确！扛米上楼 → 有向上的力，也有向上的距离 → 做功。A 有力无距离，B 力和移动方向垂直，D 有力无距离。')">提交</button>
+  <div id="fb12" class="qfb"></div>
+</div>
+
+</form>
+
+<!-- ==================== RESULTS ==================== -->
+<div class="result-box" id="resultBox">
+  <div class="result-header">
+    <p style="font-size:0.9rem;">诊断结果</p>
+    <div class="grade" id="gradeLetter">—</div>
+    <p id="gradeLabel" style="font-size:0.9rem;"></p>
+  </div>
+  <h2 style="font-size:1rem;margin:1rem 0 0.5rem;">📋 逐题分析</h2>
+  <div id="detailList"></div>
+  <h2 style="font-size:1rem;margin:1rem 0 0.5rem;">📌 薄弱环节</h2>
+  <div id="weakList"></div>
+  <h2 style="font-size:1rem;margin:1rem 0 0.5rem;">🎯 针对性复习计划</h2>
+  <div id="planList"></div>
+</div>
+
+<button class="qbtn" style="font-size:1rem;padding:0.5rem 2rem;display:block;margin:1rem auto;" onclick="submitAll()">📊 提交全部并查看诊断报告</button>
+
+<script>
+const ANSWERS = { d1:'C', d2:'C', d3:'B', d4:'C', d5:'C', d6:'A', d7:'A', d8:'C', d9:'B', d10:'B', d11:'B', d12:'C' };
+const AREAS = ['参照物','s-t图','重力vs质量','牛顿第一定律','惯性','平衡力vs相互作用力','摩擦力方向','压强','液体压强','浮力','浮沉条件','功和机械能'];
+const LESSON_MAP = {
+  '参照物': { lesson:'第1课·机械运动', ref:'../reference/机械运动速查.html' },
+  's-t图': { lesson:'第1课·机械运动', ref:'../reference/机械运动速查.html' },
+  '重力vs质量': { lesson:'第2课·力', ref:'../reference/力学心智模型总览.html' },
+  '牛顿第一定律': { lesson:'第3课·运动和力', ref:'../reference/力学心智模型总览.html' },
+  '惯性': { lesson:'第3课·运动和力', ref:'../reference/力学心智模型总览.html' },
+  '平衡力vs相互作用力': { lesson:'第3课·运动和力', ref:'../reference/力学心智模型总览.html' },
+  '摩擦力方向': { lesson:'第3课·运动和力', ref:'../reference/力学心智模型总览.html' },
+  '压强': { lesson:'第7课·压强', ref:'../reference/力学心智模型总览.html' },
+  '液体压强': { lesson:'第7课·压强', ref:'../reference/力学心智模型总览.html' },
+  '浮力': { lesson:'第8课·浮力', ref:'../reference/浮力速查.html' },
+  '浮沉条件': { lesson:'第8课·浮力', ref:'../reference/浮力速查.html' },
+  '功和机械能': { lesson:'第9课·功和能', ref:'../reference/力学心智模型总览.html' }
+};
+const FIXES = {
+  '参照物':'费曼测试：站在路口，分别以不同物体为参照物描述一辆车的位置变化。',
+  's-t图':'在白板上画s-t图，标出静止、匀速、加速三种情况，让孩子读出每段含义。',
+  '重力vs质量':'画出两张表格对比（定义、符号、单位、测量工具、是否随位置变化），背到能默写。',
+  '牛顿第一定律':'回家拿一个玻璃珠在桌面上推一下，观察它怎么停下来。再推一下更光滑的桌面，体会"越来越接近匀速"。',
+  '惯性':'类比自己：你坐在车上闭眼睛，不知道自己在动。车急刹时你"想保持原来的运动状态"——这就是惯性。',
+  '平衡力vs相互作用力':'核心钥匙：平衡力看"作用对象是否相同"。相同=平衡力，不同=相互作用力。',
+  '摩擦力方向':'走三步路分析自己的脚：脚怎么蹬？地面怎么推你？摩擦力往哪？',
+  '压强':'拿一支笔，用指尖顶笔尖和笔尾，感受压强差别。',
+  '液体压强':'用矿泉水瓶在不同高度扎三个孔，越低的孔水射得越远。',
+  '浮力':'做橡皮泥实验：一团沉底，捏成船形浮起来。问孩子为什么。',
+  '浮沉条件':'用清水和盐水泡鸡蛋，观察沉浮变化，让孩子自己总结条件。',
+  '功和机械能':'费曼测试：举着书不动算不算做功？水平走路提水桶算不算？判断标准只有一个——在力的方向上有移动吗？'
+};
+
+const userAnswers = {};
+
+function check(n, ans, area, msg) {
+  const name = 'd'+n;
+  const sel = document.querySelector('input[name="'+name+'"]:checked');
+  const fb = document.getElementById('fb'+n);
+  if (!sel) { fb.className = 'qfb no'; fb.innerHTML = '请选择一个答案。'; return; }
+  userAnswers[name] = sel.value;
+  if (sel.value === ans) { fb.className = 'qfb ok'; fb.innerHTML = msg; }
+  else { fb.className = 'qfb no'; fb.innerHTML = '❌ 答错了。这涉及 <strong>'+area+'</strong>，针对该知识点的复习建议在提交后的诊断报告中。'; }
+}
+
+function submitAll() {
+  // Count correct
+  let correct = 0; let total = 12;
+  let wrongAreas = [];
+  let details = '';
+  for (let i = 1; i <= total; i++) {
+    const name = 'd'+i;
+    const ans = userAnswers[name];
+    const isCorrect = ans === ANSWERS[name];
+    if (isCorrect) correct++;
+    else wrongAreas.push({ area: AREAS[i-1], index: i-1 });
+    const status = isCorrect ? '✅' : '❌';
+    details += '<div style="font-size:0.85rem;padding:0.25rem 0;">'+status+' Q'+i+' · '+AREAS[i-1]+(isCorrect?'':' <span style="color:#dc2626;">(薄弱点)</span>')+'</div>';
+  }
+
+  // Grade
+  const pct = correct / total;
+  let grade, gradeText;
+  if (pct >= 0.9) { grade = 'A'; gradeText = '优秀！力学基础扎实，几乎没有盲区。继续保持 + 尝试讲给孩子听！'; }
+  else if (pct >= 0.75) { grade = 'B'; gradeText = '良好！大部分知识点掌握，有少量薄弱点，针对性补一下就通了。'; }
+  else if (pct >= 0.5) { grade = 'C'; gradeText = '及格！有较多薄弱环节，建议按复习计划系统整理。'; }
+  else { grade = 'D'; gradeText = '需要努力！建议从第一章开始重新复习，用费曼学习法逐一过关。'; }
+
+  // Show result box
+  const rbox = document.getElementById('resultBox');
+  rbox.className = 'result-box show';
+  document.getElementById('gradeLetter').className = 'grade ' + grade;
+  document.getElementById('gradeLetter').textContent = grade + ' (' + correct + '/' + total + ')';
+  document.getElementById('gradeLabel').textContent = gradeText;
+  document.getElementById('detailList').innerHTML = details;
+
+  // Weak areas
+  let weakHtml = '';
+  if (wrongAreas.length === 0) {
+    weakHtml = '<p style="color:#16a34a;font-size:0.9rem;">🎉 没有发现薄弱环节！试试挑战更高难度——把你理解的知识讲给孩子听。</p>';
+  } else {
+    wrongAreas.forEach(w => {
+      const a = w.area;
+      const info = LESSON_MAP[a] || { lesson:'待学习', ref:'#' };
+      weakHtml += '<div class="weak-card"><h3>❌ '+a+'</h3><div class="area">'+info.lesson+'</div><div class="fix">'+FIXES[a]+'<br><a href="'+info.ref+'">📖 查看参考速查</a></div></div>';
+    });
+  }
+  document.getElementById('weakList').innerHTML = weakHtml || '<p>无</p>';
+
+  // Study plan
+  let planHtml = '';
+  if (wrongAreas.length === 0) {
+    planHtml = '<p style="font-size:0.9rem;">你已经掌握了力学全部考点！下一步：打开<a href="roadmap.html">费曼学习路线图</a>，按阶段用"讲给孩子听"检验真懂。</p>';
+  } else {
+    const weakSet = new Set(wrongAreas.map(w => {
+      const area = w.area;
+      if (['参照物','s-t图'].includes(area)) return '机械运动';
+      if (['重力vs质量'].includes(area)) return '力';
+      if (['牛顿第一定律','惯性','平衡力vs相互作用力','摩擦力方向'].includes(area)) return '运动和力';
+      if (['压强','液体压强'].includes(area)) return '压强';
+      if (['浮力','浮沉条件'].includes(area)) return '浮力';
+      if (['功和机械能'].includes(area)) return '功和机械能';
+      return area;
+    }));
+    let order = ['机械运动','力','运动和力','压强','浮力','功和机械能'];
+    let filtered = order.filter(o => weakSet.has(o));
+    planHtml = '<p style="font-size:0.9rem;">建议按以下顺序系统复习（从基础到进阶）：</p><ol style="margin-top:0.5rem;">';
+    filtered.forEach(ch => {
+      planHtml += '<li><strong>'+ch+'</strong> — 复习对应章节，先看速查页再做题</li>';
+    });
+    planHtml += '</ol><p style="font-size:0.85rem;margin-top:0.5rem;">每章复习完，重新做一次费曼测试：<em>"用最简单的比喻讲给一个孩子听"</em>。</p>';
+    planHtml += '<p style="font-size:0.85rem;"><a href="roadmap.html">🗺️ 查看完整学习路线图</a></p>';
+  }
+  document.getElementById('planList').innerHTML = planHtml;
+}
+</script>
+
+<div class="footer">
+  <p>📖 <a href="index.html">总目录</a> · <a href="roadmap.html">🗺️ 学习路线图</a> · <a href="reference/力学心智模型总览.html">🧠 心智模型总览</a></p>
+</div>
+
+</body>
+</html>

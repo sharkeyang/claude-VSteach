@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>古文 字帖生成器</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:#e8e8e8;color:#333;}
+.container{max-width:1000px;margin:0 auto;padding:20px;}
+
+.input-area{background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+.input-area h1{font-size:20px;color:#c0392b;margin-bottom:4px;}
+.input-area .sub{font-size:12px;color:#999;margin-bottom:8px;}
+.input-area textarea{width:100%;height:80px;font-size:15px;padding:10px;border:2px solid #ddd;border-radius:8px;resize:vertical;font-family:inherit;}
+.input-area textarea:focus{border-color:#c0392b;outline:none;}
+.controls{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;align-items:center;}
+.controls label{display:flex;align-items:center;gap:4px;font-size:13px;white-space:nowrap;}
+.controls input[type=number]{width:45px;padding:3px 4px;border:1px solid #ddd;border-radius:4px;font-size:13px;}
+.btn{padding:7px 18px;border:none;border-radius:6px;font-size:13px;cursor:pointer;font-weight:600;}
+.btn.gen{background:#c0392b;color:#fff;}
+.btn.print{background:#27ae60;color:#fff;}
+.btn:hover{opacity:0.85;}
+.stats{font-size:12px;color:#888;margin-left:10px;}
+
+.preview-area{text-align:center;}
+.page-info{font-size:12px;color:#888;margin-bottom:10px;}
+
+/* A4纸张 */
+.a4-page{
+  background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.15);
+  margin:0 auto 24px auto;padding:12mm 10mm 5mm 10mm;
+  width:210mm;min-height:297mm;position:relative;
+  display:flex;flex-direction:column;page-break-after:always;
+}
+
+/* 页眉 */
+.sheet-header{display:flex;justify-content:space-between;align-items:baseline;padding:0 2px 4px 2px;border-bottom:2px solid #c0392b;margin-bottom:3px;}
+.sheet-header .title{font-size:14px;font-weight:700;color:#c0392b;font-family:"楷体","KaiTi",serif;}
+.sheet-header .info{font-size:9px;color:#999;}
+
+/* 字格区域 */
+.grid-area{flex:1;display:flex;flex-direction:column;gap:0;}
+
+/* 网格 */
+.sheet{display:grid;grid-template-columns:repeat(12,1fr);gap:0;width:100%;}
+.cell{
+  position:relative;aspect-ratio:1;
+  border:0.5px solid #e8d0d0;
+  display:flex;align-items:center;justify-content:center;
+  background:#fff;
+}
+.cell svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
+.cell .char{
+  font-size:50px;position:relative;z-index:1;
+  font-family:"楷体","KaiTi","STKaiti","SimSun",serif;
+  user-select:none;line-height:1;pointer-events:none;
+  font-weight:500;
+}
+.cell.empty{background:#fafafa;}
+
+/* 每组之间加粗分隔（第4格末尾） */
+.cell.block-end{border-right:2px solid #c0392b;}
+
+/* 底部要点 */
+.footer-tips{
+  margin-top:auto;padding:4px 6px 2px 6px;
+  border-top:1px solid #e0e0e0;
+  font-size:10px;color:#666;line-height:1.5;text-align:left;
+}
+.footer-tips strong{color:#c0392b;}
+.footer-tips .row{margin:0;}
+
+@media screen and (max-width:800px){
+  .a4-page{width:100%;padding:10px;min-height:auto;}
+  .cell .char{font-size:22px;}
+  .sheet{grid-template-columns:repeat(12,1fr);}
+}
+
+@media print{
+  body{background:#fff;}
+  .input-area,.controls,.btn,.page-info{display:none!important;}
+  .container{max-width:100%;padding:0;}
+  .preview-area{padding:0;}
+  .a4-page{box-shadow:none;margin:0;padding:10mm 8mm 4mm 8mm;width:100%;min-height:100vh;page-break-after:always;}
+  .cell{border-color:#d0b0b0;}
+  .cell .char{font-size:50px;}
+  .footer-tips{font-size:9px;padding:3px 4px;}
+  @page{margin:0;size:A4 portrait;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="input-area">
+    <h1>📜 古文 字帖 · 描2写2</h1>
+    <div class="sub">自动过滤标点符号，仅保留汉字。每字4格：2遍描红 + 2遍空格照写</div>
+    <textarea id="textInput" placeholder="粘贴古文全文，标点符号自动跳过"></textarea>
+    <div class="controls">
+      <label>每行字数（1字=4格）：<input type="number" id="colsInput" value="3" min="1" max="4"></label>
+      <span class="stats" id="stats">汉字: 0 | 页数: 0</span>
+      <button class="btn gen" onclick="generate()">🔄 生成</button>
+      <button class="btn print" onclick="window.print()">🖨️ 打印PDF</button>
+    </div>
+  </div>
+
+  <div class="preview-area">
+    <div class="page-info" id="pageInfo">正在生成...</div>
+    <div id="sheetContainer"></div>
+  </div>
+</div>
+
+<script>
+function generate() {
+  const raw = document.getElementById('textInput').value;
+  // 仅保留汉字（Unicode CJK统一表意文字 一-鿿）
+  const chars = raw.replace(/[^一-鿿]/g, '').split('');
+
+  if (!chars.length) {
+    document.getElementById('sheetContainer').innerHTML = '<p style="color:#999;">请输入古文，标点自动跳过</p>';
+    document.getElementById('pageInfo').textContent = '';
+    document.getElementById('stats').textContent = '汉字: 0 | 页数: 0';
+    return;
+  }
+
+  const cols = Math.min(parseInt(document.getElementById('colsInput').value) || 3, 4);
+  const cellsPerChar = 4;    // 描红×2 + 空格×2
+  const gridCols = cols * cellsPerChar;  // 总列数 = 字数×4
+  const rowsPerPage = 15;
+
+  // 生成网格数据：每个char → [trace,trace,empty,empty]
+  let allCells = [];
+  chars.forEach(function(ch) {
+    for (var i = 0; i < 2; i++) allCells.push({ char: ch, isTrace: true });
+    for (var i = 0; i < 2; i++) allCells.push({ char: ch, isTrace: false });
+  });
+
+  // 尾部补齐到整行
+  const cellsPerRow = cols * cellsPerChar;
+  while (allCells.length % cellsPerRow !== 0) {
+    allCells.push({ char: '', isEmpty: true });
+  }
+
+  // 分页
+  const totalRows = allCells.length / cellsPerRow;
+  const pageRowsCount = rowsPerPage;
+  const totalPages = Math.ceil(totalRows / pageRowsCount);
+
+  // 要点提示
+  const tips =
+    '<div class="row">① <strong>中线对齐</strong>——字的重心在格子中央，不偏左偏右</div>' +
+    '<div class="row">② <strong>大小一致</strong>——每个字占格子70%-80%，不忽大忽小</div>' +
+    '<div class="row">③ <strong>笔画力度</strong>——笔画清晰可见，不要过轻</div>';
+
+  var html = '';
+  for (var pi = 0; pi < totalRows; pi += pageRowsCount) {
+    var pageNum = Math.floor(pi / pageRowsCount) + 1;
+    var pageSlice = allCells.slice(pi * cellsPerRow, (pi + pageRowsCount) * cellsPerRow);
+    var rowsInThisPage = Math.ceil(pageSlice.length / cellsPerRow);
+
+    html += '<div class="a4-page">';
+    html += '<div class="sheet-header"><span class="title">古文练字 · 描红×2 + 临写×2</span><span class="info">第 ' + pageNum + ' 页 / 共 ' + totalPages + ' 页 · 共' + chars.length + '字</span></div>';
+    html += '<div class="grid-area">';
+
+    for (var ri = 0; ri < rowsInThisPage; ri++) {
+      var start = ri * cellsPerRow;
+      var end = Math.min(start + cellsPerRow, pageSlice.length);
+
+      html += '<div class="sheet" style="grid-template-columns:repeat(' + gridCols + ',1fr)">';
+      for (var ci = start; ci < end; ci++) {
+        var cell = pageSlice[ci];
+        if (cell.isEmpty) {
+          html += '<div class="cell empty"></div>';
+        } else {
+          var isBlockEnd = ((ci - start) % cellsPerChar === cellsPerChar - 1);
+          var cls = isBlockEnd ? 'cell block-end' : 'cell';
+          if (cell.isTrace) {
+            html += '<div class="' + cls + '">' +
+              '<svg viewBox="0 0 100 100">' +
+                '<line x1="0" y1="0" x2="100" y2="100" stroke="#f0d0d0" stroke-width="0.5"/>' +
+                '<line x1="100" y1="0" x2="0" y2="100" stroke="#f0d0d0" stroke-width="0.5"/>' +
+                '<line x1="50" y1="0" x2="50" y2="100" stroke="#f0d0d0" stroke-width="0.4"/>' +
+                '<line x1="0" y1="50" x2="100" y2="50" stroke="#f0d0d0" stroke-width="0.4"/>' +
+                '<rect x="1" y="1" width="98" height="98" fill="none" stroke="#e0c0c0" stroke-width="0.6"/>' +
+              '</svg>' +
+              '<span class="char" style="color:#d0d0d0">' + cell.char + '</span>' +
+            '</div>';
+          } else {
+            html += '<div class="' + cls + '">' +
+              '<svg viewBox="0 0 100 100">' +
+                '<line x1="0" y1="0" x2="100" y2="100" stroke="#f0d0d0" stroke-width="0.5"/>' +
+                '<line x1="100" y1="0" x2="0" y2="100" stroke="#f0d0d0" stroke-width="0.5"/>' +
+                '<line x1="50" y1="0" x2="50" y2="100" stroke="#f0d0d0" stroke-width="0.4"/>' +
+                '<line x1="0" y1="50" x2="100" y2="50" stroke="#f0d0d0" stroke-width="0.4"/>' +
+                '<rect x="1" y="1" width="98" height="98" fill="none" stroke="#e0c0c0" stroke-width="0.6"/>' +
+              '</svg>' +
+            '</div>';
+          }
+        }
+      }
+      // 补足同行空缺
+      for (var ci = end; ci < start + cellsPerRow; ci++) {
+        html += '<div class="cell empty"></div>';
+      }
+      html += '</div>';
+    }
+
+    // 补足空白行（保持整页满）
+    for (var r = rowsInThisPage; r < pageRowsCount; r++) {
+      html += '<div class="sheet" style="grid-template-columns:repeat(' + gridCols + ',1fr)">';
+      for (var c = 0; c < cellsPerRow; c++) {
+        html += '<div class="cell empty"></div>';
+      }
+      html += '</div>';
+    }
+
+    html += '</div>'; // grid-area
+    html += '<div class="footer-tips"><strong>📐 练字要点：</strong>' + tips + '</div>';
+    html += '</div>'; // a4-page
+  }
+
+  document.getElementById('sheetContainer').innerHTML = html;
+  document.getElementById('pageInfo').textContent =
+    '📄 ' + totalPages + ' 页 · ' + chars.length + ' 汉字 · 每字描红×2 + 临写×2 · A4纵向打印';
+  document.getElementById('stats').textContent =
+    '汉字: ' + chars.length + ' | 页数: ' + totalPages;
+}
+
+// 默认示例 — 《陋室铭》
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('textInput').value =
+    '山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。苔痕上阶绿，草色入帘青。谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。无丝竹之乱耳，无案牍之劳形。南阳诸葛庐，西蜀子云亭。孔子云：何陋之有？';
+  generate();
+});
+</script>
+</body>
+</html>

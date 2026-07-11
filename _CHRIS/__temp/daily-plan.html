@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Chris 暑假计划 - 第N天</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --accent: #4a90d9;
+    --pass: #27ae60;
+    --fail: #e74c3c;
+    --warn: #f39c12;
+    --border: #e0e0e0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Noto Sans SC", "PingFang SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .header {
+    background: var(--accent);
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .header h1 { font-size: 18px; margin-bottom: 4px; }
+  .header .date { font-size: 13px; opacity: 0.9; }
+  .header .stats { font-size: 12px; margin-top: 6px; opacity: 0.85; }
+
+  .time-block {
+    margin-bottom: 10px;
+  }
+  .time-block-title {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 8px 8px 0 0;
+    color: white;
+  }
+  .time-block-title.morning { background: #f39c12; }
+  .time-block-title.afternoon { background: #3498db; }
+  .time-block-title.evening { background: #2c3e50; }
+
+  .task {
+    background: var(--card);
+    border-left: 4px solid var(--border);
+    padding: 10px 12px;
+    margin-bottom: 1px;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .task:last-child { border-radius: 0 0 8px 8px; }
+  .task .id {
+    font-size: 11px;
+    color: #999;
+    min-width: 44px;
+    font-family: monospace;
+  }
+  .task .content { flex: 1; }
+  .task .content .desc { font-size: 13px; color: #555; margin-top: 2px; }
+  .task .check {
+    min-width: 28px;
+    height: 28px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+    background: white;
+  }
+  .task .check:hover { border-color: var(--accent); }
+  .task .check.done {
+    background: var(--pass);
+    border-color: var(--pass);
+    color: white;
+  }
+  .task .check.fail {
+    background: var(--fail);
+    border-color: var(--fail);
+    color: white;
+  }
+
+  .feynman-box {
+    background: #eef6ff;
+    border-left: 4px solid var(--accent);
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+  .feynman-box .q { margin: 4px 0; }
+
+  .review-box {
+    background: #fff8e1;
+    border-left: 4px solid var(--warn);
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+
+  .copy-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 12px 0;
+  }
+  .copy-btn:active { opacity: 0.8; }
+
+  .legend {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .legend span { display: flex; align-items: center; gap: 4px; }
+  .legend .dot {
+    width: 12px; height: 12px; border-radius: 50%; display: inline-block;
+  }
+  .legend .dot.green { background: var(--pass); }
+  .legend .dot.red { background: var(--fail); }
+  .legend .dot.gray { background: #ddd; }
+
+  .toast {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    opacity: 0;
+    transition: 0.3s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🏖️ Chris 暑假计划</h1>
+  <div class="date" id="headerDate">2026年7月6日 周一 · 第1天</div>
+  <div class="stats" id="headerStats">✅ 0/10 项完成</div>
+</div>
+
+<div class="legend">
+  <span><span class="dot gray"></span> 未完成</span>
+  <span><span class="dot green"></span> 已完成</span>
+  <span><span class="dot red"></span> 未通过</span>
+  <span>👆 点击圆点切换状态</span>
+</div>
+
+<button class="copy-btn" onclick="copyToWechat()">📋 复制到微信群</button>
+
+<div id="planContainer"></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const tasks = [
+  // 上午
+  { id: "D1-01", time: "8:00-9:00", emoji: "🏀", label: "篮球训练", desc: "坐地拍球左右各50次 + 胯下拨球30s×3组", block: "morning" },
+  { id: "D1-02", time: "9:15-10:30", emoji: "📚", label: "学而思秘籍9", desc: "速算与巧算 第1课时 概念讲解+例题", block: "morning" },
+  { id: "D1-03", time: "10:40-11:30", emoji: "📚", label: "学而思秘籍9", desc: "练习3-5题+错题分析 → 拍照发豆包数学老师", block: "morning" },
+  { id: "D1-04", time: "11:30-11:40", emoji: "✍️", label: "练字第1次", desc: "握笔口诀→坐姿检查→画横竖线各10遍→拍照发豆包", block: "morning" },
+  // 下午
+  { id: "D1-05", time: "14:00-14:45", emoji: "📖", label: "Reading Explorer", desc: "RE2 Unit 1A 词汇预热+精读+英语复述", block: "afternoon" },
+  { id: "D1-06", time: "15:00-15:30", emoji: "📖", label: "古文背诵", desc: "《咏鹅》故事引入+背诵+费曼复述+豆包古文问答", block: "afternoon" },
+  { id: "D1-07", time: "15:30-15:45", emoji: "📘", label: "NC3复习", desc: "Lesson 1 背诵+语法点（时态）", block: "afternoon" },
+  { id: "D1-08", time: "16:00-16:10", emoji: "✍️", label: "练字第2次", desc: "数字0-9各3遍→力度练习→拍照发豆包", block: "afternoon" },
+  { id: "D1-09", time: "17:00-18:00", emoji: "🏃", label: "自由活动", desc: "篮球/乒乓球/自由玩耍", block: "afternoon" },
+  // 晚上
+  { id: "D1-10", time: "20:00-20:45", emoji: "🗣️", label: "英语发音", desc: "NC3 L1盲听+影子跟读+录音发豆包", block: "evening" },
+];
+
+const feynmanQs = [
+  { icon: "GD", q: "《咏鹅》讲的画面是什么？用一句话说" },
+  { icon: "SX", q: "凑整法为什么能让计算更快？举个例子" },
+];
+
+const reviews = [
+  { label: "今日新学", items: ["《咏鹅》", "速算与巧算 第1课", "RE2 Unit 1A词汇"] },
+  { label: "明日需复习", items: ["《咏鹅》（明天背给豆包听）", "速算凑整法（明天出1道题）"] },
+];
+
+// Load state from localStorage
+function loadState() {
+  try {
+    return JSON.parse(localStorage.getItem('chrisPlanState')) || {};
+  } catch { return {}; }
+}
+function saveState(state) {
+  localStorage.setItem('chrisPlanState', JSON.stringify(state));
+}
+
+function formatDate() {
+  const now = new Date();
+  const days = ['日','一','二','三','四','五','六'];
+  const start = new Date(2026, 6, 6);
+  const dayNum = Math.floor((now - start) / 86400000) + 1;
+  const m = now.getMonth() + 1;
+  const d = now.getDate();
+  return `${2026}年${m}月${d}日 周${days[now.getDay()]} · 第${dayNum}天`;
+}
+
+function render() {
+  const state = loadState();
+  const container = document.getElementById('planContainer');
+  const blocks = { morning: [], afternoon: [], evening: [] };
+  tasks.forEach(t => blocks[t.block].push(t));
+  const blockLabels = { morning: "☀️ 上午", afternoon: "🌤️ 下午", evening: "🌙 晚上" };
+  const blockColors = { morning: "morning", afternoon: "afternoon", evening: "evening" };
+
+  let html = '';
+  for (const [key, label] of Object.entries(blockLabels)) {
+    const items = blocks[key];
+    if (!items.length) continue;
+    html += `<div class="time-block">`;
+    html += `<div class="time-block-title ${blockColors[key]}">${label}</div>`;
+    items.forEach(t => {
+      const s = state[t.id] || '';
+      const checkClass = s === 'done' ? 'done' : s === 'fail' ? 'fail' : '';
+      const checkChar = s === 'done' ? '✓' : s === 'fail' ? '✗' : '';
+      html += `<div class="task">`;
+      html += `<span class="id">${t.id}<br><small>${t.time}</small></span>`;
+      html += `<div class="content">${t.emoji} <strong>${t.label}</strong><div class="desc">${t.desc}</div></div>`;
+      html += `<div class="check ${checkClass}" onclick="toggle('${t.id}')" data-id="${t.id}">${checkChar}</div>`;
+      html += `</div>`;
+    });
+    html += `</div>`;
+  }
+
+  // Feynman box
+  html += `<div class="feynman-box"><strong>🎯 费曼提问</strong>`;
+  feynmanQs.forEach(f => {
+    html += `<div class="q">${f.icon}: 「${f.q}」</div>`;
+  });
+  html += `</div>`;
+
+  // Review box
+  html += `<div class="review-box"><strong>🔄 记忆曲线复习</strong>`;
+  reviews.forEach(r => {
+    html += `<div style="margin-top:4px"><strong>${r.label}：</strong>${r.items.join('、')}</div>`;
+  });
+  html += `</div>`;
+
+  container.innerHTML = html;
+  updateStats(state);
+}
+
+function toggle(id) {
+  const state = loadState();
+  const current = state[id] || '';
+  if (current === 'done') state[id] = 'fail';
+  else if (current === 'fail') state[id] = '';
+  else state[id] = 'done';
+  saveState(state);
+  render();
+}
+
+function updateStats(state) {
+  const done = Object.values(state).filter(v => v === 'done').length;
+  const fail = Object.values(state).filter(v => v === 'fail').length;
+  const total = tasks.length;
+  document.getElementById('headerStats').textContent = `✅ ${done}/${total} 完成 · ❌ ${fail} 未通过`;
+  document.getElementById('headerDate').textContent = formatDate();
+}
+
+function copyToWechat() {
+  const state = loadState();
+  let text = `【${formatDate()} 计划】\n\n☀️ 上午\n`;
+  tasks.filter(t => t.block === 'morning').forEach(t => {
+    const s = state[t.id];
+    const mark = s === 'done' ? '✅' : s === 'fail' ? '❌' : '⬜';
+    text += `${mark} ${t.id} ${t.emoji} ${t.time} ${t.label}：${t.desc}\n`;
+  });
+  text += `\n🌤️ 下午\n`;
+  tasks.filter(t => t.block === 'afternoon').forEach(t => {
+    const s = state[t.id];
+    const mark = s === 'done' ? '✅' : s === 'fail' ? '❌' : '⬜';
+    text += `${mark} ${t.id} ${t.emoji} ${t.time} ${t.label}：${t.desc}\n`;
+  });
+  text += `\n🌙 晚上\n`;
+  tasks.filter(t => t.block === 'evening').forEach(t => {
+    const s = state[t.id];
+    const mark = s === 'done' ? '✅' : s === 'fail' ? '❌' : '⬜';
+    text += `${mark} ${t.id} ${t.emoji} ${t.time} ${t.label}：${t.desc}\n`;
+  });
+  text += `\n🎯 费曼提问\n`;
+  feynmanQs.forEach(f => text += `${f.icon}: 「${f.q}」\n`);
+
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => showToast('已复制到剪贴板，去微信群粘贴吧 📋'));
+  } else {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+    showToast('已复制到剪贴板 📋');
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+document.addEventListener('DOMContentLoaded', render);
+</script>
+</body>
+</html>

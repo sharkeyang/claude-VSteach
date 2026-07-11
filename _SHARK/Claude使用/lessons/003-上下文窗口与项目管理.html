@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第3课 · 上下文窗口与项目管理</title><style>body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:800px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}h1{font-size:1.6rem;border-left:4px solid #2563eb;padding-left:1rem;margin-bottom:1.5rem}h2{font-size:1.2rem;margin-top:2rem;margin-bottom:0.5rem;color:#2563eb}p{margin-bottom:1rem}ul{margin-bottom:1rem;padding-left:1.5rem}li{margin-bottom:0.3rem}.tip{background:#f0f9ff;border-left:3px solid #2563eb;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}.note{background:#fffbeb;border-left:3px solid #f59e0b;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}.nav a{color:#2563eb;text-decoration:none;font-weight:600}</style></head><body>
+<h1>第 3 课 · 上下文窗口与项目管理</h1>
+
+<h2>什么是上下文窗口？</h2>
+<p>每次和 Claude 对话，聊过的内容都存在一个"临时记忆"里。这个记忆空间就叫上下文窗口。Claude 的上下文窗口非常大（可达 200K tokens），大约能容纳 2000 行代码或一整本 500 页的书。</p>
+
+<h2>为什么这很重要？</h2>
+<ul>
+  <li>你可以把整个项目交给 Claude，它记得你前面说过什么</li>
+  <li>但对话越长，Claude 对最开头的内容的记忆会变模糊</li>
+  <li>所以关键信息要放在前面，或者在对话中重复强调</li>
+</ul>
+
+<h2>CLAUDE.md — 给 Claude 的"永久记忆"</h2>
+<p>在项目根目录创建 <code>CLAUDE.md</code> 文件，Claude 每次进入这个项目都会自动读到它。适合放：</p>
+<ul>
+  <li>项目简介和背景</li>
+  <li>技术栈和代码规范</li>
+  <li>工作流程和规则</li>
+  <li>常用命令和路径</li>
+</ul>
+
+<div class="tip">
+<strong>💡 CLAUDE.md 实用示例：</strong><br>
+<pre style="background:#f1f5f9;padding:0.75rem;border-radius:4px;font-size:0.85rem;margin-top:0.5rem;">
+# 项目规则
+- Python 使用 Anaconda，路径：C:\ProgramData\anaconda3\python.exe
+- 数据输出到 D:\zdata\
+- 不要在对话中直接运行破坏性操作
+- 修改 main 函数前先口头确认方案
+</pre>
+</div>
+
+<h2>管理长对话的技巧</h2>
+<ul>
+  <li><strong>新对话 vs 续旧对话</strong> — 如果话题变了，果断开新对话，不要在同一对话里讨论完全不同的事情</li>
+  <li><strong>关键信息前置</strong> — 把最重要的背景放在第一条消息里</li>
+  <li><strong>定期总结</strong> — 长对话中间让 Claude 总结一下进度："到目前为止我们做了哪些决定？"</li>
+  <li><strong>存档重要输出</strong> — 好的代码、方案随手保存到文件，不要把 Claude 当永久存储</li>
+</ul>
+
+<div class="note">
+<strong>📌 和 Harness 的关联：</strong>
+这就是为什么我们在项目中配置了 CLAUDE.md + hooks + permissions——让每次对话自动加载正确上下文，不需要每次手动说明。
+</div>
+
+<div class="nav">
+  <a href="002-写好第一条Prompt.html">← 上一课</a>
+  <a href="004-文件上传与分析.html">下一课 →</a>
+</div>
+</body></html>

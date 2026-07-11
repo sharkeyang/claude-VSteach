@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>衡水体 字帖生成器</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:#e8e8e8;color:#333;}
+.container{max-width:1000px;margin:0 auto;padding:20px;}
+
+.input-area{background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+.input-area h1{font-size:20px;color:#c0392b;margin-bottom:8px;}
+.input-area textarea{width:100%;height:60px;font-size:15px;padding:10px;border:2px solid #ddd;border-radius:8px;resize:vertical;font-family:inherit;}
+.input-area textarea:focus{border-color:#c0392b;outline:none;}
+.controls{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;align-items:center;}
+.controls label{display:flex;align-items:center;gap:4px;font-size:13px;white-space:nowrap;}
+.controls input[type=number]{width:45px;padding:3px 4px;border:1px solid #ddd;border-radius:4px;font-size:13px;}
+.controls select{padding:3px 6px;border:1px solid #ddd;border-radius:4px;font-size:13px;}
+.btn{padding:7px 18px;border:none;border-radius:6px;font-size:13px;cursor:pointer;font-weight:600;}
+.btn.gen{background:#c0392b;color:#fff;}
+.btn.print{background:#27ae60;color:#fff;}
+.btn:hover{opacity:0.85;}
+
+.preview-area{text-align:center;text-align:center;}
+.page-info{font-size:12px;color:#888;margin-bottom:10px;}
+
+/* A4纸张 */
+.a4-page{
+  background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.15);
+  margin:0 auto 24px auto;padding:12mm 10mm 5mm 10mm;
+  width:210mm;min-height:297mm;position:relative;
+  display:flex;flex-direction:column;page-break-after:always;
+}
+
+/* 页眉 */
+.sheet-header{display:flex;justify-content:space-between;align-items:baseline;padding:0 2px 4px 2px;border-bottom:2px solid #c0392b;margin-bottom:3px;}
+.sheet-header .title{font-size:14px;font-weight:700;color:#c0392b;font-family:"楷体","KaiTi",serif;}
+.sheet-header .info{font-size:9px;color:#999;}
+
+/* 字格区域 */
+.grid-area{flex:1;display:flex;flex-direction:column;gap:0;}
+
+/* 衡水体方格（红框） */
+.sheet{display:grid;grid-template-columns:repeat(12,1fr);gap:0;width:100%;}
+.cell{
+  position:relative;aspect-ratio:1;
+  border:0.5px solid #e8d0d0;
+  display:flex;align-items:center;justify-content:center;
+  background:#fff;
+}
+.cell svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
+/* 衡水体标准字：楷体，饱满清晰 */
+.cell .char{
+  font-size:min(8vw,50px);position:relative;z-index:1;
+  font-family:"楷体","KaiTi","STKaiti","SimSun",serif;
+  user-select:none;line-height:1;pointer-events:none;
+  font-weight:500;
+}
+.cell.empty{background:#fafafa;}
+
+/* 底部衡水体要点 */
+.footer-tips{
+  margin-top:auto;padding:4px 6px 2px 6px;
+  border-top:1px solid #e0e0e0;
+  font-size:10px;color:#666;line-height:1.6;text-align:left;
+}
+.footer-tips strong{color:#c0392b;}
+.footer-tips .row{margin:0;}
+
+@media screen and (max-width:800px){
+  .a4-page{width:100%;padding:10px;min-height:auto;}
+  .cell .char{font-size:22px;}
+  .sheet{grid-template-columns:repeat(8,1fr);}
+}
+
+@media print{
+  body{background:#fff;}
+  .input-area,.controls,.btn,.page-info{display:none!important;}
+  .container{max-width:100%;padding:0;}
+  .preview-area{padding:0;}
+  .a4-page{box-shadow:none;margin:0;padding:10mm 8mm 4mm 8mm;width:100%;min-height:100vh;page-break-after:always;}
+  .cell{border-color:#d0b0b0;}
+  .cell .char{font-size:44px;}
+  .footer-tips{font-size:9px;padding:3px 4px;}
+  @page{margin:0;size:A4 portrait;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="input-area">
+    <h1>📝 衡水体 字帖</h1>
+    <textarea id="textInput" placeholder="输入汉字，每字一行"></textarea>
+    <div class="controls">
+      <label>每行字数：<input type="number" id="colsInput" value="12" min="6" max="16"></label>
+      <label>模式：
+        <select id="modeSelect">
+          <option value="trace" selected>描红 (淡色参考字)</option>
+          <option value="empty">空格临摹</option>
+        </select>
+      </label>
+      <label>重复：<input type="number" id="repeatInput" value="8" min="1" max="15"></label>
+      <button class="btn gen" onclick="generate()">🔄 生成</button>
+      <button class="btn print" onclick="window.print()">🖨️ 打印PDF</button>
+    </div>
+  </div>
+
+  <div class="preview-area">
+    <div class="page-info" id="pageInfo">正在生成...</div>
+    <div id="sheetContainer"></div>
+  </div>
+</div>
+
+<script>
+function generate() {
+  const text = document.getElementById('textInput').value.trim();
+  if (!text) { document.getElementById('sheetContainer').innerHTML = '<p style="color:#999;">请输入汉字</p>'; return; }
+
+  const cols = parseInt(document.getElementById('colsInput').value) || 12;
+  const mode = document.getElementById('modeSelect').value;
+  const repeat = parseInt(document.getElementById('repeatInput').value) || 8;
+  const chars = text.split('').filter(c => c.trim());
+
+  // 每页15行（不含底部要点区）
+  const rowsPerPage = 15;
+
+  // 每个字单独一行，重复N次
+  let rows = [];
+  chars.forEach(ch => {
+    let row = [];
+    for (let r = 0; r < Math.min(repeat, cols); r++) {
+      row.push({ char: ch });
+    }
+    // 补足到整行
+    while (row.length < cols) {
+      row.push({ char: '', isEmpty: true });
+    }
+    rows.push(row);
+  });
+
+  // 衡水体要点
+  const tips =
+    '<div class="row">① <strong>横平竖直</strong>——横画要平，竖画要直，不倾斜</div>' +
+    '<div class="row">② <strong>大小一致</strong>——每个字占格子70%-80%，不忽大忽小</div>' +
+    '<div class="row">③ <strong>重心居中</strong>——字的重心在格子中央，不偏左偏右</div>' +
+    '<div class="row">④ <strong>笔画到位</strong>——每一笔写完整，不省略不连笔</div>' +
+    '<div class="row">⑤ <strong>间距均匀</strong>——字距约半个字宽，行距约一个字高</div>';
+
+  // Render
+  let html = '';
+  let totalPages = Math.ceil(rows.length / rowsPerPage);
+
+  for (let pi = 0; pi < rows.length; pi += rowsPerPage) {
+    const pageNum = Math.floor(pi / rowsPerPage) + 1;
+    const pageRows = rows.slice(pi, pi + rowsPerPage);
+
+    html += `<div class="a4-page">`;
+    html += `<div class="sheet-header"><span class="title">衡水体</span><span class="info">第 ${pageNum} 页 / 共 ${totalPages} 页 · 每字${repeat}遍</span></div>`;
+    html += `<div class="grid-area">`;
+
+    pageRows.forEach(row => {
+      html += `<div class="sheet">`;
+      row.forEach(cell => {
+        if (!cell.char) {
+          html += `<div class="cell empty"></div>`;
+        } else {
+          const ch = cell.char;
+          if (mode === 'trace') {
+            html += `<div class="cell">
+              <svg viewBox="0 0 100 100">
+                <line x1="0" y1="0" x2="100" y2="100" stroke="#f0d0d0" stroke-width="0.5"/>
+                <line x1="100" y1="0" x2="0" y2="100" stroke="#f0d0d0" stroke-width="0.5"/>
+                <line x1="50" y1="0" x2="50" y2="100" stroke="#f0d0d0" stroke-width="0.4"/>
+                <line x1="0" y1="50" x2="100" y2="50" stroke="#f0d0d0" stroke-width="0.4"/>
+                <rect x="1" y="1" width="98" height="98" fill="none" stroke="#e0c0c0" stroke-width="0.6"/>
+              </svg>
+              <span class="char" style="color:#d0d0d0">${ch}</span>
+            </div>`;
+          } else {
+            html += `<div class="cell">
+              <svg viewBox="0 0 100 100">
+                <line x1="0" y1="0" x2="100" y2="100" stroke="#f0d0d0" stroke-width="0.5"/>
+                <line x1="100" y1="0" x2="0" y2="100" stroke="#f0d0d0" stroke-width="0.5"/>
+                <line x1="50" y1="0" x2="50" y2="100" stroke="#f0d0d0" stroke-width="0.4"/>
+                <line x1="0" y1="50" x2="100" y2="50" stroke="#f0d0d0" stroke-width="0.4"/>
+                <rect x="1" y="1" width="98" height="98" fill="none" stroke="#e0c0c0" stroke-width="0.6"/>
+              </svg>
+            </div>`;
+          }
+        }
+      });
+      html += `</div>`;
+    });
+
+    // 补足空白行（保持整页满）
+    for (let r = pageRows.length; r < rowsPerPage; r++) {
+      html += `<div class="sheet">`;
+      for (let c = 0; c < cols; c++) {
+        html += `<div class="cell empty"></div>`;
+      }
+      html += `</div>`;
+    }
+
+    html += `</div>`; // grid-area
+    html += `<div class="footer-tips"><strong>📐 衡水体书写要点：</strong>${tips}</div>`;
+    html += `</div>`; // a4-page
+  }
+
+  if (totalPages === 0) totalPages = 1;
+
+  document.getElementById('sheetContainer').innerHTML = html;
+  document.getElementById('pageInfo').textContent =
+    `📄 ${totalPages} 页 · ${chars.length} 字 × 每字${repeat}遍 · A4纵向打印`;
+}
+
+// 默认加载 - 用户指定文字
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('textInput').value = '通过故事引入激发兴趣，结合英语语法类比帮助理解';
+  document.getElementById('repeatInput').value = 8;
+  generate();
+});
+</script>
+</body>
+</html>

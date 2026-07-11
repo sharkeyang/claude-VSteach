@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第1课 · 仓位管理基本原理</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#059669; --muted:#64748b; --border:#e2e8f0; --quiz-c:#16a34a; --quiz-w:#dc2626; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:780px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.8; font-size:1rem; }
+    h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+    .sub { color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; }
+    h2 { font-size:1.15rem; margin:1.8rem 0 0.5rem; border-bottom:1px solid var(--border); padding-bottom:0.25rem; }
+    h3 { font-size:1rem; margin:1.2rem 0 0.3rem; color:var(--accent); }
+    p { margin-bottom:0.8rem; }
+    ul,ol { margin-bottom:0.8rem; padding-left:1.5rem; }
+    li { margin-bottom:0.2rem; }
+    .choice-box { background:linear-gradient(135deg,#1e293b,#334155); color:#e2e8f0; border-radius:10px; padding:1.2rem 1.5rem; margin:1rem 0; }
+    .choice-box .option { display:flex; gap:1rem; margin-top:0.8rem; }
+    .choice-box .option div { flex:1; background:rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem; text-align:center; cursor:pointer; transition:0.15s; }
+    .choice-box .option div:hover { background:rgba(255,255,255,0.2); }
+    .story-box { background:#fdf2e9; border:1px solid #e8d5c4; padding:1rem 1.2rem; margin:1rem 0; border-radius:8px; }
+    .story-box strong { color:#b45309; }
+    .story-box .year { display:inline-block; background:#b45309; color:#fff; padding:0.1rem 0.4rem; border-radius:3px; font-size:0.75rem; margin-right:0.3rem; }
+    .box { background:#f0fdf4; border-left:4px solid var(--accent); padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .warn { background:#fef9ef; border-left:4px solid #f59e0b; padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .exp { background:#f8fafc; border:1px solid var(--border); padding:0.8rem 1rem; margin:0.8rem 0; border-radius:8px; }
+    .exp strong { color:var(--accent); }
+    code { background:#f1f5f9; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.9em; }
+    table { width:100%; border-collapse:collapse; margin:0.8rem 0; font-size:0.88rem; }
+    th,td { border:1px solid var(--border); padding:0.35rem 0.6rem; text-align:left; }
+    th { background:#f8fafc; font-weight:600; }
+    .quiz { border:2px solid var(--border); border-radius:10px; padding:1rem 1.25rem; margin:1.2rem 0; background:#fff; }
+    .quiz p { margin-bottom:0.4rem; font-weight:600; }
+    .qopts { display:flex; flex-direction:column; gap:0.4rem; margin:0.5rem 0; }
+    .qopts label { display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0.75rem; border:1px solid var(--border); border-radius:6px; cursor:pointer; font-size:0.88rem; }
+    .qopts label:hover { background:#f1f5f9; }
+    .qopts input[type="radio"] { accent-color:var(--accent); }
+    .qbtn { background:var(--accent); color:#fff; border:none; padding:0.35rem 1rem; border-radius:6px; cursor:pointer; font-size:0.85rem; }
+    .qbtn:hover { opacity:0.9; }
+    .qfb { margin-top:0.5rem; padding:0.5rem 0.75rem; border-radius:6px; display:none; }
+    .qfb.ok { display:block; background:#f0fdf4; border:1px solid var(--quiz-c); }
+    .qfb.no { display:block; background:#fef2f2; border:1px solid var(--quiz-w); }
+    .take { margin:1.2rem 0; border:1px dashed var(--accent); border-radius:8px; padding:0.8rem 1rem; }
+    .ref { color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border); padding-top:1.2rem; margin-top:1.5rem; }
+    .ref a { color:var(--accent); }
+  </style>
+</head>
+<body>
+
+<h1>第 1 课 · 仓位管理基本原理</h1>
+<p class="sub">"买什么"不是最重要的——"买多少"才是</p>
+
+<div class="choice-box">
+  <p style="font-size:1.1rem;"><strong>🤔 你选：</strong></p>
+  <p style="font-size:0.95rem;">
+    绝大多数人花 90% 的时间在研究"买什么"，只花 10% 的时间在想"买多少"。<br>
+    而专业交易者的比例是反过来的。
+  </p>
+  <div class="option">
+    <div onclick="document.getElementById('origin').scrollIntoView({behavior:'smooth'})"><strong>🔍 重头发现</strong><br><span style="font-size:0.8rem;">从凯利公式的诞生开始，理解仓位管理的底层逻辑</span></div>
+    <div onclick="document.getElementById('direct').scrollIntoView({behavior:'smooth'})"><strong>📖 直接学知识</strong><br><span style="font-size:0.8rem;">直接看公式和计算方法</span></div>
+  </div>
+</div>
+
+<div id="origin"></div>
+<h2>📜 起源：两个改变博弈论的公式</h2>
+
+<div class="story-box">
+  <span class="year">1956</span><strong>约翰·凯利——贝尔实验室的通才</strong><br><br>
+  约翰·凯利（John L. Kelly Jr.）是贝尔实验室的一名科学家。他的本职工作不是金融——他研究的是电视信号的噪声压缩。<br><br>
+  但他顺手做了一件改变博弈论和投资界的事：<br><br>
+  凯利提出：给定一个"有正期望值的赌局"，你应该<strong>投入多少比例</strong>的赌注，才能让长期资金增长最快？<br><br>
+  推导结果是一个简洁的公式——后来被称为<strong>凯利公式</strong>（Kelly Criterion）。<br><br>
+  凯利自己可能没想到，这个本用于解决信息传输问题的公式，后来成了投资界的核武器。
+</div>
+
+<div class="story-box">
+  <span class="year">1960s</span><strong>爱德华·索普——从赌场到华尔街</strong><br><br>
+  爱德华·索普（Ed Thorp）读到了凯利的论文。他意识到这个公式可以用于<strong>二十一点</strong>——在算牌后确定最优下注金额。<br><br>
+  索普带着凯利公式杀进拉斯维加斯——赚了。赌场把他列入了黑名单。<br><br>
+  然后他把同样的方法用于<strong>可转债套利</strong>——创建了历史上第一个量化对冲基金。<br><br>
+  他的基金连续 30 年盈利，从未有一个亏损年份。<br><br>
+  <strong>凯利公式不是"选股的方法"——它是"资金增长最快的数学原理"。</strong>
+</div>
+
+<div class="story-box">
+  <span class="year">1983</span><strong>海龟交易实验——理查德·丹尼斯</strong><br><br>
+  著名的交易员理查德·丹尼斯（Richard Dennis）打赌说：交易能力是可以被教授的，就像养海龟一样。<br><br>
+  他招了十几个完全没有交易经验的学员——"海龟们"——教他们一套完整的交易系统。<br><br>
+  结果：这些海龟在 4 年内创造了年均 80% 的回报率。<br><br>
+  <strong>他们的系统里最重要、最核心的部分是什么？</strong><br>
+  ——不是买入信号，不是卖出信号，而是<strong>仓位管理</strong>。<br><br>
+  海龟们使用的是一种叫"单位"（Unit）的仓位计算方法——基于账户总资金和市场的波动率来决定每次交易的头寸大小。<br><br>
+  丹尼斯说：<em>"我可以在所有人面前展示我的交易信号，但很少有人能赚钱——因为他们没有学会如何控制仓位。"</em>
+</div>
+
+<div class="box">
+  <strong>🧠 第一性原理追问：仓位管理的本质是什么？</strong><br><br>
+  所有仓位管理问题的根源只有一个：<strong>你无法确定下一次交易一定会赚钱。</strong><br><br>
+  如果你能 100% 确定——你把所有资金砸进去，一次就翻倍。<br>
+  但现实中没有人能 100% 确定。所以仓位管理就是在回答一个问题：<br><br>
+  <strong>"在不确定的情况下，我应该投入多少，才能让长期结果最好？"</strong><br><br>
+  这个问题的答案取决于三件事：<br>
+  <ol>
+    <li><strong>胜率</strong>（Win Rate）——你赚钱的交易占比多少</li>
+    <li><strong>赔率</strong>（Risk/Reward Ratio）——赚一次平均赚多少 vs 亏一次平均亏多少</li>
+    <li><strong>破产成本</strong>——亏光后你就出局了，再好的机会也与你无关</li>
+  </ol>
+  三个因素的数学组合，决定了最优仓位。
+</div>
+
+<div id="direct"></div>
+
+<!-- ====================== 核心内容 ====================== -->
+<h2>① 胜率 vs 赔率——仓位管理的基石</h2>
+
+<div class="exp">
+  <strong>两个维度决定了你的交易系统是否赚钱：</strong><br><br>
+  <table>
+    <tr><th>维度</th><th>定义</th><th>例子</th></tr>
+    <tr><td><strong>胜率</strong></td><td>赚钱的交易次数 ÷ 总交易次数</td><td>10 次交易中 6 次赚钱 → 胜率 60%</td></tr>
+    <tr><td><strong>赔率</strong></td><td>平均盈利 ÷ 平均亏损</td><td>赚一次平均 200 元，亏一次平均 100 元 → 赔率 2:1</td></tr>
+  </table>
+  <br>
+  <strong>期望值（Expectancy） = 胜率 × 平均盈利 − 亏损率 × 平均亏损</strong><br><br>
+  例子：<br>
+  系统 A：胜率 60%，赔率 1:1 → 期望 = 0.6×1 - 0.4×1 = 0.2（正期望）<br>
+  系统 B：胜率 30%，赔率 3:1 → 期望 = 0.3×3 - 0.7×1 = 0.2（同样正期望）<br><br>
+  两个系统期望相同，但<strong>仓位管理策略完全不同</strong>。
+</div>
+
+<div class="box">
+  <strong>🧠 关键洞察：</strong><br>
+  高胜率 + 低赔率 = 次数多但赚得少（如：日内交易）<br>
+  低胜率 + 高赔率 = 次数少但赚得多（如：趋势跟踪）<br><br>
+  没有好坏之分——关键是你的仓位策略要匹配你的系统特征。
+</div>
+
+
+<h2>② 凯利公式</h2>
+
+<p style="text-align:center;font-size:1.3rem;margin:1rem 0;">
+  <strong>f* = (bp − q) / b</strong>
+</p>
+
+<table>
+  <tr><th>符号</th><th>含义</th><th>例子：胜率60%，赔率2:1</th></tr>
+  <tr><td>f*</td><td>最优投入比例</td><td>？</td></tr>
+  <tr><td>b</td><td>赔率（平均盈利/平均亏损）</td><td>b = 2</td></tr>
+  <tr><td>p</td><td>胜率</td><td>p = 0.6</td></tr>
+  <tr><td>q</td><td>亏损率（= 1 − p）</td><td>q = 0.4</td></tr>
+</table>
+
+<div class="exp">
+  <strong>计算：</strong><br>
+  f* = (2 × 0.6 − 0.4) / 2 = (1.2 − 0.4) / 2 = 0.8 / 2 = <strong>0.4</strong><br><br>
+  含义：在胜率 60%、赔率 2:1 的情况下，你应该把<strong>总资金的 40%</strong> 投入到每一次交易中，才能让长期资金增长最快。<br><br>
+  <strong>如果赔率是 1:1，胜率 60%：</strong><br>
+  f* = (1 × 0.6 − 0.4) / 1 = 0.2 → 投入 20%
+</div>
+
+<div class="warn">
+  <strong>⚠️ 凯利公式的实际限制：</strong><br>
+  <ul>
+    <li>凯利计算的仓位<strong>非常激进</strong>——40% 的仓位对大多数人来说难以承受回撤</li>
+    <li>实际操作中常用<strong>"1/4 凯利"</strong>或<strong>"1/2 凯利"</strong>（把结果除以 4 或 2）</li>
+    <li>凯利假设你准确知道 p 和 b——现实中你只能估算</li>
+    <li>凯利假设交易是独立重复的——现实中市场有序列相关性</li>
+  </ul>
+</div>
+
+<div class="box">
+  <strong>🧠 第一性原理：凯利公式的直觉</strong><br>
+  为什么不是赢了就全压？<br>
+  ——因为如果你全压，输一次就清零了。<br><br>
+  为什么不是每次都只下 1%？<br>
+  ——因为你太保守了，资金增长太慢，跑不赢通胀。<br><br>
+  凯利就是在"太激进（输光风险）"和"太保守（增长太慢）"之间找出了<strong>最优解</strong>。
+</div>
+
+
+<h2>③ 风险回报比（R/R Ratio）</h2>
+
+<div class="exp">
+  <strong>定义：</strong> 每承担 1 元风险，期望获得多少元回报。<br><br>
+  <strong>标准公式：</strong> R/R = 目标盈利 ÷ 止损幅度<br><br>
+  例子：<br>
+  你在 10 元买入一只股票，目标价 12 元（盈利 2 元），止损价 9.5 元（亏损 0.5 元）<br>
+  R/R = 2 / 0.5 = <strong>4 : 1</strong><br><br>
+  也就是说：你每承担 1 元的亏损风险，有望获得 4 元的收益。<br><br>
+  <strong>一般要求：</strong> 最低 R/R 不低于 <strong>2:1</strong> 或 <strong>3:1</strong>
+</div>
+
+<div class="warn">
+  <strong>⚠️ 常见错误：</strong>
+  很多人只看"赚了多少倍"，不看"如果错了会亏多少"。<br>
+  一个 R/R 为 0.5:1 的交易（赚 5% 就卖，亏 10% 才止损），长期必亏。<br>
+  哪怕你胜率 70%，期望值 = 0.7×0.05 - 0.3×0.1 = 0.035 - 0.03 = 0.005（几乎为零）
+</div>
+
+
+<h2>④ 破产风险</h2>
+
+<div class="exp">
+  <strong>仓位管理的终极底线：不要让自己出局。</strong><br><br>
+  破产风险的计算是一个统计问题——但你只需要记住一个原则：<br><br>
+  <strong>单笔风险不要超过总资金的 2%。</strong><br><br>
+  也就是说：如果你有 10 万元，单笔最多亏损 2000 元。<br>
+  这意味着你要连续亏 50 次才亏光——而你的正期望系统几乎不可能连续亏 50 次。<br><br>
+  <strong>这个 2% 的规则来自于海龟交易法则，也是职业交易员的通用准则。</strong>
+</div>
+
+<div class="box">
+  <strong>💡 如何计算单笔仓位？</strong><br><br>
+  公式：<strong>仓位 = (可承受亏损金额) ÷ (每股止损幅度)</strong><br><br>
+  实例：<br>
+  你有 10 万，单笔最多亏 2% = 2000 元。<br>
+  股票 10 元买入，止损 9.5 元（每股亏 0.5 元）。<br>
+  你能买的股数 = 2000 ÷ 0.5 = 4000 股<br>
+  对应仓位 = 4000 × 10 = 40000 元（总资金的 40%）<br><br>
+  这不是你在"赌"——这是你计算过的风险。
+</div>
+
+<!-- ====================== 测试 ====================== -->
+<h2>📝 自我测试</h2>
+
+<div class="quiz">
+  <p>① 爱德华·索普用凯利公式先在什么地方获得了成功？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q1" value="A"> A. 股票市场</label>
+    <label><input type="radio" name="q1" value="B"> B. 扑克牌二十一点</label>
+    <label><input type="radio" name="q1" value="C"> C. 赛马</label>
+    <label><input type="radio" name="q1" value="D"> D. 房地产</label>
+  </div>
+  <button class="qbtn" onclick="cq(1,'B','✅ 索普用凯利公式算牌，在赌场二十一点大获全胜后被列入黑名单——之后才转战华尔街。')">提交</button>
+  <div id="fb1" class="qfb"></div>
+</div>
+
+<div class="quiz">
+  <p>② 凯利公式中 f* 表示什么？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q2" value="A"> A. 每次交易能赚多少钱</label>
+    <label><input type="radio" name="q2" value="B"> B. 最优投入资金的比例</label>
+    <label><input type="radio" name="q2" value="C"> C. 交易的总次数</label>
+    <label><input type="radio" name="q2" value="D"> D. 市场波动的幅度</label>
+  </div>
+  <button class="qbtn" onclick="cq(2,'B','✅ 凯利公式算出的 f* 是\"每次应该投入百分之多少的资金\"，目标是让长期复利增长最大化。')">提交</button>
+  <div id="fb2" class="qfb"></div>
+</div>
+
+<div class="quiz">
+  <p>③ 胜率 50%、赔率 2:1 的系统中，凯利公式算出的最优仓位是？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q3" value="A"> A. 10%</label>
+    <label><input type="radio" name="q3" value="B"> B. 25%</label>
+    <label><input type="radio" name="q3" value="C"> C. 50%</label>
+    <label><input type="radio" name="q3" value="D"> D. 75%</label>
+  </div>
+  <button class="qbtn" onclick="cq(3,'B','✅ f*=(2×0.5−0.5)/2 = 0.5/2 = 0.25 → 25%。胜率只有一半，但赔率好，所以 25% 是数学最优解。')">提交</button>
+  <div id="fb3" class="qfb"></div>
+</div>
+
+<div class="quiz">
+  <p>④ 职业交易员一般建议单笔最大亏损不超过总资金的多少？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q4" value="A"> A. 10%</label>
+    <label><input type="radio" name="q4" value="B"> B. 5%</label>
+    <label><input type="radio" name="q4" value="C"> C. 2%</label>
+    <label><input type="radio" name="q4" value="D"> D. 20%</label>
+  </div>
+  <button class="qbtn" onclick="cq(4,'C','✅ 2% 原则来自海龟交易法则。10 万本金每笔最多亏 2000——连续亏 50 次才会亏光，极大降低了破产概率。')">提交</button>
+  <div id="fb4" class="qfb"></div>
+</div>
+
+<div class="quiz">
+  <p>⑤ 以下关于仓位管理的说法，正确的是？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q5" value="A"> A. 选对了股票比仓位重要得多</label>
+    <label><input type="radio" name="q5" value="B"> B. 凯利公式的结果应该直接全仓执行</label>
+    <label><input type="radio" name="q5" value="C"> C. 仓位管理解决的是"在不确定下该投入多少"的问题</label>
+    <label><input type="radio" name="q5" value="D"> D. 仓位大小和胜率赔率无关</label>
+  </div>
+  <button class="qbtn" onclick="cq(5,'C','✅ A错——仓位比选股重要（海龟实验已证明）。B错——凯利结果太激进，通常用 1/4 或 1/2 凯利。D错——仓位的最优解取决于胜率和赔率。')">提交</button>
+  <div id="fb5" class="qfb"></div>
+</div>
+
+<!-- ====================== 费曼测试 ====================== -->
+<h2>🗣️ 费曼测试——讲给一个不懂交易的人听</h2>
+
+<div class="take">
+  <p><strong>用最简单的语言讲清楚这三个问题：</strong></p>
+  <ol>
+    <li><strong>"仓位管理比选股还重要？"</strong>——用一个赌场的故事解释为什么</li>
+    <li><strong>"凯利公式在说什么？"</strong>——不要用公式，用"太贪会输光，太怂赚太少"来解释</li>
+    <li><strong>"2% 原则是怎么回事？"</strong>——用"连续亏 50 次还能活"来回答</li>
+  </ol>
+</div>
+
+<!-- ====================== 框架 ====================== -->
+<h2>📋 本课知识框架</h2>
+
+<div style="background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:1rem;margin:1rem 0;">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+  <div style="padding:0.3rem 0;"><strong>📜 起源</strong><br>凯利（贝尔实验室）<br>索普（赌场→华尔街）<br>海龟实验（丹尼斯）</div>
+  <div style="padding:0.3rem 0;"><strong>📊 胜率 vs 赔率</strong><br>期望值 = p×R − q×L<br>高胜率+低赔率<br>vs 低胜率+高赔率</div>
+  <div style="padding:0.3rem 0;"><strong>📐 凯利公式</strong><br>f* = (bp−q)/b<br>最优增长比例<br>实践中用1/4凯利</div>
+  <div style="padding:0.3rem 0;"><strong>🛡️ 2% 原则</strong><br>单笔最大亏损 ≤ 2%<br>仓位 = 亏损额÷止损幅度<br>永不破产</div>
+</div>
+</div>
+
+<div class="ref">
+  <p>📖 参考：凯利《信息率的新解读》· 索普《战胜庄家》· 海龟交易法则</p>
+  <p><a href="../index.html">← 返回总目录</a></p>
+</div>
+
+<script>
+function cq(n, ans, msg) {
+  const sel = document.querySelector('input[name="q'+n+'"]:checked');
+  const fb = document.getElementById('fb'+n);
+  if (!sel) { fb.className = 'qfb no'; fb.innerHTML = '请选择一个答案。'; return; }
+  if (sel.value === ans) { fb.className = 'qfb ok'; fb.innerHTML = msg; }
+  else { fb.className = 'qfb no'; fb.innerHTML = '❌ 答案在课文中，再找找看。'; }
+}
+</script>
+
+</body>
+</html>

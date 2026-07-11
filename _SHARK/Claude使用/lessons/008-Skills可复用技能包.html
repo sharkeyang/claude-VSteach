@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第7课 · Skills 可复用技能包</title><style>body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:800px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}h1{font-size:1.6rem;border-left:4px solid #2563eb;padding-left:1rem;margin-bottom:1.5rem}h2{font-size:1.2rem;margin-top:2rem;margin-bottom:0.5rem;color:#2563eb}p{margin-bottom:1rem}ul{margin-bottom:1rem;padding-left:1.5rem}li{margin-bottom:0.3rem}.tip{background:#f0f9ff;border-left:3px solid #2563eb;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}code{background:#f1f5f9;padding:0.15rem 0.4rem;border-radius:3px;font-size:0.85rem}.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}.nav a{color:#2563eb;text-decoration:none;font-weight:600}.highlight{background:#f0fdf4;border-left:3px solid #16a34a;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}</style></head><body>
+<h1>第 7 课 · Skills — 可复用技能包</h1>
+
+<p>Skills 是 Claude Code 的"技能包"——把常用的工作流和规则打包成文件，下次再处理同样任务时直接调用，不用每次都从头说一遍。</p>
+
+<h2>Skills 适合什么？</h2>
+<ul>
+  <li><strong>每日生成计划</strong> — 输入日期和素材，自动生成 Word 文档</li>
+  <li><strong>代码审查</strong> — 每次改动代码后自动检查语法和逻辑</li>
+  <li><strong>数据校验</strong> — 下载完数据后自动检查完整性</li>
+  <li><strong>课程生成</strong> — 按固定模板生成教学页面</li>
+</ul>
+
+<div class="highlight">
+<strong>✅ VSteach 实践：</strong><br>
+<code>/chris-daily-plan</code> — 自动生成 Chris 每日计划<br>
+<code>/calligraphy</code> — 输入古文名，生成字帖 PDF
+</div>
+
+<h2>Skill 怎么用？</h2>
+<ul>
+  <li><strong>斜杠命令</strong> — 对话中输入 <code>/skill-name</code>（如 <code>/chris-daily-plan</code>）</li>
+  <li><strong>自然语言</strong> — 说"生成每日计划"也会自动触发 Skill</li>
+</ul>
+
+<h2>什么时候该创建 Skill？</h2>
+<ul>
+  <li>有个流程你每周至少做一次</li>
+  <li>流程步骤固定、变化不大</li>
+  <li>每次都要重复描述同样的规则</li>
+</ul>
+
+<div class="tip">
+<strong>💡 建议：</strong>
+先把流程用自然语言跑几遍，确认稳定了再封装成 Skill。
+频繁变化的工作不适合做 Skill，直接口述更灵活。
+</div>
+
+<div class="nav">
+  <a href="007-Subagent与Workflow实战详解.html">← 上一课</a>
+  <a href="009-MCP扩展能力.html">下一课 →</a>
+</div>
+</body></html>

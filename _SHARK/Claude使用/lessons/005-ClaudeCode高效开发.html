@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第6课 · Claude Code 高效开发</title><style>body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:800px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}h1{font-size:1.6rem;border-left:4px solid #2563eb;padding-left:1rem;margin-bottom:1.5rem}h2{font-size:1.2rem;margin-top:2rem;margin-bottom:0.5rem;color:#2563eb}p{margin-bottom:1rem}ul{margin-bottom:1rem;padding-left:1.5rem}li{margin-bottom:0.3rem}.tip{background:#f0f9ff;border-left:3px solid #2563eb;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}.note{background:#fffbeb;border-left:3px solid #f59e0b;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}code{background:#f1f5f9;padding:0.15rem 0.4rem;border-radius:3px;font-size:0.85rem}.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}.nav a{color:#2563eb;text-decoration:none;font-weight:600}</style></head><body>
+<h1>第 6 课 · Claude Code 高效开发</h1>
+
+<p>Claude Code 是运行在终端里的 AI 编程助手——你可以直接用它来读写文件、运行命令、管理项目。</p>
+
+<div class="note">
+<strong>📌 本课不讲安装：</strong>
+如果你还没装 Claude Code，等需要的时候再处理。
+这里只讲"它能做什么"和"怎么用它更高效"。
+</div>
+
+<h2>Claude Code 能做什么？</h2>
+<ul>
+  <li><strong>读写文件</strong> — 创建、编辑、查看代码文件</li>
+  <li><strong>运行命令</strong> — 在终端里执行 Python、Git 等命令</li>
+  <li><strong>搜索代码</strong> — 在整个项目中搜索关键词、定位问题</li>
+  <li><strong>Git 操作</strong> — 自动提交代码、查看历史、创建分支</li>
+  <li><strong>项目验证</strong> — 自动运行测试和 Lint 检查</li>
+</ul>
+
+<h2>核心使用模式</h2>
+<ul>
+  <li><strong>/slash 命令</strong> — 如 <code>/code-review</code> 审查当前代码改动，<code>/clarify</code> 澄清需求</li>
+  <li><strong>自然语言指令</strong> — 直接说"帮我加个注释"、"重构这个函数"</li>
+  <li><strong>Plan 模式</strong> — 先规划再动手，避免改半天发现方向错了</li>
+  <li><strong>多文件操作</strong> — 可以同时改多个文件，保持一致性</li>
+</ul>
+
+<div class="tip">
+<strong>💡 效率技巧：</strong>
+<ul>
+  <li>在项目根目录创建 <code>CLAUDE.md</code>，Claude Code 每次进入自动读取</li>
+  <li>复杂任务先说清楚方向，让 Claude Code 出方案你再确认</li>
+  <li>善用 <code>read</code>、<code>glob</code>、<code>grep</code> 等内置工具快速了解代码</li>
+  <li>如果 Claude Code 改了多个文件，确认没问题再让它提交</li>
+</ul>
+</div>
+
+<h2>和 claude.ai 的区别</h2>
+<table>
+  <tr><th>claude.ai</th><th>Claude Code</th></tr>
+  <tr><td>对话为主，适合分析、写作</td><td>操作为主，适合写代码、管理项目</td></tr>
+  <tr><td>有 Artifacts 可视化预览</td><td>没有 Artifacts，直接操作文件系统</td></tr>
+  <tr><td>无法运行代码</td><td>可以直接运行 Python、Git 等命令</td></tr>
+  <tr><td>适合一次性任务</td><td>适合持续开发、项目管理</td></tr>
+</table>
+
+<div class="nav">
+  <a href="004-文件上传与分析.html">← 上一课</a>
+  <a href="006-Claude常用命令与高级功能.html">下一课 →</a>
+</div>
+</body></html>

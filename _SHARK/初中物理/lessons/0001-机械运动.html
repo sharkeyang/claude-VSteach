@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第1课 · 机械运动 | 从亚里士多德到伽利略</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#2563eb; --muted:#64748b; --border:#e2e8f0; --quiz-c:#16a34a; --quiz-w:#dc2626; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:780px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.8; font-size:1rem; }
+    h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+    .sub { color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; }
+    h2 { font-size:1.15rem; margin:1.8rem 0 0.5rem; border-bottom:1px solid var(--border); padding-bottom:0.25rem; }
+    h3 { font-size:1rem; margin:1.2rem 0 0.3rem; color:var(--accent); }
+    p { margin-bottom:0.8rem; }
+    ul,ol { margin-bottom:0.8rem; padding-left:1.5rem; }
+    li { margin-bottom:0.2rem; }
+    .choice-box { background:linear-gradient(135deg,#1e293b,#334155); color:#e2e8f0; border-radius:10px; padding:1.2rem 1.5rem; margin:1rem 0; }
+    .choice-box .option { display:flex; gap:1rem; margin-top:0.8rem; }
+    .choice-box .option div { flex:1; background:rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem; text-align:center; cursor:pointer; transition:0.15s; }
+    .choice-box .option div:hover { background:rgba(255,255,255,0.2); }
+    .story-box { background:#fdf2e9; border:1px solid #e8d5c4; padding:1rem 1.2rem; margin:1rem 0; border-radius:8px; }
+    .story-box strong { color:#b45309; }
+    .box { background:#f0f7ff; border-left:4px solid var(--accent); padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .warn { background:#fef9ef; border-left:4px solid #f59e0b; padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .exp { background:#f8fafc; border:1px solid var(--border); padding:0.8rem 1rem; margin:0.8rem 0; border-radius:8px; }
+    .exp strong { color:var(--accent); }
+    code { background:#f1f5f9; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.9em; }
+    table { width:100%; border-collapse:collapse; margin:0.8rem 0; font-size:0.88rem; }
+    th,td { border:1px solid var(--border); padding:0.35rem 0.6rem; text-align:left; }
+    th { background:#f8fafc; font-weight:600; }
+    .quiz { border:2px solid var(--border); border-radius:10px; padding:1rem 1.25rem; margin:1.2rem 0; background:#fff; }
+    .quiz p { margin-bottom:0.4rem; font-weight:600; }
+    .qopts { display:flex; flex-direction:column; gap:0.4rem; margin:0.5rem 0; }
+    .qopts label { display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0.75rem; border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+    .qopts label:hover { background:#f1f5f9; }
+    .qopts input[type="radio"] { accent-color:var(--accent); }
+    .qbtn { background:var(--accent); color:#fff; border:none; padding:0.35rem 1rem; border-radius:6px; cursor:pointer; font-size:0.85rem; }
+    .qbtn:hover { opacity:0.9; }
+    .qfb { margin-top:0.5rem; padding:0.5rem 0.75rem; border-radius:6px; display:none; }
+    .qfb.ok { display:block; background:#f0fdf4; border:1px solid var(--quiz-c); }
+    .qfb.no { display:block; background:#fef2f2; border:1px solid var(--quiz-w); }
+    .take { margin:1.2rem 0; border:1px dashed var(--accent); border-radius:8px; padding:0.8rem 1rem; }
+    .ref { color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border); padding-top:1.2rem; margin-top:1.5rem; }
+    .ref a { color:var(--accent); }
+    .timeline { font-size:0.85rem; color:var(--muted); text-align:center; margin:0.5rem 0; }
+  </style>
+</head>
+<body>
+
+<h1>第 1 课 · 机械运动</h1>
+<p class="sub">人教版八年级上册 第一章 | 从"什么是运动"出发，重走2000年认知之路</p>
+
+<!-- ==================== 选择 ==================== -->
+<div class="choice-box">
+  <p style="font-size:1.1rem;"><strong>🤔 我先问你：</strong></p>
+  <p style="font-size:0.95rem;">"运动"这个概念太熟悉了，人人都觉得自己知道。但你真的确定吗？</p>
+  <p style="font-size:0.9rem;margin-top:0.5rem;">两千年来最聪明的头脑都搞错过这件事。</p>
+  <div class="option">
+    <div onclick="document.getElementById('discover-path').scrollIntoView({behavior:'smooth'})"><strong>🔍 重头发现</strong><br><span style="font-size:0.8rem;">跟我走一遍亚里士多德→伽利略的认知旅程</span></div>
+    <div onclick="document.getElementById('direct-path').scrollIntoView({behavior:'smooth'})"><strong>📖 直接学知识</strong><br><span style="font-size:0.8rem;">跳过历史，直接看公式和定义</span></div>
+  </div>
+</div>
+
+<!-- ==================== 起源故事 ==================== -->
+<h2>📜 发现之路：亚里士多德错了两千年</h2>
+<div class="timeline">公元前 384 年 · 古希腊 · 雅典</div>
+
+<div class="story-box">
+  <strong>👨🏻 亚里士多德的直觉</strong><br><br>
+  亚里士多德观察世界：推一辆车，车动；不推，车停。丢一块石头，石头往下掉；丢一根羽毛，羽毛飘落。<br><br>
+  他得出结论：<strong>"运动需要力来维持"</strong>——物体之所以在动，是因为有某种力在持续推着它。<br><br>
+  这个结论太符合日常直觉了——没有人怀疑它。将近两千年，没有人质疑过。
+</div>
+
+<div class="story-box">
+  <strong>🏹 一个没人能回答的问题</strong><br><br>
+  但有一个现象让人困惑：箭射出去之后，弓弦已经不再推它了，为什么箭还在飞？<br><br>
+  亚里士多德派的解释："箭前进时，后面的空气涌上来推它前进。"<br><br>
+  你听完这个解释，觉得它合理吗？<br>
+  如果空气能推着箭走，那为什么箭最终还是会掉下来？
+</div>
+
+<div class="story-box">
+  <strong>⚗️ 伽利略：一个人推翻了两千年</strong><br><br>
+  1564 年，伽利略·伽利莱出生在意大利比萨。他不相信"权威"，只相信"实验"和"推理"。<br><br>
+  他做了一个<strong>思想实验（ideal experiment）</strong>：<br><br>
+  <em>"一个球从斜面滚下，对面放另一个斜面。如果没有摩擦力，球会滚到和原来同样的高度。如果把对面的斜面放平——球为了到达原来的高度，会永远滚下去。"</em><br><br>
+  <strong>结论石破天惊：力不是维持运动的原因。力是改变运动状态的原因。</strong><br><br>
+  如果一个物体已经在运动，没有外力干扰时，它会永远保持这个运动——不需要力来"维持"。
+</div>
+
+<div class="box">
+  <strong>🧠 第一性原理追问：</strong>
+  为什么亚里士多德错了而伽利略对了？<br>
+  因为亚里士多德只看到了"表面现象"——日常中所有运动的物体都受到摩擦力和空气阻力。
+  伽利略用思想实验"剥离"了这些干扰因素，看到了<strong>本质</strong>：物体天然"懒"，不喜欢改变自己的运动状态。
+  这就是物理学最重要的方法：<strong>理想模型</strong>。
+</div>
+
+<!-- ==================== 怎么描述运动 ==================== -->
+<div id="discover-path"></div>
+<h2>🔍 现在，由你来"发现"运动的描述方法</h2>
+
+<div class="exp">
+  <strong>🎯 假设你回到伽利略的时代，你要研究运动——你首先需要什么？</strong><br><br>
+  你需要回答三个最基本的问题：<br>
+  <strong>①</strong> 怎么知道一个东西在动？<br>
+  <strong>②</strong> 怎么比较两个东西谁更快？<br>
+  <strong>③</strong> 怎么准确测量它们？<br><br>
+  不要翻课本，你自己想一分钟，然后继续往下看。
+</div>
+
+<!-- ==================== 参照物 ==================== -->
+<h2>① 怎么知道一个东西在动？——参照物</h2>
+
+<div class="exp">
+  <strong>🚗 我们来做一个思想实验：</strong><br><br>
+  你坐在一列火车上，窗外有另一列火车。你看向窗外——对面的火车动了。<br>
+  但等等，是你的火车在动，还是对面的在动？<br><br>
+  你怎么判断的？<br>
+  ——你需要一个"不动"的参考点，比如站台。<br><br>
+  <strong>你自己"发现"了参照物的概念。</strong>
+</div>
+
+<p><strong>机械运动：</strong>一个物体相对于另一个物体的位置随时间发生变化。</p>
+<p><strong>参照物：</strong>判断运动时被选作标准的物体。</p>
+<p><strong>运动和静止的相对性：</strong>选不同参照物，结论可能不同。</p>
+
+<div class="warn">
+  <strong>⚠️ "太阳升起"的经典陷阱：</strong>
+  孩子凭感觉会说"太阳在动"——但这是因为以地球为参照物。如果以太阳为参照物，是地球在自转。<br>
+  每次说"动"，都得先问"相对于谁"。
+</div>
+
+<!-- ==================== 速度 ==================== -->
+<h2>② 怎么比较谁更快？——速度</h2>
+
+<p>你面前有两个人跑步。你怎么判断谁更快？<br>
+你可能想到了两种方法：</p>
+
+<ol>
+  <li><strong>相同时间比路程：</strong> 1 分钟内，谁跑得远谁快（赛跑时谁在前面）</li>
+  <li><strong>相同路程比时间：</strong> 跑完 100 米，谁用时少谁快（百米赛跑）</li>
+</ol>
+
+<p>但现实中时间和路程都不相同怎么办？——把两者结合起来。</p>
+
+<p style="text-align:center;font-size:1.3rem;margin:0.8rem 0;"><strong>v = s / t</strong></p>
+
+<ul>
+  <li>v — 速度（m/s），s — 路程（m），t — 时间（s）</li>
+  <li>1 m/s = 3.6 km/h</li>
+  <li><strong>匀速直线运动：</strong>速度不变，沿直线——最简单的运动模型</li>
+</ul>
+
+<div class="box">
+  <strong>🧠 第一性原理：为什么速度公式是 v = s/t 而不是别的？</strong><br>
+  速度想回答的问题是"在单位时间里走了多远"。<br>
+  如果你走了 100 米用了 20 秒 → 每秒走了 100÷20 = 5 米。<br>
+  所以速度的本质是<strong>"路程被时间平均分配"</strong>。这个"除法"的逻辑你自己也能推出来，不需要背。
+</div>
+
+<h3>📈 s-t 图与 v-t 图</h3>
+<p>图像是物理学的第二种"语言"。为什么用图？因为一张图能告诉你文字需要一百个字才说得清的信息。</p>
+
+<div style="display:flex;gap:1rem;margin:0.8rem 0;flex-wrap:wrap;">
+  <div style="flex:1;min-width:200px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:0.8rem;text-align:center;">
+    <svg viewBox="0 0 160 130" width="160" height="130" style="display:block;margin:0 auto;">
+      <rect x="10" y="10" width="140" height="100" fill="none" stroke="#94a3b8" stroke-width="1"/>
+      <!-- 箭头 -->
+      <line x1="10" y1="10" x2="10" y2="110" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <line x1="10" y1="110" x2="150" y2="110" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <!-- 甲：斜线 -->
+      <line x1="20" y1="100" x2="140" y2="30" stroke="#2563eb" stroke-width="2.5"/>
+      <text x="130" y="24" font-size="10" fill="#2563eb" font-weight="bold">甲</text>
+      <!-- 乙：水平线 -->
+      <line x1="20" y1="70" x2="140" y2="70" stroke="#16a34a" stroke-width="2.5"/>
+      <text x="130" y="66" font-size="10" fill="#16a34a" font-weight="bold">乙</text>
+      <!-- 标签 -->
+      <text x="75" y="124" font-size="9" fill="#64748b" text-anchor="middle">t</text>
+      <text x="4" y="16" font-size="9" fill="#64748b">s</text>
+      <defs><marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#64748b"/></marker></defs>
+    </svg>
+    <div style="font-size:0.8rem;color:var(--muted);margin-top:0.3rem;">s-t 图 · 甲匀速 ↑ 乙静止 →</div>
+  </div>
+  <div style="flex:1;min-width:200px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:0.8rem;text-align:center;">
+    <svg viewBox="0 0 160 130" width="160" height="130" style="display:block;margin:0 auto;">
+      <rect x="10" y="10" width="140" height="100" fill="none" stroke="#94a3b8" stroke-width="1"/>
+      <line x1="10" y1="10" x2="10" y2="110" stroke="#64748b" stroke-width="1.5"/>
+      <line x1="10" y1="110" x2="150" y2="110" stroke="#64748b" stroke-width="1.5"/>
+      <!-- 水平线：匀速 -->
+      <line x1="20" y1="50" x2="140" y2="50" stroke="#2563eb" stroke-width="2.5"/>
+      <text x="130" y="46" font-size="10" fill="#2563eb" font-weight="bold">v=c</text>
+      <!-- 标签 -->
+      <text x="75" y="124" font-size="9" fill="#64748b" text-anchor="middle">t</text>
+      <text x="4" y="16" font-size="9" fill="#64748b">v</text>
+    </svg>
+    <div style="font-size:0.8rem;color:var(--muted);margin-top:0.3rem;">v-t 图 · 匀速直线</div>
+  </div>
+</div>
+
+<table>
+  <tr><th>图像</th><th>水平线</th><th>斜线</th><th>斜率含义</th></tr>
+  <tr><td><strong>s-t 图</strong></td><td>静止</td><td>匀速</td><td>斜率 = 速度（越陡越快）</td></tr>
+  <tr><td><strong>v-t 图</strong></td><td>匀速</td><td>加速/减速</td><td>初中不要求</td></tr>
+</table>
+
+<div class="exp">
+  <strong>📊 读图技巧——你可以自己推导：</strong><br>
+  s-t 图中，取任意两个点，Δs/Δt = v。如果这个比值始终相等 → 匀速。<br>
+  线越陡 → 同样时间内 Δs 更大 → v 更大。<br>
+  不需要死记硬背，每次看图问自己"Δs/Δt 是多少"。
+</div>
+
+<!-- ==================== 测量 ==================== -->
+<div id="direct-path"></div>
+<h2>③ 怎么测量——长度与时间</h2>
+
+<div class="box">
+  <strong>🧠 第一性原理追问：为什么要有标准单位？</strong><br>
+  古代的"一尺"是皇帝手臂的长度——换个皇帝就变了。如果你在巴黎说"一尺"和在伦敦说"一尺"根本不是同一个长度，科学就无法交流。<br>
+  所以人类发明了<strong>国际单位制（SI）</strong>——全世界的科学家都用同一把尺子。
+</div>
+
+<h3>长度测量</h3>
+<table>
+  <tr><th>单位</th><th>km</th><th>m</th><th>dm</th><th>cm</th><th>mm</th><th>μm</th><th>nm</th></tr>
+  <tr><td>对 m 的换算</td><td>10³</td><td>1</td><td>10⁻¹</td><td>10⁻²</td><td>10⁻³</td><td>10⁻⁶</td><td>10⁻⁹</td></tr>
+</table>
+
+<p><strong>刻度尺三步法：</strong>看（量程/分度值）→ 放（平行对齐）→ 读（估读到分度值下一位）</p>
+
+<div class="warn">
+  <strong>⚠️ 常考陷阱：</strong> 读数 3.25 cm，分度值 1 mm（倒数第二位对应），最后一位 5 是估读。
+</div>
+
+<h3>时间测量——停表</h3>
+<p>小表盘分钟 + 大表盘秒。分针过半圈 → 秒针读大数（30~60）。</p>
+
+<h3>误差</h3>
+<p><strong>误差 ≠ 错误。</strong> 错误可以避免，误差只能减小（精密仪器 + 多次测量取平均值），无法消除。</p>
+
+<!-- ==================== 实验 ==================== -->
+<h2>④ 实验：测量平均速度</h2>
+
+<p><strong>核心问题：</strong> 小车从斜面滑下，全程走得快还是上半程走得快？</p>
+
+<ol>
+  <li>测全程路程 s₁ 和时间 t₁ → v₁ = s₁/t₁</li>
+  <li>测上半程路程 s₂ 和时间 t₂ → v₂ = s₂/t₂</li>
+  <li>结论：v₁ > v₂——小车越走越快</li>
+</ol>
+
+<div class="warn">
+  <strong>⚠️ 经典错误：</strong> 平均速度 ≠ 速度的平均值。v = (s₁ + s₂)/(t₁ + t₂)，不是 (v₁+v₂)/2。
+</div>
+
+
+<!-- ==================== 测试 ==================== -->
+<h2>📝 自我测试</h2>
+
+<div class="quiz">
+  <p>① 历史题：伽利略用什么方法推翻了亚里士多德"运动需要力维持"的观点？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q1" value="A"> A. 直接的物理实验</label>
+    <label><input type="radio" name="q1" value="B"> B. 思想实验（理想斜面实验）</label>
+    <label><input type="radio" name="q1" value="C"> C. 数学计算</label>
+    <label><input type="radio" name="q1" value="D"> D. 观测天体运动</label>
+  </div>
+  <button class="qbtn" onclick="cq(1,'B','✅ 正确！伽利略用\"无摩擦的理想斜面\"思想实验，推理出物体在没有外力时会永远运动下去。')">提交</button>
+  <div id="fb1" class="qfb"></div>
+</div>
+
+<div class="quiz">
+  <p>② 你坐在前进的公交车上，看到旁边另一辆公交车在后退。实际上你的车在前进。以下说法正确的是？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q2" value="A"> A. 以地面为参照物，你的车在后退</label>
+    <label><input type="radio" name="q2" value="B"> B. 以旁边的车为参照物，你的车在后退</label>
+    <label><input type="radio" name="q2" value="C"> C. 以旁边车为参照物，你的车在前进</label>
+    <label><input type="radio" name="q2" value="D"> D. 以你的车为参照物，你的车在后退</label>
+  </div>
+  <button class="qbtn" onclick="cq(2,'B','✅ 正确！旁边车在后退→以它为参照物，你的车相对于它确实在后退（实际上是它在后退你也在前进，你们相对位置改变）。')">提交</button>
+  <div id="fb2" class="qfb"></div>
+</div>
+
+<div class="quiz">
+  <p>③ 看下面的 s-t 图，甲是斜向上的直线，乙是平行于 t 轴的直线。这说明？</p>
+  <div style="text-align:center;margin:0.5rem 0;">
+    <svg viewBox="0 0 160 120" width="140" height="105" style="background:#fff;border:1px solid #e2e8f0;border-radius:6px;padding:5px;">
+      <line x1="10" y1="10" x2="10" y2="100" stroke="#94a3b8" stroke-width="1"/>
+      <line x1="10" y1="100" x2="140" y2="100" stroke="#94a3b8" stroke-width="1"/>
+      <line x1="20" y1="90" x2="130" y2="25" stroke="#2563eb" stroke-width="2.5"/>
+      <text x="120" y="20" font-size="10" fill="#2563eb" font-weight="bold">甲</text>
+      <line x1="20" y1="60" x2="130" y2="60" stroke="#16a34a" stroke-width="2.5"/>
+      <text x="120" y="56" font-size="10" fill="#16a34a" font-weight="bold">乙</text>
+      <text x="68" y="114" font-size="9" fill="#64748b" text-anchor="middle">t</text>
+      <text x="4" y="14" font-size="9" fill="#64748b">s</text>
+    </svg>
+  </div>
+  <div class="qopts">
+    <label><input type="radio" name="q3" value="A"> A. 甲静止，乙匀速</label>
+    <label><input type="radio" name="q3" value="B"> B. 甲匀速，乙静止</label>
+    <label><input type="radio" name="q3" value="C"> C. 甲乙都在匀速，甲更快</label>
+    <label><input type="radio" name="q3" value="D"> D. 甲乙都在匀速，乙更快</label>
+  </div>
+  <button class="qbtn" onclick="cq(3,'B','✅ 正确！s-t 图中，斜线→匀速（s在变），平线→静止（s不变）。')">提交</button>
+  <div id="fb3" class="qfb"></div>
+</div>
+
+<div class="quiz">
+  <p>④ 关于速度的概念，以下说法符合第一性原理的是？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q4" value="A"> A. 速度是物体运动的快慢，需要背公式 v=s/t</label>
+    <label><input type="radio" name="q4" value="B"> B. 速度的本质是\"单位时间内通过的路程\"，由 \"总路程 ÷ 总时间\" 自己推导得出</label>
+    <label><input type="radio" name="q4" value="C"> C. 速度越大，路程越长</label>
+    <label><input type="radio" name="q4" value="D"> D. 速度是力的一种</label>
+  </div>
+  <button class="qbtn" onclick="cq(4,'B','✅ 正确！速度的本质就是\"把总路程平均分配到每一秒\"，是自己能推出来的逻辑，不需要死记。')">提交</button>
+  <div id="fb4" class="qfb"></div>
+</div>
+
+<div class="quiz">
+  <p>⑤ 小车在斜面上从顶端静止释放，全程用时 3 s，上半程用时 2 s。全程平均速度与上半程平均速度相比？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q5" value="A"> A. 全程 > 上半程</label>
+    <label><input type="radio" name="q5" value="B"> B. 全程 < 上半程</label>
+    <label><input type="radio" name="q5" value="C"> C. 相等</label>
+    <label><input type="radio" name="q5" value="D"> D. 无法比较</label>
+  </div>
+  <button class="qbtn" onclick="cq(5,'A','✅ 正确！下半程只用 1 s 走完（vs 上半程 2 s）→ 越走越快 → 全程平均速度大于上半程。')">提交</button>
+  <div id="fb5" class="qfb"></div>
+</div>
+
+
+<!-- ==================== 费曼测试 ==================== -->
+<h2>🗣️ 费曼测试——用最简单的语言讲给一个孩子听</h2>
+
+<div class="take">
+  <p><strong>假设你面前有一个 8 岁的孩子，你要用他能懂的话回答这三个问题。不许用公式，只能用比喻和生活例子：</strong></p>
+  <ol>
+    <li>"你怎么知道一辆车在动？"<br>
+    <span style="font-size:0.85rem;color:var(--muted);">→ 提示：参照物，但要换成孩子能懂的说法</span></li>
+    <li>"为什么跑得快的同学和跑得慢的同学，不能说谁比谁厉害？"<br>
+    <span style="font-size:0.85rem;color:var(--muted);">→ 提示：速度的两个比较方法</span></li>
+    <li>"为什么你用尺子量桌子，量的结果每次可能差一点点？"<br>
+    <span style="font-size:0.85rem;color:var(--muted);">→ 提示：误差 vs 错误</span></li>
+  </ol>
+  <p style="margin-top:0.5rem;">如果你能流利地讲出来，<strong>这章你就真懂了</strong>。卡住的地方就是你需要回去复习的地方。</p>
+</div>
+
+
+<h2>📋 本章知识框架</h2>
+
+<div style="background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:1rem;">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+  <div style="padding:0.3rem 0;"><strong>📜 起源故事</strong><br>亚里士多德→伽利略<br>思想实验推翻两千年<br>力改变运动，不维持</div>
+  <div style="padding:0.3rem 0;"><strong>📍 参照物</strong><br>"动没动？相对于谁？"<br>运动和静止是相对的</div>
+  <div style="padding:0.3rem 0;"><strong>🚀 速度 v = s/t</strong><br>本质：路程÷时间<br>s-t图、v-t图</div>
+  <div style="padding:0.3rem 0;"><strong>📏 测量</strong><br>长度（估读）<br>时间（停表）<br>误差≠错误</div>
+</div>
+</div>
+
+<div class="ref">
+  <p>📚 人教版《物理 八年级上册》第一章 全部</p>
+  <p>📖 参考速查：<a href="../reference/机械运动速查.html">⚡ 机械运动速查</a> · <a href="../reference/力学心智模型总览.html">🧠 力学心智模型总览</a></p>
+  <p>🗺️ <a href="../roadmap.html">学习路线图 · Phase 1</a> · <a href="../diagnostic.html">🧐 弱点诊断</a></p>
+  <p><a href="../index.html">← 返回总目录</a></p>
+</div>
+
+<script>
+function cq(n, ans, msg) {
+  const sel = document.querySelector('input[name="q'+n+'"]:checked');
+  const fb = document.getElementById('fb'+n);
+  if (!sel) { fb.className = 'qfb no'; fb.innerHTML = '请选择一个答案。'; return; }
+  if (sel.value === ans) { fb.className = 'qfb ok'; fb.innerHTML = msg; }
+  else { fb.className = 'qfb no'; fb.innerHTML = '❌ 再想想。答案在课文中可以找到对应内容。'; }
+}
+</script>
+
+</body>
+</html>

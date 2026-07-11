@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第12课 · Subagent 与 Workflow 实战详解</title><style>body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:800px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}h1{font-size:1.6rem;border-left:4px solid #2563eb;padding-left:1rem;margin-bottom:1.5rem}h2{font-size:1.2rem;margin-top:2rem;margin-bottom:0.5rem;color:#2563eb}h3{font-size:1.05rem;margin-top:1.5rem;margin-bottom:0.3rem;color:#1e293b}p{margin-bottom:1rem}ul,ol{margin-bottom:1rem;padding-left:1.5rem}li{margin-bottom:0.3rem}.tip{background:#f0f9ff;border-left:3px solid #2563eb;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}.highlight{background:#f0fdf4;border-left:3px solid #16a34a;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}code{background:#f1f5f9;padding:0.15rem 0.4rem;border-radius:3px;font-size:0.85rem}table{width:100%;border-collapse:collapse;margin:1rem 0}th,td{border:1px solid #e2e8f0;padding:0.5rem 0.75rem;text-align:left;font-size:0.9rem}th{background:#f1f5f9;font-weight:600}.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}.nav a{color:#2563eb;text-decoration:none;font-weight:600}.cmd{background:#1e293b;color:#e2e8f0;padding:1rem;border-radius:8px;margin:1rem 0;font-size:0.9rem;overflow-x:auto}.cmd .name{color:#38bdf8;font-weight:700;font-size:1rem}.cmd .desc{color:#94a3b8;margin-top:0.3rem}.cmd .example{color:#a78bfa;margin-top:0.5rem;white-space:pre-wrap;font-family:monospace}.cmd .output{color:#34d399;margin-top:0.3rem;font-size:0.85rem;white-space:pre-wrap;font-family:monospace}.scene{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin:1.5rem 0}.scene .title{font-weight:700;color:#2563eb;font-size:1rem;margin-bottom:0.5rem;border-bottom:2px solid #2563eb;padding-bottom:0.3rem}.scene .step{margin:0.5rem 0;padding-left:0.5rem;border-left:3px solid #e2e8f0}.scene .step b{color:#475569}</style></head><body>
+<h1>第 12 课 · Subagent 与 Workflow 实战详解</h1>
+
+<p>这是本课程最硬核的一课。Subagent 和 Workflow 是 Claude Code 最强大的高级功能，掌握它们等于从"一个人干活"升级到"指挥一个团队干活"。</p>
+
+<h2>第一部分：Subagent（子智能体）</h2>
+
+<h3>Subagent 的核心概念</h3>
+<p>Subagent 就是"再开一个 Claude"——它独立运行，有自己的上下文，干完活把结果告诉你。你可以同时开多个，互不干扰。</p>
+
+<table>
+  <tr><th>对比</th><th>普通对话</th><th>Subagent</th></tr>
+  <tr><td>工作方式</td><td>一个一个来</td><td>多个同时干</td></tr>
+  <tr><td>上下文</td><td>共享同一个对话</td><td>每个 agent 独立</td></tr>
+  <tr><td>适合</td><td>需要你来决策的对话</td><td>独立任务、批量操作</td></tr>
+  <tr><td>效率</td><td>串行，慢</td><td>并行，快</td></tr>
+</table>
+
+<h3>启动方式</h3>
+<p>在对话中直接说"帮我启动一个 agent 做 XXX"，或者用 <code>@agent</code> 语法：</p>
+
+<div class="cmd">
+  <div class="name">启动 Subagent 的三种方式</div>
+  <div class="example"># 方式一：自然语言（推荐）<br>帮我启动一个 agent，搜索 _CHRIS/ 目录下所有包含 "暑假" 的文件<br><br># 方式二：指定类型<br>启动一个 Explore agent，查找所有 .py 文件中没有 type hints 的函数<br><br># 方式三：指定类型 + 隔离模式<br>启动一个 worktree agent，帮我重构 _CHRIS/__temp/gen_calligraphy.py</div>
+</div>
+
+<h3>实战场景一：并行搜索 🔍</h3>
+
+<div class="scene">
+  <div class="title">场景：项目中有大量文件，想同时搜索多个关键词</div>
+  <div class="step"><b>❌ 不用 Subagent：</b>搜完一个关键词，等结果，再搜下一个，串行耗时长</div>
+  <div class="step"><b>✅ 用 Subagent：</b></div>
+  <div class="cmd">
+    <div class="name">你输入：</div>
+    <div class="example">帮我启动三个 agent：<br><br>agent 1：搜索所有 .py 文件中包含 "TODO" 的行，统计数量并按文件列出<br><br>agent 2：搜索所有 .py 文件中包含 "FIXME" 的行，统计数量并按文件列出<br><br>agent 3：搜索所有 .py 文件中包含 "HACK" 或 "XXX" 的行，统计数量并按文件列出</div>
+    <div class="output">→ Agent 1 启动，搜索 TODO...<br>→ Agent 2 启动，搜索 FIXME...<br>→ Agent 3 启动，搜索 HACK/XXX...<br>（三个 agent 同时搜索，总时间 ≈ 搜一个关键词的时间）</div>
+  </div>
+  <div class="step"><b>结果：</b>三个结果同时返回，汇总成一份完整的代码待办事项清单。</div>
+</div>
+
+<h3>实战场景二：并行改文件 ✏️</h3>
+
+<div class="scene">
+  <div class="title">场景：有 6 个 Python 脚本，都要在文件头部加同一段版权声明</div>
+  <div class="step"><b>❌ 不用 Subagent：</b>一个文件一个文件改，每次都要等 Claude 切换上下文</div>
+  <div class="step"><b>✅ 用 Subagent：</b></div>
+  <div class="cmd">
+    <div class="name">你输入：</div>
+    <div class="example">把以下文件分成三组，启动三个 agent 同时加版权声明头：<br><br>文件列表：zdata.py, QMT_查询.py, AKshare_获取交易日.py, miniQMT连接服务器.py, miniqmt下载数据2.py, 下载周月线_验算用.py<br><br>版权声明内容：<br># Copyright (c) 2026 SharkWork. All rights reserved.<br># 本文件仅供个人学习使用</div>
+    <div class="output">→ Agent 1 处理 zdata.py + QMT_查询.py<br>→ Agent 2 处理 AKshare_获取交易日.py + miniQMT连接服务器.py<br>→ Agent 3 处理 miniqmt下载数据2.py + 下载周月线_验算用.py<br>（三个 agent 同时改，总时间 ≈ 改两个文件的时间）</div>
+  </div>
+</div>
+
+<h3>实战场景三：独立调研 🔎</h3>
+
+<div class="scene">
+  <div class="title">场景：你在写代码，同时想查一个技术问题，不想中断</div>
+  <div class="step"><b>❌ 不用 Subagent：</b>停下当前工作，去查资料，思路被打断</div>
+  <div class="step"><b>✅ 用 Subagent：</b></div>
+  <div class="cmd">
+    <div class="name">你输入：</div>
+    <div class="example">启动一个 agent，帮我查一下：<br>akshare 库最新版本是否支持获取北交所股票的日线数据？<br>如果支持，给一个示例代码。</div>
+    <div class="output">→ Agent 去查资料（可能需要联网 MCP）<br>→ 你继续手头的工作<br>→ Agent 查完后回来报告结果</div>
+  </div>
+  <div class="step"><b>效果：</b>不用切换上下文，调研结果自动回来，工作流不中断。</div>
+</div>
+
+<h3>实战场景四：审查 + 修复流水线</h3>
+
+<div class="scene">
+  <div class="title">场景：刚写完一个功能，想同时审查代码和修复发现的问题</div>
+  <div class="cmd">
+    <div class="name">你输入：</div>
+    <div class="example">启动两个 agent：<br><br>agent 1（审查）：对 zdata.py 做代码审查，列出所有潜在问题——包括语法问题、性能问题、安全隐患、代码风格问题。按严重程度排序。<br><br>agent 2（修复）：等 agent 1 完成后，根据它找到的问题逐个修复。</div>
+    <div class="output">→ Agent 1 开始审查 zdata.py<br>→ Agent 1 完成，列出问题清单<br>→ Agent 2 启动，开始修复问题<br>→ 你可以在 agent 工作期间去做其他事</div>
+  </div>
+</div>
+
+<h3>Subagent 的隔离模式详解</h3>
+<table>
+  <tr><th>模式</th><th>语法</th><th>什么时候用</th></tr>
+  <tr><td><strong>普通</strong></td><td><code>@agent 做XXX</code></td><td>只是读文件、搜索、分析，不改文件</td></tr>
+  <tr><td><strong>worktree</strong></td><td><code>启动一个 worktree agent，做XXX</code></td><td>多个 agent 要同时改文件，担心互相覆盖</td></tr>
+  <tr><td><strong>remote</strong></td><td><code>启动一个 remote agent，做XXX</code></td><td>需要远程计算资源或隔离环境</td></tr>
+</table>
+
+<div class="tip">
+<strong>💡 什么时候用 worktree 隔离？</strong>
+当多个 agent 要同时修改同一个项目的不同文件时，用 worktree 模式让每个 agent 在独立的分支上工作，改完后自动合并。
+如果只是读文件或搜索，用普通模式即可，不需要 worktree。
+</div>
+
+<h2>第二部分：Workflow（多智能体工作流）</h2>
+
+<h3>Workflow 的核心概念</h3>
+<p>如果说 Subagent 是"派一个人去干活"，那 Workflow 就是"组织一条流水线"。你可以定义多个阶段，每个阶段多个 agent 并行工作，前一个阶段的输出成为后一个阶段的输入。</p>
+
+<table>
+  <tr><th>对比</th><th>Subagent</th><th>Workflow</th></tr>
+  <tr><td>关系</td><td>各自独立</td><td>有编排、有依赖</td></tr>
+  <tr><td>流程</td><td>一个任务</td><td>多阶段流水线</td></tr>
+  <tr><td>协作</td><td>互不通信</td><td>前一个的输出给后一个</td></tr>
+  <tr><td>适合</td><td>单次独立任务</td><td>多步骤、多角色的复杂流程</td></tr>
+</table>
+
+<h3>实战场景五：代码全面审查流水线 🔍</h3>
+
+<div class="scene">
+  <div class="title">场景：提交代码前，想从多个维度全面审查，确保质量</div>
+  <div class="step"><b>设计：</b>3 个 agent 从不同角度并行审查，然后汇总</div>
+  <div class="cmd">
+    <div class="name">你输入：</div>
+    <div class="example">帮我启动一个审查工作流，对当前的代码改动做全面审查：<br><br>阶段一（并行审查）：<br>  agent 1（安全角度）：检查有没有 SQL 注入、路径遍历、敏感信息泄露等安全问题<br>  agent 2（性能角度）：检查有没有不必要的循环、重复计算、大文件加载等性能问题<br>  agent 3（可维护性角度）：检查函数是否太长、命名是否清晰、有没有重复代码<br><br>阶段二（汇总）：<br>  等三个 agent 都完成后，把结果汇总成一份报告，按严重程度排序，并给出修复建议</div>
+    <div class="output">→ 三个 agent 同时启动，分别审查<br>→ Agent 1（安全）完成，找到 2 个问题<br>→ Agent 2（性能）完成，找到 1 个问题<br>→ Agent 3（可维护性）完成，找到 3 个问题<br>→ 汇总 agent 生成综合报告</div>
+  </div>
+  <div class="step"><b>效果：</b>一次审查覆盖安全 + 性能 + 可维护性三个维度，比逐个审查快 3 倍。</div>
+</div>
+
+<h3>实战场景六：批量迁移脚本 🔄</h3>
+
+<div class="scene">
+  <div class="title">场景：需要把一批旧脚本迁移到新目录，同时更新 import 路径</div>
+  <div class="step"><b>设计：</b>先扫描有哪些文件，再分组并行迁移，最后验证</div>
+  <div class="cmd">
+    <div class="name">你输入：</div>
+    <div class="example">启动一个迁移工作流：<br><br>阶段一（扫描）：<br>  搜索 .history/ 目录下所有 .py 文件，列出文件名和它们 import 了哪些模块<br><br>阶段二（并行迁移）：<br>  把阶段一找到的文件平均分成 3 组，每组启动一个 agent 来做：<br>  1. 把文件复制到 _CHRIS/scripts/ 目录<br>  2. 把文件中的 import 路径从旧路径改为新路径<br>  3. 添加新文件的头部注释<br><br>阶段三（验证）：<br>  检查所有迁移后的文件语法是否正确，列出成功/失败的文件</div>
+    <div class="output">→ 阶段一：扫描到 12 个文件<br>→ 阶段二：3 个 agent 各迁移 4 个文件，并行进行<br>→ 阶段三：验证全部通过，12/12 迁移成功</div>
+  </div>
+</div>
+
+<h3>实战场景七：多维度数据质量检查 📊</h3>
+
+<div class="scene">
+  <div class="title">场景：数据下载完成后，想从多个维度检查数据质量</div>
+  <div class="cmd">
+    <div class="name">你输入：</div>
+    <div class="example">启动一个数据质量检查工作流：<br><br>阶段一（并行检查）：<br>  agent 1（完整性）：检查 D:/zdata/dataAK中股/ 目录下每个 CSV 的行数是否合理，有没有空文件<br>  agent 2（时效性）：检查每个 CSV 的最新日期是不是今天，有没有滞后超过 3 天的<br>  agent 3（一致性）：随机抽 10 个 CSV，检查它们的 OHLC 数据是否合理（高≥低、开≥低等）<br><br>阶段二（报告）：<br>  汇总三个 agent 的结果，生成一份数据质量报告，列出所有异常</div>
+    <div class="output">→ 三个 agent 同时检查<br>→ Agent 1：发现 2 个空文件<br>→ Agent 2：发现 5 个文件滞后超过 3 天<br>→ Agent 3：所有抽检数据合理<br>→ 汇总报告显示具体问题文件和修复建议</div>
+  </div>
+</div>
+
+<h3>实战场景八：Subagent + Workflow 混合使用 🔀</h3>
+
+<div class="scene">
+  <div class="title">场景：大项目重构，需要同时做多件事，且有些事依赖其他事的结果</div>
+  <div class="step"><b>设计：</b>前面的 agent 结果出来了，后面的 agent 才能开始</div>
+  <div class="cmd">
+    <div class="name">你输入：</div>
+    <div class="example">帮我做一个项目重构工作流：<br><br>阶段一（分析）：<br>  启动一个 agent，分析 zdata.py 中有哪些函数，每个函数做什么，画出函数依赖关系<br><br>阶段二（并行设计）：<br>  根据阶段一的结果，启动两个 agent：<br>  agent 1：设计数据下载模块的重构方案<br>  agent 2：设计数据校验模块的重构方案<br><br>阶段三（并行实施）：<br>  根据阶段二的两个方案，各启动一个 agent 实施重构<br><br>阶段四（验证）：<br>  启动一个 agent 做最终的集成测试，确保重构后功能正常</div>
+    <div class="output">→ 阶段一：分析完成，发现 zdata.py 有 15 个函数，5 个核心模块<br>→ 阶段二：两个 agent 并行出方案<br>→ 阶段三：两个 agent 并行实施<br>→ 阶段四：集成测试通过</div>
+  </div>
+</div>
+
+<h2>第三部分：选择指南</h2>
+
+<h3>什么时候用什么？</h3>
+<table>
+  <tr><th>任务类型</th><th>推荐方式</th><th>原因</th></tr>
+  <tr><td>同时在多个目录搜索关键词</td><td>🔸 Subagent（并行）</td><td>独立任务，不需要编排</td></tr>
+  <tr><td>批量修改多个文件</td><td>🔸 Subagent（并行）</td><td>每个文件独立，同时改</td></tr>
+  <tr><td>边干活边查资料</td><td>🔸 Subagent（后台）</td><td>不中断当前工作流</td></tr>
+  <tr><td>多维度代码审查+汇总</td><td>🔷 Workflow</td><td>需要编排，先并行审查再汇总</td></tr>
+  <tr><td>迁移项目（分析→迁移→验证）</td><td>🔷 Workflow</td><td>多阶段，有依赖关系</td></tr>
+  <tr><td>数据质量检查+报告</td><td>🔷 Workflow</td><td>需要多角度检查后汇总</td></tr>
+  <tr><td>大项目重构</td><td>🔷 Workflow（多阶段）</td><td>复杂依赖，需要严格编排</td></tr>
+</table>
+
+<h3>快速决策</h3>
+<div class="highlight">
+<strong>🎯 一句话判断：</strong><br>
+<ul>
+  <li>任务之间<b>没有依赖</b>，只是要同时做 → <b>Subagent</b></li>
+  <li>任务有<b>先后顺序</b>，前一个的输出给后一个 → <b>Workflow</b></li>
+  <li>任务复杂，既有并行又有依赖 → <b>Workflow 编排 Subagent</b></li>
+</ul>
+</div>
+
+<h2>总结</h2>
+<table>
+  <tr><th>功能</th><th>一句话</th><th>启动方式</th><th>典型场景</th></tr>
+  <tr><td><strong>普通 Subagent</strong></td><td>派一个人去干活</td><td><code>帮我启动一个 agent 做XXX</code></td><td>搜索、批量改文件、调研</td></tr>
+  <tr><td><strong>Worktree Subagent</strong></td><td>在独立分支上干活</td><td><code>启动一个 worktree agent 做XXX</code></td><td>多个 agent 同时改文件</td></tr>
+  <tr><td><strong>Workflow</strong></td><td>组织一条流水线</td><td><code>启动一个工作流：阶段一XXX，阶段二XXX</code></td><td>审查→修复→验证、迁移</td></tr>
+</table>
+
+<div class="tip">
+<strong>💡 记住三句话：</strong>
+<ol>
+  <li><b>搜索调研用 Subagent</b> — 派出去查，不耽误你干活</li>
+  <li><b>多维度审查用 Workflow</b> — 不同角度同时看，最后汇总</li>
+  <li><b>大项目重构用 Workflow 编排</b> — 先分析→再设计→再实施→再验证</li>
+</ol>
+</div>
+
+<div class="nav">
+  <a href="006-Claude常用命令与高级功能.html">← 上一课</a>
+  <a href="008-Skills可复用技能包.html">下一课 →</a>
+</div>
+</body></html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第9课 · MCP 扩展能力</title><style>body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:800px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}h1{font-size:1.6rem;border-left:4px solid #2563eb;padding-left:1rem;margin-bottom:1.5rem}h2{font-size:1.2rem;margin-top:2rem;margin-bottom:0.5rem;color:#2563eb}h3{font-size:1.05rem;margin-top:1.2rem;margin-bottom:0.3rem}p{margin-bottom:1rem}ul,ol{margin-bottom:1rem;padding-left:1.5rem}li{margin-bottom:0.3rem}table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem}th,td{border:1px solid #e2e8f0;padding:0.5rem 0.75rem;text-align:left}th{background:#f1f5f9;color:#1e293b}.tip{background:#f0f9ff;border-left:3px solid #2563eb;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}code{background:#f1f5f9;padding:0.15rem 0.4rem;border-radius:3px;font-size:0.85rem}pre{background:#1e293b;color:#e2e8f0;padding:1rem;border-radius:6px;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin:0.75rem 0}pre code{background:transparent;padding:0;color:inherit}.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}.nav a{color:#2563eb;text-decoration:none;font-weight:600}.highlight{background:#f0fdf4;border-left:3px solid #16a34a;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}.warn{background:#fffbeb;border-left:3px solid #d97706;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}</style></head><body>
+
+<h1>第 9 课 · MCP — 扩展能力边界</h1>
+
+<p>MCP（Model Context Protocol）是 Anthropic 推出的开放协议，相当于 Claude 的"App Store"——装一个 MCP 服务器，Claude 就多一种能力。</p>
+
+<p>简单说，没有 MCP 的 Claude 只能读你给它的文件和凭记忆回答；有了 MCP，Claude 可以自己打开网页、查最新文档、分步推理复杂问题。</p>
+
+<h2>一、核心概念</h2>
+
+<table>
+  <tr><th>概念</th><th>说明</th><th>类比</th></tr>
+  <tr><td><strong>MCP Server</strong></td><td>提供工具的服务进程</td><td>App</td></tr>
+  <tr><td><strong>MCP Tool</strong></td><td>服务器暴露的具体功能</td><td>App 里的功能按钮</td></tr>
+  <tr><td><strong>MCP Resource</strong></td><td>服务器可读取的数据资源</td><td>App 里的文件</td></tr>
+  <tr><td><strong>Stdio 传输</strong></td><td>本地启动进程，通过 stdio 通信</td><td>本地 App</td></tr>
+  <tr><td><strong>HTTP 传输</strong></td><td>远程服务，通过网络 API 调用</td><td>网页 App</td></tr>
+</table>
+
+<div class="tip"><strong>💡 怎么知道当前有哪些 MCP？</strong> 在对话中直接问"列出你所有可用的 MCP 工具"即可。</div>
+
+<h2>二、添加 MCP 的 3 种方式</h2>
+
+<h3>方式 A：claude mcp add 命令（最常用）</h3>
+<pre><code># 格式：claude mcp add &lt;名称&gt; -- &lt;启动命令&gt;
+claude mcp add playwright -- npx @playwright/mcp@latest</code></pre>
+
+<h3>方式 B：.mcp.json 文件（项目级，可提交 Git）</h3>
+<p>在项目根目录创建 <code>.mcp.json</code>：</p>
+<pre><code>{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["@anthropic/mcp-sequential-thinking@latest"]
+    }
+  }
+}</code></pre>
+
+<h3>方式 C：全局 settings.json（长期使用）</h3>
+<p>编辑 <code>~/.claude/settings.json</code>：</p>
+<pre><code>{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["@anthropic/mcp-context7@latest"]
+    }
+  }
+}</code></pre>
+
+<h3>管理命令</h3>
+<pre><code>claude mcp list           # 列出所有已配置的 MCP
+claude mcp add &lt;名称&gt; -- &lt;命令&gt;  # 添加新 MCP
+claude mcp remove &lt;名称&gt;  # 移除
+claude mcp restart &lt;名称&gt; # 重启（卡死时有用）</code></pre>
+
+<h2>三、真实案例详解</h2>
+
+<h3>案例 1：Playwright — 浏览器自动化</h3>
+<p>让 Claude 像人一样操作浏览器——打开网页、截图、填表单。</p>
+
+<p><strong>配置：</strong></p>
+<pre><code>claude mcp add playwright -- npx @playwright/mcp@latest</code></pre>
+
+<p><strong>可用操作：</strong></p>
+<table>
+  <tr><th>操作</th><th>用途</th></tr>
+  <tr><td><code>browser_navigate</code></td><td>导航到指定 URL</td></tr>
+  <tr><td><code>browser_snapshot</code></td><td>获取页面结构树（比截图更适合决策）</td></tr>
+  <tr><td><code>browser_take_screenshot</code></td><td>截图（可视化展示）</td></tr>
+  <tr><td><code>browser_click</code></td><td>点击元素</td></tr>
+  <tr><td><code>browser_type</code></td><td>在输入框中填写文本</td></tr>
+  <tr><td><code>browser_fill_form</code></td><td>批量填写表单字段</td></tr>
+  <tr><td><code>browser_select_option</code></td><td>选择下拉框选项</td></tr>
+  <tr><td><code>browser_evaluate</code></td><td>在页面中执行 JavaScript</td></tr>
+  <tr><td><code>browser_network_requests</code></td><td>查看网络请求</td></tr>
+</table>
+
+<p><strong>典型用法：</strong></p>
+<ul>
+  <li>"打开这个网页，截图给我看" → 验证部署效果</li>
+  <li>"帮我填这个登录表单，点提交" → 自动化表单操作</li>
+  <li>"抓取这个页面的数据" → 页面数据采集</li>
+</ul>
+
+<h3>案例 2：Sequential Thinking — 分步推理</h3>
+<p>让 Claude 在复杂问题上有条理地分步推理，支持回溯修正和分支探索。</p>
+
+<p><strong>配置：</strong></p>
+<pre><code>claude mcp add sequential-thinking -- npx @anthropic/mcp-sequential-thinking@latest</code></pre>
+
+<p><strong>完整参数：</strong></p>
+<table>
+  <tr><th>参数</th><th>说明</th></tr>
+  <tr><td><code>thought</code></td><td>当前思考步骤的内容</td></tr>
+  <tr><td><code>nextThoughtNeeded</code></td><td>是否需要继续下一步思考</td></tr>
+  <tr><td><code>thoughtNumber</code></td><td>当前是第几步</td></tr>
+  <tr><td><code>totalThoughts</code></td><td>预估总步数（可动态调整）</td></tr>
+  <tr><td><code>isRevision</code></td><td>是否为对之前步骤的修正</td></tr>
+  <tr><td><code>revisesThought</code></td><td>修正的是哪一步</td></tr>
+  <tr><td><code>branchFromThought</code></td><td>从哪一步分支出去</td></tr>
+  <tr><td><code>branchId</code></td><td>分支标识（同一问题可多分支并行）</td></tr>
+  <tr><td><code>needsMoreThoughts</code></td><td>到达预设步数后是否还需要更多</td></tr>
+</table>
+
+<p><strong>引导示例：</strong></p>
+<pre><code># 简单分步
+"用 sequential thinking 分析这个架构，分 5 步思考"
+
+# 带分支的探索
+"先分析方案 A 的优缺点（第 1-4 步），
+ 然后从第 2 步分支分析方案 B"
+
+# 带修正的深度推理
+"逐步推理这个问题，如果发现之前的某一
+ 步不对就回溯修正"</code></pre>
+
+<p><strong>适用场景：</strong>复杂的架构设计、逻辑推导、边界模糊问题、多方案对比。</p>
+
+<h3>案例 3：Context7 — 实时文档查询</h3>
+<p>让 Claude 获取库/框架的实时文档，不再依赖训练数据。适合查最新的 API 用法。</p>
+
+<p><strong>配置：</strong></p>
+<pre><code>claude mcp add context7 -- npx @anthropic/mcp-context7@latest</code></pre>
+
+<p><strong>使用流程：</strong></p>
+<pre><code>第1步：resolve-library-id("Python")     → /python/cpython
+第2步：query-docs("Python 3.12 新特性") → 最新文档</code></pre>
+
+<p><strong>应用场景：</strong></p>
+<ul>
+  <li>"React 19 的 use() Hook 怎么用？" → 查最新 API</li>
+  <li>"Next.js App Router 怎么配中间件？" → 跳过旧版教程</li>
+  <li>"这个库的最新版本有什么变化？" → 对比文档</li>
+</ul>
+
+<h2>四、配合 MCP 工作的黄金法则</h2>
+
+<p><strong>明确告诉 Claude 用哪个 MCP 工具。</strong></p>
+
+<div class="highlight">
+✅ 好的写法：<br>
+"用 browser 打开 example.com，截图发给我"<br>
+"查一下 Context7 里 React 的 useTransition 文档"
+</div>
+
+<div class="warn">
+❌ 差的写法：<br>
+"打开这个网页"（Claude 可能用 WebFetch 而非 Playwright）<br>
+"React 怎么用"（可能凭记忆回答，不够准）
+</div>
+
+<p>MCP 工具会自动注册到 Claude 的工具列表中。如果 Claude 该用 MCP 却没用，直接说"用 XXX 来做"即可。</p>
+
+<h2>五、MCP vs Skills vs Hooks 的区别</h2>
+
+<table>
+  <tr><th></th><th>MCP</th><th>Skills</th><th>Hooks</th></tr>
+  <tr><td>本质</td><td>外部工具连接</td><td>岗位 SOP 文档</td><td>自动执行脚本</td></tr>
+  <tr><td>能力</td><td>给 Claude 新能力</td><td>教 Claude 怎么做</td><td>强制 Claude 执行</td></tr>
+  <tr><td>触发方式</td><td>Claude 主动调用</td><td>斜杠命令 / 自然语言</td><td>工具调用前后自动触发</td></tr>
+  <tr><td>例子</td><td>浏览器、查文档、数据库</td><td>每日计划、代码审查</td><td>自动格式化代码</td></tr>
+  <tr><td>配置位置</td><td>settings.json / .mcp.json</td><td>skills/ 目录</td><td>settings.json hooks 字段</td></tr>
+</table>
+
+<h2>六、常见问题排查</h2>
+
+<table>
+  <tr><th>现象</th><th>原因</th><th>解决</th></tr>
+  <tr><td>MCP 工具不出现</td><td>未安装或配置错误</td><td><code>claude mcp list</code> 检查</td></tr>
+  <tr><td>MCP 工具超时</td><td>服务卡住</td><td><code>claude mcp restart &lt;名称&gt;</code></td></tr>
+  <tr><td>配置文件不生效</td><td>JSON 格式错误</td><td>检查 .mcp.json 语法</td></tr>
+  <tr><td>Stdio 模式报错</td><td>Node.js 版本不够</td><td>确认 Node.js ≥ 18</td></tr>
+  <tr><td>WebFetch 报 "无法验证域名"</td><td>网络代理阻断验证</td><td>settings.json 加 <code>"skipWebFetchPreflight": true</code></td></tr>
+</table>
+
+<div class="nav">
+  <a href="008-Skills可复用技能包.html">← 上一课</a>
+  <a href="010-Artifacts与预览.html">下一课 →</a>
+</div>
+</body></html>

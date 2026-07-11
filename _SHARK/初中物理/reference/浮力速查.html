@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌊 浮力 · 参考速查</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:720px; margin:0 auto; padding:2rem 1.5rem; background:#fafafa; color:#1a1a2e; line-height:1.7; }
+    h1 { font-size:1.6rem; }
+    .sub { color:#64748b; font-size:0.85rem; margin-bottom:1.2rem; }
+    .card { background:#fff; border:1px solid #e2e8f0; border-radius:8px; padding:0.8rem 1rem; margin-bottom:0.8rem; }
+    .card h2 { font-size:1rem; color:#2563eb; margin-bottom:0.3rem; }
+    .card p, .card li { font-size:0.88rem; }
+    .card ul { padding-left:1.2rem; }
+    .box { background:#f0f7ff; border-left:4px solid #2563eb; padding:0.5rem 0.8rem; margin:0.4rem 0; border-radius:0 4px 4px 0; font-size:0.85rem; }
+    .warn { background:#fef9ef; border-left:4px solid #f59e0b; padding:0.5rem 0.8rem; margin:0.4rem 0; border-radius:0 4px 4px 0; font-size:0.85rem; }
+    table { width:100%; border-collapse:collapse; margin:0.4rem 0; font-size:0.85rem; }
+    th,td { border:1px solid #e2e8f0; padding:0.25rem 0.5rem; text-align:left; }
+    th { background:#f8fafc; }
+    code { background:#f1f5f9; padding:0.1rem 0.3rem; border-radius:3px; }
+    .quote { font-style:italic; background:#faf6f0; border-left:3px solid #b45309; padding:0.5rem 0.8rem; margin:0.4rem 0; border-radius:0 4px 4px 0; font-size:0.85rem; }
+    @media print { body { font-size:11pt; } }
+  </style>
+</head>
+<body>
+
+<h1>🌊 浮力 · 速查</h1>
+<p class="sub">第十章 阿基米德的浴缸 · 一页纸搞定浮力</p>
+
+<div class="box">
+  <strong>📜 起源（阿基米德，公元前3世纪）：</strong> 国王让查王冠是否纯金→阿基米德泡澡看到水溢出→顿悟"浮力=排开水的重量"→光着身子大喊"Eureka!"
+</div>
+
+<div class="card">
+  <h2>💡 浮力的本质</h2>
+  <p><strong>产生原因：</strong> 上下表面液体压力差（下表面更深→压强更大→压力更大→向上推）<br>
+  <strong>测量方法：</strong> 称重法 F<sub>浮</sub> = G − F<sub>测</sub></p>
+</div>
+
+<div class="card">
+  <h2>⚖️ 阿基米德原理</h2>
+  <p style="text-align:center;font-size:1.1rem;margin:0.3rem 0;"><strong>F<sub>浮</sub> = G<sub>排</sub> = ρ<sub>液</sub> g V<sub>排</sub></strong></p>
+  <ul>
+    <li>浮力只与 <strong>ρ<sub>液</sub></strong>（液体密度）和 <strong>V<sub>排</sub></strong>（排开体积）有关</li>
+    <li>与物体形状、材质、浸没深度（完全浸没后）<strong>无关</strong></li>
+    <li>V<sub>排</sub> ≠ V<sub>物</sub>（漂浮时 V<sub>排</sub> &lt; V<sub>物</sub>）</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>⬆️⬇️ 浮沉条件</h2>
+  <table>
+    <tr><th>条件</th><th>运动</th><th>最终状态</th></tr>
+    <tr><td>F<sub>浮</sub> > G</td><td>上浮</td><td>漂浮（F<sub>浮</sub> = G，ρ<sub>物</sub>&lt;ρ<sub>液</sub>）</td></tr>
+    <tr><td>F<sub>浮</sub> = G</td><td>悬浮</td><td>悬浮（ρ<sub>物</sub> = ρ<sub>液</sub>）</td></tr>
+    <tr><td>F<sub>浮</sub> &lt; G</td><td>下沉</td><td>沉底（ρ<sub>物</sub> > ρ<sub>液</sub>）</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>🚢 应用：一句话</h2>
+  <ul>
+    <li><strong>轮船：</strong> 空心增大 V<sub>排</sub> → 增大 F<sub>浮</sub></li>
+    <li><strong>潜水艇：</strong> 注水/排水改变 G（F<sub>浮</sub>不变）</li>
+    <li><strong>热气球：</strong> 加热空气 → 平均 ρ 变小 → ρ<sub>平均</sub>&lt;ρ<sub>空气</sub></li>
+    <li><strong>盐水选种：</strong> 饱满种子 ρ 大→沉；干瘪种子 ρ 小→浮</li>
+  </ul>
+</div>
+
+<div class="warn">
+  <strong>🥷 秒杀技巧：轮船从江入海</strong><br>
+  浮力 <strong>不变</strong>（始终漂浮，F<sub>浮</sub>=G）→ ρ<sub>海</sub> > ρ<sub>江</sub> → V<sub>排</sub> 减小 → 船上浮一些<br>
+  考试每年都有人选"浮力增大"——记住：<strong>漂浮永远 F<sub>浮</sub>=G，G不变→F<sub>浮</sub>不变</strong>
+</div>
+
+<div class="box">
+  <strong>🧠 第一性原理追问：为什么钢铁能浮在水上？</strong><br>
+  单一逻辑链：<br>
+  做成空心 → 同样质量下占据更大空间 → 平均密度 ρ<sub>平均</sub> = m/V<sub>总</sub> 变小 → ρ<sub>平均</sub> &lt; ρ<sub>水</sub> → 漂浮。<br>
+  关键是"平均密度"——不是铁本身的密度，而是整艘船的密度（含内部空气）。
+</div>
+
+<p style="color:#94a3b8;font-size:0.8rem;margin-top:1rem;"><a href="../lessons/0008-浮力.html">📖 完整课程</a> · <a href="../index.html">← 总目录</a></p>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude 实用技巧 · 总目录</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#2563eb; --done:#16a34a; --current:#2563eb; --pending:#94a3b8; --border:#e2e8f0; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:860px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.7; }
+    h1 { font-size:2rem; margin-bottom:0.25rem; }
+    .sub { color:#64748b; font-size:0.95rem; margin-bottom:1.5rem; }
+    .section-label { font-size:0.85rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:0.05em; margin:1.5rem 0 0.5rem 0; padding-left:0.5rem; border-left:3px solid var(--accent); }
+    .principles { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin-bottom:2rem; }
+    .principle { border:1px solid var(--border); border-radius:8px; padding:0.75rem 1rem; background:#fff; }
+    .principle .badge { display:inline-block; padding:0.15rem 0.5rem; border-radius:4px; font-size:0.75rem; font-weight:700; color:#fff; margin-bottom:0.35rem; background:var(--accent); }
+    .principle p { font-size:0.8rem; color:#64748b; margin-bottom:0; }
+    .lessons { display:flex; flex-direction:column; gap:0.6rem; }
+    .lesson { display:flex; align-items:center; gap:0.75rem; padding:0.75rem 1rem; background:#fff; border:1px solid var(--border); border-radius:8px; text-decoration:none; color:var(--text); transition:all 0.15s; }
+    .lesson:hover { border-color:var(--accent); box-shadow:0 2px 8px rgba(37,99,235,0.1); }
+    .lesson .num { width:2rem; height:2rem; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.85rem; font-weight:700; flex-shrink:0; }
+    .lesson .num.done { background:var(--done); }
+    .lesson .info { flex:1; }
+    .lesson .info h3 { font-size:1rem; font-weight:600; }
+    .lesson .info p { font-size:0.85rem; color:#64748b; margin:0; }
+    .lesson .tag { font-size:0.7rem; padding:0.1rem 0.4rem; border-radius:3px; font-weight:600; flex-shrink:0; }
+    .tag.base { background:#dbeafe; color:#1d4ed8; }
+    .tag.tool { background:#ede9fe; color:#5b21b6; }
+    .tag.adv { background:#fef3c7; color:#92400e; }
+    .tag.harness { background:#dcfce7; color:#166534; }
+  </style>
+</head>
+<body>
+  <h1>Claude 实用技巧</h1>
+  <p class="sub">从会用到用好 · 让 AI 成为你的高效助手</p>
+
+  <div class="principles">
+    <div class="principle"><span class="badge">🎯 核心</span><p>明确需求再开口，Claude 才能给你最准的答案</p></div>
+    <div class="principle"><span class="badge">🧩 分步</span><p>复杂任务拆小步，每一步确认后再推进</p></div>
+    <div class="principle"><span class="badge">🔁 迭代</span><p>一次不满意不要紧，给反馈让 Claude 改进</p></div>
+  </div>
+
+  <div class="section-label">📖 基础篇 — 了解 Claude，学会对话</div>
+  <div class="lessons">
+    <a href="lessons/001-为什么Claude与众不同.html" class="lesson">
+      <span class="num done">1</span>
+      <div class="info"><h3>为什么 Claude 与众不同</h3><p>了解 Claude 的核心能力与适用场景</p></div>
+      <span class="tag base">基础</span>
+    </a>
+    <a href="lessons/002-写好第一条Prompt.html" class="lesson">
+      <span class="num done">2</span>
+      <div class="info"><h3>写好第一条 Prompt</h3><p>清晰表达需求的核心公式与技巧</p></div>
+      <span class="tag base">基础</span>
+    </a>
+    <a href="lessons/003-上下文窗口与项目管理.html" class="lesson">
+      <span class="num done">3</span>
+      <div class="info"><h3>上下文窗口与项目管理</h3><p>用好 CLAUDE.md 和项目知识，让 Claude 记住背景</p></div>
+      <span class="tag base">基础</span>
+    </a>
+    <a href="lessons/004-文件上传与分析.html" class="lesson">
+      <span class="num done">4</span>
+      <div class="info"><h3>文件上传与分析</h3><p>图片 PDF Word Excel 的全方位处理技巧</p></div>
+      <span class="tag base">基础</span>
+    </a>
+  </div>
+
+  <div class="section-label">🔧 工具篇 — 掌握命令，提效百倍</div>
+  <div class="lessons">
+    <a href="lessons/005-ClaudeCode高效开发.html" class="lesson">
+      <span class="num done">5</span>
+      <div class="info"><h3>Claude Code 高效开发</h3><p>终端里的 AI 编程助手，从项目到代码</p></div>
+      <span class="tag tool">工具</span>
+    </a>
+    <a href="lessons/006-Claude常用命令与高级功能.html" class="lesson">
+      <span class="num done">6</span>
+      <div class="info"><h3>Claude 常用命令与高级功能</h3><p>Plan / Review / Verify / Loop / Schedule 等全部命令</p></div>
+      <span class="tag tool">工具</span>
+    </a>
+    <a href="lessons/007-Subagent与Workflow实战详解.html" class="lesson">
+      <span class="num done">7</span>
+      <div class="info"><h3>Subagent 与 Workflow 实战详解</h3><p>8 个实战场景，手把手教你用好最强功能</p></div>
+      <span class="tag tool">工具</span>
+    </a>
+    <a href="lessons/008-Skills可复用技能包.html" class="lesson">
+      <span class="num done">8</span>
+      <div class="info"><h3>Skills 可复用技能包</h3><p>把常用工作流封装成可调用的技能</p></div>
+      <span class="tag tool">工具</span>
+    </a>
+    <a href="lessons/009-MCP扩展能力.html" class="lesson">
+      <span class="num done">9</span>
+      <div class="info"><h3>MCP 扩展能力</h3><p>让 Claude 连接外部工具和数据源</p></div>
+      <span class="tag tool">工具</span>
+    </a>
+  </div>
+
+  <div class="section-label">🚀 进阶篇 — 高级技巧，更准更强</div>
+  <div class="lessons">
+    <a href="lessons/010-Artifacts与预览.html" class="lesson">
+      <span class="num done">10</span>
+      <div class="info"><h3>Artifacts 与预览</h3><p>实时生成并预览代码/图表/文档</p></div>
+      <span class="tag adv">进阶</span>
+    </a>
+    <a href="lessons/011-高级Prompt模式.html" class="lesson">
+      <span class="num done">11</span>
+      <div class="info"><h3>高级 Prompt 模式</h3><p>思维链、角色扮演、格式化输出等进阶技巧</p></div>
+      <span class="tag adv">进阶</span>
+    </a>
+  </div>
+
+  <div class="section-label">🎯 Harness 篇 — 给 AI 套上缰绳</div>
+  <div class="lessons">
+    <a href="lessons/012-Harness工程体系.html" class="lesson">
+      <span class="num done">12</span>
+      <div class="info"><h3>Harness 工程体系</h3><p>5 条核心方法，从提示词工程到 Harness 工程</p></div>
+      <span class="tag harness">Harness</span>
+    </a>
+    <a href="lessons/013-Harness实施实战.html" class="lesson">
+      <span class="num done">13</span>
+      <div class="info"><h3>Harness 实施实战</h3><p>7 阶段完整操作记录，从 /init 到一键 Workflow 全套落地</p></div>
+      <span class="tag harness">Harness</span>
+    </a>
+    <a href="lessons/014-Superpowers实现Harness.html" class="lesson">
+      <span class="num">14</span>
+      <div class="info"><h3>Superpowers 实现 Harness</h3><p>用插件把 Harness 工程体系自动化，5 条方法一一对应落地</p></div>
+      <span class="tag harness">Harness</span>
+    </a>
+  </div>
+
+  <div style="margin-top:2rem;padding:1rem;background:#f0f9ff;border-radius:8px;font-size:0.85rem;color:#0369a1;">
+    💡 提示：课程分四篇，可按需跳着学。建议至少学完基础篇再看 Harness 篇。
+  </div>
+</body>
+</html>

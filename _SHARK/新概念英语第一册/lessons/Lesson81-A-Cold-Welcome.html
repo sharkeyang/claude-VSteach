@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 81 · A Cold Welcome</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#7c3aed; --muted:#64748b; --border:#e2e8f0; --quiz-c:#16a34a; --quiz-w:#dc2626; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:780px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.8; font-size:1rem; }
+    h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+    .sub { color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; }
+    h2 { font-size:1.15rem; margin:1.8rem 0 0.5rem; border-bottom:1px solid var(--border); padding-bottom:0.25rem; }
+    h3 { font-size:1rem; margin:1.2rem 0 0.3rem; color:var(--accent); }
+    p { margin-bottom:0.8rem; }
+    ul,ol { margin-bottom:0.8rem; padding-left:1.5rem; }
+    li { margin-bottom:0.2rem; }
+    .choice-box { background:linear-gradient(135deg,#1e293b,#334155); color:#e2e8f0; border-radius:10px; padding:1.2rem 1.5rem; margin:1rem 0; }
+    .choice-box .option { display:flex; gap:1rem; margin-top:0.8rem; }
+    .choice-box .option div { flex:1; background:rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem; text-align:center; cursor:pointer; transition:0.15s; }
+    .choice-box .option div:hover { background:rgba(255,255,255,0.2); }
+    .story-box { background:#fdf2e9; border:1px solid #e8d5c4; padding:1rem 1.2rem; margin:1rem 0; border-radius:8px; }
+    .story-box strong { color:#b45309; }
+    .box { background:#f5f0ff; border-left:4px solid var(--accent); padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .warn { background:#fef9ef; border-left:4px solid #f59e0b; padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .exp { background:#f8fafc; border:1px solid var(--border); padding:0.8rem 1rem; margin:0.8rem 0; border-radius:8px; }
+    .exp strong { color:var(--accent); }
+    code { background:#f1f5f9; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.9em; }
+    table { width:100%; border-collapse:collapse; margin:0.8rem 0; font-size:0.88rem; }
+    th,td { border:1px solid var(--border); padding:0.35rem 0.6rem; text-align:left; }
+    th { background:#f8fafc; font-weight:600; }
+    .dialogue { background:#fff; border:1px solid var(--border); border-radius:8px; padding:1rem; margin:0.8rem 0; }
+    .dialogue .line { padding:0.4rem 0; font-size:0.95rem; }
+    .dialogue .speaker { font-weight:600; color:var(--accent); }
+    .dialogue .zh { color:var(--muted); font-size:0.85rem; display:block; }
+    .quiz { border:2px solid var(--border); border-radius:10px; padding:1rem 1.25rem; margin:1.2rem 0; background:#fff; }
+    .quiz p { margin-bottom:0.4rem; font-weight:600; }
+    .qopts { display:flex; flex-direction:column; gap:0.4rem; margin:0.5rem 0; }
+    .qopts label { display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0.75rem; border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+    .qopts label:hover { background:#f1f5f9; }
+    .qopts input[type="radio"] { accent-color:var(--accent); }
+    .qbtn { background:var(--accent); color:#fff; border:none; padding:0.35rem 1rem; border-radius:6px; cursor:pointer; font-size:0.85rem; }
+    .qbtn:hover { opacity:0.9; }
+    .qfb { margin-top:0.5rem; padding:0.5rem 0.75rem; border-radius:6px; display:none; }
+    .qfb.ok { display:block; background:#f0fdf4; border:1px solid var(--quiz-c); }
+    .qfb.no { display:block; background:#fef2f2; border:1px solid var(--quiz-w); }
+    .take { margin:1.2rem 0; border:1px dashed var(--accent); border-radius:8px; padding:0.8rem 1rem; }
+    .ref { color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border); padding-top:1.2rem; margin-top:1.5rem; }
+    .ref a { color:var(--accent); }
+  </style>
+</head>
+<body>
+
+<h1>Lesson 81 · A Cold Welcome</h1>
+<p class="sub">新概念英语第一册 | 现在完成时 · 日常对话 · 情感表达</p>
+
+<!-- 选择 -->
+<div class="choice-box">
+  <p style="font-size:1.1rem;"><strong>🤔 你选：</strong></p>
+  <p style="font-size:0.95rem;">现在完成时——英语中最容易混淆的时态之一。<br>你想知道它为什么存在？还是直接学怎么用？</p>
+  <div class="option">
+    <div onclick="document.getElementById('origin').scrollIntoView({behavior:'smooth'})"><strong>🔍 重头发现</strong><br><span style="font-size:0.8rem;">从英语时态的"时间观"出发，理解完成时的底层逻辑</span></div>
+    <div onclick="document.getElementById('direct').scrollIntoView({behavior:'smooth'})"><strong>📖 直接学知识</strong><br><span style="font-size:0.8rem;">直接学课文、词汇、语法规则</span></div>
+  </div>
+</div>
+
+<!-- 起源 -->
+<div id="origin"></div>
+<h2>📜 起源：英语的"时间观"</h2>
+
+<div class="story-box">
+  <strong>🕐 为什么英语有"完成时"？</strong><br><br>
+  中文没有"完成时"这个概念。<br>
+  "我吃了饭"——这句话既可以说"我过去吃了饭"，也可以说"我现在已经吃完饭了"。<br>
+  中文靠<strong>语境</strong>来判断，不需要专门变格。<br><br>
+  但英语不一样。英语把"时间"看得非常清楚：<br>
+  <em>"这件事是过去发生的，还是跟现在有关？"</em><br><br>
+  这就是<strong>现在完成时</strong>诞生的原因——英语需要一种方式，来表达"过去的动作对现在造成的影响"。
+</div>
+
+<div class="story-box">
+  <strong>📚 莎士比亚的证据</strong><br><br>
+  莎士比亚在《罗密欧与朱丽叶》中写道：<br>
+  <em>"Tybalt, you rat-catcher, will you walk?"</em><br>
+  而在另一处：<br>
+  <em>"I have loved her more than words can tell."</em><br><br>
+  注意第二句：<strong>"I have loved"</strong>——用了现在完成时。<br>
+  意思是："我从过去到现在一直在爱她"——这个爱<strong>还没有结束</strong>。<br><br>
+  如果只是说 "I loved her"（过去时），意思就变了——可能意味着爱已经结束了。<br><br>
+  <strong>这就是完成时和过去时的本质区别。</strong>
+</div>
+
+<div class="box">
+  <strong>🧠 第一性原理：完成时的核心逻辑</strong><br><br>
+  现在完成时 = 过去的时间点 + 现在的影响<br><br>
+  问自己两个问题：<br>
+  1. 这个动作发生在<strong>什么时候</strong>？（过去）<br>
+  2. 这个动作<strong>跟现在有什么关系</strong>？（已经完成了、影响了现在、结果还在）<br><br>
+  如果两个答案都有——就是现在完成时。
+</div>
+
+<div id="direct"></div>
+
+<!-- 课文 -->
+<h2>📖 课文：A Cold Welcome</h2>
+
+<div class="dialogue">
+  <div class="line"><span class="speaker">Sally:</span> I've just arrived home, Mum.<span class="zh">（我刚刚到家，妈妈。）</span></div>
+  <div class="line"><span class="speaker">Mother:</span> Have you? Where's the cat?<span class="zh">（是吗？猫在哪里？）</span></div>
+  <div class="line"><span class="speaker">Sally:</span> I don't know.<span class="zh">（我不知道。）</span></div>
+  <div class="line"><span class="speaker">Mother:</span> That's odd. It's usually in the garden.<span class="zh">（真奇怪。它通常在花园里。）</span></div>
+  <div class="line"><span class="speaker">Sally:</span> Well, it's not there now.<span class="zh">（好吧，现在不在那里。）</span></div>
+  <div class="line"><span class="speaker">Mother:</span> Perhaps it's still in the bedroom.<span class="zh">（也许它还在卧室里。）</span></div>
+</div>
+
+<!-- 词汇 -->
+<h2>📝 核心词汇</h2>
+
+<div class="exp">
+  <table>
+    <tr><th>单词</th><th>音标</th><th>词性</th><th>意思</th><th>例句</th></tr>
+    <tr><td><strong>arrive</strong></td><td>/əˈraɪv/</td><td>v.</td><td>到达</td><td>I've just <b>arrived</b> home.</td></tr>
+    <tr><td><strong>usually</strong></td><td>/ˈjuːʒuəli/</td><td>adv.</td><td>通常</td><td>It's <b>usually</b> in the garden.</td></tr>
+    <tr><td><strong>odd</strong></td><td>/ɒd/</td><td>adj.</td><td>奇怪的</td><td>That's <b>odd</b>.</td></tr>
+    <tr><td><strong>perhaps</strong></td><td>/pərˈhæps/</td><td>adv.</td><td>也许</td><td><b>Perhaps</b> it's in the bedroom.</td></tr>
+    <tr><td><strong>garden</strong></td><td>/ˈɡɑːdən/</td><td>n.</td><td>花园</td><td>The cat is in the <b>garden</b>.</td></tr>
+    <tr><td><strong>bedroom</strong></td><td>/ˈbedruːm/</td><td>n.</td><td>卧室</td><td>It's in the <b>bedroom</b>.</td></tr>
+  </table>
+</div>
+
+<!-- 语法：现在完成时 -->
+<h2>① 现在完成时（Present Perfect）</h2>
+
+<div class="exp">
+  <p style="text-align:center;font-size:1.3rem;margin:0.8rem 0;"><strong>have/has + 过去分词</strong></p>
+
+  <table>
+    <tr><th>人称</th><th>肯定句</th><th>否定句</th><th>疑问句</th></tr>
+    <tr><td>I / You / We / They</td><td>have + done</td><td>have not + done</td><td>Have + you + done?</td></tr>
+    <tr><td>He / She / It</td><td>has + done</td><td>has not + done</td><td>Has + he + done?</td></tr>
+  </table>
+
+  <div style="margin-top:0.5rem;">
+    <p><strong>课文中的例子：</strong></p>
+    <p>"I've just arrived home" = I have arrived home（我到家了）</p>
+    <p>"Have you?" = Have you arrived?（是吗？）</p>
+  </div>
+</div>
+
+<div class="warn">
+  <strong>⚠️ 过去时 vs 现在完成时——最关键的区别：</strong><br><br>
+  <table>
+    <tr><th></th><th>过去时</th><th>现在完成时</th></tr>
+    <tr><td>例句</td><td>I lost my key yesterday.</td><td>I've lost my key.</td></tr>
+    <tr><td>时间</td><td>明确的过去时间（yesterday）</td><td>不强调具体时间</td></tr>
+    <tr><td>与现在的关系</td><td>已经结束了，与现在无关</td><td>结果还在（现在没钥匙）</td></tr>
+    <tr><td>中文感觉</td><td>"我昨天丢了钥匙"</td><td>"我钥匙丢了（所以现在进不去）"</td></tr>
+  </table>
+</div>
+
+<div class="box">
+  <strong>🧠 一句话记住：</strong><br>
+  过去时 = 讲过去的故事<br>
+  现在完成时 = 讲过去的动作<strong>对现在的影响</strong>
+</div>
+
+<!-- 常用时间词 -->
+<h2>② 现在完成时的信号词</h2>
+
+<div class="exp">
+  <table>
+    <tr><th>时间词</th><th>含义</th><th>例子</th></tr>
+    <tr><td><strong>just</strong></td><td>刚刚</td><td>I've <b>just</b> arrived.（我刚刚到。）</td></tr>
+    <tr><td><strong>already</strong></td><td>已经</td><td>I've <b>already</b> finished.（我已经做完了。）</td></tr>
+    <tr><td><strong>yet</strong></td><td>还（没）</td><td>Have you finished <b>yet</b>?（你做完了吗？）</td></tr>
+    <tr><td><strong>ever</strong></td><td>曾经</td><td>Have you <b>ever</b> been to Paris?</td></tr>
+    <tr><td><strong>never</strong></td><td>从未</td><td>I've <b>never</b> been there.</td></tr>
+    <tr><td><strong>since + 时间点</strong></td><td>自从</td><td>I've known her since 2010.</td></tr>
+    <tr><td><strong>for + 时间段</strong></td><td>持续了</td><td>I've lived here for 3 years.</td></tr>
+  </table>
+</div>
+
+<div class="box">
+  <strong>💡 重点记忆：</strong><br>
+  <strong>just</strong> 放在 have/has 和过去分词之间 → I've <u>just</u> arrived<br>
+  <strong>yet</strong> 放在句末 → Have you finished <u>yet</u>?<br>
+  <strong>already</strong> 放句末或中间 → I've already eaten / I've already eaten it.
+</div>
+
+<!-- 测试 -->
+<h2>📝 自我测试</h2>
+
+<div class="quiz">
+  <p>① "I've just arrived" 中的 "have just arrived" 是什么时态？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q1" value="A"> A. 一般过去时</label>
+    <label><input type="radio" name="q1" value="B"> B. 现在完成时</label>
+    <label><input type="radio" name="q1" value="C"> C. 现在进行时</label>
+    <label><input type="radio" name="q1" value="D"> D. 一般将来时</label>
+  </div>
+  <button class="qbtn" onclick="cq(1,'B','✅ "have + 过去分词" 是现在完成时的标志。just 是现在完成时的常用信号词。')">提交</button>
+  <div id="fb1" class="qfb"></div>
+</div>
+
+<div class="quiz">
+  <p>② "I lost my key yesterday" 和 "I've lost my key" 的区别是？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q2" value="A"> A. 没有区别</label>
+    <label><input type="radio" name="q2" value="B"> B. 前者强调过去，后者强调现在的影响</label>
+    <label><input type="radio" name="q2" value="C"> C. 前者是正确的，后者是错误的</label>
+    <label><input type="radio" name="q2" value="D"> D. 后者用于正式场合</label>
+  </div>
+  <button class="qbtn" onclick="cq(2,'B','✅ 过去时 = 讲过去的故事（yesterday）；现在完成时 = 讲过去动作对现在的影响（所以现在没钥匙）。')">提交</button>
+  <div id="fb2" class="qfb"></div>
+</div>
+
+<div class="quiz">
+  <p>③ 以下哪个句子语法正确？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q3" value="A"> A. I have arrived just.</label>
+    <label><input type="radio" name="q3" value="B"> B. I have just arrived.</label>
+    <label><input type="radio" name="q3" value="C"> C. I just have arrived.</label>
+    <label><input type="radio" name="q3" value="D"> D. Just I have arrived.</label>
+  </div>
+  <button class="qbtn" onclick="cq(3,'B','✅ just 必须放在 have/has 和过去分词之间。正确格式：I have just + 过去分词。')">提交</button>
+  <div id="fb3" class="qfb"></div>
+</div>
+
+<div class="quiz">
+  <p>④ "Perhaps it's still in the bedroom" 中的 perhaps 是什么意思？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q4" value="A"> A. 肯定</label>
+    <label><input type="radio" name="q4" value="B"> B. 也许</label>
+    <label><input type="radio" name="q4" value="C"> C. 当然</label>
+    <label><input type="radio" name="q4" value="D"> D. 不可能</label>
+  </div>
+  <button class="qbtn" onclick="cq(4,'B','✅ Perhaps = 也许、可能。表示不确定的推测。')">提交</button>
+  <div id="fb4" class="qfb"></div>
+</div>
+
+<div class="quiz">
+  <p>⑤ "That's odd" 的意思是？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q5" value="A"> A. 那很奇怪</label>
+    <label><input type="radio" name="q5" value="B"> B. 那是奇数</label>
+    <label><input type="radio" name="q5" value="C"> C. 那是好的</label>
+    <label><input type="radio" name="q5" value="D"> D. 那是坏的</label>
+  </div>
+  <button class="qbtn" onclick="cq(5,'A','✅ Odd = 奇怪的。That\'s odd = 那真奇怪。odd 也有"奇数"的意思，但这里用的是"奇怪的"。')">提交</button>
+  <div id="fb5" class="qfb"></div>
+</div>
+
+<!-- 费曼测试 -->
+<h2>🗣️ 费曼测试——讲给不懂英语的人听</h2>
+
+<div class="take">
+  <p><strong>用最简单的语言讲清楚：</strong></p>
+  <ol>
+    <li>"现在完成时和过去时有什么区别？"——用"钥匙丢了"的例子来解释</li>
+    <li>"just 在句子中的位置？"——用画图的方式解释（have + just + done）</li>
+    <li>"课文中 Why did Mother say 'Have you?'?"——用日常对话解释省略句</li>
+  </ol>
+</div>
+
+<!-- 框架 -->
+<h2>📋 本课知识框架</h2>
+
+<div style="background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:1rem;margin:1rem 0;">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+  <div style="padding:0.3rem 0;"><strong>📖 课文</strong><br>A Cold Welcome<br>回家找猫的日常对话<br>just / usually / perhaps</div>
+  <div style="padding:0.3rem 0;"><strong>📐 语法</strong><br>现在完成时<br>have/has + 过去分词<br>vs 一般过去时</div>
+  <div style="padding:0.3rem 0;"><strong>📝 词汇</strong><br>arrive 到达<br>usually 通常<br>odd 奇怪的<br>perhaps 也许</div>
+  <div style="padding:0.3rem 0;"><strong>💡 重点</strong><br>just 的位置<br>yet 的用法<br>省略句 Have you?<br>since vs for</div>
+</div>
+</div>
+
+<div class="ref">
+  <p>📚 《新概念英语第一册》Lesson 81 | <a href="../index.html">← 返回总目录</a></p>
+</div>
+
+<script>
+function cq(n, ans, msg) {
+  const sel = document.querySelector('input[name="q'+n+'"]:checked');
+  const fb = document.getElementById('fb'+n);
+  if (!sel) { fb.className = 'qfb no'; fb.innerHTML = '请选择一个答案。'; return; }
+  if (sel.value === ans) { fb.className = 'qfb ok'; fb.innerHTML = msg; }
+  else { fb.className = 'qfb no'; fb.innerHTML = '❌ 答案在课文中，再找找看。'; }
+}
+</script>
+
+</body>
+</html>

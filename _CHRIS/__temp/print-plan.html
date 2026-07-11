@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Chris 暑假计划 · A4打印版</title>
+<style>
+  @page { size: A4; margin: 15mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #1a1a2e;
+    line-height: 1.5;
+    font-size: 11pt;
+  }
+  .page { max-width: 180mm; margin: 0 auto; }
+  h1 { font-size: 16pt; text-align: center; margin-bottom: 4pt; }
+  .date { text-align: center; font-size: 10pt; color: #666; margin-bottom: 10pt; }
+
+  /* 作息表 */
+  table { width: 100%; border-collapse: collapse; font-size: 9pt; margin-bottom: 10pt; }
+  th, td { border: 1px solid #ccc; padding: 3pt 4pt; text-align: left; }
+  th { background: #4a90d9; color: white; font-weight: 600; font-size: 8.5pt; }
+  .time { white-space: nowrap; width: 65pt; font-weight: 600; }
+  .emoji { font-size: 10pt; }
+  .check { width: 30pt; text-align: center; }
+
+  /* 今日任务 */
+  .section-title {
+    font-size: 12pt; font-weight: 700; padding: 6pt 0 3pt 0;
+    border-bottom: 2px solid #4a90d9; margin-bottom: 6pt;
+  }
+  .task-grid { display: flex; flex-wrap: wrap; gap: 3pt; margin-bottom: 8pt; }
+  .task-item {
+    border: 1px solid #ddd; border-radius: 4pt; padding: 4pt 6pt;
+    font-size: 8.5pt; width: 49%; display: flex; align-items: flex-start; gap: 4pt;
+  }
+  .task-item .id { font-weight: 700; color: #4a90d9; min-width: 32pt; }
+  .task-item .check-box { min-width: 16pt; height: 14pt; border: 1.5px solid #999; border-radius: 2pt; margin-top: 1pt; }
+
+  /* 验收速查 */
+  .badge { display: inline-block; padding: 1pt 4pt; border-radius: 3pt; font-size: 7.5pt; color: #fff; margin-right: 2pt; }
+  .badge.photo { background: #27ae60; }
+  .badge.voice { background: #3498db; }
+  .badge.feynman { background: #e67e22; }
+  .badge.observe { background: #95a5a6; }
+
+  .footer { font-size: 8pt; color: #999; text-align: center; margin-top: 10pt; border-top: 1px solid #eee; padding-top: 4pt; }
+
+  @media print {
+    body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .task-item { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>🏖️ Chris 暑假计划</h1>
+<div class="date">2026年7月7日 周二 · 第2天</div>
+
+<!-- 作息表 -->
+<div class="section-title">⏰ 每日作息</div>
+<table>
+<tr>
+  <th>时间</th><th>时长</th><th>内容</th><th>验收方式</th><th style="width:20pt">✅</th>
+</tr>
+<tr><td class="time">6:30-6:50</td><td>20min</td><td>起床、洗漱</td><td>—</td><td></td></tr>
+<tr><td class="time">6:50-8:00</td><td>70min</td><td>🏀 篮球训练</td><td><span class="badge observe">家长观察</span></td><td></td></tr>
+<tr><td class="time">8:00-8:30</td><td>30min</td><td>🍽️ 早餐</td><td>—</td><td></td></tr>
+<tr><td class="time">8:30-11:00</td><td>150min</td><td>📚 学而思秘籍（含休息）</td><td><span class="badge photo">拍照→数学考试官</span></td><td></td></tr>
+<tr><td class="time">11:00-11:30</td><td>30min</td><td>✍️ 练字第1次</td><td><span class="badge photo">拍照→练字考试官</span></td><td></td></tr>
+<tr><td class="time">11:30-12:30</td><td>60min</td><td>🏀 篮球训练</td><td><span class="badge observe">家长观察</span></td><td></td></tr>
+<tr><td class="time">12:30-13:00</td><td>30min</td><td>🍽️ 午餐</td><td>—</td><td></td></tr>
+<tr><td class="time">13:00-13:45</td><td>45min</td><td>📖 Reading Explorer</td><td><span class="badge feynman">费曼复述3句</span></td><td></td></tr>
+<tr><td class="time">13:45-14:00</td><td>15min</td><td>休息</td><td>—</td><td></td></tr>
+<tr><td class="time">14:00-15:00</td><td>60min</td><td>📖 古文背诵</td><td><span class="badge voice">语音→古文考试官</span></td><td></td></tr>
+<tr><td class="time">15:00-15:30</td><td>30min</td><td>✍️ 练字第2次</td><td><span class="badge photo">拍照→练字考试官</span></td><td></td></tr>
+<tr><td class="time">15:30-16:30</td><td>60min</td><td>📘 NC3复习 + 语文阅读</td><td><span class="badge voice">语音→新概念考试官</span></td><td></td></tr>
+<tr><td class="time">16:30-17:00</td><td>30min</td><td>自由学习（编程/阅读）</td><td><span class="badge observe">家长观察</span></td><td></td></tr>
+<tr><td class="time">17:00-19:00</td><td>120min</td><td>🏓 乒乓球/散步/户外活动</td><td><span class="badge observe">家长观察</span></td><td></td></tr>
+<tr><td class="time">19:00-19:30</td><td>30min</td><td>🍽️ 晚餐</td><td>—</td><td></td></tr>
+<tr><td class="time">19:30-20:30</td><td>60min</td><td>🗣️ 英语发音/口语训练</td><td><span class="badge voice">录音→发音考试官</span></td><td></td></tr>
+<tr><td class="time">20:30-20:45</td><td>15min</td><td>洗漱</td><td>—</td><td></td></tr>
+<tr><td class="time">20:45</td><td></td><td>💤 睡觉</td><td>—</td><td></td></tr>
+</table>
+
+<!-- 今日任务清单 -->
+<div class="section-title">📋 今日任务（7/7 周二）</div>
+<div class="task-grid">
+  <div class="task-item">
+    <span class="check-box"></span>
+    <div><span class="id">D2C1</span> 🏀 6:50-8:00 篮球训练</div>
+  </div>
+  <div class="task-item">
+    <span class="check-box"></span>
+    <div><span class="id">D2C2</span> 📚 8:30-11:00 讲12必胜策略+讲13因数倍数</div>
+  </div>
+  <div class="task-item">
+    <span class="check-box"></span>
+    <div><span class="id">D2C3</span> ✍️ 11:00-11:30 练字第1次</div>
+  </div>
+  <div class="task-item">
+    <span class="check-box"></span>
+    <div><span class="id">D2C4</span> 🏀 11:30-12:30 篮球训练</div>
+  </div>
+  <div class="task-item">
+    <span class="check-box"></span>
+    <div><span class="id">D2C5</span> 📖 13:00-13:45 RE2 Unit 4A</div>
+  </div>
+  <div class="task-item">
+    <span class="check-box"></span>
+    <div><span class="id">D2C6</span> 📖 14:00-15:00 古文《论语》六章</div>
+  </div>
+  <div class="task-item">
+    <span class="check-box"></span>
+    <div><span class="id">D2C7</span> ✍️ 15:00-15:30 练字第2次</div>
+  </div>
+  <div class="task-item">
+    <span class="check-box"></span>
+    <div><span class="id">D2C8</span> 📘 15:30-16:30 NC3 L6 + 语文阅读</div>
+  </div>
+  <div class="task-item">
+    <span class="check-box"></span>
+    <div><span class="id">D2C9</span> 📖 16:30-17:00 自由学习</div>
+  </div>
+  <div class="task-item">
+    <span class="check-box"></span>
+    <div><span class="id">D2C10</span> 🏓 17:00-19:00 乒乓球/散步</div>
+  </div>
+  <div class="task-item">
+    <span class="check-box"></span>
+    <div><span class="id">D2C11</span> 🗣️ 19:30-20:30 英语发音训练</div>
+  </div>
+</div>
+
+<!-- 验收速查 -->
+<div class="section-title">🔍 验收方式速查</div>
+<table>
+<tr><th style="width:80pt">科目</th><th style="width:100pt">验收方式</th><th>通过标准</th></tr>
+<tr><td>学而思</td><td>📷 拍照→Chris-数学-考试官</td><td>概念理解≥4分</td></tr>
+<tr><td>练字</td><td>📷 拍照→Chris-练字-考试官</td><td>中线对齐+大小≥3分</td></tr>
+<tr><td>古文</td><td>🎙️ 语音→Chris-古文-考试官</td><td>背诵准确度≥4分</td></tr>
+<tr><td>NC3</td><td>🎙️ 语音→Chris-新概念背诵-考试官</td><td>单词准确≥4分</td></tr>
+<tr><td>英语发音</td><td>🎙️ 录音→Chris-英语发音-考试官</td><td>综合评分≥3分</td></tr>
+<tr><td>RE</td><td>💬 费曼法：英语复述3句</td><td>逻辑清晰即过</td></tr>
+<tr><td>篮球/乒乓球</td><td>👀 家长观察</td><td>技能+态度</td></tr>
+</table>
+
+<!-- 费曼提问 -->
+<div class="section-title">🎯 费曼提问</div>
+<table>
+<tr><th style="width:20pt">科</th><th>问题</th><th style="width:20pt">✓</th></tr>
+<tr><td>GD</td><td>《论语》六章里你最喜欢哪一句？为什么？</td><td></td></tr>
+<tr><td>SX</td><td>必胜策略的关键是什么？倒推法怎么用？</td><td></td></tr>
+<tr><td>RE</td><td>今天读的文章讲的什么？用英语说三句</td><td></td></tr>
+</table>
+
+<div class="footer">Chris 暑假计划 · A4打印版 · 每日更新</div>
+</div>
+</body>
+</html>

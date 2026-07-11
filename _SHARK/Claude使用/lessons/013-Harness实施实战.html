@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第13课 · Harness 实施实战 — 用命令搭建工程体系</title><style>body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:800px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}h1{font-size:1.6rem;border-left:4px solid #2563eb;padding-left:1rem;margin-bottom:1.5rem}h2{font-size:1.2rem;margin-top:2rem;margin-bottom:0.5rem;color:#2563eb}h3{font-size:1.05rem;margin-top:1.5rem;margin-bottom:0.3rem;color:#1e293b}p{margin-bottom:1rem}ul,ol{margin-bottom:1rem;padding-left:1.5rem}li{margin-bottom:0.3rem}.tip{background:#f0f9ff;border-left:3px solid #2563eb;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}.highlight{background:#f0fdf4;border-left:3px solid #16a34a;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}code{background:#f1f5f9;padding:0.15rem 0.4rem;border-radius:3px;font-size:0.85rem}table{width:100%;border-collapse:collapse;margin:1rem 0}th,td{border:1px solid #e2e8f0;padding:0.5rem 0.75rem;text-align:left;font-size:0.9rem}th{background:#f1f5f9;font-weight:600}.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}.nav a{color:#2563eb;text-decoration:none;font-weight:600}.cmd{background:#1e293b;color:#e2e8f0;padding:1rem;border-radius:8px;margin:1rem 0;font-size:0.9rem;overflow-x:auto}.cmd .say{color:#fbbf24;font-weight:700}.cmd .do{color:#a78bfa;margin-top:0.3rem;white-space:pre-wrap;font-family:monospace}.cmd .out{color:#34d399;margin-top:0.2rem;font-size:0.85rem;white-space:pre-wrap;font-family:monospace}.phase{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin:1.5rem 0}.phase .title{font-weight:700;color:#2563eb;font-size:1rem;margin-bottom:0.5rem;border-bottom:2px solid #2563eb;padding-bottom:0.3rem}.phase .time{font-size:0.8rem;color:#64748b;margin-left:0.5rem;font-weight:400}.tag-do{display:inline-block;background:#dcfce7;color:#166534;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.7rem;font-weight:700}</style></head><body>
+<h1>第 13 课 · Harness 实施实战</h1>
+<p style="color:#64748b;font-size:0.95rem;">用 Claude Code 命令，从头搭建 Harness 工程体系 · 完整操作实录</p>
+
+<p>前面 12 课学了所有命令和功能，这一课把它们串起来——<strong>实操 Harness 五条方法</strong>，从零开始给一个项目套上"缰绳"。</p>
+
+<p>我们以一个新项目 <code>D:\@VSwork\demo-project</code> 为例，模拟完整的实施过程。你只需要复制里面的"你说"内容，换成你自己的项目路径即可。</p>
+
+<div class="highlight">
+<strong>🎯 本课目标：</strong>
+学完之后你不仅能理解 Harness 是什么，还知道具体每一步该跟 Claude 说什么命令。
+</div>
+
+<h2>实施总览</h2>
+<table>
+  <tr><th>阶段</th><th>操作</th><th>对应方法</th><th>耗时</th></tr>
+  <tr><td>① 初始化</td><td>/init 生成 CLAUDE.md</td><td>方法一：规则文件</td><td>2 分钟</td></tr>
+  <tr><td>② 权限配置</td><td>创建 settings.json</td><td>方法三：工具能力</td><td>3 分钟</td></tr>
+  <tr><td>③ 创建验证</td><td>创建 _test/run_verify.py</td><td>方法四：自动验证</td><td>5 分钟</td></tr>
+  <tr><td>④ Plan 模式开发</td><td>/plan → 确认 → 编码</td><td>方法二：先方案后编码</td><td>贯穿全程</td></tr>
+  <tr><td>⑤ pre-commit 钩子</td><td>创建 git hooks</td><td>方法四：自动验证</td><td>2 分钟</td></tr>
+  <tr><td>⑥ MCP + Skills</td><td>配置 MCP、创建 Skill</td><td>方法三：工具能力</td><td>10 分钟</td></tr>
+  <tr><td>⑦ 提交存档</td><td>git commit + 更新文档</td><td>方法五：文档+Git</td><td>贯穿全程</td></tr>
+</table>
+
+<hr style="margin:2rem 0;border:none;border-top:2px dashed #e2e8f0;">
+
+<h2>阶段一：初始化项目 — /init 生成 CLAUDE.md</h2>
+
+<div class="phase">
+  <div class="title">📋 步骤 1.1：创建项目并初始化规则 <span class="time">2 分钟</span></div>
+
+  <div class="cmd">
+    <div class="say">你说：</div>
+    <div class="do">我已经创建了 demo-project 目录，里面有一个 main.py 文件。<br>帮我运行 /init，为这个项目生成一份 CLAUDE.md。</div>
+    <div class="out">→ Claude 扫描目录，分析项目结构<br>→ 自动生成 CLAUDE.md，包含：项目简介、技术栈、关键文件说明</div>
+  </div>
+
+  <div class="cmd">
+    <div class="say">你说（继续完善）：</div>
+    <div class="do">在 CLAUDE.md 末尾追加 AI 开发规则章节，包括：<br><br>## AI 开发规则<br><br>### 工作流程<br>1. 先方案后编码 — 任何改动前先口头确认方案<br>2. 重大变更使用 Plan 模式<br><br>### 技术边界<br>- Python 3.11，标准库优先<br>- 所有路径使用绝对路径 D:\@VSwork\demo-project\<br><br>### 代码规范<br>- type hints + 函数注释<br>- 不留下注释掉的代码和 print 调试语句<br><br>### 质量管理<br>- 修改后运行 python _test/run_verify.py<br><br>### 版本控制<br>- 每功能一提交，格式：feat:/fix:/docs:</div>
+    <div class="out">→ CLAUDE.md 已更新，包含 AI 开发规则章节 ✅</div>
+  </div>
+</div>
+
+<div class="highlight">
+<strong>✅ 方法一完成：</strong>规则文件已创建，以后每次进入项目 Claude 自动读取，知道边界在哪。
+</div>
+
+<hr style="margin:2rem 0;border:none;border-top:2px dashed #e2e8f0;">
+
+<h2>阶段二：权限配置 — 创建 settings.json</h2>
+
+<div class="phase">
+  <div class="title">📋 步骤 2.1：创建 .claude/settings.json <span class="time">3 分钟</span></div>
+
+  <div class="cmd">
+    <div class="say">你说：</div>
+    <div class="do">帮我创建项目的 .claude/settings.json：<br><br>1. 权限白名单：cd, python, pip, git, mkdir 等常用操作<br>2. hooks：Bash 命令前自动 cd 到项目目录<br>3. allowWarningReminders: false</div>
+    <div class="out">→ settings.json 已创建 ✅<br>→ 以后运行 Bash 命令自动进入项目目录，权限操作不再频繁弹窗</div>
+  </div>
+</div>
+
+<div class="highlight">
+<strong>✅ 方法三（部分）完成：</strong>权限配置到位，工具使用不再被打断。
+</div>
+
+<hr style="margin:2rem 0;border:none;border-top:2px dashed #e2e8f0;">
+
+<h2>阶段三：创建验证脚本 — _test/run_verify.py</h2>
+
+<div class="phase">
+  <div class="title">📋 步骤 3.1：创建验证脚本 <span class="time">5 分钟</span></div>
+
+  <div class="cmd">
+    <div class="say">你说：</div>
+    <div class="do">帮我创建 _test/run_verify.py，需要做到：<br><br>1. Python 语法检查 — 扫描所有 .py 文件<br>2. 文件完整性检查 — 检查 CLAUDE.md、settings.json、main.py 是否存在<br>3. 输出格式用 [PASS]/[FAIL]，不用 emoji（Windows GBK 兼容）<br>4. 全部通过返回 0，有失败返回 1</div>
+    <div class="out">→ _test/run_verify.py 已创建 ✅</div>
+  </div>
+
+  <div class="cmd">
+    <div class="say">你说（测试验证）：</div>
+    <div class="do">运行 python _test/run_verify.py 看看结果</div>
+    <div class="out">→ [PASS] All checks passed! ✅</div>
+  </div>
+</div>
+
+<div class="highlight">
+<strong>✅ 方法四（部分）完成：</strong>验证脚本就位，改完代码就能一键检查。
+</div>
+
+<hr style="margin:2rem 0;border:none;border-top:2px dashed #e2e8f0;">
+
+<h2>阶段四：Plan 模式开发 — 先方案后编码</h2>
+
+<div class="phase">
+  <div class="title">📋 步骤 4.1：用 Plan 模式开发新功能 <span class="time">贯穿全程</span></div>
+
+  <div class="cmd">
+    <div class="say">你说（新需求来了）：</div>
+    <div class="do">/plan 我想在 main.py 中加一个函数，从 CSV 文件读取数据并计算平均值。出个方案让我看看。</div>
+    <div class="out">→ Claude 输出方案：<br>  - 修改 main.py，新增 read_csv() 和 calc_average() 两个函数<br>  - 使用 csv 标准库，不引入第三方依赖<br>  - 错误处理：文件不存在、空文件、非数字值<br>  - 不影响现有功能</div>
+  </div>
+
+  <div class="cmd">
+    <div class="say">你说（确认方案）：</div>
+    <div class="do">方案可以，去掉 calc_average，改成 read_csv 返回所有数据，平均值在外面算。开始编码。</div>
+    <div class="out">→ Claude 按照确认后的方案编码 ✅<br>→ 没有多做功能，没有做不需要的 calc_average</div>
+  </div>
+
+  <div class="cmd">
+    <div class="say">你说（验证）：</div>
+    <div class="do">跑一下验证，确认没问题</div>
+    <div class="out">→ python _test/run_verify.py → [PASS] ✅</div>
+  </div>
+</div>
+
+<div class="highlight">
+<strong>✅ 方法二完成：</strong>先方案后编码成为工作习惯，避免方向错了返工。
+</div>
+
+<hr style="margin:2rem 0;border:none;border-top:2px dashed #e2e8f0;">
+
+<h2>阶段五：pre-commit 钩子 — 提交前自动验证</h2>
+
+<div class="phase">
+  <div class="title">📋 步骤 5.1：创建 git pre-commit 钩子 <span class="time">2 分钟</span></div>
+
+  <div class="cmd">
+    <div class="say">你说：</div>
+    <div class="do">帮我创建 .git/hooks/pre-commit：<br><br>1. 提交前自动运行 python _test/run_verify.py<br>2. 验证不通过则 exit 1 阻止提交<br>3. 显示清晰的错误信息，提示可用 --no-verify 跳过</div>
+    <div class="out">→ pre-commit 已创建 ✅</div>
+  </div>
+
+  <div class="cmd">
+    <div class="say">你说（测试钩子）：</div>
+    <div class="do">故意加个语法错误，试试 git commit 会不会被阻止</div>
+    <div class="out">→ [FAIL] 验证失败，提交已阻止！<br>→ 修复语法错误后再提交：通过 ✅</div>
+  </div>
+</div>
+
+<div class="highlight">
+<strong>✅ 方法四完整：</strong>自动验证 + pre-commit 钩子，错误代码进不了仓库。
+</div>
+
+<hr style="margin:2rem 0;border:none;border-top:2px dashed #e2e8f0;">
+
+<h2>阶段六：MCP + Skills 配齐工具</h2>
+
+<div class="phase">
+  <div class="title">📋 步骤 6.1：配置 MCP 服务器 <span class="time">5 分钟</span></div>
+
+  <div class="cmd">
+    <div class="say">你说：</div>
+    <div class="do">在 settings.json 的 mcpServers 中添加两个 MCP 服务器：<br><br>1. filesystem：可访问项目目录和 D:/zdata/ 数据目录<br>2. sequential-thinking：用于复杂问题分析</div>
+    <div class="out">→ MCP 已配置 ✅<br>→ Claude 现在可以直接操作文件系统、进行结构化推理</div>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="title">📋 步骤 6.2：创建 Skill 封装工作流 <span class="time">5 分钟</span></div>
+
+  <div class="cmd">
+    <div class="say">你说：</div>
+    <div class="do">帮我创建一个 Skill，叫 data-check，功能是：<br><br>1. 输入：一个数据目录路径<br>2. 检查该目录下所有 CSV 文件的行数、最新日期<br>3. 输出：一个数据质量报告<br>4. 放在 .claude/skills/data-check/SKILL.md</div>
+    <div class="out">→ Skill 已创建 ✅<br>→ 以后只需要说"检查一下 D:/zdata/dataAK中股/ 的数据质量"就能自动触发</div>
+  </div>
+</div>
+
+<div class="highlight">
+<strong>✅ 方法三完整：</strong>MCP 扩展能力边界，Skills 固化工作流，Claude 不再只能聊天。
+</div>
+
+<hr style="margin:2rem 0;border:none;border-top:2px dashed #e2e8f0;">
+
+<h2>阶段七：提交存档 — 每功能一提交</h2>
+
+<div class="phase">
+  <div class="title">📋 步骤 7.1：完成功能后提交代码 <span class="time">贯穿全程</span></div>
+
+  <div class="cmd">
+    <div class="say">你说（完成一个功能后）：</div>
+    <div class="do">功能完成了，帮我：<br><br>1. 运行验证脚本确认没问题<br>2. 更新 CHANGELOG.md 或 README.md<br>3. git add + git commit，提交信息用 feat: 加了CSV读取功能<br>4. 不要 push</div>
+    <div class="out">→ [PASS] 验证通过<br>→ README.md 已更新<br>→ Committed as "feat: 加了CSV读取功能" ✅</div>
+  </div>
+</div>
+
+<div class="highlight">
+<strong>✅ 方法五完成：</strong>每功能一提交，随时可回滚，项目不失控。
+</div>
+
+<hr style="margin:2rem 0;border:none;border-top:2px dashed #e2e8f0;">
+
+<h2>完整实施流程（一键启动 Workflow 🚀）</h2>
+
+<p>如果你想一次搞定，直接用 Workflow 编排整个实施过程：</p>
+
+<div class="cmd">
+  <div class="say">你说（终极版 — 一键实施 Harness）：</div>
+  <div class="do">帮我启动一个 Harness 实施工作流，对当前项目做全套配置：<br><br>阶段一（并行初始化）：<br>  agent 1：运行 /init 生成 CLAUDE.md，然后在末尾追加 AI 开发规则（工作流程、技术边界、代码规范、质量管理、版本控制）<br>  agent 2：创建 .claude/settings.json，配置权限白名单（cd, python, pip, git, mkdir）和 hooks（自动 cd）<br>  agent 3：创建 .gitignore，排除 __pycache__, *.log, .history/ 等<br><br>阶段二（并行工具链）：<br>  agent 1：创建 _test/run_verify.py，做 Python 语法检查和文件完整性检查<br>  agent 2：创建 .git/hooks/pre-commit，提交前自动跑验证<br>  agent 3：在 settings.json 中配置 filesystem 和 sequential-thinking 两个 MCP 服务器<br><br>阶段三（汇总报告）：<br>  汇总所有结果，生成一份 Harness 实施报告，列出已完成的配置项和路径</div>
+  <div class="out">→ 三个阶段、最多 9 个 agent 并行工作<br>→ 几分钟内 Harness 全套配置完成 ✅<br>→ 生成报告：完成了 8 项配置</div>
+</div>
+
+<div class="tip">
+<strong>💡 实际项目注意：</strong>
+<ul>
+  <li><b>新项目</b> — 直接用一键 Workflow，10 分钟 Harness 全套到位</li>
+  <li><b>已有项目</b> — 先让 Claude 扫描现有配置，再逐步添加缺失的部分</li>
+  <li><b>大项目</b> — 先用 /plan 评估影响范围，再分阶段实施</li>
+  <li><b>非 git 项目</b> — 跳过 pre-commit 钩子，先初始化 git 仓库</li>
+</ul>
+</div>
+
+<h2>速查备忘卡</h2>
+
+<table>
+  <tr><th>时机</th><th>你说什么</th><th>Claude 做什么</th></tr>
+  <tr><td>新建项目</td><td><code>/init 然后帮我加 AI 开发规则</code></td><td>生成 CLAUDE.md + 开发规则</td></tr>
+  <tr><td>新需求</td><td><code>/plan 我要加XXX功能</code></td><td>出方案，等你确认再编码</td></tr>
+  <tr><td>改完代码</td><td><code>跑一下验证</code></td><td>运行 _test/run_verify.py</td></tr>
+  <tr><td>准备提交</td><td><code>提交代码，信息：feat: XXX</code></td><td>验证 + 更新文档 + git commit</td></tr>
+  <tr><td>复杂任务</td><td><code>启动 agent 做XXX</code></td><td>派子智能体并行干活</td></tr>
+  <tr><td>重复工作</td><td><code>把这个流程做成 Skill</code></td><td>封装成 .claude/skills/ 下的可调用技能</td></tr>
+  <tr><td>全面审查</td><td><code>/review 或启动审查工作流</code></td><td>多维度审查 + 汇总报告</td></tr>
+  <tr><td>一次配齐</td><td><code>启动 Harness 实施工作流</code></td><td>全套配置自动完成</td></tr>
+</table>
+
+<div class="highlight">
+<strong>🎯 最终效果：</strong><br>
+<ol>
+  <li><b>进项目</b> → CLAUDE.md 自动加载规则</li>
+  <li><b>新需求</b> → /plan 出方案 → 确认 → 编码</li>
+  <li><b>编码</b> → Subagent 并行效率翻倍</li>
+  <li><b>提交</b> → pre-commit 自动拦截问题</li>
+  <li><b>日常</b> → Skill 一键调用，MCP 随手查资料</li>
+  <li><b>出问题</b> → 随时回滚到上一个功能提交</li>
+</ol>
+这不是理论，这是 VSteach 项目已经跑通的实践。
+</div>
+
+<div class="nav">
+  <a href="012-Harness工程体系.html">← 上一课</a>
+  <a href="../index.html">返回目录 →</a>
+</div>
+</body></html>

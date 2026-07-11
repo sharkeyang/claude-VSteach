@@ -1,0 +1,204 @@
+#!/usr/bin/env python3
+"""
+YouTube Video Downloader
+Downloads videos from YouTube with customizable quality and format options.
+"""
+
+import argparse
+import sys
+import subprocess
+import json
+import os
+import shutil
+
+
+def setup_proxy():
+    """Read proxy from git config and set env vars for yt-dlp."""
+    try:
+        result = subprocess.run(
+            ["git", "config", "--global", "http.proxy"],
+            capture_output=True, text=True, timeout=5
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            proxy = result.stdout.strip()
+            os.environ.setdefault("HTTP_PROXY", proxy)
+            os.environ.setdefault("HTTPS_PROXY", proxy)
+            os.environ.setdefault("http_proxy", proxy)
+            os.environ.setdefault("https_proxy", proxy)
+    except Exception:
+        pass
+
+
+def find_yt_dlp():
+    """Find the yt-dlp executable path."""
+    import os
+    import shutil
+
+    # Check PATH first
+    yt_path = shutil.which("yt-dlp")
+    if yt_path:
+        return yt_path
+
+    # Check common Windows locations
+    paths = [
+        os.path.expandvars(r"%APPDATA%\Python\Python311\Scripts\yt-dlp.exe"),
+        os.path.expandvars(r"%APPDATA%\Python\Python312\Scripts\yt-dlp.exe"),
+        os.path.expandvars(r"%APPDATA%\Python\Python313\Scripts\yt-dlp.exe"),
+        os.path.expandvars(r"%LOCALAPPDATA%\Programs\Python\Python311\Scripts\yt-dlp.exe"),
+        os.path.expandvars(r"%USERPROFILE%\AppData\Roaming\Python\Python311\Scripts\yt-dlp.exe"),
+    ]
+    for p in paths:
+        if os.path.exists(p):
+            return p
+
+    return "yt-dlp"  # fallback
+
+
+def check_yt_dlp():
+    """Check if yt-dlp is installed, install if not."""
+    yt_path = find_yt_dlp()
+    try:
+        subprocess.run([yt_path, "--version"], capture_output=True, check=True)
+        return yt_path
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        print("yt-dlp not found. Installing...")
+        subprocess.run([sys.executable, "-m", "pip", "install", "yt-dlp"], check=True)
+        # Try again after install
+        yt_path = find_yt_dlp()
+        try:
+            subprocess.run([yt_path, "--version"], capture_output=True, check=True)
+            return yt_path
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            print("Failed to find yt-dlp after installation.")
+            sys.exit(1)
+
+
+def get_video_info(yt_path, url):
+    """Get information about the video without downloading."""
+    result = subprocess.run(
+        [yt_path, "--dump-json", "--no-playlist", url],
+        capture_output=True,
+        text=True,
+        check=True
+    )
+    return json.loads(result.stdout)
+
+
+def download_video(url, output_path=None, quality="best", format_type="mp4", audio_only=False):
+    """
+    Download a YouTube video.
+
+    Args:
+        url: YouTube video URL
+        output_path: Directory to save the video
+        quality: Quality setting (best, 1080p, 720p, 480p, 360p, worst)
+        format_type: Output format (mp4, webm, mkv, etc.)
+        audio_only: Download only audio (mp3)
+    """
+    import os
+    if output_path is None:
+        output_path = os.path.join(os.getcwd(), "downloads")
+
+    yt_path = check_yt_dlp()
+
+    # Build command
+    cmd = [yt_path]
+    
+    if audio_only:
+        cmd.extend([
+            "-x",  # Extract audio
+            "--audio-format", "mp3",
+            "--audio-quality", "0",  # Best quality
+        ])
+    else:
+        # Video quality settings
+        if quality == "best":
+            format_string = "bestvideo+bestaudio/best"
+        elif quality == "worst":
+            format_string = "worstvideo+worstaudio/worst"
+        else:
+            # Specific resolution (e.g., 1080p, 720p)
+            height = quality.replace("p", "")
+            format_string = f"bestvideo[height<={height}]+bestaudio/best[height<={height}]"
+        
+        cmd.extend([
+            "-f", format_string,
+            "--merge-output-format", format_type,
+        ])
+    
+    # Output template
+    cmd.extend([
+        "-o", f"{output_path}/%(title)s.%(ext)s",
+        "--no-playlist",  # Don't download playlists by default
+    ])
+    
+    cmd.append(url)
+    
+    print(f"Downloading from: {url}")
+    print(f"Quality: {quality}")
+    print(f"Format: {'mp3 (audio only)' if audio_only else format_type}")
+    print(f"Output: {output_path}\n")
+    
+    try:
+        # Get video info first
+        info = get_video_info(yt_path, url)
+        print(f"Title: {info.get('title', 'Unknown')}")
+        print(f"Duration: {info.get('duration', 0) // 60}:{info.get('duration', 0) % 60:02d}")
+        print(f"Uploader: {info.get('uploader', 'Unknown')}\n")
+        
+        # Download the video
+        subprocess.run(cmd, check=True)
+        print(f"\n✅ Download complete!")
+        return True
+    except subprocess.CalledProcessError as e:
+        print(f"\n❌ Error downloading video: {e}")
+        return False
+    except Exception as e:
+        print(f"\n❌ Error: {e}")
+        return False
+
+
+def main():
+    setup_proxy()
+    parser = argparse.ArgumentParser(
+        description="Download YouTube videos with customizable quality and format"
+    )
+    parser.add_argument("url", help="YouTube video URL")
+    parser.add_argument(
+        "-o", "--output",
+        default=None,
+        help="Output directory (default: ./downloads)"
+    )
+    parser.add_argument(
+        "-q", "--quality",
+        default="best",
+        choices=["best", "1080p", "720p", "480p", "360p", "worst"],
+        help="Video quality (default: best)"
+    )
+    parser.add_argument(
+        "-f", "--format",
+        default="mp4",
+        choices=["mp4", "webm", "mkv"],
+        help="Video format (default: mp4)"
+    )
+    parser.add_argument(
+        "-a", "--audio-only",
+        action="store_true",
+        help="Download only audio as MP3"
+    )
+    
+    args = parser.parse_args()
+    
+    success = download_video(
+        url=args.url,
+        output_path=args.output,
+        quality=args.quality,
+        format_type=args.format,
+        audio_only=args.audio_only
+    )
+    
+    sys.exit(0 if success else 1)
+
+
+if __name__ == "__main__":
+    main()

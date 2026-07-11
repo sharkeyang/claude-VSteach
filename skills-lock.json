@@ -1,11 +1,575 @@
 {
   "version": 1,
   "skills": {
+    "airtable": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/airtable/SKILL.md",
+      "computedHash": "fa4777c5c799c4e49a196764e41aa440d368150abc043e02c399c893056af384"
+    },
+    "apple-notes": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/apple/apple-notes/SKILL.md",
+      "computedHash": "84eac7538fe99379aa5e7a68622585956eda953b8aaff23a4ef27c7da30e618a"
+    },
+    "apple-reminders": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/apple/apple-reminders/SKILL.md",
+      "computedHash": "2f262ce81a23124fd3e6e982951d6f74311a15d9a6aa8d56cfe6a9ef987fd6ce"
+    },
+    "architecture-diagram": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/architecture-diagram/SKILL.md",
+      "computedHash": "bafd433b1d84973a274dde1984ec66ce1cbd10bcccea94eb859f9e16141cb47c"
+    },
+    "artifacts-builder": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "artifacts-builder/SKILL.md",
+      "computedHash": "cf159d33884126cc10f45c7b50bc37b1f68df24a16e83db49143d42c18e2681d"
+    },
+    "arxiv": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/research/arxiv/SKILL.md",
+      "computedHash": "f7afbb35902ce611e5a37f118c48fce5baab085a806336b110fa86b0f22b3c17"
+    },
+    "ascii-art": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/ascii-art/SKILL.md",
+      "computedHash": "4081d4eaf48cb34ad57314b7df0317f4ab3000e1edc47a55d9f1256f6f7fd471"
+    },
+    "ascii-video": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/ascii-video/SKILL.md",
+      "computedHash": "c04e293941ebf74cbff30b78f42304b6e945cb07de646478319daebf8638150a"
+    },
+    "baoyu-infographic": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/baoyu-infographic/SKILL.md",
+      "computedHash": "7381442d17a08a21b287a8d44d81ca92e60757473468913465427ed942162475"
+    },
+    "blogwatcher": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/research/blogwatcher/SKILL.md",
+      "computedHash": "0e9bbad61ba63e9f271e764872d0a62ff8f60b03ccd2dd4af3a41932bd611705"
+    },
+    "brand-guidelines": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "brand-guidelines/SKILL.md",
+      "computedHash": "cf41642f38f35bcae5bbf59215f0ee629d5f6a54b4811454f6cb93bc9b12b69e"
+    },
+    "canvas-design": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "canvas-design/SKILL.md",
+      "computedHash": "21e7c68d336893e4f2aa8d269854fd5e253c89cfc6dd0e74fa487fe7e96abdeb"
+    },
+    "changelog-generator": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "changelog-generator/SKILL.md",
+      "computedHash": "f84bcb773a67ade28878d63103e3d4dc1f5031d6103be5107ff99c15b8d4a992"
+    },
+    "claude-code": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/autonomous-ai-agents/claude-code/SKILL.md",
+      "computedHash": "530636d5beea6c899a20746321def34d400a2d9a6e3cad3e5f4ab4a5572100d4"
+    },
+    "claude-design": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/claude-design/SKILL.md",
+      "computedHash": "0337f3e6ed84bd7631c1f0575e48e54423978ecb1c2f69eef1250abd3a7b5cc5"
+    },
+    "codebase-inspection": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/github/codebase-inspection/SKILL.md",
+      "computedHash": "aab778d89e4a8dd35046b56a735709a0f95f5a76b6e1b79a4b97781cd1489126"
+    },
+    "codex": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/autonomous-ai-agents/codex/SKILL.md",
+      "computedHash": "bd696d57c25f75628e10055438da93e64a0163947b5c577eb58a25c641b303f6"
+    },
+    "comfyui": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/comfyui/SKILL.md",
+      "computedHash": "52dfbcc53f65ff8836d031555dcbea80747745151ed4be813816acd618e98978"
+    },
+    "competitive-ads-extractor": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "competitive-ads-extractor/SKILL.md",
+      "computedHash": "adc3ba60f71649c45193f27d32b9cc2cce07636c32b55c9dc9aeefc4c09f6b4b"
+    },
+    "computer-use": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/computer-use/SKILL.md",
+      "computedHash": "efe22f550d5d768cbb3835ccc6f49cf3d3270822d83b3572ae13e8d701495c2c"
+    },
+    "connect": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "connect/SKILL.md",
+      "computedHash": "47d7bfd6430baaa633921483334748e66eff42a9a58b838b0676e5a1bb2f17f0"
+    },
+    "connect-apps": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "connect-apps/SKILL.md",
+      "computedHash": "38a5ff4889310593cd0b7408d05ab4dfc847936d51b794be235d33ebe2647eca"
+    },
+    "content-research-writer": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "content-research-writer/SKILL.md",
+      "computedHash": "17d22250b59fd2544477788e4a27bde6503e2f3b5a938d21fac69b733fa8e938"
+    },
+    "design-md": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/design-md/SKILL.md",
+      "computedHash": "b79eb842fda9af680abaa9a3be9bb26175c8f17f4bdcda5460a56bf20715ef0e"
+    },
+    "developer-growth-analysis": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "developer-growth-analysis/SKILL.md",
+      "computedHash": "af382e4194b6ca784e14cfe2aa7df1682c4d42f83807e5785ffab3577fe83176"
+    },
+    "dogfood": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/dogfood/SKILL.md",
+      "computedHash": "5a94f648f9478dc7bc372574e2561b93ad7340d1e6585fbe8fa073ca82e9717d"
+    },
+    "domain-name-brainstormer": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "domain-name-brainstormer/SKILL.md",
+      "computedHash": "52e568b37482d4606612cfe42b6cf1ccb260a1ba6936ac2b6defab5acdeea2f1"
+    },
+    "excalidraw": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/excalidraw/SKILL.md",
+      "computedHash": "34de5454c658da784aaba83ff458a09695b5cb9c5ac70b96ea6c96dcaeaca549"
+    },
+    "file-organizer": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "file-organizer/SKILL.md",
+      "computedHash": "bb1298b01e0e538f22a1a40014c89f5daf03996e726c1b97239c296e5b10522f"
+    },
+    "findmy": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/apple/findmy/SKILL.md",
+      "computedHash": "d01d14f45f8fa960f7b72bffe56b933d6663f16077ddee1ce670828911c8a3e2"
+    },
+    "gif-search": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/media/gif-search/SKILL.md",
+      "computedHash": "6e3765f690b0ff28aa684e2074616a65f9217fefabbc2f145b5422afed141061"
+    },
+    "github-auth": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/github/github-auth/SKILL.md",
+      "computedHash": "b8baaedc7507671b7960f2d3573c162e75cb49a9c7a9a1930ea3b66399b52cb9"
+    },
+    "github-code-review": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/github/github-code-review/SKILL.md",
+      "computedHash": "0aa7488f796c170523f6008c03e93d50e05bd28cfd7af3ec953c5f89512635b8"
+    },
+    "github-issues": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/github/github-issues/SKILL.md",
+      "computedHash": "0c702ecf79d731fa87f4a0b2a45b09942c4a0fc6461d2376825d546d5eec0f65"
+    },
+    "github-pr-workflow": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/github/github-pr-workflow/SKILL.md",
+      "computedHash": "538d113175306012d7d1ef491b1616c452d45586e7a4f4c89030408fad679c9c"
+    },
+    "github-repo-management": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/github/github-repo-management/SKILL.md",
+      "computedHash": "8ed583ca33c2cd6190fc0da209beadabae393c935c3c2466ee2159d1ce61745e"
+    },
+    "google-workspace": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/google-workspace/SKILL.md",
+      "computedHash": "f7c3a64ff18bb7b2d7eaa0bc7955001ec84a3b762ead614fb5198612646c2f3d"
+    },
+    "heartmula": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/media/heartmula/SKILL.md",
+      "computedHash": "7ea437179712c3087fc0a49cd70fe17c5eaaa0f39b8f7894df7b56c1bf5c4b36"
+    },
+    "hermes-agent": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/autonomous-ai-agents/hermes-agent/SKILL.md",
+      "computedHash": "8ff3d2c0f2bdb1ed2551ef3660c742d2997421f9fe95a3731219f0627b1f53ac"
+    },
+    "hermes-agent-skill-authoring": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/software-development/hermes-agent-skill-authoring/SKILL.md",
+      "computedHash": "f7714f81a3d3e9e1b68f863587bcf91fa2aa6cd6b45d9a33f1c4c6e6b065b340"
+    },
+    "himalaya": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/email/himalaya/SKILL.md",
+      "computedHash": "69bd0dfbe62f5977fb4d6db51f7a6644a4deb661561a2ef10a9b60a4f517b2ac"
+    },
+    "huggingface-hub": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/mlops/huggingface-hub/SKILL.md",
+      "computedHash": "8d2c698108ef5de8e51523c2098575b40e2528f817573ac9a93f2eb8deece5b4"
+    },
+    "humanizer": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/humanizer/SKILL.md",
+      "computedHash": "a43bded5a04e7e460717dbf0cc9c26e554bc0296bb296ff8d704a147810b4902"
+    },
+    "image-enhancer": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "image-enhancer/SKILL.md",
+      "computedHash": "e673c02c3e970b3ea0bd4ca449ae12f955d8476bb4196842d1b1489cca6be219"
+    },
+    "imessage": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/apple/imessage/SKILL.md",
+      "computedHash": "ebae7acfe5ab3b154e8a207c0311be309b2afdd9fea38bd211980d86af10267b"
+    },
+    "internal-comms": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "internal-comms/SKILL.md",
+      "computedHash": "6e7e5d2f3bfa91e6ce302e629ff639bc82d95d2ce3454383531093cbeb8b38b0"
+    },
+    "invoice-organizer": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "invoice-organizer/SKILL.md",
+      "computedHash": "9bed4335d5a8792140c7bf8a602a5b661a469f8f4bb94ea943b43d14fcef024b"
+    },
+    "jupyter-live-kernel": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/data-science/jupyter-live-kernel/SKILL.md",
+      "computedHash": "86d54f58ed990a3deb43c212c78b97157fb7fd0329f6b5b9db892721c9a8116c"
+    },
+    "langsmith-fetch": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "langsmith-fetch/SKILL.md",
+      "computedHash": "8acbbe0071e6634d71b99639fd370e9da5bc7cd38fcecfee561528e94c315fba"
+    },
+    "lead-research-assistant": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "lead-research-assistant/SKILL.md",
+      "computedHash": "3300bbb81db602444370e66baa7c5395a8cbd9bf11f23c0ecbce1568f0ed9f05"
+    },
+    "llm-wiki": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/research/llm-wiki/SKILL.md",
+      "computedHash": "8361f930610856ffddc0a50a4fcc544122ba476215252798783370097629ed85"
+    },
+    "manim-video": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/manim-video/SKILL.md",
+      "computedHash": "137b0d2ba0852bf18968e6770d63fa987c628eb14531cc6c3515ad51a6577eeb"
+    },
+    "maps": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/maps/SKILL.md",
+      "computedHash": "7360c1b65019c1c2fe1dcb4bdbc63e7b43381ddc2d787f0ab00b240c056264ef"
+    },
+    "mcp-builder": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "mcp-builder/SKILL.md",
+      "computedHash": "e257cceb3e4724db5ada5bcb750308f00c5f3597f047230138c5ff741fc3ab1b"
+    },
+    "meeting-insights-analyzer": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "meeting-insights-analyzer/SKILL.md",
+      "computedHash": "b2b4a825e349b914c3423a0bbc8f6c6912ba5bdab2c4ce21d2952e10b3bb585f"
+    },
+    "nano-pdf": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/nano-pdf/SKILL.md",
+      "computedHash": "2fa12f20497cf39ce169360c564f5c9cbe5e48785faf1d81a2fe5eb8083cd6c7"
+    },
+    "node-inspect-debugger": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/software-development/node-inspect-debugger/SKILL.md",
+      "computedHash": "9d14fd9b64fcc629f6f646a46858a87a3133feba93e85d8170be91d3a2ab1c3c"
+    },
+    "notion": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/notion/SKILL.md",
+      "computedHash": "b9e40d496b86294e43108d0b854b41617c5771d3a8605db60ffa661f1d801dc1"
+    },
+    "obsidian": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/note-taking/obsidian/SKILL.md",
+      "computedHash": "3b524d2f07d1b83374c601998e9b6f43cc88a6f40c4ac4706c150f4166031ec6"
+    },
+    "ocr-and-documents": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/ocr-and-documents/SKILL.md",
+      "computedHash": "4cd978672c4e3964bdea4c65b8584641819a083e75e4bcf8a7f530cca5caed3b"
+    },
+    "opencode": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/autonomous-ai-agents/opencode/SKILL.md",
+      "computedHash": "7a405109816955c0ff60e72ef94ae41253e0887d3b5152052c4f4d11a96dba02"
+    },
+    "openhue": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/smart-home/openhue/SKILL.md",
+      "computedHash": "81d4be37185965eb25b3667c9899643531345daa7392b9b805dfd3fafa47e70f"
+    },
+    "p5js": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/p5js/SKILL.md",
+      "computedHash": "6f0f3ef3d91e713e35c9dccaee9feb1161cb5a3e8775bb104ba605ed025a4a66"
+    },
+    "petdex": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/petdex/SKILL.md",
+      "computedHash": "d5cefeeae9e3448e95fa65cd4fd7dced1cc8f1df1742d2305958d2f17432a9c5"
+    },
+    "plan": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/software-development/plan/SKILL.md",
+      "computedHash": "f337bf70bc25771e8a54b88d02329716c285eb4789c30804a7be7f0daa7147ed"
+    },
+    "polymarket": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/research/polymarket/SKILL.md",
+      "computedHash": "60e76fc87b4fbd77bf89332f35b4bb37520f19845d155855fab09bac1bdd2f72"
+    },
+    "popular-web-designs": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/popular-web-designs/SKILL.md",
+      "computedHash": "4e7943dcffb79952ab8d6aba095609cb55b90b24f3179ba814d0c33541e08b5e"
+    },
+    "powerpoint": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/powerpoint/SKILL.md",
+      "computedHash": "3b056c3429cad6955eba02150316b6ce7fa92bc28f36125e5d79294b967e3e23"
+    },
+    "pretext": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/pretext/SKILL.md",
+      "computedHash": "14727bf3ae6a9ecb7db509924c5055bc3a755357a83d12438429c97298714379"
+    },
+    "python-debugpy": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/software-development/python-debugpy/SKILL.md",
+      "computedHash": "12aa5bf55e1dffe2e9b7d39b53ce85ebb86082d7d88d099521a594873b9cb81a"
+    },
+    "raffle-winner-picker": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "raffle-winner-picker/SKILL.md",
+      "computedHash": "0918819700109196ab695d3e3a0945da650fb0d889896e154b6a0a321b8deda3"
+    },
+    "requesting-code-review": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/software-development/requesting-code-review/SKILL.md",
+      "computedHash": "e5bf551194651b5747f122fe05ced3b0cbb4e1346953c7ae5d2814064f08e262"
+    },
+    "research-paper-writing": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/research/research-paper-writing/SKILL.md",
+      "computedHash": "01874d67a77459dd634ebfe89757c321e20ee95800ce8a6621f4f0f07bc9ad7c"
+    },
+    "simplify-code": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/software-development/simplify-code/SKILL.md",
+      "computedHash": "c7a1a2f13a4380667e238cde5726caa78f5f66bc16810fc42c0e2d55e27d5ff5"
+    },
+    "sketch": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/sketch/SKILL.md",
+      "computedHash": "3186c020d3ff42b4c18c0a9db79de0466ac8a8f5ea8074099ff6c07dc7231ae3"
+    },
+    "skill-creator": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "skill-creator/SKILL.md",
+      "computedHash": "3bc61dd979ebedf0f1907755dd72af7dc70fb5e92bd2d20219fc26e76f5b0d85"
+    },
+    "skill-share": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "skill-share/SKILL.md",
+      "computedHash": "1c89bff64e8759680be02473463800e328fe810e7328bc144ae8b2308bd6f687"
+    },
+    "slack-gif-creator": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "slack-gif-creator/SKILL.md",
+      "computedHash": "e6ee3f4b80444460bee4044a7b225748398e0aa3eeb019ad945d6e91570a6ceb"
+    },
+    "songsee": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/media/songsee/SKILL.md",
+      "computedHash": "e15aae1bdcdb7fdf231b08a406bf43a68199dc3bd05619c9ddfe264365a1fb21"
+    },
+    "songwriting-and-ai-music": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/songwriting-and-ai-music/SKILL.md",
+      "computedHash": "52d50a07b7f4a491be54c72d01db208ee1ce0df47242bb63e61af00b5821b7a7"
+    },
+    "spike": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/software-development/spike/SKILL.md",
+      "computedHash": "67e6cd50dd8a1e1ab57367c0e22f16b4f74c55c6e22a67a7ec4724714f8292c7"
+    },
+    "systematic-debugging": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/software-development/systematic-debugging/SKILL.md",
+      "computedHash": "e93a5e86fffdd7e4ff0bb51ec7cc4377ac3135f68f85d5170670f75916df2108"
+    },
+    "tailored-resume-generator": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "tailored-resume-generator/SKILL.md",
+      "computedHash": "41a39b5fb096ce30e4274a1e1994197056ae5a570dbe8cae3bb460ae71c24f14"
+    },
     "teach": {
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/productivity/teach/SKILL.md",
       "computedHash": "25bf44a1302ef009772c8e66d14a705672897562659c43650b1468012baa4f8d"
+    },
+    "teams-meeting-pipeline": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/teams-meeting-pipeline/SKILL.md",
+      "computedHash": "2242f868450e96e1504a5333226c898f2ecd735e43f19aeefeba54aa25d7e08f"
+    },
+    "template-skill": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "template-skill/SKILL.md",
+      "computedHash": "daf176f2cd0030d321982d3e813fd1a794a0b4744c5a92d2931a37001bb40fb9"
+    },
+    "test-driven-development": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/software-development/test-driven-development/SKILL.md",
+      "computedHash": "06ad91596eea6969045a5ce0ef38290b30408ec2a7ab7eb440a6f78a7f5b5b19"
+    },
+    "theme-factory": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "theme-factory/SKILL.md",
+      "computedHash": "0290eabfd6fea9fcfd59c12de15e3f4046593185089956802b6d48ba1d07f428"
+    },
+    "touchdesigner-mcp": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/creative/touchdesigner-mcp/SKILL.md",
+      "computedHash": "cdb4d0e2d608d83bc2ea0fbf768a49387958ad8bb420b0d11724d9d439fa8f91"
+    },
+    "twitter-algorithm-optimizer": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "twitter-algorithm-optimizer/SKILL.md",
+      "computedHash": "884dc0134ab732642c1060d581ec6016158d334a7d3da86725ddd78b7da80792"
+    },
+    "webapp-testing": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "webapp-testing/SKILL.md",
+      "computedHash": "5a6a18c0137cfbabec058e86fc1c8f6919d846a7b2a34ee978cc8ced866ee2e5"
+    },
+    "xurl": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/social-media/xurl/SKILL.md",
+      "computedHash": "d4986e7eca14376d0a406f542f5a8d01d8888c1a1eb2efb38eaac645fa4fdf65"
+    },
+    "youtube-content": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/media/youtube-content/SKILL.md",
+      "computedHash": "66a691414684382b83b04aa9edb6f2135a74474a27c2b0899b519b22b57d9e29"
+    },
+    "youtube-downloader": {
+      "source": "composiohq/awesome-claude-skills",
+      "sourceType": "github",
+      "skillPath": "video-downloader/SKILL.md",
+      "computedHash": "baf53606f73fc1c23ed61eda0d534d3c2ab59838562075a6af6bdc85ac6bd07d"
+    },
+    "yuanbao": {
+      "source": "nousresearch/hermes-agent",
+      "sourceType": "github",
+      "skillPath": "skills/yuanbao/SKILL.md",
+      "computedHash": "ee6b748741f8a344debbea8f046d7edba7b6ba5f11834013fd6ea6e899018576"
     }
   }
 }

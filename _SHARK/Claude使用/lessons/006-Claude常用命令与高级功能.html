@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第11课 · Claude 常用命令与高级功能</title><style>body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:800px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}h1{font-size:1.6rem;border-left:4px solid #2563eb;padding-left:1rem;margin-bottom:1.5rem}h2{font-size:1.2rem;margin-top:2rem;margin-bottom:0.5rem;color:#2563eb}h3{font-size:1.05rem;margin-top:1.5rem;margin-bottom:0.3rem;color:#1e293b}p{margin-bottom:1rem}ul,ol{margin-bottom:1rem;padding-left:1.5rem}li{margin-bottom:0.3rem}.tip{background:#f0f9ff;border-left:3px solid #2563eb;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}.highlight{background:#f0fdf4;border-left:3px solid #16a34a;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}code{background:#f1f5f9;padding:0.15rem 0.4rem;border-radius:3px;font-size:0.85rem}table{width:100%;border-collapse:collapse;margin:1rem 0}th,td{border:1px solid #e2e8f0;padding:0.5rem 0.75rem;text-align:left;font-size:0.9rem}th{background:#f1f5f9;font-weight:600}.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}.nav a{color:#2563eb;text-decoration:none;font-weight:600}.cmd{background:#1e293b;color:#e2e8f0;padding:1rem;border-radius:8px;margin:1rem 0;font-size:0.9rem;overflow-x:auto}.cmd .name{color:#38bdf8;font-weight:700;font-size:1rem}.cmd .desc{color:#94a3b8;margin-top:0.3rem}.cmd .example{color:#a78bfa;margin-top:0.5rem;white-space:pre-wrap;font-family:monospace}.tag{display:inline-block;padding:0.1rem 0.45rem;border-radius:3px;font-size:0.7rem;font-weight:700;margin-left:0.4rem;vertical-align:middle}.tag.new{background:#fef3c7;color:#92400e}.tag.power{background:#ede9fe;color:#5b21b6}.tag.freq{background:#dbeafe;color:#1e40af}.tag-warn{background:#fef2f2;color:#991b1b;font-size:0.8rem;display:inline-block;padding:0.1rem 0.4rem;border-radius:3px;margin-top:0.3rem}</style></head><body>
+<h1>第 11 课 · Claude 常用命令与高级功能</h1>
+
+<p>Claude Code 提供了很多命令和功能，有些天天用，有些你可能还没接触过。本课覆盖全部常用命令，重点讲解 <strong>subagent、workflow、plan 模式</strong>等你不熟悉但极其实用的高级功能。</p>
+
+<h2>一、基础命令（日常高频）</h2>
+
+<div class="cmd">
+  <div class="name">/help <span class="tag freq">高频</span></div>
+  <div class="desc">显示所有可用命令的帮助信息。任何时候忘了命令，先打这个。</div>
+  <div class="example">/help          → 列出全部命令<br>/help review    → 查看 review 命令的详细帮助</div>
+</div>
+
+<div class="cmd">
+  <div class="name">/clear <span class="tag freq">高频</span></div>
+  <div class="desc">清空当前对话历史。当上下文太乱、Claude 开始"忘记"前面内容时使用。</div>
+  <div class="example">/clear         → 清空对话，重新开始</div>
+</div>
+
+<div class="cmd">
+  <div class="name">/config <span class="tag freq">高频</span></div>
+  <div class="desc">查看或修改当前配置（主题、模型、语言等）。</div>
+  <div class="example">/config        → 查看当前配置</div>
+</div>
+
+<div class="cmd">
+  <div class="name">/fast <span class="tag freq">高频</span></div>
+  <div class="desc">切换快速模式。开启后 Claude 输出更快（但质量略有降低），适合简单任务。</div>
+  <div class="example">/fast          → 开启/关闭快速模式</div>
+</div>
+
+<div class="cmd">
+  <div class="name">/init <span class="tag freq">高频</span></div>
+  <div class="desc">扫描项目代码，自动生成 CLAUDE.md 规则文件。新项目启动的第一步。</div>
+  <div class="example">/init          → 为当前项目生成 CLAUDE.md</div>
+</div>
+
+<h2>二、计划与审查命令（先方案后编码）</h2>
+
+<div class="cmd">
+  <div class="name">/plan <span class="tag power">🔥 强力</span></div>
+  <div class="desc"><strong>编码前先出方案</strong>。Claude 进入"计划模式"，只分析设计不出代码，你确认后再实施。</div>
+  <div class="example">/plan 帮我加一个从AKshare下载可转债数据的功能<br>→ Claude 输出：要改哪些文件、改什么、影响范围、风险<br>→ 你确认后，再让它动手写代码</div>
+</div>
+
+<div class="tip">
+<strong>💡 /plan 什么时候用？</strong>
+<ul>
+  <li>要加一个新功能，不确定从哪里下手</li>
+  <li>要改多个文件，怕 Claude 改漏或改错</li>
+  <li>有几种实现方式，想让 Claude 先分析优劣</li>
+  <li>项目比较大，不想让 Claude 直接"一把梭"</li>
+</ul>
+这是 Harness 方法论中"先方案后编码"的最直接实现。
+</div>
+
+<div class="cmd">
+  <div class="name">/review <span class="tag power">🔥 强力</span></div>
+  <div class="desc">审查当前代码改动（diff），自动检测 Bug、性能问题、代码质量问题。</div>
+  <div class="example"># 审查当前所有改动<br>/review<br><br># 审查特定文件<br>/review zdata.py</div>
+</div>
+
+<div class="cmd">
+  <div class="name">/code-review <span class="tag power">🔥 强力</span></div>
+  <div class="desc">更详细的代码审查，包含修复建议。可以直接让 Claude 修复发现的问题。</div>
+  <div class="example">/code-review --fix    → 审查并自动修复问题<br>/code-review --comment → 审查并以注释形式输出</div>
+</div>
+
+<div class="cmd">
+  <div class="name">/verify <span class="tag new">⚡ 新功能</span></div>
+  <div class="desc">代码改完后自动运行测试、Lint 检查，确认功能正常。打通"写完→验证"的闭环。</div>
+  <div class="example">/verify          → 自动运行验证流程</div>
+</div>
+
+<div class="cmd">
+  <div class="name">/security-review</div>
+  <div class="desc">安全审查，检查代码中的安全漏洞和风险点。</div>
+  <div class="example">/security-review       → 审查当前改动中的安全问题</div>
+</div>
+
+<h2>三、Agent / Subagent（核心高级功能）🚀</h2>
+
+<p>这是 Claude Code 最强大的功能之一，值得花时间理解。</p>
+
+<h3>什么是 Subagent？</h3>
+<p>Subagent（子智能体）就是"让 Claude 再开一个 Claude"——它可以独立去完成一个任务，同时你继续和主 Claude 聊别的事。</p>
+
+<div class="cmd">
+  <div class="name">Agent（子智能体）<span class="tag power">🔥🔥 极强力</span><span class="tag new">⚡ 建议掌握</span></div>
+  <div class="desc">在对话中直接启动一个或多个子智能体，每个子智能体独立工作，互不干扰。</div>
+  <div class="example"># 启动一个子智能体处理特定任务<br>@agent 帮我搜索这个文件夹里所有过期的备份文件<br><br># 多个子智能体并行工作（同时启动）<br>帮我启动两个 agent：<br>第一个搜索 Python 文件中的 TODO<br>第二个统计每个目录的文件数量</div>
+</div>
+
+<h3>Subagent 的核心使用场景</h3>
+<table>
+  <tr><th>场景</th><th>不用 Subagent</th><th>用了 Subagent</th></tr>
+  <tr><td>多文件搜索</td><td>等 Claude 一个一个搜</td><td>同时派多个 agent 分目录搜</td></tr>
+  <tr><td>代码审查 + 修复</td><td>先审查，再看结果，再修复</td><td>一个 agent 审查，一个 agent 修复</td></tr>
+  <tr><td>独立调研</td><td>中断当前工作去查资料</td><td>派 agent 去查，你先继续手上的事</td></tr>
+  <tr><td>批量操作</td><td>手动一个个处理</td><td>派 N 个 agent 并行处理</td></tr>
+</table>
+
+<div class="highlight">
+<strong>🚀 实战案例：</strong>
+假设你要迁移 10 个 Python 脚本，修改其中的 import 路径：<br>
+<code>@agent 改 _CHRIS/ 下第1-3个文件的 import</code><br>
+<code>@agent 改 _CHRIS/ 下第4-6个文件的 import</code><br>
+<code>@agent 改 _CHRIS/ 下第7-10个文件的 import</code><br>
+三个 agent 同时工作，总时间 = 改一个文件的时间，不是改十个文件的时间。
+</div>
+
+<h3>Subagent 的隔离模式</h3>
+<table>
+  <tr><th>模式</th><th>说明</th><th>适用场景</th></tr>
+  <tr><td><strong>普通</strong></td><td>在主仓库目录下工作</td><td>搜索、分析、读文件</td></tr>
+  <tr><td><strong>worktree</strong></td><td>在独立的 git worktree 中工作</td><td>多个 agent 同时修改文件，避免冲突</td></tr>
+  <tr><td><strong>remote</strong></td><td>在远程环境中工作</td><td>需要独立计算资源或隔离环境</td></tr>
+</table>
+
+<h3>Subagent 的类型</h3>
+<table>
+  <tr><th>类型</th><th>擅长</th><th>典型用途</th></tr>
+  <tr><td>general-purpose</td><td>通用任务</td><td>默认类型，啥都能干</td></tr>
+  <tr><td>Explore</td><td>搜索查找</td><td>在大量文件中找信息</td></tr>
+  <tr><td>Plan</td><td>架构设计</td><td>出方案、评估技术选型</td></tr>
+  <tr><td>claude-code-guide</td><td>Claude 相关问题</td><td>回答关于 Claude 功能的问题</td></tr>
+</table>
+
+<h2>四、Workflow（多智能体编排）🔧</h2>
+
+<div class="cmd">
+  <div class="name">Workflow（工作流）<span class="tag power">🔥🔥 极强力</span><span class="tag new">⚡ 建议掌握</span></div>
+  <div class="desc">比 Subagent 更高级的编排方式——把多个 agent 组织成流水线，一个 agent 的输出成为下一个 agent 的输入。</div>
+  <div class="example">适用场景：<br>1. 审查代码 → agent 1 查语法错误 → agent 2 查性能问题 → agent 3 汇总报告<br>2. 迁移项目 → agent 1-5 并行迁移 → agent 6 做完整性检查<br>3. 多角度审查 → 同时启动 3 个 agent，分别从安全/性能/可维护性角度审查</div>
+</div>
+
+<div class="tip">
+<strong>💡 Subagent vs Workflow：</strong>
+<ul>
+  <li><b>Subagent</b> = 派一个人去干活。适合独立任务、并行搜索</li>
+  <li><b>Workflow</b> = 组织一条流水线。适合多步骤、多角色协作的复杂任务</li>
+  <li><b>怎么选</b>：简单的并行任务用 Subagent，需要编排的复杂任务用 Workflow</li>
+</ul>
+</div>
+
+<h2>五、循环与定时任务</h2>
+
+<div class="cmd">
+  <div class="name">/loop <span class="tag new">⚡ 建议掌握</span></div>
+  <div class="desc">让 Claude 每隔一段时间自动重复执行某个任务。适合监控、轮询、定期检查等场景。</div>
+  <div class="example">/loop 5m /review        → 每 5 分钟审查一次代码改动<br>/loop /check-deploy     → 每隔 10 分钟（默认）检查部署状态<br><br>实际应用：<br>"帮我定时检查数据下载是否完成，每 5 分钟检查一次"<br>→ Claude 会每隔 5 分钟检查一次，下载完成时通知你</div>
+</div>
+
+<div class="cmd">
+  <div class="name">/schedule <span class="tag new">⚡ 建议掌握</span></div>
+  <div class="desc">安排定时任务，在指定时间自动执行。可以用 cron 表达式精确控制时间。</div>
+  <div class="example">/schedule 每天9点帮我检查数据下载状态<br>/schedule 每周一早上生成上周总结</div>
+</div>
+
+<h2>六、Skills 与 MCP 相关</h2>
+
+<div class="cmd">
+  <div class="name">/[skill-name] <span class="tag freq">高频</span></div>
+  <div class="desc">调用已注册的 Skill。Skill 的斜杠命令由 SKILL.md 中的 name 字段定义。</div>
+  <div class="example">/chris-daily-plan        → 生成 Chris 每日计划<br>/calligraphy 陋室铭       → 生成陋室金字帖<br>直接说"生成每日计划"也会自动匹配</div>
+</div>
+
+<div class="cmd">
+  <div class="name">/mcp <span class="tag new">⚡ 建议掌握</span></div>
+  <div class="desc">查看、管理 MCP 服务器连接状态。</div>
+  <div class="example">/mcp      → 列出所有已配置的 MCP 服务器<br>/mcp restart filesystem  → 重启 filesystem MCP</div>
+</div>
+
+<h2>七、实用技巧汇总</h2>
+
+<h3>常用命令速查表</h3>
+<table>
+  <tr><th>命令</th><th>一句话用途</th><th>使用频率</th></tr>
+  <tr><td><code>/clear</code></td><td>对话太乱时清空重来</td><td>⭐⭐⭐⭐⭐</td></tr>
+  <tr><td><code>/plan</code></td><td>写代码前先出方案</td><td>⭐⭐⭐⭐⭐</td></tr>
+  <tr><td><code>/review</code></td><td>写完代码审查改动</td><td>⭐⭐⭐⭐</td></tr>
+  <tr><td><code>@agent</code></td><td>派子智能体并行干活</td><td>⭐⭐⭐⭐</td></tr>
+  <tr><td><code>/verify</code></td><td>跑测试验证功能</td><td>⭐⭐⭐⭐</td></tr>
+  <tr><td><code>/init</code></td><td>新项目第一步</td><td>⭐⭐⭐</td></tr>
+  <tr><td><code>/fast</code></td><td>简单任务加速</td><td>⭐⭐⭐</td></tr>
+  <tr><td><code>/loop</code></td><td>定期重复任务</td><td>⭐⭐</td></tr>
+  <tr><td><code>/schedule</code></td><td>定时执行</td><td>⭐⭐</td></tr>
+  <tr><td><code>/config</code></td><td>改配置</td><td>⭐</td></tr>
+</table>
+
+<h3>最重要的三件事</h3>
+<ol>
+  <li><strong>先 /plan 再编码</strong> — 这是 Harness 方法论的核心，避免做无用功</li>
+  <li><strong>善用 @agent 并行</strong> — 需要同时做多件事时，派 agent 远比一个一个做快</li>
+  <li><strong>写完 /review + /verify</strong> — 不验证不交付，这是质量底线</li>
+</ol>
+
+<div class="highlight">
+<strong>🎯 一句话总结：</strong><br>
+/plan 保方向 → @agent 提效率 → /review + /verify 保质量
+</div>
+
+<div class="nav">
+  <a href="005-ClaudeCode高效开发.html">← 上一课</a>
+  <a href="007-Subagent与Workflow实战详解.html">下一课 →</a>
+</div>
+</body></html>
