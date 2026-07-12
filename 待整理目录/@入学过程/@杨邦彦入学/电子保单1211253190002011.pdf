@@ -1,0 +1,1 @@
+{"code":"40003","msg":"Api调用参数不合法: [{\"code\":\"OBJECT_MISSING_REQUIRED_PROPERTY\",\"params\":[\"prt_no\"],\"message\":\"Missing required property: prt_no\",\"path\":\"#/\"},{\"code\":\"OBJECT_MISSING_REQUIRED_PROPERTY\",\"params\":[\"documents_type\"],\"message\":\"Missing required property: documents_type\",\"path\":\"#/\"}]【OP】"}
