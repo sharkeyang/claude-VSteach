@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>实战案例 · _CHRIS 图谱分析</title><style>body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:800px; margin:0 auto; padding:2rem 1.5rem; color:#1a1a2e; background:#fafafa; line-height:1.8; } h1 { font-size:1.6rem; border-left:4px solid #7c3aed; padding-left:1rem; margin-bottom:1.5rem; } h2 { font-size:1.2rem; margin-top:2rem; margin-bottom:0.5rem; color:#7c3aed; } h3 { font-size:1rem; margin-top:1.5rem; margin-bottom:0.3rem; } p { margin-bottom:1rem; } ul,ol { margin-bottom:1rem; padding-left:1.5rem; } li { margin-bottom:0.3rem; } code { background:#f1f5f9; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.9em; } pre { background:#1e293b; color:#e2e8f0; padding:1rem; border-radius:6px; overflow-x:auto; font-size:0.85rem; line-height:1.5; } .tip { background:#f5f3ff; border-left:3px solid #7c3aed; padding:0.75rem 1rem; margin:1rem 0; border-radius:0 6px 6px 0; font-size:0.9rem; } .warn { background:#fef3c7; border-left:3px solid #f59e0b; padding:0.75rem 1rem; margin:1rem 0; border-radius:0 6px 6px 0; font-size:0.9rem; } table { width:100%; border-collapse:collapse; margin:1rem 0; } th,td { padding:0.5rem; border:1px solid #e2e8f0; text-align:left; } th { background:#f1f5f9; } .nav { display:flex; justify-content:space-between; margin-top:2rem; padding-top:1rem; border-top:1px solid #e2e8f0; } .nav a { color:#7c3aed; text-decoration:none; font-weight:600; } .nav a:hover { text-decoration:underline; }</style></head><body>
+<h1>实战案例 · _CHRIS 目录图谱分析</h1>
+
+<h2>建图概况</h2>
+<pre>路径: D:\@VSwork\VSteach\_CHRIS
+文件: 63 个 · ~40K 词
+  code:    6 文件 (.py .html)
+  docs:    43 文件 (.md)
+  papers:  11 文件 (.pdf 字帖)
+  images:  1 文件
+
+结果: 173 节点 · 252 边 · 13 社区</pre>
+
+<h2>God Nodes（核心节点）</h2>
+<table>
+  <tr><th>排名</th><th>节点</th><th>连接数</th><th>说明</th></tr>
+  <tr><td>1</td><td>杨邦彦 (Chris)</td><td>27</td><td>全图谱中心</td></tr>
+  <tr><td>2</td><td>CLAUDE.md</td><td>17</td><td>教学主配置</td></tr>
+  <tr><td>3</td><td>暑假深度方案</td><td>16</td><td>核心学习规划</td></tr>
+  <tr><td>4-5</td><td>MD2PDF / convert_md_to_pdf()</td><td>11</td><td>PDF 生成工具链</td></tr>
+  <tr><td>6-8</td><td>小升初学校路径 / 暑假计划体系 / 执行版</td><td>10</td><td>升学决策 + 执行体系</td></tr>
+  <tr><td>9</td><td>Chris 7岁一年级</td><td>8</td><td>基本档案</td></tr>
+  <tr><td>10</td><td>年度计划</td><td>7</td><td>年度规划</td></tr>
+</table>
+
+<h2>13 个社区</h2>
+<table>
+  <tr><th>社区</th><th>节点</th><th>内聚度</th><th>主题</th></tr>
+  <tr><td>Chris Profile</td><td>33</td><td>0.10</td><td>性格、兴趣、优劣势、记忆力</td></tr>
+  <tr><td>AI 训练工具</td><td>31</td><td>0.09</td><td>练字考试官、发音训练官、训练计划</td></tr>
+  <tr><td>学习方法</td><td>26</td><td>0.13</td><td>五步循环、20/80法则、费曼、苏格拉底</td></tr>
+  <tr><td>PDF 工具链</td><td>19</td><td>0.18</td><td>FPDF、md2pdf 转换工具</td></tr>
+  <tr><td>竞赛路径</td><td>16</td><td>0.17</td><td>AMC、奥赛、三公、SMK、华育</td></tr>
+  <tr><td>每日执行</td><td>14</td><td>0.19</td><td>每日计划、练字、篮球、豆包评估</td></tr>
+  <tr><td>学科技能</td><td>14</td><td>0.16</td><td>英数科编程四门 skill</td></tr>
+  <tr><td>计划生成器</td><td>10</td><td>0.24</td><td>Python 脚本工具</td></tr>
+  <tr><td>字帖生成器</td><td>6</td><td>0.40</td><td>HTML→PDF 字帖管线</td></tr>
+</table>
+
+<h2>发现的隐藏关系</h2>
+<ul>
+  <li><strong>字帖PDF ↔ 古文背诵</strong> — 字帖不仅是练字工具，也是古文背诵的辅助材料（INFERRED）</li>
+  <li><strong>字帖PDF ↔ 写字短板</strong> — 练字材料直接对应弱项弥补策略（EXTRACTED）</li>
+  <li><strong>每日记录 → Chris</strong> — 完成日志描述了 Chris 的实际执行情况（EXTRACTED）</li>
+  <li><strong>小升初路径 ↔ 物理奥赛</strong> — 升学路径规划中包含了竞赛方向（EXTRACTED）</li>
+  <li><strong>打印版 → 执行版</strong> — HTML 打印模板渲染了执行计划（INFERRED）</li>
+</ul>
+
+<h2>知识缺口（待办项）</h2>
+<ul>
+  <li><strong>44 个孤立节点</strong> — 字帖生成器、豆包设置、Reading Explorer 等节点仅 1 条连接，文档缺失</li>
+  <li><strong>11 条 INFERRED 边待验证</strong> — Chris 与看图说话课程等关系需确认</li>
+  <li><strong>Profile 社区内聚度低 (0.10)</strong> — 建议拆分为性格/兴趣/优势/劣势独立文档</li>
+</ul>
+
+<h2>查询案例</h2>
+<pre>/graphify query "Chris 的弱项和训练方案"
+→ 找到 写字短板 → 衡水体方案 → 字帖生成器 → 练字考试官智能体
+
+/graphify query "小升初三公证书要求"
+→ 三公目标 → 上实/上外/浦外 → AMC8/小托福/思维100/古诗文大赛</pre>
+
+<div class="tip">
+<strong>📁 输出路径：</strong> D:\@VSwork\VSteach\_CHRIS\graphify-out\（graph.json + GRAPH_REPORT.md）
+</div>
+
+<div class="nav">
+  <span></span>
+  <a href="../index.html">← 返回目录</a>
+</div>
+</body></html>

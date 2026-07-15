@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第3课 · 查询与探索图谱</title><style>body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:800px; margin:0 auto; padding:2rem 1.5rem; color:#1a1a2e; background:#fafafa; line-height:1.8; } h1 { font-size:1.6rem; border-left:4px solid #7c3aed; padding-left:1rem; margin-bottom:1.5rem; } h2 { font-size:1.2rem; margin-top:2rem; margin-bottom:0.5rem; color:#7c3aed; } h3 { font-size:1rem; margin-top:1.5rem; margin-bottom:0.3rem; } p { margin-bottom:1rem; } ul,ol { margin-bottom:1rem; padding-left:1.5rem; } li { margin-bottom:0.3rem; } code { background:#f1f5f9; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.9em; } pre { background:#1e293b; color:#e2e8f0; padding:1rem; border-radius:6px; overflow-x:auto; font-size:0.85rem; line-height:1.5; } .tip { background:#f5f3ff; border-left:3px solid #7c3aed; padding:0.75rem 1rem; margin:1rem 0; border-radius:0 6px 6px 0; font-size:0.9rem; } .nav { display:flex; justify-content:space-between; margin-top:2rem; padding-top:1rem; border-top:1px solid #e2e8f0; } .nav a { color:#7c3aed; text-decoration:none; font-weight:600; } .nav a:hover { text-decoration:underline; }</style></head><body>
+<h1>第 3 课 · 查询与探索图谱</h1>
+
+<h2>自然语言查询</h2>
+<p>图建好后，直接用日常语言提问：</p>
+<pre>/graphify query "Chris 的弱项和对应的训练方案是什么？"
+/graphify query "小升初三公的证书要求有哪些？"
+/graphify query "写字短板从识别到解决方案的完整链路"</pre>
+
+<h2>查询模式</h2>
+<ul>
+  <li><strong>BFS（默认）</strong> — 广度优先，获取广泛上下文，适合"有哪些相关"</li>
+  <li><strong>DFS（--dfs）</strong> — 深度优先，追踪特定路径，适合"完整链路"</li>
+  <li><strong>--budget N</strong> — 限制回答长度上限（token 数）</li>
+</ul>
+<pre>/graphify query "AMC8 和 AMC10 的关系" --dfs
+/graphify query "有哪些训练工具" --budget 500</pre>
+
+<h2>路径查询</h2>
+<p>找两个概念之间的最短路径：</p>
+<pre>/graphify path "写字短板" "衡水体"
+/graphify path "三公" "AMC8"</pre>
+
+<h2>节点解释</h2>
+<p>解释某个节点是什么：</p>
+<pre>/graphify explain "学而思秘籍9-10级"
+/graphify explain "神秘考SMK"</pre>
+
+<h2>快速查询（已有图谱时）</h2>
+<p>图谱已经建好后，直接输入 <code>/graphify query "..."</code> 即可，不用重新建图。graphify 会自动检测 <code>graphify-out/graph.json</code> 是否存在，跳过建图步骤直接回答。</p>
+
+<h2>真实案例：3 次查询</h2>
+<ol>
+  <li><strong>"Chris 的弱项"</strong> → 找到 写字短板（mitigated by 衡水体方案）+ 游泳（有待加强）+ 看图说话综合阶段</li>
+  <li><strong>"写字短板完整链路"</strong> → 识别 → 衡水体方案 → 字帖生成器 → 练字考试官智能体 → 每日计划执行，4 层链路完整 trace</li>
+  <li><strong>"小升初三公路径"</strong> → 三公目标 → 上实/上外/浦外 → 证书要求(AMC8/小托福/思维100/古诗文大赛) → 学术准备(学而思/新概念/RE/古文)</li>
+</ol>
+
+<div class="tip">
+<strong>💡 查询技巧：</strong> 图谱回答问题只会引用 graph.json 中已有的边和节点。如果答案不完整，说明某些文件没被提取到，可以重建或手动补充。
+</div>
+
+<div class="nav">
+  <a href="002-构建知识图谱.html">← 上一课</a>
+  <a href="004-增量更新与高级选项.html">下一课：增量更新与高级选项 →</a>
+</div>
+</body></html>

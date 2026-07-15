@@ -1,0 +1,970 @@
+{
+  "nodes": [
+    {
+      "id": "temp_replace_agent",
+      "label": "_replace_agent.py",
+      "file_type": "code",
+      "source_file": "__temp/_replace_agent.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_replace_eval",
+      "label": "_replace_eval.py",
+      "file_type": "code",
+      "source_file": "__temp/_replace_eval.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_extract_xes",
+      "label": "extract_xes.py",
+      "file_type": "code",
+      "source_file": "__temp/extract_xes.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_calligraphy",
+      "label": "gen_calligraphy.py",
+      "file_type": "code",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_calligraphy_gen_html",
+      "label": "gen_html()",
+      "file_type": "code",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L66",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_calligraphy_save_to_pdf",
+      "label": "save_to_pdf()",
+      "file_type": "code",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L178",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_calligraphy_list_guwen",
+      "label": "list_guwen()",
+      "file_type": "code",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L238",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_calligraphy_rationale_67",
+      "label": "生成古文字帖 HTML（不包含 UI，直接渲染网格）",
+      "file_type": "rationale",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L67",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_calligraphy_rationale_179",
+      "label": "生成 HTML 并用 Edge 打印为 PDF",
+      "file_type": "rationale",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L179",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2",
+      "label": "gen_day9_v2.py",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_set_font",
+      "label": "set_font()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L16",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_cell_bg",
+      "label": "cell_bg()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L28",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_cell_borders",
+      "label": "cell_borders()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L34",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_cell_margins",
+      "label": "cell_margins()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L43",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_row_height",
+      "label": "row_height()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L50",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_fixed_layout",
+      "label": "fixed_layout()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L55",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_add_para",
+      "label": "add_para()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L59",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_run",
+      "label": "run()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L67",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_block",
+      "label": "block()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L157",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf",
+      "label": "邦共用_md2pdf.py",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_strip_emoji",
+      "label": "strip_emoji()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_safe_print",
+      "label": "safe_print()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L97",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf",
+      "label": "MD2PDF",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L111",
+      "_origin": "ast"
+    },
+    {
+      "id": "fpdf",
+      "label": "FPDF",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_init",
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L112",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_title_page",
+      "label": ".title_page()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L119",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_write_heading",
+      "label": ".write_heading()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L129",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_write_text",
+      "label": ".write_text()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L144",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_write_bullet",
+      "label": ".write_bullet()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L158",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_write_table",
+      "label": ".write_table()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L174",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_write_code",
+      "label": ".write_code()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L244",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_write_separator",
+      "label": ".write_separator()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L258",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_convert_md_to_pdf",
+      "label": "convert_md_to_pdf()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L265",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_rationale_1",
+      "label": "Convert Markdown files to PDF with Chinese font support using fpdf2.",
+      "file_type": "rationale",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_rationale_9",
+      "label": "Remove emoji characters that may not be in the font.",
+      "file_type": "rationale",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_rationale_98",
+      "label": "Print text safely with GBK encoding.",
+      "file_type": "rationale",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L98",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_rationale_175",
+      "label": "Draw a table with Chinese text support.",
+      "file_type": "rationale",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L175",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_rationale_266",
+      "label": "Convert a Markdown file to PDF.",
+      "file_type": "rationale",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L266",
+      "_origin": "ast"
+    }
+  ],
+  "edges": [
+    {
+      "source": "temp_replace_agent",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/_replace_agent.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_replace_eval",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/_replace_eval.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_extract_xes",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/extract_xes.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_extract_xes",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/extract_xes.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_extract_xes",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/extract_xes.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "glob",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "subprocess",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "shutil",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "temp_gen_calligraphy_gen_html",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "temp_gen_calligraphy_save_to_pdf",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L178",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "temp_gen_calligraphy_list_guwen",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L238",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy_save_to_pdf",
+      "target": "temp_gen_calligraphy_gen_html",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L180",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy_rationale_67",
+      "target": "temp_gen_calligraphy_gen_html",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy_rationale_179",
+      "target": "temp_gen_calligraphy_save_to_pdf",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L179",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "docx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "docx_shared",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "docx_enum_text",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "docx_enum_table",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "docx_oxml_ns",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "docx_oxml",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_set_font",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_cell_bg",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_cell_borders",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_cell_margins",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_row_height",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_fixed_layout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_add_para",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_run",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_block",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L157",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2_run",
+      "target": "temp_gen_day9_v2_set_font",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2_block",
+      "target": "temp_gen_day9_v2_run",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "fpdf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "邦共用_md2pdf_strip_emoji",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "邦共用_md2pdf_safe_print",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "fpdf",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_init",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_title_page",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_heading",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L129",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_text",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_bullet",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_table",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L174",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_code",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L244",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_separator",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L258",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "邦共用_md2pdf_convert_md_to_pdf",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L265",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L402",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "traceback",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L416",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf_write_heading",
+      "target": "邦共用_md2pdf_strip_emoji",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf_write_text",
+      "target": "邦共用_md2pdf_strip_emoji",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf_write_bullet",
+      "target": "邦共用_md2pdf_strip_emoji",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_strip_emoji",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L271",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L273",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_code",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L293",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_table",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L329",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_heading",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L334",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_separator",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L352",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_bullet",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L386",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_text",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L395",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_safe_print",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L398",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_rationale_1",
+      "target": "邦共用_md2pdf",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_rationale_9",
+      "target": "邦共用_md2pdf_strip_emoji",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_rationale_98",
+      "target": "邦共用_md2pdf_safe_print",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_rationale_175",
+      "target": "邦共用_md2pdf_md2pdf_write_table",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L175",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_rationale_266",
+      "target": "邦共用_md2pdf_convert_md_to_pdf",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L266",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

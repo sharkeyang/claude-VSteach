@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1课 · Markdown 完整语法</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:920px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}
+h1{font-size:1.6rem;margin-bottom:0.5rem;border-bottom:2px solid #b78b4a;padding-bottom:0.3rem}
+h2{font-size:1.2rem;margin:1.5rem 0 0.5rem 0;color:#2d3e50;border-left:3px solid #b78b4a;padding-left:0.5rem}
+h3{font-size:1rem;margin:1rem 0 0.3rem 0;color:#555}
+.code{background:#1e1e2e;color:#cdd6f4;padding:0.8rem 1rem;border-radius:6px;font-size:0.83rem;overflow-x:auto;margin:0.5rem 0;font-family:"Cascadia Code","Fira Code",monospace;line-height:1.5}
+.code .cm{color:#6c7086}.code .err{color:#f38ba8}.code .ok{color:#a6e3a1}.code .hl{color:#f9e2af}
+.code .kw{color:#89b4fa}.code .str{color:#a6e3a1}.code .num{color:#fab387}
+.example{background:#f0fdf4;border-left:3px solid #16a34a;padding:0.6rem 1rem;margin:0.5rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+.example-bad{background:#fef2f2;border-left:3px solid #dc2626;padding:0.6rem 1rem;margin:0.5rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}
+.nav a{padding:0.4rem 1rem;background:#b78b4a;color:#fff;text-decoration:none;border-radius:4px;font-size:0.85rem}
+.nav a:hover{opacity:0.9}
+.tip{background:#fffbeb;border-left:3px solid #f59e0b;padding:0.6rem 1rem;margin:0.5rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+table.ws{width:100%;border-collapse:collapse;margin:0.5rem 0}
+table.ws th{background:#b78b4a;color:#fff;padding:0.4rem 0.6rem;text-align:left;font-size:0.85rem}
+table.ws td{padding:0.4rem 0.6rem;border:1px solid #e2e8f0;font-size:0.85rem}
+table.ws tr:nth-child(even){background:#f8fafc}
+</style>
+</head>
+<body>
+<h1>第1课：Markdown 完整语法</h1>
+<p style="color:#64748b;margin-bottom:1rem">覆盖昭明路线图.md 中用到的全部语法 · 每个都带正误示例</p>
+
+<h2>一、YAML Frontmatter（元数据区）</h2>
+<p>文档开头用 <code>---</code> 包裹的元数据块，定义文档属性，不会被渲染出来。</p>
+<div class="code">---<br>name: full-roadmap<br>description: 全流程量化交易系统<br>metadata:<br>&nbsp;&nbsp;type: project<br>---</div>
+<div class="example-bad">❌ <code>---</code> 前后没有空行，导致 frontmatter 不生效，内容被当作文本渲染。</div>
+<div class="tip">💡 检查方法：预览时如果看到文档顶部出现了 <code>name: xxx</code> 这样的文字，说明 frontmatter 没解析成功。</div>
+
+<h2>二、标题层级</h2>
+<div class="code"><span class="ok"># 一级标题</span>     ← 文档标题，只用一次<br><span class="ok">## 二级标题</span>     ← 大章节<br><span class="ok">### 三级标题</span>    ← 小章节<br><span class="ok">#### 四级标题</span>    ← 子章节</div>
+<div class="example">✅ 昭明路线图的实际用法：<br>
+<code># 昭明路线图 — 全流程量化交易系统</code><br>
+<code>## 一、使命与目标</code><br>
+<code>### 1.1 使命</code></div>
+<div class="example-bad">❌ <code>#标题</code> ← # 后没空格<br>
+❌ 从 <code>##</code> 跳到 <code>####</code> ← 跳级了，目录会乱</div>
+
+<h2>三、YAML 与 HTML 混用（常见于昭明文档）</h2>
+<p>昭明文档中经常在 Markdown 内嵌入 HTML 标签来控制样式。这是 Markdown 的扩展功能，但不是所有渲染器都支持。</p>
+
+<h3>3.1 嵌入式 CSS 样式</h3>
+<div class="code"><span class="kw">&lt;style&gt;</span><br>body { font-size: 10pt; line-height: 1.5; }<br>table { font-size: 9pt; }<br>code { font-size: 9pt; }<br><span class="kw">&lt;/style&gt;</span></div>
+<div class="example">✅ 实际效果：在 VS Code 预览中，表格和代码字体变为 9pt，正文行距 1.5。</div>
+<div class="example-bad">❌ 如果忘记写 <code>&lt;/style&gt;</code>，后面所有内容都会被当 CSS 解析，页面空白！</div>
+
+<h3>3.2 HTML 表格（比 Markdown 表格更灵活）</h3>
+<p>昭明路线图大量使用 HTML 表格，内部可以嵌套 Markdown 表格：</p>
+<div class="code"><span class="kw">&lt;table</span> border="1" cellpadding="8" <span class="kw">&gt;</span><br><span class="kw">&lt;tr&gt;&lt;td&gt;</span><br><br>| 列1 | 列2 | ← 内部是 Markdown 表格<br>|:---|:---|<br>| 数据 | 数据 |<br><br><span class="kw">&lt;/td&gt;&lt;/tr&gt;</span><br><span class="kw">&lt;/table&gt;</span></div>
+<div class="example-bad">❌ HTML 标签不闭合（如 <code>&lt;tr&gt;</code> 没有 <code>&lt;/tr&gt;</code>），会导致整个页面渲染错乱。</div>
+
+<h3>3.3 内联颜色样式</h3>
+<div class="code"><span class="kw">&lt;span</span> style="color:red"<span class="kw">&gt;</span> &gt; **警示一：** 此划分方式已确定 <span class="kw">&lt;/span&gt;</span></div>
+<p>效果：<span style="color:red">红色文字，常用于警示</span></p>
+<div class="example-bad">❌ <code>&lt;span style="color:red"&gt;文字</code> ← 没有 <code>&lt;/span&gt;</code>，后面所有文字都变红！</div>
+
+<h3>3.4 不换行标签 &lt;nobr&gt;</h3>
+<p>用于表格中防止文字换行：</p>
+<div class="code"><span class="kw">&lt;nobr&gt;</span>✅ 已完成<span class="kw">&lt;/nobr&gt;</span></div>
+
+<h2>四、列表</h2>
+
+<h3>4.1 无序列表（多级嵌套）</h3>
+<div class="code">- 一级项目<br>&nbsp;&nbsp;- 二级项目（缩进2空格）<br>&nbsp;&nbsp;&nbsp;&nbsp;- 三级项目（缩进4空格）<br>- 回到一级</div>
+<div class="example">✅ 昭明路线图的实际嵌套：<br>
+<code>- [一、使命与目标](#一使命与目标)</code> ← 一级<br>
+<code>&nbsp;&nbsp;- [1.1 使命](#11-使命)</code> ← 二级<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;- [1.1.1 子项](#111-子项)</code> ← 三级</div>
+<div class="example-bad">❌ <code>- 一级</code><br>
+<code>&nbsp;- 二级</code> ← 只缩进1空格，渲染异常<br>
+<code>&nbsp;&nbsp;&nbsp;- 二级</code> ← 缩进3空格，和2空格混用</div>
+
+<h3>4.2 有序列表</h3>
+<div class="code">1. 第一步<br>2. 第二步<br>3. 第三步</div>
+<div class="example-bad">❌ <code>1. 第一步 / 1. 第二步 / 1. 第三步</code> ← 编号全用1，虽然渲染正常但语义错误</div>
+
+<h3>4.3 任务列表（Checklist）</h3>
+<div class="code">- [ ] 待办事项<br>- [x] 已完成事项<br>- [ ] 另一个待办</div>
+<p>效果：☐ 待办事项 · ☑ 已完成事项</p>
+<div class="example">✅ 昭明路线图的实际用法：<br>
+<code>| 里程碑3 | 三层策略验证完成 | ⏳ 待启动 |</code> ← 用表格 + 状态图标</div>
+<div class="example-bad">❌ <code>- [x]已完成</code> ← [x] 后面没空格，checklist 不生效</div>
+
+<h3>4.4 列表内嵌链接（目录常用）</h3>
+<div class="code">- [一、使命与目标](#一使命与目标)<br>&nbsp;&nbsp;- [1.1 使命](#11-使命)<br>&nbsp;&nbsp;- [1.2 三大目标](#12-三大目标)<br>&nbsp;&nbsp;&nbsp;&nbsp;- [1.2.1 子目标](#121-子目标)</div>
+<div class="tip">💡 锚点链接的规则：中文去掉标点，空格用 <code>-</code> 代替，如 <code>#一使命与目标</code>。</div>
+
+<h2>五、表格（Markdown 标准）</h2>
+
+<h3>5.1 基本表格</h3>
+<div class="code">| 列1 | 列2 | 列3 |<br>|:---|:---|:---|<br>| 数据1 | 数据2 | 数据3 |</div>
+<p><strong>对齐方式：</strong><code>:---</code> 左对齐 · <code>:---:</code> 居中 · <code>---:</code> 右对齐</p>
+
+<h3>5.2 带对齐的表格（昭明路线图常用）</h3>
+<div class="code">| # | 目标 | 描述 | &lt;nobr&gt;状态&lt;/nobr&gt; |<br>|:---:|------|------|:----:|<br>| 🎯 | 完全脱离人为决策 | 选股/择时系统化 | ✅ 已完成 |</div>
+<p>效果：第一列居中，第二、三列左对齐，第四列居中。</p>
+
+<h3>5.3 表格常见错误</h3>
+<div class="example-bad">❌ 列数不匹配：<br>
+<code>| 原文 | 解释 | 提醒 |</code> ← 3列<br>
+<code>| 好言一句 | 好话让人暖 |</code> ← ❌ 只有2列<br><br>
+❌ 分隔行格式不对：<br>
+<code>| 原文 | 解释 |</code><br>
+<code> --- | --- | ---</code> ← 没有 | 开头，不渲染</div>
+
+<h2>六、引用（Blockquote）</h2>
+
+<h3>6.1 单行引用</h3>
+<div class="code">&gt; 在已有操作规则的基础上，完善操盘链条。</div>
+
+<h3>6.2 多行引用</h3>
+<div class="code">&gt; 第一行<br>&gt; 第二行<br>&gt; 第三行</div>
+
+<h3>6.3 嵌套引用</h3>
+<div class="code">&gt; 外层引用<br>&gt; &gt; 内层引用（嵌套）<br>&gt; 回到外层</div>
+
+<h3>6.4 引用内嵌加粗</h3>
+<div class="code">&gt; **注一：** 下破 DJC 应将浮仓退出；当处于 DJC 之下且 DJE 之上，只可能是 `_多长` 基仓。</div>
+<div class="example-bad">❌ <code>&gt; 引用内容</code><br>
+<code>第二行没有 &gt;</code> ← 变成普通段落了，不属于引用</div>
+
+<h2>七、代码与代码块</h2>
+
+<h3>7.1 行内代码</h3>
+<div class="code">使用 <span class="hl">`</span>_多长<span class="hl">`</span> 策略，依赖 <span class="hl">`</span>WXCD<span class="hl">`</span> 指标</div>
+<p>效果：使用 <code>_多长</code> 策略，依赖 <code>WXCD</code> 指标。</p>
+
+<h3>7.2 代码块（3个反引号）</h3>
+<div class="code"><span class="hl">```</span><br>DJE之上 (DXZE>0)<br>│<br>├── DJC之上 (DXZC>0)<br>│   ├── ZA>0  → 持主动<br>│   └── ZA≤0  → 持被动<br>└── DJC之下<br><span class="hl">```</span></div>
+
+<h3>7.3 代码块语法高亮</h3>
+<div class="code"><span class="hl">```python</span><br>def calc_strategy():<br>&nbsp;&nbsp;&nbsp;&nbsp;return score<br><span class="hl">```</span></div>
+<div class="example-bad">❌ <code>```python</code> 没有对应的 <code>```</code> 结束 → 后面所有内容都变灰色！</div>
+
+<h2>八、内联格式</h2>
+
+<table class="ws">
+<tr><th>语法</th><th>写法</th><th>效果</th><th>常见错误</th></tr>
+<tr><td>粗体</td><td><code>**文字**</code></td><td><strong>文字</strong></td><td><code>**文字*</code>（少一个*）</td></tr>
+<tr><td>斜体</td><td><code>*文字*</code> 或 <code>_文字_</code></td><td><em>文字</em></td><td><code>*文字</code>（未闭合）</td></tr>
+<tr><td>行内代码</td><td><code>`代码`</code></td><td><code>代码</code></td><td>` 不匹配</td></tr>
+<tr><td>删除线</td><td><code>~~文字~~</code></td><td><del>文字</del></td><td>~~ 未成对</td></tr>
+<tr><td>链接</td><td><code>[text](url)</code></td><td><a href="#">text</a></td><td>URL 中有空格或中文</td></tr>
+<tr><td>图片</td><td><code>![alt](img.png)</code></td><td>—</td><td>忘记 !</td></tr>
+</table>
+
+<h2>九、特殊字符与转义</h2>
+
+<table class="ws">
+<tr><th>字符</th><th>用途</th><th>写法</th><th>常见错误</th></tr>
+<tr><td><code>&amp;nbsp;</code></td><td>空格</td><td><code>&amp;nbsp;</code></td><td>在 Markdown 中多空格不生效，必须用 &amp;nbsp;</td></tr>
+<tr><td><code>&amp;gt;</code></td><td>&gt;</td><td><code>&amp;gt;</code></td><td>在代码示例中直接写 <code>&gt;</code> 会被当引用</td></tr>
+<tr><td><code>&amp;lt;</code></td><td>&lt;</td><td><code>&amp;lt;</code></td><td>同上</td></tr>
+<tr><td><code>&amp;amp;</code></td><td>&amp;</td><td><code>&amp;amp;</code></td><td>直接写 & 可能被当 HTML 实体</td></tr>
+<tr><td><code>&amp;#x200B;</code></td><td>零宽空格</td><td>不可见字符</td><td>从网页复制时带入，破坏表格排版</td></tr>
+</table>
+
+<h2>十、水平分割线</h2>
+<div class="code">---</div>
+<p>三个或以上的 <code>-</code> 就是分割线。如果上面一行也是 <code>---</code>，会被识别为 YAML frontmatter。</p>
+<div class="example-bad">❌ <code>---</code> 在文档开头被当 YAML，在中间才是分割线。如果中间不小心多写了 <code>---</code> 且上下有空行，就是分割线。</div>
+
+<h2>十一、Emoji 使用</h2>
+<p>昭明路线图中大量使用 Emoji 作为状态标记：</p>
+<div class="code">✅ 已完成&nbsp;&nbsp;⏳ 待启动&nbsp;&nbsp;🔄 进行中&nbsp;&nbsp;🎯 核心目标<br>🔴 避免&nbsp;&nbsp;🟢 优先&nbsp;&nbsp;🟡 谨慎</div>
+<div class="tip">💡 Emoji 在 Markdown 中直接粘贴即可，不需要额外语法。但不同终端的 Emoji 渲染效果不同，VS Code 和浏览器可能显示不一样。</div>
+
+<h2>十二、URL 中的锚点链接</h2>
+<p>在昭明路线图中，复杂的目录结构使用锚点跳转：</p>
+<div class="code">[2.3.2 周冲策略数据验证](#232-周冲策略数据验证)<br>[表①：全量基准](#表全量基准)</div>
+<p><strong>规则：</strong>锚点 = 标题文字去掉标点符号，中文空格变 <code>-</code>，英文空格变 <code>-</code>。</p>
+<div class="example">✅ <code>## 2.3.2 周冲策略数据验证</code> → 锚点 <code>#232-周冲策略数据验证</code></div>
+<div class="example-bad">❌ 如果标题中有 <code>&lt;/span&gt;</code> 等 HTML 标签，锚点会包含这些标签，链接失效。</div>
+
+<h2>十三、昭明文档中的特殊模式</h2>
+
+<h3>13.1 表格内嵌 HTML 表格</h3>
+<p>昭明文档经常用 HTML 表格包裹 Markdown 内容：</p>
+<div class="code"><span class="kw">&lt;table</span> border="1" cellpadding="8" <span class="kw">&gt;</span><br><span class="kw">&lt;tr&gt;&lt;td&gt;</span><br><br>**疑惑①：DJA之上出现跌排，是否应归类为卖出？**<br><br>直觉：DJA之上没有止损点...<br><br><span class="kw">&lt;/td&gt;&lt;/tr&gt;</span><br><span class="kw">&lt;/table&gt;</span></div>
+<p><strong>检查重点：</strong>HTML 标签必须成对出现。一个 <code>&lt;tr&gt;</code> 对应一个 <code>&lt;/tr&gt;</code>。</p>
+
+<h3>13.2 彩色警示</h3>
+<div class="code"><span class="kw">&lt;span</span> style="color:red"<span class="kw">&gt;</span><br>&gt; **警示一：** 此划分方式已确定，不需要再改变。<br><span class="kw">&lt;/span&gt;</span></div>
+<p><strong>注意：</strong>引用 <code>&gt;</code> 在 <code>&lt;span&gt;</code> 内部，实际渲染时如果 span 没闭合，整个页面变红。</p>
+
+<h3>13.3 多级缩进列表（目录）</h3>
+<div class="code">- [昭明路线图](#昭明路线图)<br>&nbsp;&nbsp;- [一、使命与目标](#一使命与目标)<br>&nbsp;&nbsp;&nbsp;&nbsp;- [1.1 使命](#11-使命)<br>&nbsp;&nbsp;&nbsp;&nbsp;- [1.2 三大目标](#12-三大目标)<br>&nbsp;&nbsp;- [二、单股操盘方法](#二单股操盘方法)<br>&nbsp;&nbsp;&nbsp;&nbsp;- [2.1 专题一](#21-专题一)</div>
+<p><strong>检查：</strong>缩进必须统一用 2 空格一级，不能混用 2/3/4。</p>
+
+<h2>十四、5 分钟快速检查清单</h2>
+<div class="code"><span class="cm"># 1. 检查 HTML 标签是否闭合</span>
+grep -c '&lt;table' 文件名.md
+grep -c '&lt;/table&gt;' 文件名.md
+<span class="cm"># 两个数字必须相等</span>
+
+<span class="cm"># 2. 检查 style 标签</span>
+grep -c '&lt;style&gt;' 文件名.md
+grep -c '&lt;/style&gt;' 文件名.md
+
+<span class="cm"># 3. 检查 span 标签</span>
+grep -c '&lt;span' 文件名.md
+grep -c '&lt;/span&gt;' 文件名.md
+
+<span class="cm"># 4. 检查代码块</span>
+grep -c '```' 文件名.md  <span class="cm"># 必须偶数</span>
+
+<span class="cm"># 5. 检查表格列数</span>
+awk -F'|' '{print NF-1}' 文件名.md | sort | uniq -c</div>
+
+<div class="nav">
+  <a href="../index.html">← 目录</a>
+  <a href="002-Claude常见格式错误.html">第2课 →</a>
+</div>
+</body>
+</html>

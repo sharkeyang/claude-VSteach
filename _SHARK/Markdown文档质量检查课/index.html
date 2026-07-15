@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown 文档质量检查课 · 总目录</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#b78b4a; --done:#16a34a; --border:#e2e8f0; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:860px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.7; }
+    h1 { font-size:2rem; margin-bottom:0.25rem; }
+    .sub { color:#64748b; font-size:0.95rem; margin-bottom:1.5rem; }
+    .section-label { font-size:0.85rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:0.05em; margin:1.5rem 0 0.5rem 0; padding-left:0.5rem; border-left:3px solid var(--accent); }
+    .principles { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin-bottom:2rem; }
+    .principle { border:1px solid var(--border); border-radius:8px; padding:0.75rem 1rem; background:#fff; }
+    .principle .badge { display:inline-block; padding:0.15rem 0.5rem; border-radius:4px; font-size:0.75rem; font-weight:700; color:#fff; margin-bottom:0.35rem; background:var(--accent); }
+    .principle p { font-size:0.8rem; color:#64748b; margin-bottom:0; }
+    .lessons { display:flex; flex-direction:column; gap:0.6rem; }
+    .lesson { display:flex; align-items:center; gap:0.75rem; padding:0.75rem 1rem; background:#fff; border:1px solid var(--border); border-radius:8px; text-decoration:none; color:var(--text); transition:all 0.15s; }
+    .lesson:hover { border-color:var(--accent); box-shadow:0 2px 8px rgba(183,139,74,0.15); }
+    .lesson .num { width:2rem; height:2rem; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.85rem; font-weight:700; flex-shrink:0; }
+    .lesson .num.done { background:var(--done); }
+    .lesson .info { flex:1; }
+    .lesson .info h3 { font-size:1rem; font-weight:600; }
+    .lesson .info p { font-size:0.85rem; color:#64748b; margin:0; }
+    .tag { font-size:0.7rem; padding:0.1rem 0.4rem; border-radius:3px; font-weight:600; flex-shrink:0; }
+    .tag.base { background:#fef3c7; color:#92400e; }
+    .tag.check { background:#dbeafe; color:#1d4ed8; }
+    .tag.fix { background:#dcfce7; color:#166534; }
+    .tag.case { background:#ede9fe; color:#5b21b6; }
+  </style>
+</head>
+<body>
+  <h1>Markdown 文档质量检查课</h1>
+  <p class="sub">快速识别 Claude 生成文档中的格式错误 · 掌握人工判断和修复方法</p>
+
+  <div class="principles">
+    <div class="principle"><span class="badge">🔍 发现</span><p>先预览再细查，5 分钟找出大部分格式问题</p></div>
+    <div class="principle"><span class="badge">🔧 修复</span><p>表格列数/标签闭合/代码块 3 个高频问题对症下药</p></div>
+    <div class="principle"><span class="badge">✅ 验证</span><p>修完后重新预览，确认渲染效果正确</p></div>
+  </div>
+
+  <div class="section-label">📖 基础篇 — 认识 Markdown，学会排查</div>
+  <div class="lessons">
+    <a href="lessons/001-基础语法.html" class="lesson">
+      <span class="num">1</span>
+      <div class="info"><h3>Markdown 基础语法</h3><p>标题/列表/表格/代码块/引用 — 每个语法都带正确与错误示例</p></div>
+      <span class="tag base">基础</span>
+    </a>
+    <a href="lessons/002-Claude常见格式错误.html" class="lesson">
+      <span class="num">2</span>
+      <div class="info"><h3>Claude 常见格式错误 TOP 12</h3><p>表格列数/标签未闭合/编码问题，每个错误都有表现与修复</p></div>
+      <span class="tag base">基础</span>
+    </a>
+  </div>
+
+  <div class="section-label">🔧 实战篇 — 检查流程与修复方法</div>
+  <div class="lessons">
+    <a href="lessons/003-5分钟自查清单.html" class="lesson">
+      <span class="num">3</span>
+      <div class="info"><h3>5 分钟自查清单</h3><p>全局浏览→检查表格→检查标签→检查代码块→检查特殊字符</p></div>
+      <span class="tag check">检查</span>
+    </a>
+    <a href="lessons/004-修复三板斧.html" class="lesson">
+      <span class="num">4</span>
+      <div class="info"><h3>常见修复三板斧</h3><p>表格列对齐/补齐反引号/闭合标签，三招解决 90% 问题</p></div>
+      <span class="tag fix">修复</span>
+    </a>
+  </div>
+
+  <div class="section-label">📂 案例篇 — 真实问题复盘</div>
+  <div class="lessons">
+    <a href="lessons/005-实战案例.html" class="lesson">
+      <span class="num">5</span>
+      <div class="info"><h3>实战案例</h3><p>621 条空解释修复 / Python 引号报错 / 表格多行 / 中文路径</p></div>
+      <span class="tag case">案例</span>
+    </a>
+  </div>
+
+  <div class="section-label">⚡ 速查附录</div>
+  <div class="lessons">
+    <a href="lessons/006-速查卡与设置.html" class="lesson">
+      <span class="num">6</span>
+      <div class="info"><h3>速查卡与 VS Code 设置</h3><p>常用检查命令 / VS Code 推荐配置 / 渲染测试模板</p></div>
+      <span class="tag fix">速查</span>
+    </a>
+  </div>
+</body>
+</html>

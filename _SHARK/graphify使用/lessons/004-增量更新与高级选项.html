@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第4课 · 增量更新与高级选项</title><style>body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:800px; margin:0 auto; padding:2rem 1.5rem; color:#1a1a2e; background:#fafafa; line-height:1.8; } h1 { font-size:1.6rem; border-left:4px solid #7c3aed; padding-left:1rem; margin-bottom:1.5rem; } h2 { font-size:1.2rem; margin-top:2rem; margin-bottom:0.5rem; color:#7c3aed; } h3 { font-size:1rem; margin-top:1.5rem; margin-bottom:0.3rem; } p { margin-bottom:1rem; } ul,ol { margin-bottom:1rem; padding-left:1.5rem; } li { margin-bottom:0.3rem; } code { background:#f1f5f9; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.9em; } pre { background:#1e293b; color:#e2e8f0; padding:1rem; border-radius:6px; overflow-x:auto; font-size:0.85rem; line-height:1.5; } .tip { background:#f5f3ff; border-left:3px solid #7c3aed; padding:0.75rem 1rem; margin:1rem 0; border-radius:0 6px 6px 0; font-size:0.9rem; } .warn { background:#fef3c7; border-left:3px solid #f59e0b; padding:0.75rem 1rem; margin:1rem 0; border-radius:0 6px 6px 0; font-size:0.9rem; } table { width:100%; border-collapse:collapse; margin:1rem 0; } th,td { padding:0.5rem; border:1px solid #e2e8f0; text-align:left; } th { background:#f1f5f9; } .nav { display:flex; justify-content:space-between; margin-top:2rem; padding-top:1rem; border-top:1px solid #e2e8f0; } .nav a { color:#7c3aed; text-decoration:none; font-weight:600; } .nav a:hover { text-decoration:underline; }</style></head><body>
+<h1>第 4 课 · 增量更新与高级选项</h1>
+
+<h2>--update：增量更新</h2>
+<p>改了几个文件后，不用全量重跑：</p>
+<pre>/graphify D:\project --update</pre>
+<p>graphify 会对比文件修改时间，只重新提取新增/修改的文件，保留已有的缓存结果。适合日常迭代。</p>
+
+<h2>--mode deep：深度提取</h2>
+<pre>/graphify D:\project --mode deep</pre>
+<p>更激进地添加 INFERRED 边——间接依赖、共享假设、潜在耦合。适合需要彻底理解架构关系时使用。</p>
+
+<h2>--cluster-only：只重新聚类</h2>
+<pre>/graphify D:\project --cluster-only</pre>
+<p>不重新提取，只对已有的 graph.json 重新运行社区检测算法。适合调整社区划分时使用。</p>
+
+<h2>--directed：有向图</h2>
+<pre>/graphify D:\project --directed</pre>
+<p>构建有向图，保留边的方向（source→target）。默认是无向图。有向图能看出"谁调用了谁"，但会丢失一些社区检测效果。</p>
+
+<h2>--watch：自动监听</h2>
+<pre>/graphify D:\project --watch</pre>
+<p>监听文件变化，自动重建（无需 LLM）。适合开发过程中保持图谱实时更新。</p>
+
+<h2>--no-viz：跳过可视化</h2>
+<pre>/graphify D:\project --no-viz</pre>
+<p>只生成 graph.json 和 GRAPH_REPORT.md，不生成 HTML 交互图。适合纯 CI 或批量处理场景。</p>
+
+<h2>GitHub 仓库</h2>
+<pre>/graphify https://github.com/owner/repo
+/graphify https://github.com/owner/repo --branch develop</pre>
+
+<h2>多仓库合并</h2>
+<pre>/graphify repo1_url repo2_url</pre>
+<p>克隆多个仓库，各自建图，然后合并成一个跨仓库图谱。</p>
+
+<h2>选项速查</h2>
+<table>
+  <tr><th>选项</th><th>作用</th></tr>
+  <tr><td>--update</td><td>增量更新，只处理变更文件</td></tr>
+  <tr><td>--mode deep</td><td>深度提取，添加更多推断边</td></tr>
+  <tr><td>--cluster-only</td><td>只重新聚类</td></tr>
+  <tr><td>--directed</td><td>构建有向图</td></tr>
+  <tr><td>--watch</td><td>监听文件变化自动重建</td></tr>
+  <tr><td>--no-viz</td><td>跳过 HTML 可视化</td></tr>
+  <tr><td>--svg</td><td>导出 SVG 图</td></tr>
+  <tr><td>--graphml</td><td>导出 GraphML 格式</td></tr>
+</table>
+
+<div class="warn">
+<strong>⚠️ 缩容保护：</strong> 如果新图节点数比旧图少，graphify 会拒绝覆写以防止意外丢失数据。如需强制重建，加 --force。
+</div>
+
+<div class="nav">
+  <a href="003-查询与探索图谱.html">← 上一课</a>
+  <a href="005-导出与整合.html">下一课：导出与整合 →</a>
+</div>
+</body></html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第4课 · 常见修复三板斧</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:860px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}
+h1{font-size:1.6rem;margin-bottom:0.5rem;border-bottom:2px solid #b78b4a;padding-bottom:0.3rem}
+h2{font-size:1.15rem;margin:1.5rem 0 0.5rem 0;color:#2d3e50}
+h2 .badge{display:inline-block;background:#16a34a;color:#fff;font-size:0.7rem;padding:0.1rem 0.4rem;border-radius:3px;margin-right:0.4rem;vertical-align:middle}
+.code{background:#1e1e2e;color:#cdd6f4;padding:0.8rem 1rem;border-radius:6px;font-size:0.85rem;overflow-x:auto;margin:0.5rem 0;font-family:"Cascadia Code","Fira Code",monospace;line-height:1.5}
+.code .bad{color:#f38ba8}.code .good{color:#a6e3a1}
+.example{background:#f0fdf4;border-left:3px solid #16a34a;padding:0.6rem 1rem;margin:0.5rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+.example-bad{background:#fef2f2;border-left:3px solid #dc2626;padding:0.6rem 1rem;margin:0.5rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}
+.nav a{padding:0.4rem 1rem;background:#b78b4a;color:#fff;text-decoration:none;border-radius:4px;font-size:0.85rem}
+.nav a:hover{opacity:0.9}
+</style>
+</head>
+<body>
+<h1>第4课：常见修复三板斧</h1>
+<p style="color:#64748b;margin-bottom:1rem">三招解决 90% 的格式问题</p>
+
+<h2><span class="badge">斧1</span>表格列对齐</h2>
+<p><strong>问题：</strong>列数不匹配或分隔行格式不对。</p>
+<div class="example-bad">修复前：<br>
+<code>| 原文 | 解释 | 提醒 |</code> ← 3 列<br>
+<code>|:---|:---|:---|</code><br>
+<code>| 好言一句 | 好话让人暖 |</code> ← ❌ 少一列</div>
+<div class="example">修复后：<br>
+<code>| **原文** | **解释** | **提醒** |</code><br>
+<code>|:---|:---|:---|</code><br>
+<code>| **好言一句** | 好话让人暖 | 你随口一句 |</code> ← ✅ 3 列</div>
+<p><strong>方法：</strong>找到出问题的行，数一下有几个 <code>|</code>，和表头保持一致。</p>
+
+<h2><span class="badge">斧2</span>补齐代码块反引号</h2>
+<p><strong>问题：</strong>代码块没闭合，后面内容变灰色。</p>
+<div class="code"><span class="bad">```python</span>
+<span class="bad">print("hello")</span>
+<span class="bad">← 少了结束的 ```</span></div>
+<div class="example">修复：在代码块末尾加上 <code>```</code></div>
+<p><strong>检查：</strong>搜索 <code>```</code>，出现次数必须是偶数。</p>
+
+<h2><span class="badge">斧3</span>闭合 HTML 标签</h2>
+<p><strong>问题：</strong><code>&lt;small&gt;</code> 或 <code>&lt;b&gt;</code> 没有闭合，导致后续文字全部变小或变粗。</p>
+<div class="example-bad"><code>&lt;small&gt;这句话会变小</code> ← ❌ 没闭合</div>
+<div class="example">✅ <code>&lt;small&gt;这句话会变小&lt;/small&gt;</code></div>
+<p><strong>检查：</strong></p>
+<div class="code"><span class="good"># 统计数量</span>
+grep -c '&lt;small&gt;' 文件名.md
+grep -c '&lt;/small&gt;' 文件名.md
+<span class="good"># 两个数字必须相等</span></div>
+
+<h2>补充：Python 引号冲突修复</h2>
+<p>当场景举例中包含 <code>"</code> 时，Python 字符串会报错：</p>
+<div class="code"><span class="bad">scene = "同学说"你好"他来了"</span>  ← ❌ 引号冲突</div>
+<p><strong>三种修复方法：</strong></p>
+<div class="example">方法1：用单引号包裹<br>
+<code>scene = '同学说"你好"他来了'</code> ✅</div>
+<div class="example">方法2：转义<br>
+<code>scene = "同学说\"你好\"他来了"</code> ✅</div>
+<div class="example">方法3：替换为中文括号（推荐）<br>
+<code>scene = "同学说「你好」他来了"</code> ✅</div>
+
+<div class="nav">
+  <a href="003-5分钟自查清单.html">← 第3课</a>
+  <a href="../index.html">目录</a>
+  <a href="005-实战案例.html">第5课 →</a>
+</div>
+</body>
+</html>

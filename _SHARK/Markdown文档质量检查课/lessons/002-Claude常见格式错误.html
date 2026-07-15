@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2课 · Claude 常见格式错误 TOP 12</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:860px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}
+h1{font-size:1.6rem;margin-bottom:0.5rem;border-bottom:2px solid #b78b4a;padding-bottom:0.3rem}
+h2{font-size:1.15rem;margin:1.5rem 0 0.5rem 0;color:#2d3e50}
+h2 .badge{display:inline-block;background:#dc2626;color:#fff;font-size:0.7rem;padding:0.1rem 0.4rem;border-radius:3px;margin-right:0.4rem;vertical-align:middle}
+.code{background:#1e1e2e;color:#cdd6f4;padding:0.8rem 1rem;border-radius:6px;font-size:0.85rem;overflow-x:auto;margin:0.5rem 0;font-family:"Cascadia Code","Fira Code",monospace;line-height:1.5}
+.example{background:#f0fdf4;border-left:3px solid #16a34a;padding:0.6rem 1rem;margin:0.5rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+.example-bad{background:#fef2f2;border-left:3px solid #dc2626;padding:0.6rem 1rem;margin:0.5rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}
+.nav a{padding:0.4rem 1rem;background:#b78b4a;color:#fff;text-decoration:none;border-radius:4px;font-size:0.85rem}
+.nav a:hover{opacity:0.9}
+</style>
+</head>
+<body>
+<h1>第2课：Claude 常见格式错误 TOP 12</h1>
+<p style="color:#64748b;margin-bottom:1rem">每个错误都附表现、示例、修复方法</p>
+
+<h2><span class="badge">1</span>表格列数不一致</h2>
+<p><strong>表现：</strong>表格歪歪扭扭，一列跑到另一列去了。</p>
+<div class="example-bad"><code>| 原文 | 解释 | 提醒 |</code> ← 3列<br>
+<code>| 好言一句 | 好话让人暖 | 你随口一句 |</code> ← ✅ 3列<br>
+<code>| 伤身事莫做 | 伤身体的事 |</code> ← ❌ 只有2列！</div>
+<p><strong>修复：</strong>确保每行 <code>|</code> 的数量相同。</p>
+
+<h2><span class="badge">2</span>表格分隔行格式不对</h2>
+<p><strong>表现：</strong>表格完全不渲染。</p>
+<div class="example-bad"><code>| 原文 | 解释 |</code><br>
+<code> --- | --- | ---</code> ← ❌ 分隔行没有 | 开头</div>
+<div class="example">✅ <code>|:---|:---|</code> ← 前面有 |，后面有 |</div>
+
+<h2><span class="badge">3</span>列表缩进不一致</h2>
+<p><strong>表现：</strong>子列表项跑到外面去了。</p>
+<div class="example-bad"><code>- 主列表</code><br>
+<code>&nbsp;&nbsp;- 子列表（2空格）</code><br>
+<code>&nbsp;- 这行缩进1空格</code> ← ❌ 渲染异常</div>
+<p><strong>修复：</strong>全部用 2 个空格缩进一级。</p>
+
+<h2><span class="badge">4</span>代码块未正确闭合</h2>
+<p><strong>表现：</strong>后面所有内容变成灰色代码块。</p>
+<div class="example-bad"><code>```python</code><br>
+<code>print("hello")</code><br>
+← ❌ 少了结束的 ```<br>
+后面所有内容都变灰色...</div>
+<p><strong>检查：</strong>搜索 <code>```</code>，出现次数必须是偶数。</p>
+
+<h2><span class="badge">5</span>中英文引号混用</h2>
+<p><strong>表现：</strong>Python 报错 <code>SyntaxError</code>。</p>
+<div class="code">scene = "同学跑来跟你说"老师骂你了"他也会说"  ← ❌ 引号冲突</div>
+<p><strong>修复：</strong>将中文引号替换为「」：</p>
+<div class="example">scene = '同学跑来跟他说「老师骂你了」他也会说'  ← ✅</div>
+
+<h2><span class="badge">6</span>&lt;small&gt;标签未闭合</h2>
+<p><strong>表现：</strong>整个页面后面的字体都变小。</p>
+<div class="example-bad"><code>&lt;small&gt;这是小字</code> ← ❌ 没有 &lt;/small&gt;</div>
+<p><strong>检查：</strong>统计 <code>&lt;small&gt;</code> 和 <code>&lt;/small&gt;</code> 数量，必须相等。</p>
+
+<h2><span class="badge">7</span>文件编码为 GBK 而非 UTF-8</h2>
+<p><strong>表现：</strong>中文显示为乱码，如 <code>ç»Ÿè®¡</code>。</p>
+<p><strong>修复：</strong>VS Code 右下角点击编码 → 选择「通过编码保存」→ UTF-8。</p>
+
+<h2><span class="badge">8</span>零宽空格</h2>
+<p><strong>表现：</strong>表格看起来没问题，但有些行无法对齐。肉眼看不到！</p>
+<p><strong>检查：</strong>VS Code 中 Ctrl+F，搜索零宽空格字符（U+200B）。</p>
+
+<h2><span class="badge">9</span>超长行导致表格溢出</h2>
+<p><strong>表现：</strong>表格需要左右滚动才能看完。</p>
+<p><strong>修复：</strong>单元格内容控制在 30 字以内，或手动换行。</p>
+
+<h2><span class="badge">10</span>标题层级跳级</h2>
+<p><strong>表现：</strong>VS Code 大纲面板出现断层。</p>
+<div class="example-bad"><code># 一级</code> → <code>### 三级</code> ← ❌ 跳过二级</div>
+
+<h2><span class="badge">11</span>| 被用在表格之外</h2>
+<p><strong>表现：</strong>普通段落中的 | 被误解析为表格。</p>
+<p><strong>修复：</strong>在 Markdown 普通段落中使用 | 需要转义 <code>\|</code>。</p>
+
+<h2><span class="badge">12</span>URL 中包含空格或中文</h2>
+<p><strong>表现：</strong>链接点击无效。</p>
+<div class="example-bad"><code>[链接](https://example.com/my file.pdf)</code> ← ❌ 有空格</div>
+<div class="example">✅ <code>[链接](https://example.com/my%20file.pdf)</code></div>
+
+<div class="nav">
+  <a href="001-基础语法.html">← 第1课</a>
+  <a href="../index.html">目录</a>
+  <a href="003-5分钟自查清单.html">第3课 →</a>
+</div>
+</body>
+</html>

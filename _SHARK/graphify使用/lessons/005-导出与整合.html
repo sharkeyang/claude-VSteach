@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第5课 · 导出与整合</title><style>body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:800px; margin:0 auto; padding:2rem 1.5rem; color:#1a1a2e; background:#fafafa; line-height:1.8; } h1 { font-size:1.6rem; border-left:4px solid #7c3aed; padding-left:1rem; margin-bottom:1.5rem; } h2 { font-size:1.2rem; margin-top:2rem; margin-bottom:0.5rem; color:#7c3aed; } h3 { font-size:1rem; margin-top:1.5rem; margin-bottom:0.3rem; } p { margin-bottom:1rem; } ul,ol { margin-bottom:1rem; padding-left:1.5rem; } li { margin-bottom:0.3rem; } code { background:#f1f5f9; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.9em; } pre { background:#1e293b; color:#e2e8f0; padding:1rem; border-radius:6px; overflow-x:auto; font-size:0.85rem; line-height:1.5; } .tip { background:#f5f3ff; border-left:3px solid #7c3aed; padding:0.75rem 1rem; margin:1rem 0; border-radius:0 6px 6px 0; font-size:0.9rem; } table { width:100%; border-collapse:collapse; margin:1rem 0; } th,td { padding:0.5rem; border:1px solid #e2e8f0; text-align:left; } th { background:#f1f5f9; } .nav { display:flex; justify-content:space-between; margin-top:2rem; padding-top:1rem; border-top:1px solid #e2e8f0; } .nav a { color:#7c3aed; text-decoration:none; font-weight:600; } .nav a:hover { text-decoration:underline; }</style></head><body>
+<h1>第 5 课 · 导出与整合</h1>
+
+<h2>默认产出</h2>
+<p>每次建图自动生成：</p>
+<ul>
+  <li><code>graph.json</code> — 原始图谱数据（节点+边+社区）</li>
+  <li><code>GRAPH_REPORT.md</code> — 审计报告（God Nodes、社区、隐藏关系、知识缺口）</li>
+  <li><code>graph.html</code> — 交互式可视化</li>
+</ul>
+
+<h2>HTML 交互图</h2>
+<p>默认生成，浏览器直接打开：</p>
+<pre>graphify export html</pre>
+<p>超过 5000 节点时自动聚合为社区视图。节点颜色按社区区分，可拖拽浏览。</p>
+
+<h2>SVG 导出</h2>
+<pre>/graphify D:\project --svg</pre>
+<p>导出 <code>graph.svg</code>，可嵌入 Notion、GitHub README、文档。</p>
+
+<h2>GraphML 导出</h2>
+<pre>/graphify D:\project --graphml</pre>
+<p>导出 <code>graph.graphml</code>，可导入 <strong>Gephi</strong> 或 <strong>yEd</strong> 做更专业的图分析。</p>
+
+<h2>Neo4j 导出/推送</h2>
+<pre>/graphify D:\project --neo4j              # 导出 Cypher 语句
+/graphify D:\project --neo4j-push bolt://localhost:7687  # 直接推入</pre>
+<p>导出 <code>graphify-out/cypher.txt</code>，可直接导入 Neo4j 图数据库。</p>
+
+<h2>Obsidian 知识库</h2>
+<pre>/graphify D:\project --obsidian
+/graphify D:\project --obsidian --obsidian-dir ~/vaults/my-project</pre>
+<p>每个节点生成一个 Obsidian 笔记文件，社区用文件夹区分。默认输出到 <code>graphify-out/obsidian/</code>。</p>
+
+<h2>FalkorDB 导出</h2>
+<pre>/graphify D:\project --falkordb
+/graphify D:\project --falkordb-push falkordb://localhost:6379</pre>
+
+<h2>Wiki 导出</h2>
+<pre>/graphify D:\project --wiki</pre>
+<p>生成可浏览的 Wiki 页面，每个社区一篇文章，方便分享给非技术用户。</p>
+
+<h2>MCP 服务器</h2>
+<pre>/graphify D:\project --mcp</pre>
+<p>启动 MCP stdio 服务器，让其他 AI 工具也能访问这个图谱。</p>
+
+<h2>导出格式速查</h2>
+<table>
+  <tr><th>格式</th><th>产出文件</th><th>用途</th></tr>
+  <tr><td>默认</td><td>graph.html</td><td>浏览器交互浏览</td></tr>
+  <tr><td>--svg</td><td>graph.svg</td><td>嵌入文档/Notion/GitHub</td></tr>
+  <tr><td>--graphml</td><td>graph.graphml</td><td>Gephi/yEd 专业分析</td></tr>
+  <tr><td>--neo4j</td><td>cypher.txt</td><td>导入 Neo4j 图数据库</td></tr>
+  <tr><td>--obsidian</td><td>obsidian/</td><td>Obsidian 知识库</td></tr>
+  <tr><td>--wiki</td><td>wiki/</td><td>可浏览的静态 Wiki</td></tr>
+</table>
+
+<div class="tip">
+<strong>💡 推荐：</strong> 日常用默认 HTML 浏览 + GRAPH_REPORT.md 查看报告。需要深度分析时用 GraphML 导入 Gephi。
+</div>
+
+<div class="nav">
+  <a href="004-增量更新与高级选项.html">← 上一课</a>
+  <span></span>
+</div>
+</body></html>

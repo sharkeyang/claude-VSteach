@@ -1,0 +1,4411 @@
+{
+  "nodes": [
+    {
+      "id": "temp_replace_agent",
+      "label": "_replace_agent.py",
+      "file_type": "code",
+      "source_file": "__temp/_replace_agent.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_replace_eval",
+      "label": "_replace_eval.py",
+      "file_type": "code",
+      "source_file": "__temp/_replace_eval.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_extract_xes",
+      "label": "extract_xes.py",
+      "file_type": "code",
+      "source_file": "__temp/extract_xes.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_calligraphy",
+      "label": "gen_calligraphy.py",
+      "file_type": "code",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_calligraphy_gen_html",
+      "label": "gen_html()",
+      "file_type": "code",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L66",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_calligraphy_save_to_pdf",
+      "label": "save_to_pdf()",
+      "file_type": "code",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L178",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_calligraphy_list_guwen",
+      "label": "list_guwen()",
+      "file_type": "code",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L238",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_calligraphy_rationale_67",
+      "label": "生成古文字帖 HTML（不包含 UI，直接渲染网格）",
+      "file_type": "rationale",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L67",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_calligraphy_rationale_179",
+      "label": "生成 HTML 并用 Edge 打印为 PDF",
+      "file_type": "rationale",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L179",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2",
+      "label": "gen_day9_v2.py",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_set_font",
+      "label": "set_font()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L16",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_cell_bg",
+      "label": "cell_bg()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L28",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_cell_borders",
+      "label": "cell_borders()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L34",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_cell_margins",
+      "label": "cell_margins()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L43",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_row_height",
+      "label": "row_height()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L50",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_fixed_layout",
+      "label": "fixed_layout()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L55",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_add_para",
+      "label": "add_para()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L59",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_run",
+      "label": "run()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L67",
+      "_origin": "ast"
+    },
+    {
+      "id": "temp_gen_day9_v2_block",
+      "label": "block()",
+      "file_type": "code",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L157",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf",
+      "label": "邦共用_md2pdf.py",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_strip_emoji",
+      "label": "strip_emoji()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_safe_print",
+      "label": "safe_print()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L97",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf",
+      "label": "MD2PDF",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L111",
+      "_origin": "ast"
+    },
+    {
+      "id": "fpdf",
+      "label": "FPDF",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_init",
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L112",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_title_page",
+      "label": ".title_page()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L119",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_write_heading",
+      "label": ".write_heading()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L129",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_write_text",
+      "label": ".write_text()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L144",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_write_bullet",
+      "label": ".write_bullet()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L158",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_write_table",
+      "label": ".write_table()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L174",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_write_code",
+      "label": ".write_code()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L244",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf_write_separator",
+      "label": ".write_separator()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L258",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_convert_md_to_pdf",
+      "label": "convert_md_to_pdf()",
+      "file_type": "code",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L265",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_rationale_1",
+      "label": "Convert Markdown files to PDF with Chinese font support using fpdf2.",
+      "file_type": "rationale",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_rationale_9",
+      "label": "Remove emoji characters that may not be in the font.",
+      "file_type": "rationale",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_rationale_98",
+      "label": "Print text safely with GBK encoding.",
+      "file_type": "rationale",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L98",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_rationale_175",
+      "label": "Draw a table with Chinese text support.",
+      "file_type": "rationale",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L175",
+      "_origin": "ast"
+    },
+    {
+      "id": "邦共用_md2pdf_rationale_266",
+      "label": "Convert a Markdown file to PDF.",
+      "file_type": "rationale",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L266",
+      "_origin": "ast"
+    },
+    {
+      "id": "_chris_claude_document",
+      "label": "CLAUDE.md - Chris教学主配置文件",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_chris_summer_plan_2026_document",
+      "label": "Chris的2026年暑假深度方案（优化版）",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_chris_profile_document",
+      "label": "Chris的profile - 全面档案",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的profile.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_chris_annual_plan_document",
+      "label": "Chris的年度计划 (2026-2027)",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的年度计划.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_chris_daily_plan_document",
+      "label": "Chris的每日计划 (每日执行日志)",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的每日计划.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_chris_daily_record_document",
+      "label": "Chris的每日记录 (完成日志)",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的每日记录.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_chris_study_abroad_document",
+      "label": "邦共用_出国 - 出国路径研究与规划",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_出国.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_chris_calligraphy_generator_document",
+      "label": "邦共用_字帖生成器.html - 衡水体字帖生成器",
+      "file_type": "code",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_字帖生成器.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_chris_classical_chinese_generator_document",
+      "label": "邦共用_字帖生成器古文.html - 古文专用字帖生成器",
+      "file_type": "code",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_字帖生成器古文.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_chris_xiaoshengchu_schools_document",
+      "label": "邦共用_小升初学校与升学路径大全",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_chris_xiaoshengchu_certificates_document",
+      "label": "邦共用_小升初证书与考试指南",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初证书与考试指南.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_chris_doubao_agents_document",
+      "label": "邦共用_豆包智能体设置",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_豆包智能体设置.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_chris_person",
+      "label": "Chris (杨邦彦) - 7岁，上海松江一年级",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的profile.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "中心人物，所有教育规划和文档的核心服务对象。原名杨邦彦，英文名Chris，7岁，就读于上海松江区一年级，学期成绩语文A*数学A英语A*。"
+    },
+    {
+      "id": "_chris_north_star_goal",
+      "label": "北极星培养目标 - 全周期教育规划",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "所有学习决策的最终参照标准，包含三个层次：长期规划（Claude全周期规划）、中期目标（细化目标流程）、个人塑造（身心健康全面发展）。"
+    },
+    {
+      "id": "_chris_overseas_study",
+      "label": "海外深造 - 美国/加拿大目标",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Chris培养的终极目标之一，以美国、加拿大为目标的海外深造路径，在所有文档中反复出现作为规划依据。"
+    },
+    {
+      "id": "_chris_competition_path",
+      "label": "竞赛路径 - CMO/IMO, CPhO/IPhO",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "数学奥赛（CMO/IMO）和物理奥赛（CPhO/IPhO）是Chris的竞赛培养方向，在多个文档中被提及为规划依据。"
+    },
+    {
+      "id": "_chris_domestic_path",
+      "label": "国内路径 - 上海中学→清北复交（保底）",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "作为海外深造的国内保底/备选路径，目标是上海中学（四校八大）→清北复交。"
+    },
+    {
+      "id": "_chris_xiaoshengchu_milestone",
+      "label": "小升初冲刺 - 三公（上实/上外附中/浦外）",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的profile.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "核心近期目标：冲刺三公（上海实验学校/上外附中/上外浦东附中），上汇实验摇号备选，神秘考补充。"
+    },
+    {
+      "id": "_chris_san_gong_shangshi",
+      "label": "上海实验学校（上实）- 三公之一",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "10年一贯制（4+3+3），理科实验班，Chris能力超龄适合其学制，是Chris的最佳目标之一。"
+    },
+    {
+      "id": "_chris_san_gong_waiguoyu",
+      "label": "上外附中 - 三公之一",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "外语保送全国最多，出国优势大，Chris英语优势巨大适合此校。"
+    },
+    {
+      "id": "_chris_english_advantage",
+      "label": "英语优势 - 最大杠杆（蓝思900）",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Chris最突出的优势：蓝思900、新概念1-4背诵（新2背诵2遍）、背诵精度极高（每百词仅2-3个错误），英语被视作学习其他科目的最大杠杆。"
+    },
+    {
+      "id": "_chris_memory_strength",
+      "label": "记忆力和背诵能力 - 核心杠杆",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Chris记忆力极强：3岁背三字经、会背元素周期表、每天可背约300字英文、背诵精度极高。被视作加速学习的核心杠杆。"
+    },
+    {
+      "id": "_chris_calligraphy_weakness",
+      "label": "写字短板 - 需要策略性弥补",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Chris的明显短板：字体向左歪、大小不一致、笔画轻、多次纠正无明显改善。教学策略是不强求美观，关注正确性，用编程/口述替代手写。"
+    },
+    {
+      "id": "_chris_hengshui_font",
+      "label": "衡水体 - 考试快速书写体方案",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "推荐Chris练衡水体而非传统楷书：追求整篇整齐而非单字美观，2-4周可见明显改善，适合考试快速书写。核心要点：横平竖直、大小一致、重心稳定、笔画简化、间距均匀。"
+    },
+    {
+      "id": "_chris_classical_chinese",
+      "label": "古文背诵 - 小升初/人文素养储备",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "contributor": null,
+      "author": null,
+      "rationale": "利用Chris记忆力优势进行古文积累，目标是小升初面试储备和人文素养沉淀。采用故事引入+英语类比+费曼输出的方法，已按教材《小学生必背文言文》完成前16篇课内篇目。"
+    },
+    {
+      "id": "_chris_xueersi_math",
+      "label": "学而思秘籍9-10级 - 奥数系统训练",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "自学学而思秘籍（已到第9册），已完成五年级上册数学。暑假目标第9-10级，采用苏格拉底式提问+费曼输出方法，要求深度理解、能讲题、能出变式题。"
+    },
+    {
+      "id": "_chris_olympiad_math",
+      "label": "奥数竞赛 - CMO/IMO方向（长期）",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "长期竞赛方向：浅奥→系统奥数训练→CMO/IMO。当前阶段保持兴趣、适龄推进，三四年级开始系统训练。核心证书路径：AMC8→思维100→奥数竞赛。"
+    },
+    {
+      "id": "_chris_new_concept_english",
+      "label": "新概念英语 - 背诵与语法深化",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Chris已完成NC1-4背诵（NC2背2遍），暑假目标是NC3复习+语法深度学习（时态体系、虚拟语气、非谓语动词、长难句结构），配合影子跟读巩固发音。"
+    },
+    {
+      "id": "_chris_reading_explorer",
+      "label": "Reading Explorer 2&3 - 精读与批判性思维",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "RE2已学到Unit 3B，暑假目标是从读完升级到精读+思考+输出。采用深度提问+词汇联想+费曼输出方法，培养词汇运用和批判性思维。"
+    },
+    {
+      "id": "_chris_pronunciation",
+      "label": "英语发音纠正 - 从背过到地道",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Chris发音短板：th音、v/w区分、连读弱读、节奏一字一顿。暑假采用影子跟读+音素纠正+主题演讲进阶方案。"
+    },
+    {
+      "id": "_chris_memory_curve",
+      "label": "记忆曲线学习法 - 艾宾浩斯遗忘曲线",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "基于艾宾浩斯遗忘曲线的7次复习节奏：5分钟→30分钟→睡前→次日→2天→4天→7天。利用Chris记忆力优势配合科学复习节奏，嵌入每日计划中的CR编号任务。"
+    },
+    {
+      "id": "_chris_feynman_technique",
+      "label": "费曼学习法 - 以教代学",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "核心教学法之一：Chris用自己的话讲解概念/解题思路给家长听。讲不清的地方=没真懂。各科均适用，暑假计划附录D有各科费曼应用速查表。"
+    },
+    {
+      "id": "_chris_socratic_teaching",
+      "label": "苏格拉底式提问 - 引导式教学",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "适合Chris好问性格的教学方法：通过提问引导思考而非单向灌输。如'为什么这样定义？''有没有其他方法？'等引导式提问。"
+    },
+    {
+      "id": "_chris_5step_cycle",
+      "label": "五步学习循环：预习→学习→复习→深入→拓展",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Chris专属教学循环，每次辅导前判断处于哪一步，上一步达标才进入下一步。"
+    },
+    {
+      "id": "_chris_8020_principle",
+      "label": "20/80法则 - 用20%时间掌握80%核心概念",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "教学策略：优先建立全局理解，快速抓核心概念，后期需要时再深入细节。应用于AI等新topic时最短时间掌握最有效知识。"
+    },
+    {
+      "id": "_chris_doubao_agents_concept",
+      "label": "豆包智能体评估系统 - AI辅助教学闭环",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_豆包智能体设置.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "5个豆包智能体（英语发音训练官、练字考试官、数学考试官、古文考试官、家长辅导监督官）用于评估Chris各项学习任务，实现即时反馈闭环。"
+    },
+    {
+      "id": "_chris_wechat_feedback",
+      "label": "微信闭环执行体系 - 日常运营手册",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "将整个暑假计划转化为每日微信群可执行的清单系统：任务编号（D{day}-{seq}）、评估方法、反馈闭环、动态调整机制、日总结/周总结模板。"
+    },
+    {
+      "id": "_chris_small_toefl",
+      "label": "小托福（TOEFL Junior）- 三公硬通货",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初证书与考试指南.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "三公申请中的硬门槛，目标850+。Chris英语优势大，预计比他同龄人更容易达到。二年级摸底，三年级首考，四年级冲击850+。"
+    },
+    {
+      "id": "_chris_amc8",
+      "label": "AMC8 - 数学能力核心证明",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初证书与考试指南.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "三公和顶尖初中看重的数学竞赛，目标前5%（约17+/25）。三年级首考10-13分，四年级冲击17+分。需结合学而思秘籍和AoPS系统训练。"
+    },
+    {
+      "id": "_chris_amc10",
+      "label": "AMC10 - 海外申请的竞赛背景",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "AMC8的进阶，适合6-8年级，目标是AIME晋级线（约105分），为海外大学申请增加竞赛背景。"
+    },
+    {
+      "id": "_chris_siwei100",
+      "label": "思维100 - 上海本地含金量最高的数学竞赛",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初证书与考试指南.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "由上海市中小学数学教学专业委员会主办，每年春秋两赛。三年级目标三等奖，四年级目标一二等奖。"
+    },
+    {
+      "id": "_chris_mystery_exam",
+      "label": "神秘考（SMK）- 顶尖初中选拔通道",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "知名初中通过特定培训机构组织的非公开选拔考试。五年级上学期集中进行，需要学而思创新班/四季金牌班等高端班资格。考试内容：数学（核心）+英语+语文。"
+    },
+    {
+      "id": "_chris_huayu_middle_school",
+      "label": "华育中学 - 上海中学系顶尖民办",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "1999年创办，上海中学系。常年中考第一，四校录取率60-70%。设有理科班（2个）、科技班、英语班。招生渠道：神秘考+飞行考+摇号+分班考。"
+    },
+    {
+      "id": "_chris_basketball",
+      "label": "篮球训练 - 每日体能核心",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "每日早晚各1h篮球训练，采用游戏化+分解训练进阶方案。三个阶段：球感与基础运球→行进间运球与三步上篮→综合运用与球场意识。"
+    },
+    {
+      "id": "_chris_swimming",
+      "label": "自由泳 - 技术精进与耐力提升",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "已学会自由泳基本动作能游100-200米。暑假目标纠正换气姿势和手型，8周计划包含打腿纠正、呼吸纠正、完整配合和耐力提升。"
+    },
+    {
+      "id": "_chris_physical_fitness",
+      "label": "体能远足训练 - 渐进式身体素质强化",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "针对Chris体质一般的状况，每周远足从2-3h逐步提升到6-8h。目标地包括顾村公园、科技馆、佘山、淀山湖等。同时结合篮球游泳乒乓球等多维训练。"
+    },
+    {
+      "id": "_chris_table_tennis",
+      "label": "乒乓球训练 - 手眼协调与反应速度",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "每周1-2次（含通勤约1.5h），趣味入门+多球训练。三个阶段：球感建立→基本动作入门→综合应用。作为篮球之外的交叉训练。"
+    },
+    {
+      "id": "_chris_programming",
+      "label": "编程教育 - code.org通关到Scratch",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "已完成code.org全部图形编程题，暑假到二年级过渡到Scratch，二三年级过渡到Python。USACO编程竞赛为远期目标（白金级）。"
+    },
+    {
+      "id": "_chris_physics_olympiad",
+      "label": "物理奥赛方向 - CPhO/IPhO",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "已会背元素周期表，对太空/马斯克有兴趣。暑假通过动手实验（火箭气球、水火箭等）培养物理直觉。三四年级开始系统补物理概念，远期目标CPhO/IPhO。"
+    },
+    {
+      "id": "_chris_chinese_poetry_competition",
+      "label": "古诗文大赛 - 上海本地语文类竞赛",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初证书与考试指南.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "上海市中小学生古诗文大赛，每年9-10月报名11-12月比赛。Chris记忆力强、暑假背完小升初古文，是较易拿奖的项目。"
+    },
+    {
+      "id": "_chris_usaco",
+      "label": "USACO - 美国计算机奥林匹克",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "免费在线编程竞赛，分级Bronze→Silver→Gold→Platinum。Chris编程兴趣的竞赛方向，三年级Python入门→白银级，远期目标白金级。"
+    },
+    {
+      "id": "_chris_personality_traits",
+      "label": "Chris性格特质 - 好问/好动/需督促/社交弱",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的profile.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "性格关键词：偏外向好问、善于观察、对已掌握科目专注力强、记忆力极强。弱点：好动第7岁特性、需要外部督促、写字差、口无遮拦不懂人情世故、人际关系弱。"
+    },
+    {
+      "id": "_chris_study_abroad_us",
+      "label": "美国路径 - 直接留学",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_出国.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "第一优先路径：国内优质中学→美高/加高→美本/加本。费用预估美高+美本总计约$160-250万。需要SSAT、TOEFL、SAT、AP等标化考试。"
+    },
+    {
+      "id": "_chris_study_abroad_canada",
+      "label": "加拿大路径 - 低龄留学/家长工签",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_出国.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "第二优先路径之一：初中/高中直接赴加，或家长获取工签孩子免费读公立。加拿大学费低于美国，移民政策友好。"
+    },
+    {
+      "id": "_chris_skilled_migration",
+      "label": "技术移民路径 - 家长身份获取",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_出国.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "最符合Chris家庭的路径：家长通过技能/学历获取工签（加拿大EE、澳洲189/190等），Chris随行在当地就读公立学校。"
+    },
+    {
+      "id": "_chris_calligraphy_practice_pdfs",
+      "label": "字帖PDF集 - 练字实践材料",
+      "file_type": "image",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\字帖_03_为政第二.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chris_program",
+      "file_type": "rationale",
+      "label": "Chris暑假计划体系",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null
+    },
+    {
+      "id": "chris_execplan",
+      "file_type": "document",
+      "label": "暑假计划执行版",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划-执行版.md",
+      "source_location": null
+    },
+    {
+      "id": "chris_deepplan",
+      "file_type": "document",
+      "label": "暑假深度方案",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划-深度版.md",
+      "source_location": null
+    },
+    {
+      "id": "chris_catalog_xes",
+      "file_type": "document",
+      "label": "学而思秘籍全级别目录",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\学而思秘籍全级别目录.md",
+      "source_location": null
+    },
+    {
+      "id": "dailyplan_20260708",
+      "file_type": "document",
+      "label": "Chris每日计划20260708",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260708_53ba7646.md",
+      "source_location": null
+    },
+    {
+      "id": "dailyplan_20260709",
+      "file_type": "document",
+      "label": "Chris每日计划20260709",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260709_077160a1.md",
+      "source_location": null
+    },
+    {
+      "id": "dailyplan_20260709_old",
+      "file_type": "document",
+      "label": "Chris每日计划20260709旧版",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260709_旧版_16c8045a.md",
+      "source_location": null
+    },
+    {
+      "id": "dailyplan_20260709_backup",
+      "file_type": "document",
+      "label": "Chris每日计划20260709备用",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260709备用_d533c7d0.md",
+      "source_location": null
+    },
+    {
+      "id": "dailyplan_20260710",
+      "file_type": "document",
+      "label": "Chris每日计划20260710",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260710_b32aca9b.md",
+      "source_location": null
+    },
+    {
+      "id": "dailyplan_20260710_old",
+      "file_type": "document",
+      "label": "Chris每日计划20260710旧版",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260710_旧版_0cc84365.md",
+      "source_location": null
+    },
+    {
+      "id": "dailyplan_20260711",
+      "file_type": "document",
+      "label": "Chris每日计划20260711",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260711_f0da1035.md",
+      "source_location": null
+    },
+    {
+      "id": "dailyplan_20260712",
+      "file_type": "document",
+      "label": "Chris每日计划20260712",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260712_49c0f1c5.md",
+      "source_location": null
+    },
+    {
+      "id": "dailyplan_20260713",
+      "file_type": "document",
+      "label": "Chris每日计划20260713",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260713_91294bd0.md",
+      "source_location": null
+    },
+    {
+      "id": "dailyplan_html",
+      "file_type": "document",
+      "label": "Chris暑假计划HTML每日视图",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\__temp\\daily-plan.html",
+      "source_location": null
+    },
+    {
+      "id": "printplan_html",
+      "file_type": "document",
+      "label": "Chris暑假计划A4打印版",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\__temp\\print-plan.html",
+      "source_location": null
+    },
+    {
+      "id": "z2h_html",
+      "file_type": "document",
+      "label": "Z2H字帖生成工具页面",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\__temp\\z2h_test.html",
+      "source_location": null
+    },
+    {
+      "id": "xes_level9",
+      "file_type": "concept",
+      "label": "学而思秘籍第9级",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\学而思秘籍全级别目录.md",
+      "source_location": null
+    },
+    {
+      "id": "xes_level10",
+      "file_type": "concept",
+      "label": "学而思秘籍第10级",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\学而思秘籍全级别目录.md",
+      "source_location": null
+    },
+    {
+      "id": "reading_explorer",
+      "file_type": "concept",
+      "label": "Reading Explorer系列",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null
+    },
+    {
+      "id": "nc3",
+      "file_type": "concept",
+      "label": "新概念英语3",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null
+    },
+    {
+      "id": "guwen",
+      "file_type": "concept",
+      "label": "古文背诵",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null
+    },
+    {
+      "id": "calligraphy",
+      "file_type": "concept",
+      "label": "练字训练",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null
+    },
+    {
+      "id": "english_pronunciation",
+      "file_type": "concept",
+      "label": "英语发音口语训练",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null
+    },
+    {
+      "id": "basketball",
+      "file_type": "concept",
+      "label": "篮球训练",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null
+    },
+    {
+      "id": "swimming",
+      "file_type": "concept",
+      "label": "游泳训练",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null
+    },
+    {
+      "id": "ai_examiner_calligraphy",
+      "file_type": "concept",
+      "label": "Chris-练字-考试官智能体",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260709_077160a1.md",
+      "source_location": null
+    },
+    {
+      "id": "ai_examiner_pronunciation",
+      "file_type": "concept",
+      "label": "Chris-英语发音-训练官智能体",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260709_077160a1.md",
+      "source_location": null
+    },
+    {
+      "id": "guwen_loushiming",
+      "file_type": "concept",
+      "label": "古文·陋室铭",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260708_53ba7646.md",
+      "source_location": null
+    },
+    {
+      "id": "guwen_ailianshuo",
+      "file_type": "concept",
+      "label": "古文·爱莲说",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260709_077160a1.md",
+      "source_location": null
+    },
+    {
+      "id": "guwen_sanxia",
+      "file_type": "concept",
+      "label": "古文·三峡",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260711_f0da1035.md",
+      "source_location": null
+    },
+    {
+      "id": "guwen_daxiezhongshushu",
+      "file_type": "concept",
+      "label": "古文·答谢中书书",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260711_f0da1035.md",
+      "source_location": null
+    },
+    {
+      "id": "guwen_jichengtiansiyeyou",
+      "file_type": "concept",
+      "label": "古文·记承天寺夜游",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260713_91294bd0.md",
+      "source_location": null
+    },
+    {
+      "id": "chris_profile",
+      "label": "Chris的完整档案",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chris_person",
+      "label": "杨邦彦 (Chris)",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chris_english_advantage",
+      "label": "英语优势(最大杠杆)",
+      "file_type": "rationale",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chris_memory",
+      "label": "记忆力极强",
+      "file_type": "rationale",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chris_competition_goal",
+      "label": "竞赛培养目标(CMO/IMO/CPhO/IPhO)",
+      "file_type": "rationale",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chris_san_gong_school",
+      "label": "小升初三公学校目标",
+      "file_type": "rationale",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chris_socratic_method",
+      "label": "引导式提问(苏格拉底式)教学",
+      "file_type": "rationale",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chris_weakness_writing",
+      "label": "写字短板",
+      "file_type": "rationale",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chris_summer_schedule",
+      "label": "暑假每日节奏",
+      "file_type": "rationale",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chris_20_80_rule",
+      "label": "20/80法则教学策略",
+      "file_type": "rationale",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "thumbnail_image",
+      "label": "thumbnail.jpeg",
+      "file_type": "image",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\__unpacked_0713\\docProps\\thumbnail.jpeg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "kan_tu_shuo_hua_index",
+      "label": "看图说话10课训练营首页",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "kan_tu_shuo_hua_course",
+      "label": "看图说话课程体系",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lesson_001",
+      "label": "第1课:认识图片要素",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\001-图片要素.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lesson_002",
+      "label": "第2课:描述人物与动作",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\002-人物动作.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lesson_003",
+      "label": "第3课:描述场景与环境",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\003-场景环境.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lesson_004",
+      "label": "第4课:按顺序描述事件",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\004-事件顺序.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lesson_005",
+      "label": "第5课:加入细节观察",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\005-细节观察.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lesson_006",
+      "label": "第6课:发挥想象力",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\006-想象力.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lesson_007",
+      "label": "第7课:组织语言结构",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\007-语言结构.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lesson_008",
+      "label": "第8课:运用好词好句",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\008-好词好句.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lesson_009",
+      "label": "第9课:综合叙事训练",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\009-综合叙事.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lesson_010",
+      "label": "第10课:模拟考试与点评",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\010-模拟考试.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "math_skill",
+      "label": "数学·奥数 skill",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\数学.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "science_skill",
+      "label": "科学(物理/化学) skill",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\科学.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "programming_skill",
+      "label": "编程 skill",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\编程.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "english_skill",
+      "label": "英语 skill",
+      "file_type": "document",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\英语.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "math_concept",
+      "label": "数学(含奥数)学科",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\数学.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "science_concept",
+      "label": "科学(物理/化学)学科",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\科学.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "programming_concept",
+      "label": "编程学科",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\编程.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "english_concept",
+      "label": "英语学科",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\英语.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "new_concept_english",
+      "label": "新概念英语1-4",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\英语.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "code_org",
+      "label": "code.org图形编程",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\编程.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "xes_math",
+      "label": "学而思秘籍(第9册)",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\数学.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "olympiad_path",
+      "label": "浅奥→系统奥数→竞赛选拔",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\数学.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "five_elements_concept",
+      "label": "五要素法(人物/时间/地点/事件/物品)",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\001-图片要素.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "three_part_structure",
+      "label": "三段式结构(开头/中间/结尾)",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\007-语言结构.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "teach_skill_principle",
+      "label": "Teach Skill教学原则",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "doubao_interaction",
+      "label": "豆包互动讲解环节",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "three_phases_design",
+      "label": "三阶段课程设计(基础/组织/综合)",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "phase1_basics",
+      "label": "第一阶段:基础要素(1-3课)",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "phase2_expression",
+      "label": "第二阶段:组织表达(4-6课)",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "phase3_advanced",
+      "label": "第三阶段:综合提升(7-10课)",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "element_periodic_table",
+      "label": "元素周期表背诵",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\科学.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chris_interest",
+      "label": "兴趣(恐龙/太空/科学/编程/积木/数独)",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chris_weakness_physique",
+      "label": "体质一般(易发烧)",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chris_character",
+      "label": "性格(外向/好问/好动/注意力分情况)",
+      "file_type": "concept",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "temp_replace_agent",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/_replace_agent.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_replace_eval",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/_replace_eval.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_extract_xes",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/extract_xes.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_extract_xes",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/extract_xes.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_extract_xes",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/extract_xes.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "glob",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "subprocess",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "shutil",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "temp_gen_calligraphy_gen_html",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "temp_gen_calligraphy_save_to_pdf",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L178",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy",
+      "target": "temp_gen_calligraphy_list_guwen",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L238",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy_save_to_pdf",
+      "target": "temp_gen_calligraphy_gen_html",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L180",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy_rationale_67",
+      "target": "temp_gen_calligraphy_gen_html",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_calligraphy_rationale_179",
+      "target": "temp_gen_calligraphy_save_to_pdf",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_calligraphy.py",
+      "source_location": "L179",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "docx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "docx_shared",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "docx_enum_text",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "docx_enum_table",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "docx_oxml_ns",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "docx_oxml",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_set_font",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_cell_bg",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_cell_borders",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_cell_margins",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_row_height",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_fixed_layout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_add_para",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_run",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2",
+      "target": "temp_gen_day9_v2_block",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L157",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2_run",
+      "target": "temp_gen_day9_v2_set_font",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "temp_gen_day9_v2_block",
+      "target": "temp_gen_day9_v2_run",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "__temp/gen_day9_v2.py",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "fpdf",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "邦共用_md2pdf_strip_emoji",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "邦共用_md2pdf_safe_print",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "fpdf",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_init",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_title_page",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_heading",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L129",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_text",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_bullet",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_table",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L174",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_code",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L244",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_separator",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L258",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "邦共用_md2pdf_convert_md_to_pdf",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L265",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L402",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf",
+      "target": "traceback",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L416",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf_write_heading",
+      "target": "邦共用_md2pdf_strip_emoji",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf_write_text",
+      "target": "邦共用_md2pdf_strip_emoji",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_md2pdf_write_bullet",
+      "target": "邦共用_md2pdf_strip_emoji",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_strip_emoji",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L271",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L273",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_code",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L293",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_table",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L329",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_heading",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L334",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_separator",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L352",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_bullet",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L386",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_md2pdf_write_text",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L395",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_convert_md_to_pdf",
+      "target": "邦共用_md2pdf_safe_print",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L398",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_rationale_1",
+      "target": "邦共用_md2pdf",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_rationale_9",
+      "target": "邦共用_md2pdf_strip_emoji",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_rationale_98",
+      "target": "邦共用_md2pdf_safe_print",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_rationale_175",
+      "target": "邦共用_md2pdf_md2pdf_write_table",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L175",
+      "weight": 1.0
+    },
+    {
+      "source": "邦共用_md2pdf_rationale_266",
+      "target": "邦共用_md2pdf_convert_md_to_pdf",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "邦共用_md2pdf.py",
+      "source_location": "L266",
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_claude_document",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_profile_document",
+      "target": "_chris_claude_document",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的profile.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_annual_plan_document",
+      "target": "_chris_claude_document",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的年度计划.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_daily_plan_document",
+      "target": "_chris_summer_plan_2026_document",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的每日计划.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_daily_record_document",
+      "target": "_chris_daily_plan_document",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的每日记录.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_study_abroad_document",
+      "target": "_chris_claude_document",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_出国.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_schools_document",
+      "target": "_chris_profile_document",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_certificates_document",
+      "target": "_chris_xiaoshengchu_schools_document",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初证书与考试指南.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_doubao_agents_document",
+      "target": "_chris_summer_plan_2026_document",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_豆包智能体设置.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_calligraphy_generator_document",
+      "target": "_chris_calligraphy_weakness",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_字帖生成器.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_classical_chinese_generator_document",
+      "target": "_chris_classical_chinese",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_字帖生成器古文.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_claude_document",
+      "target": "_chris_north_star_goal",
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_claude_document",
+      "target": "_chris_person",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_claude_document",
+      "target": "_chris_english_advantage",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_claude_document",
+      "target": "_chris_memory_strength",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_claude_document",
+      "target": "_chris_calligraphy_weakness",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_claude_document",
+      "target": "_chris_overseas_study",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_claude_document",
+      "target": "_chris_competition_path",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_claude_document",
+      "target": "_chris_domestic_path",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_claude_document",
+      "target": "_chris_5step_cycle",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_claude_document",
+      "target": "_chris_feynman_technique",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_claude_document",
+      "target": "_chris_socratic_teaching",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_claude_document",
+      "target": "_chris_8020_principle",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_claude_document",
+      "target": "_chris_personality_traits",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_north_star_goal",
+      "target": "_chris_overseas_study",
+      "relation": "includes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_north_star_goal",
+      "target": "_chris_competition_path",
+      "relation": "includes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_north_star_goal",
+      "target": "_chris_domestic_path",
+      "relation": "includes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_hengshui_font",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_classical_chinese",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_xueersi_math",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_new_concept_english",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_reading_explorer",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_pronunciation",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_memory_curve",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_basketball",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_swimming",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_physical_fitness",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_table_tennis",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_doubao_agents_concept",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_summer_plan_2026_document",
+      "target": "_chris_wechat_feedback",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_profile_document",
+      "target": "_chris_xiaoshengchu_milestone",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的profile.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_schools_document",
+      "target": "_chris_san_gong_shangshi",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_schools_document",
+      "target": "_chris_san_gong_waiguoyu",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_schools_document",
+      "target": "_chris_huayu_middle_school",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_schools_document",
+      "target": "_chris_mystery_exam",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_schools_document",
+      "target": "_chris_olympiad_math",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_schools_document",
+      "target": "_chris_programming",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_schools_document",
+      "target": "_chris_physics_olympiad",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_certificates_document",
+      "target": "_chris_small_toefl",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初证书与考试指南.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_certificates_document",
+      "target": "_chris_amc8",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初证书与考试指南.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_certificates_document",
+      "target": "_chris_siwei100",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初证书与考试指南.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_certificates_document",
+      "target": "_chris_chinese_poetry_competition",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初证书与考试指南.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_study_abroad_document",
+      "target": "_chris_study_abroad_us",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_出国.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_study_abroad_document",
+      "target": "_chris_study_abroad_canada",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_出国.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_study_abroad_document",
+      "target": "_chris_skilled_migration",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_出国.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_milestone",
+      "target": "_chris_san_gong_shangshi",
+      "relation": "includes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的profile.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_milestone",
+      "target": "_chris_san_gong_waiguoyu",
+      "relation": "includes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的profile.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_milestone",
+      "target": "_chris_mystery_exam",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的profile.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_hengshui_font",
+      "target": "_chris_calligraphy_weakness",
+      "relation": "mitigates",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_english_advantage",
+      "target": "_chris_xiaoshengchu_milestone",
+      "relation": "supports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_english_advantage",
+      "target": "_chris_overseas_study",
+      "relation": "supports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_memory_strength",
+      "target": "_chris_classical_chinese",
+      "relation": "supports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_memory_strength",
+      "target": "_chris_english_advantage",
+      "relation": "supports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_memory_curve",
+      "target": "_chris_memory_strength",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_feynman_technique",
+      "target": "_chris_xueersi_math",
+      "relation": "applies_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_socratic_teaching",
+      "target": "_chris_xueersi_math",
+      "relation": "applies_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_pronunciation",
+      "target": "_chris_new_concept_english",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_doubao_agents_concept",
+      "target": "_chris_wechat_feedback",
+      "relation": "supports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的2026年暑假深度方案（优化版）.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_milestone",
+      "target": "_chris_small_toefl",
+      "relation": "requires",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初证书与考试指南.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_milestone",
+      "target": "_chris_amc8",
+      "relation": "requires",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初证书与考试指南.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_person",
+      "target": "_chris_north_star_goal",
+      "relation": "has_goal",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_person",
+      "target": "_chris_english_advantage",
+      "relation": "possesses",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_person",
+      "target": "_chris_memory_strength",
+      "relation": "possesses",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_person",
+      "target": "_chris_calligraphy_weakness",
+      "relation": "possesses",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_person",
+      "target": "_chris_personality_traits",
+      "relation": "possesses",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的profile.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_annual_plan_document",
+      "target": "_chris_xueersi_math",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的年度计划.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_annual_plan_document",
+      "target": "_chris_new_concept_english",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的年度计划.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_annual_plan_document",
+      "target": "_chris_classical_chinese",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的年度计划.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_annual_plan_document",
+      "target": "_chris_programming",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的年度计划.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_annual_plan_document",
+      "target": "_chris_physics_olympiad",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的年度计划.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_annual_plan_document",
+      "target": "_chris_calligraphy_weakness",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的年度计划.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_daily_plan_document",
+      "target": "_chris_person",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的每日计划.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_daily_record_document",
+      "target": "_chris_person",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的每日记录.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_calligraphy_practice_pdfs",
+      "target": "_chris_calligraphy_weakness",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\字帖_03_为政第二.pdf",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_calligraphy_practice_pdfs",
+      "target": "_chris_classical_chinese",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\字帖_03_为政第二.pdf",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_amc8",
+      "target": "_chris_amc10",
+      "relation": "prerequisite_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_usaco",
+      "target": "_chris_programming",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_overseas_study",
+      "target": "_chris_study_abroad_us",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_出国.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_overseas_study",
+      "target": "_chris_study_abroad_canada",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_出国.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_daily_plan_document",
+      "target": "_chris_memory_curve",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的每日计划.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_daily_plan_document",
+      "target": "_chris_basketball",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\Chris的每日计划.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "_chris_xiaoshengchu_schools_document",
+      "target": "_chris_usaco",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\邦共用_小升初学校与升学路径大全.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "references",
+      "source": "dailyplan_20260708",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260708_53ba7646.md",
+      "source_location": null,
+      "target": "guwen_loushiming",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "references",
+      "source": "dailyplan_20260708",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260708_53ba7646.md",
+      "source_location": null,
+      "target": "xes_level9",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "contains",
+      "source": "chris_execplan",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划-执行版.md",
+      "source_location": null,
+      "target": "chris_program",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "contains",
+      "source": "chris_deepplan",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划-深度版.md",
+      "source_location": null,
+      "target": "chris_program",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "references",
+      "source": "dailyplan_20260709",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260709_077160a1.md",
+      "source_location": null,
+      "target": "ai_examiner_calligraphy",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "references",
+      "source": "dailyplan_20260709",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260709_077160a1.md",
+      "source_location": null,
+      "target": "ai_examiner_pronunciation",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "references",
+      "source": "dailyplan_20260709",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260709_077160a1.md",
+      "source_location": null,
+      "target": "guwen_ailianshuo",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "references",
+      "source": "dailyplan_20260710",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260710_b32aca9b.md",
+      "source_location": null,
+      "target": "guwen_ailianshuo",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "references",
+      "source": "dailyplan_20260710_old",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260710_旧版_0cc84365.md",
+      "source_location": null,
+      "target": "guwen_ailianshuo",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "references",
+      "source": "dailyplan_20260711",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260711_f0da1035.md",
+      "source_location": null,
+      "target": "guwen_sanxia",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "references",
+      "source": "dailyplan_20260711",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260711_f0da1035.md",
+      "source_location": null,
+      "target": "guwen_daxiezhongshushu",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "references",
+      "source": "dailyplan_20260712",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260712_49c0f1c5.md",
+      "source_location": null,
+      "target": "guwen_sanxia",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "references",
+      "source": "dailyplan_20260712",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260712_49c0f1c5.md",
+      "source_location": null,
+      "target": "guwen_daxiezhongshushu",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "references",
+      "source": "dailyplan_20260713",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260713_91294bd0.md",
+      "source_location": null,
+      "target": "guwen_daxiezhongshushu",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "references",
+      "source": "dailyplan_20260713",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260713_91294bd0.md",
+      "source_location": null,
+      "target": "guwen_jichengtiansiyeyou",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "is_version_of",
+      "source": "dailyplan_20260709",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260709_077160a1.md",
+      "source_location": null,
+      "target": "dailyplan_20260709_old",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "is_version_of",
+      "source": "dailyplan_20260710",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260710_b32aca9b.md",
+      "source_location": null,
+      "target": "dailyplan_20260710_old",
+      "weight": 1.0
+    },
+    {
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "relation": "implements",
+      "source": "dailyplan_20260708",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260708_53ba7646.md",
+      "source_location": null,
+      "target": "chris_execplan",
+      "weight": 0.85
+    },
+    {
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "relation": "implements",
+      "source": "dailyplan_20260709",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260709_077160a1.md",
+      "source_location": null,
+      "target": "chris_execplan",
+      "weight": 0.85
+    },
+    {
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "relation": "implements",
+      "source": "dailyplan_20260710",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260710_b32aca9b.md",
+      "source_location": null,
+      "target": "chris_execplan",
+      "weight": 0.85
+    },
+    {
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "relation": "implements",
+      "source": "dailyplan_20260711",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260711_f0da1035.md",
+      "source_location": null,
+      "target": "chris_execplan",
+      "weight": 0.85
+    },
+    {
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "relation": "implements",
+      "source": "dailyplan_20260712",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260712_49c0f1c5.md",
+      "source_location": null,
+      "target": "chris_execplan",
+      "weight": 0.85
+    },
+    {
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "relation": "implements",
+      "source": "dailyplan_20260713",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260713_91294bd0.md",
+      "source_location": null,
+      "target": "chris_execplan",
+      "weight": 0.85
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "generates",
+      "source": "z2h_html",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\__temp\\z2h_test.html",
+      "source_location": null,
+      "target": "calligraphy",
+      "weight": 1.0
+    },
+    {
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "relation": "renders",
+      "source": "dailyplan_html",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\__temp\\daily-plan.html",
+      "source_location": null,
+      "target": "dailyplan_20260708",
+      "weight": 0.85
+    },
+    {
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "relation": "renders",
+      "source": "printplan_html",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\__temp\\print-plan.html",
+      "source_location": null,
+      "target": "chris_execplan",
+      "weight": 0.85
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "covers",
+      "source": "chris_catalog_xes",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\学而思秘籍全级别目录.md",
+      "source_location": null,
+      "target": "xes_level9",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "covers",
+      "source": "chris_catalog_xes",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\学而思秘籍全级别目录.md",
+      "source_location": null,
+      "target": "xes_level10",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "subject",
+      "source": "chris_program",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null,
+      "target": "xes_level9",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "subject",
+      "source": "chris_program",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null,
+      "target": "reading_explorer",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "subject",
+      "source": "chris_program",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null,
+      "target": "guwen",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "subject",
+      "source": "chris_program",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null,
+      "target": "nc3",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "subject",
+      "source": "chris_program",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null,
+      "target": "calligraphy",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "subject",
+      "source": "chris_program",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null,
+      "target": "basketball",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "subject",
+      "source": "chris_program",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null,
+      "target": "swimming",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "subject",
+      "source": "chris_program",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划.md",
+      "source_location": null,
+      "target": "english_pronunciation",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "subject",
+      "source": "chris_execplan",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划-执行版.md",
+      "source_location": null,
+      "target": "xes_level9",
+      "weight": 1.0
+    },
+    {
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "relation": "subject",
+      "source": "chris_execplan",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\archive\\暑假计划-执行版.md",
+      "source_location": null,
+      "target": "xes_level10",
+      "weight": 1.0
+    },
+    {
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "relation": "conceptually_related_to",
+      "source": "ai_examiner_calligraphy",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260709_077160a1.md",
+      "source_location": null,
+      "target": "calligraphy",
+      "weight": 0.95
+    },
+    {
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "relation": "conceptually_related_to",
+      "source": "ai_examiner_pronunciation",
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris每日计划20260709_077160a1.md",
+      "source_location": null,
+      "target": "english_pronunciation",
+      "weight": 0.95
+    },
+    {
+      "source": "chris_profile",
+      "target": "chris_person",
+      "relation": "describes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "chris_english_advantage",
+      "relation": "has_skill",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "chris_memory",
+      "relation": "has_trait",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "chris_competition_goal",
+      "relation": "has_goal",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "chris_san_gong_school",
+      "relation": "has_goal",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "chris_socratic_method",
+      "relation": "learning_preference",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "chris_weakness_writing",
+      "relation": "has_weakness",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "chris_summer_schedule",
+      "relation": "follows_schedule",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "chris_20_80_rule",
+      "relation": "teaching_strategy",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "chris_interest",
+      "relation": "has_interest",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "chris_weakness_physique",
+      "relation": "has_weakness",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "chris_character",
+      "relation": "has_character",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "english_concept",
+      "relation": "studies_subject",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "math_concept",
+      "relation": "studies_subject",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "science_concept",
+      "relation": "studies_subject",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_person",
+      "target": "programming_concept",
+      "relation": "studies_subject",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "english_skill",
+      "target": "english_concept",
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\英语.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "math_skill",
+      "target": "math_concept",
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\数学.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "science_skill",
+      "target": "science_concept",
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\科学.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "programming_skill",
+      "target": "programming_concept",
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\编程.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "english_concept",
+      "target": "new_concept_english",
+      "relation": "uses_resource",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\英语.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "programming_concept",
+      "target": "code_org",
+      "relation": "uses_resource",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\编程.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "math_concept",
+      "target": "xes_math",
+      "relation": "uses_resource",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\数学.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "math_concept",
+      "target": "olympiad_path",
+      "relation": "follows_path",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\数学.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "science_concept",
+      "target": "element_periodic_table",
+      "relation": "uses_resource",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\科学.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_competition_goal",
+      "target": "math_concept",
+      "relation": "targets",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_competition_goal",
+      "target": "science_concept",
+      "relation": "targets",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\graphify-out\\converted\\Chris的完整档案_7e49d4ac.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "english_concept",
+      "target": "math_concept",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\英语.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "english_concept",
+      "target": "science_concept",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\英语.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "programming_concept",
+      "target": "math_concept",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\编程.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "programming_concept",
+      "target": "science_concept",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\skills\\编程.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "kan_tu_shuo_hua_index",
+      "target": "kan_tu_shuo_hua_course",
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "kan_tu_shuo_hua_course",
+      "target": "teach_skill_principle",
+      "relation": "based_on",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "kan_tu_shuo_hua_course",
+      "target": "three_phases_design",
+      "relation": "has_design",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "kan_tu_shuo_hua_course",
+      "target": "doubao_interaction",
+      "relation": "uses_tool",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "three_phases_design",
+      "target": "phase1_basics",
+      "relation": "includes_phase",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "three_phases_design",
+      "target": "phase2_expression",
+      "relation": "includes_phase",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "three_phases_design",
+      "target": "phase3_advanced",
+      "relation": "includes_phase",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "phase1_basics",
+      "target": "lesson_001",
+      "relation": "contains_lesson",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "phase1_basics",
+      "target": "lesson_002",
+      "relation": "contains_lesson",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "phase1_basics",
+      "target": "lesson_003",
+      "relation": "contains_lesson",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "phase2_expression",
+      "target": "lesson_004",
+      "relation": "contains_lesson",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "phase2_expression",
+      "target": "lesson_005",
+      "relation": "contains_lesson",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "phase2_expression",
+      "target": "lesson_006",
+      "relation": "contains_lesson",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "phase3_advanced",
+      "target": "lesson_007",
+      "relation": "contains_lesson",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "phase3_advanced",
+      "target": "lesson_008",
+      "relation": "contains_lesson",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "phase3_advanced",
+      "target": "lesson_009",
+      "relation": "contains_lesson",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "phase3_advanced",
+      "target": "lesson_010",
+      "relation": "contains_lesson",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_001",
+      "target": "five_elements_concept",
+      "relation": "teaches",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\001-图片要素.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_007",
+      "target": "three_part_structure",
+      "relation": "teaches",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\007-语言结构.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "kan_tu_shuo_hua_course",
+      "target": "chris_person",
+      "relation": "designed_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chris_socratic_method",
+      "target": "teach_skill_principle",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_001",
+      "target": "lesson_002",
+      "relation": "precedes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\001-图片要素.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_002",
+      "target": "lesson_003",
+      "relation": "precedes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\002-人物动作.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_003",
+      "target": "lesson_004",
+      "relation": "precedes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\003-场景环境.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_004",
+      "target": "lesson_005",
+      "relation": "precedes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\004-事件顺序.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_005",
+      "target": "lesson_006",
+      "relation": "precedes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\005-细节观察.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_006",
+      "target": "lesson_007",
+      "relation": "precedes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\006-想象力.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_007",
+      "target": "lesson_008",
+      "relation": "precedes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\007-语言结构.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_008",
+      "target": "lesson_009",
+      "relation": "precedes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\008-好词好句.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_009",
+      "target": "lesson_010",
+      "relation": "precedes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\009-综合叙事.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "thumbnail_image",
+      "target": "chris_profile",
+      "relation": "conceptually_related_to",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\__unpacked_0713\\docProps\\thumbnail.jpeg",
+      "source_location": null,
+      "weight": 0.3
+    },
+    {
+      "source": "lesson_001",
+      "target": "chris_person",
+      "relation": "designed_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\001-图片要素.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_002",
+      "target": "chris_person",
+      "relation": "designed_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\002-人物动作.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_003",
+      "target": "chris_person",
+      "relation": "designed_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\003-场景环境.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_004",
+      "target": "chris_person",
+      "relation": "designed_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\004-事件顺序.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_005",
+      "target": "chris_person",
+      "relation": "designed_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\005-细节观察.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_006",
+      "target": "chris_person",
+      "relation": "designed_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\006-想象力.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_007",
+      "target": "chris_person",
+      "relation": "designed_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\007-语言结构.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_008",
+      "target": "chris_person",
+      "relation": "designed_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\008-好词好句.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_009",
+      "target": "chris_person",
+      "relation": "designed_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\009-综合叙事.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "lesson_010",
+      "target": "chris_person",
+      "relation": "designed_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "D:\\@VSwork\\VSteach\\_CHRIS\\看图说话\\lessons\\010-模拟考试.html",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

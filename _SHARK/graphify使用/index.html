@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>graphify 知识图谱 · 总目录</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#7c3aed; --done:#16a34a; --current:#7c3aed; --pending:#94a3b8; --border:#e2e8f0; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:860px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.7; }
+    h1 { font-size:2rem; margin-bottom:0.25rem; }
+    .sub { color:#64748b; font-size:0.95rem; margin-bottom:1.5rem; }
+    .section-label { font-size:0.85rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:0.05em; margin:1.5rem 0 0.5rem 0; padding-left:0.5rem; border-left:3px solid var(--accent); }
+    .principles { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin-bottom:2rem; }
+    .principle { border:1px solid var(--border); border-radius:8px; padding:0.75rem 1rem; background:#fff; }
+    .principle .badge { display:inline-block; padding:0.15rem 0.5rem; border-radius:4px; font-size:0.75rem; font-weight:700; color:#fff; margin-bottom:0.35rem; background:var(--accent); }
+    .principle p { font-size:0.8rem; color:#64748b; margin-bottom:0; }
+    .lessons { display:flex; flex-direction:column; gap:0.6rem; }
+    .lesson { display:flex; align-items:center; gap:0.75rem; padding:0.75rem 1rem; background:#fff; border:1px solid var(--border); border-radius:8px; text-decoration:none; color:var(--text); transition:all 0.15s; }
+    .lesson:hover { border-color:var(--accent); box-shadow:0 2px 8px rgba(124,58,237,0.1); }
+    .lesson .num { width:2rem; height:2rem; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.85rem; font-weight:700; flex-shrink:0; }
+    .lesson .num.done { background:var(--done); }
+    .lesson .info { flex:1; }
+    .lesson .info h3 { font-size:1rem; font-weight:600; }
+    .lesson .info p { font-size:0.85rem; color:#64748b; margin:0; }
+    .lesson .tag { font-size:0.7rem; padding:0.1rem 0.4rem; border-radius:3px; font-weight:600; flex-shrink:0; }
+    .tag.base { background:#ede9fe; color:#5b21b6; }
+    .tag.tool { background:#dbeafe; color:#1d4ed8; }
+    .tag.adv { background:#fef3c7; color:#92400e; }
+    .tag.export { background:#dcfce7; color:#166534; }
+  </style>
+</head>
+<body>
+  <h1>graphify 知识图谱</h1>
+  <p class="sub">把文件夹变成可查询的知识图谱 · 代码 · 文档 · PDF · 图片</p>
+
+  <div class="principles">
+    <div class="principle"><span class="badge">🗺 建图</span><p>一个命令把整个项目变成图，自动聚类、发现隐藏关系</p></div>
+    <div class="principle"><span class="badge">🔍 查询</span><p>自然语言提问，图谱遍历找答案，比 grep 快 10 倍</p></div>
+    <div class="principle"><span class="badge">🔄 增量</span><p>改几个文件不用全量重跑，--update 只处理变更部分</p></div>
+  </div>
+
+  <div class="section-label">📖 基础篇 — 认识 graphify</div>
+  <div class="lessons">
+    <a href="lessons/001-graphify是什么.html" class="lesson">
+      <span class="num done">1</span>
+      <div class="info"><h3>graphify 是什么</h3><p>知识图谱的概念、安装方式、基本原理</p></div>
+      <span class="tag base">基础</span>
+    </a>
+    <a href="lessons/002-构建知识图谱.html" class="lesson">
+      <span class="num done">2</span>
+      <div class="info"><h3>构建知识图谱</h3><p>从检测文件到 AST 提取、语义提取、聚类、生成报告的全流程</p></div>
+      <span class="tag base">基础</span>
+    </a>
+    <a href="lessons/003-查询与探索图谱.html" class="lesson">
+      <span class="num done">3</span>
+      <div class="info"><h3>查询与探索图谱</h3><p>BFS/DFS 遍历、最短路径、节点解释、自然语言问答</p></div>
+      <span class="tag base">基础</span>
+    </a>
+  </div>
+
+  <div class="section-label">🔧 进阶篇 — 玩转 graphify</div>
+  <div class="lessons">
+    <a href="lessons/004-增量更新与高级选项.html" class="lesson">
+      <span class="num">4</span>
+      <div class="info"><h3>增量更新与高级选项</h3><p>--update / --mode deep / --cluster-only / --directed / --watch</p></div>
+      <span class="tag tool">进阶</span>
+    </a>
+    <a href="lessons/005-导出与整合.html" class="lesson">
+      <span class="num">5</span>
+      <div class="info"><h3>导出与整合</h3><p>HTML 可视化 / SVG / GraphML / Neo4j / Obsidian 知识库</p></div>
+      <span class="tag export">导出</span>
+    </a>
+    <a href="lessons/006-交互式图谱框架.html" class="lesson">
+      <span class="num done">6</span>
+      <div class="info"><h3>使用交互式图谱框架</h3><p>拖拽/缩放/搜索/筛选社区，点击节点查看详情和邻居</p></div>
+      <span class="tag tool">操作</span>
+    </a>
+  </div>
+
+  <div class="section-label">📊 实战案例 — _CHRIS 图谱</div>
+  <div class="lessons" style="margin-bottom:1rem;">
+    <a href="lessons/101-Chris图谱分析.html" class="lesson">
+      <span class="num done">★</span>
+      <div class="info"><h3>_CHRIS 目录图谱分析</h3><p>173 节点 · 252 边 · 13 社区 · 已发现的 God Nodes 和隐藏关系</p></div>
+      <span class="tag adv">实战</span>
+    </a>
+  </div>
+
+  <div style="margin-top:2rem;padding:1rem;background:#f5f3ff;border-radius:8px;font-size:0.85rem;color:#5b21b6;">
+    💡 提示：先学基础篇 1-3 课，再根据需求看进阶篇。实战案例基于 _CHRIS 目录的真实图谱。
+  </div>
+</body>
+</html>

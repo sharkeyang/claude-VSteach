@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第5课 · 实战案例</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:860px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}
+h1{font-size:1.6rem;margin-bottom:0.5rem;border-bottom:2px solid #b78b4a;padding-bottom:0.3rem}
+h2{font-size:1.15rem;margin:1.5rem 0 0.5rem 0;color:#2d3e50}
+h2 .badge{display:inline-block;background:#5b21b6;color:#fff;font-size:0.7rem;padding:0.1rem 0.4rem;border-radius:3px;margin-right:0.4rem;vertical-align:middle}
+.code{background:#1e1e2e;color:#cdd6f4;padding:0.8rem 1rem;border-radius:6px;font-size:0.85rem;overflow-x:auto;margin:0.5rem 0;font-family:"Cascadia Code","Fira Code",monospace;line-height:1.5}
+.code .cm{color:#6c7086}.code .err{color:#f38ba8}.code .ok{color:#a6e3a1}
+.example{background:#f0fdf4;border-left:3px solid #16a34a;padding:0.6rem 1rem;margin:0.5rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+.example-bad{background:#fef2f2;border-left:3px solid #dc2626;padding:0.6rem 1rem;margin:0.5rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}
+.nav a{padding:0.4rem 1rem;background:#b78b4a;color:#fff;text-decoration:none;border-radius:4px;font-size:0.85rem}
+.nav a:hover{opacity:0.9}
+.tip{background:#fffbeb;border-left:3px solid #f59e0b;padding:0.6rem 1rem;margin:0.5rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+</style>
+</head>
+<body>
+<h1>第5课：实战案例</h1>
+<p style="color:#64748b;margin-bottom:1rem">真实发生过的文档格式问题复盘</p>
+
+<h2><span class="badge">案例1</span> 621 条空解释</h2>
+<p><strong>项目：</strong>增广贤文分类文档</p>
+<p><strong>症状：</strong>文档有 758 条，但 621 条的解释是空的（<code>&lt;small&gt;&lt;/small&gt;</code>）。</p>
+<div class="code"><span class="cm"># 检查空标签</span>
+grep -c '&lt;small&gt;&lt;/small&gt;' 增广贤文_分类.md
+<span class="err">输出：621</span></div>
+<p><strong>根因：</strong>生成脚本的关键词匹配没覆盖到这些条目，走了默认值兜底，但默认值是空的。</p>
+<p><strong>修复：</strong>加入 300+ 条关键词匹配规则，确保每条都有基于原文内容的独特解释。</p>
+<div class="tip">💡 <strong>教训：</strong>不要相信"默认值"，每个条目都应该有具体内容。</div>
+
+<h2><span class="badge">案例2</span> Python 引号报错</h2>
+<p><strong>项目：</strong>生成字帖脚本</p>
+<p><strong>症状：</strong></p>
+<div class="code"><span class="err">SyntaxError: invalid syntax. Perhaps you forgot a comma?</span>
+  (gen_zgxw_calligraphy.py, line 17)</div>
+<p><strong>根因：</strong>场景举例中包含 <code>"老师骂你了"</code> 等 ASCII 双引号，与 Python 字符串界定的双引号冲突。</p>
+<div class="example-bad"><code>"同学跑来跟你说"老师骂你了"他也会说"</code> ← ❌</div>
+<div class="example">修复后：<code>"同学跑来跟他说「老师骂你了」他也会说"</code> ← ✅</div>
+<div class="tip">💡 <strong>教训：</strong>中文文本中混入英文引号是最常见的 Python 脚本错误。</div>
+
+<h2><span class="badge">案例3</span> 表格多出一行</h2>
+<p><strong>项目：</strong>日常 Markdown 文档</p>
+<p><strong>症状：</strong>表格最后多了一行空白行或多了一列。</p>
+<div class="example-bad"><code>| 原文 | 解释 |</code><br>
+<code>|:---|:---|</code><br>
+<code>| 好言一句 | 好话 |</code><br>
+<code>|  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| ← 这一行有空格，被渲染成了空行！</code></div>
+<p><strong>修复：</strong>删除表格和下一个段落之间的多余空行或空格。</p>
+
+<h2><span class="badge">案例4</span> 中文路径找不到文件</h2>
+<p><strong>项目：</strong>Python 脚本访问文件</p>
+<p><strong>症状：</strong></p>
+<div class="code"><span class="err">FileNotFoundError: [Errno 2]</span>
+No such file or directory: 'D:\\@VSwork\\VSteach\\待整理目录\\@【杨邦】背诵文件\\...'</div>
+<p><strong>根因：</strong>Windows 的 bash 终端无法正确编码中文路径中的特殊字符（【】）。</p>
+<p><strong>修复：</strong></p>
+<div class="example">方法1：用 Python 的 <code>os.listdir()</code> 确认实际路径<br>
+方法2：用 <code>glob.glob()</code> 通配符匹配<br>
+方法3：将文件移到无特殊字符的路径下</div>
+<div class="tip">💡 <strong>教训：</strong>中文路径在 bash 中经常出问题，尽量使用全英文路径。</div>
+
+<div class="nav">
+  <a href="004-修复三板斧.html">← 第4课</a>
+  <a href="../index.html">目录</a>
+  <a href="006-速查卡与设置.html">第6课 →</a>
+</div>
+</body>
+</html>

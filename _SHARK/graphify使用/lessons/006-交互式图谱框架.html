@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第6课 · 使用交互式图谱框架</title><style>body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:800px; margin:0 auto; padding:2rem 1.5rem; color:#1a1a2e; background:#fafafa; line-height:1.8; } h1 { font-size:1.6rem; border-left:4px solid #7c3aed; padding-left:1rem; margin-bottom:1.5rem; } h2 { font-size:1.2rem; margin-top:2rem; margin-bottom:0.5rem; color:#7c3aed; } h3 { font-size:1rem; margin-top:1.5rem; margin-bottom:0.3rem; } p { margin-bottom:1rem; } ul,ol { margin-bottom:1rem; padding-left:1.5rem; } li { margin-bottom:0.3rem; } code { background:#f1f5f9; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.9em; } pre { background:#1e293b; color:#e2e8f0; padding:1rem; border-radius:6px; overflow-x:auto; font-size:0.85rem; line-height:1.5; } .tip { background:#f5f3ff; border-left:3px solid #7c3aed; padding:0.75rem 1rem; margin:1rem 0; border-radius:0 6px 6px 0; font-size:0.9rem; } .warn { background:#fef3c7; border-left:3px solid #f59e0b; padding:0.75rem 1rem; margin:1rem 0; border-radius:0 6px 6px 0; font-size:0.9rem; } table { width:100%; border-collapse:collapse; margin:1rem 0; } th,td { padding:0.5rem; border:1px solid #e2e8f0; text-align:left; } th { background:#f1f5f9; } .nav { display:flex; justify-content:space-between; margin-top:2rem; padding-top:1rem; border-top:1px solid #e2e8f0; } .nav a { color:#7c3aed; text-decoration:none; font-weight:600; } .nav a:hover { text-decoration:underline; }</style></head><body>
+<h1>第 6 课 · 使用交互式图谱框架</h1>
+
+<p>graphify 生成的 <code>graph.html</code> 是一个基于 vis-network 的交互式图谱，直接在浏览器中打开即可使用，无需安装任何依赖。</p>
+
+<h2>打开方式</h2>
+<pre>浏览器打开 graphify-out/graph.html</pre>
+<p>例如：<code>D:\@VSwork\VSteach\_CHRIS\graphify-out\graph.html</code></p>
+
+<h2>界面布局</h2>
+<ul>
+  <li><strong>左侧主区域</strong> — 图谱网络图，节点可拖拽、缩放、点击</li>
+  <li><strong>右侧边栏</strong> — 搜索 + 节点信息 + 社区图例</li>
+</ul>
+
+<h2>基本操作</h2>
+<table>
+  <tr><th>操作</th><th>方式</th><th>效果</th></tr>
+  <tr><td>拖拽节点</td><td>鼠标按住节点拖动</td><td>调整布局，手动整理</td></tr>
+  <tr><td>缩放</td><td>滚轮 / 双指捏合</td><td>放大查看细节，缩小看全局</td></tr>
+  <tr><td>平移画布</td><td>空白处长按拖拽</td><td>移动视野到不同区域</td></tr>
+  <tr><td>点击节点</td><td>单击任意节点</td><td>右侧面板显示节点详情</td></tr>
+  <tr><td>搜索</td><td>右上角搜索框输入</td><td>实时搜索节点名称</td></tr>
+  <tr><td>筛选社区</td><td>右侧图例勾选</td><td>显示/隐藏特定社区</td></tr>
+</table>
+
+<h2>右侧面板详解</h2>
+
+<h3>① 搜索框</h3>
+<p>输入节点名称关键词，实时显示匹配结果，点击结果跳转到该节点并高亮。</p>
+
+<h3>② 节点信息面板</h3>
+<p>点击任意节点后显示：</p>
+<ul>
+  <li><strong>label</strong> — 节点名称</li>
+  <li><strong>file_type</strong> — 类型（code/document/concept/paper/image）</li>
+  <li><strong>source_file</strong> — 来源文件路径</li>
+  <li><strong>邻居节点列表</strong> — 直接连接的所有节点，点击可跳转</li>
+</ul>
+
+<h3>③ 社区图例</h3>
+<p>每个社区一种颜色，操作：</p>
+<ul>
+  <li><strong>勾选/取消</strong> — 显示或隐藏该社区所有节点</li>
+  <li><strong>全选/取消全选</strong> — 顶部复选框一键操作</li>
+  <li><strong>悬停变暗</strong> — 被隐藏的社区自动变暗，提示颜色</li>
+</ul>
+
+<h3>④ 统计栏</h3>
+<p>底部显示节点总数和边总数。</p>
+
+<h2>使用技巧</h2>
+<ul>
+  <li><strong>寻找中心节点：</strong> 连接线多的节点是 God Node，通常是核心概念</li>
+  <li><strong>发现社区：</strong> 同色节点属于同一社区，颜色越聚集说明内聚度越高</li>
+  <li><strong>追踪链路：</strong> 点击一个节点 → 看邻居 → 再点击邻居 → 沿路径追踪</li>
+  <li><strong>隔离分析：</strong> 勾选只显示某个社区，专心分析该模块</li>
+  <li><strong>全屏模式：</strong> 按 F11 进入全屏，获得更大视野</li>
+</ul>
+
+<h2>实际操作示例</h2>
+<pre>1. 打开 graph.html，看到 173 个节点分布在 13 个社区中
+2. 在搜索框输入 "写字" → 点击结果跳转到 "写字短板"
+3. 右侧面板看到邻居节点：衡水体、字帖PDF、CLAUDE.md
+4. 点击 "衡水体" → 跳转到该节点，继续查看它的邻居
+5. 这样就完整追踪了 "写字短板 → 衡水体 → 字帖生成器 → 考试官" 的链路</pre>
+
+<div class="tip">
+<strong>💡 图谱文件在哪里？</strong>
+<code>D:\@VSwork\VSteach\_CHRIS\graphify-out\graph.html</code>
+双击即可在浏览器中打开，图谱是交互式/浮动的，可任意拖拽浏览。
+</div>
+
+<div class="nav">
+  <a href="005-导出与整合.html">← 上一课</a>
+  <a href="../index.html">返回目录</a>
+</div>
+</body></html>

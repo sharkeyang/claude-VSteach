@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第3课 · 5 分钟自查清单</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:860px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}
+h1{font-size:1.6rem;margin-bottom:0.5rem;border-bottom:2px solid #b78b4a;padding-bottom:0.3rem}
+h2{font-size:1.15rem;margin:1.5rem 0 0.5rem 0;color:#2d3e50}
+.code{background:#1e1e2e;color:#cdd6f4;padding:0.8rem 1rem;border-radius:6px;font-size:0.85rem;overflow-x:auto;margin:0.5rem 0;font-family:"Cascadia Code","Fira Code",monospace;line-height:1.5}
+.code .ok{color:#a6e3a1}.code .hl{color:#f9e2af}
+.checklist{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;margin:0.5rem 0}
+.checklist li{list-style:none;padding:0.3rem 0;font-size:0.95rem}
+.checklist li::before{content:"☐ ";color:#b78b4a;font-weight:700}
+.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}
+.nav a{padding:0.4rem 1rem;background:#b78b4a;color:#fff;text-decoration:none;border-radius:4px;font-size:0.85rem}
+.nav a:hover{opacity:0.9}
+.tip{background:#fffbeb;border-left:3px solid #f59e0b;padding:0.6rem 1rem;margin:0.5rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+</style>
+</head>
+<body>
+<h1>第3课：5 分钟自查清单</h1>
+<p style="color:#64748b;margin-bottom:1rem">每次收到 Claude 的文档，按这个流程检查</p>
+
+<h2>第一步：全局浏览（30秒）</h2>
+<p>在 VS Code 中按 <code>Ctrl+Shift+V</code> 预览，用眼睛扫一遍：</p>
+<div class="checklist">
+<ul>
+<li>表格有没有歪的、缺列的？</li>
+<li>有没有大段灰色背景？（代码块没闭合）</li>
+<li>列表层级对不对？（子项缩进一致吗）</li>
+<li>标题层级有没有跳？（# → ### 跳过 ##）</li>
+<li>有没有乱码？（中文显示为 ?? 或 æ®�）</li>
+</ul>
+</div>
+
+<h2>第二步：检查表格（1分钟）</h2>
+<p>在 bash 中执行：</p>
+<div class="code"><span class="ok"># 检查每行列数是否一致</span>
+awk -F'|' '{print NF-1}' 文件名.md | sort | uniq -c</div>
+<p>正常输出应该是同一数字。出现多个不同的数字 → 列数不一致。</p>
+
+<h2>第三步：检查标签闭合（1分钟）</h2>
+<div class="code"><span class="ok"># 统计 small 标签</span>
+grep -c '&lt;small&gt;' 文件名.md
+grep -c '&lt;/small&gt;' 文件名.md
+<span class="ok"># 两个数字必须相等</span></div>
+
+<h2>第四步：检查代码块（1分钟）</h2>
+<div class="code"><span class="ok"># 统计 ``` 数量</span>
+grep -c '```' 文件名.md
+<span class="ok"># 必须是偶数！</span></div>
+
+<h2>第五步：检查特殊字符（1分钟）</h2>
+<p>在 VS Code 中：</p>
+<div class="checklist">
+<ul>
+<li>搜索零宽空格字符（U+200B，肉眼不可见）</li>
+<li>搜索英文双引号是否混入中文文本</li>
+<li>检查 &amp;nbsp; 是否被误用</li>
+</ul>
+</div>
+
+<h2>第六步：最终预览（30秒）</h2>
+<p>按 <code>Ctrl+Shift+V</code> 再完整看一遍渲染效果，确认修复生效。</p>
+
+<div class="tip">💡 <strong>建议：</strong>将自查清单打印出来贴在显示器旁边，每次生成文档后过一遍。</div>
+
+<div class="nav">
+  <a href="002-Claude常见格式错误.html">← 第2课</a>
+  <a href="../index.html">目录</a>
+  <a href="004-修复三板斧.html">第4课 →</a>
+</div>
+</body>
+</html>

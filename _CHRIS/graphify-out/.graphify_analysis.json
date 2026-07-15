@@ -1,0 +1,364 @@
+{
+  "communities": {
+    "0": [
+      "chris_20_80_rule",
+      "chris_character",
+      "chris_english_advantage",
+      "chris_interest",
+      "chris_memory",
+      "chris_person",
+      "chris_profile",
+      "chris_san_gong_school",
+      "chris_socratic_method",
+      "chris_summer_schedule",
+      "chris_weakness_physique",
+      "chris_weakness_writing",
+      "doubao_interaction",
+      "five_elements_concept",
+      "kan_tu_shuo_hua_course",
+      "kan_tu_shuo_hua_index",
+      "lesson_001",
+      "lesson_002",
+      "lesson_003",
+      "lesson_004",
+      "lesson_005",
+      "lesson_006",
+      "lesson_007",
+      "lesson_008",
+      "lesson_009",
+      "lesson_010",
+      "phase1_basics",
+      "phase2_expression",
+      "phase3_advanced",
+      "teach_skill_principle",
+      "three_part_structure",
+      "three_phases_design",
+      "unpacked_0713_docprops_thumbnail_image"
+    ],
+    "1": [
+      "ai_examiner_calligraphy",
+      "ai_examiner_pronunciation",
+      "basketball",
+      "calligraphy",
+      "chris_catalog_xes",
+      "chris_deepplan",
+      "chris_execplan",
+      "chris_program",
+      "dailyplan_20260708",
+      "dailyplan_20260709",
+      "dailyplan_20260709_old",
+      "dailyplan_20260710",
+      "dailyplan_20260710_old",
+      "dailyplan_20260711",
+      "dailyplan_20260712",
+      "dailyplan_20260713",
+      "dailyplan_html",
+      "english_pronunciation",
+      "guwen",
+      "guwen_ailianshuo",
+      "guwen_daxiezhongshushu",
+      "guwen_jichengtiansiyeyou",
+      "guwen_loushiming",
+      "guwen_sanxia",
+      "nc3",
+      "printplan_html",
+      "reading_explorer",
+      "swimming",
+      "xes_level10",
+      "xes_level9",
+      "z2h_html"
+    ],
+    "2": [
+      "_chris_5step_cycle",
+      "_chris_8020_principle",
+      "_chris_annual_plan_document",
+      "_chris_calligraphy_generator_document",
+      "_chris_calligraphy_practice_pdfs",
+      "_chris_calligraphy_weakness",
+      "_chris_classical_chinese",
+      "_chris_classical_chinese_generator_document",
+      "_chris_claude_document",
+      "_chris_competition_path",
+      "_chris_domestic_path",
+      "_chris_english_advantage",
+      "_chris_feynman_technique",
+      "_chris_hengshui_font",
+      "_chris_memory_strength",
+      "_chris_north_star_goal",
+      "_chris_overseas_study",
+      "_chris_person",
+      "_chris_personality_traits",
+      "_chris_physics_olympiad",
+      "_chris_skilled_migration",
+      "_chris_socratic_teaching",
+      "_chris_study_abroad_canada",
+      "_chris_study_abroad_document",
+      "_chris_study_abroad_us",
+      "_chris_xueersi_math"
+    ],
+    "3": [
+      "fpdf",
+      "邦共用_md2pdf",
+      "邦共用_md2pdf_convert_md_to_pdf",
+      "邦共用_md2pdf_md2pdf",
+      "邦共用_md2pdf_md2pdf_init",
+      "邦共用_md2pdf_md2pdf_title_page",
+      "邦共用_md2pdf_md2pdf_write_bullet",
+      "邦共用_md2pdf_md2pdf_write_code",
+      "邦共用_md2pdf_md2pdf_write_heading",
+      "邦共用_md2pdf_md2pdf_write_separator",
+      "邦共用_md2pdf_md2pdf_write_table",
+      "邦共用_md2pdf_md2pdf_write_text",
+      "邦共用_md2pdf_rationale_1",
+      "邦共用_md2pdf_rationale_175",
+      "邦共用_md2pdf_rationale_266",
+      "邦共用_md2pdf_rationale_9",
+      "邦共用_md2pdf_rationale_98",
+      "邦共用_md2pdf_safe_print",
+      "邦共用_md2pdf_strip_emoji"
+    ],
+    "4": [
+      "_chris_amc10",
+      "_chris_amc8",
+      "_chris_chinese_poetry_competition",
+      "_chris_huayu_middle_school",
+      "_chris_mystery_exam",
+      "_chris_olympiad_math",
+      "_chris_profile_document",
+      "_chris_programming",
+      "_chris_san_gong_shangshi",
+      "_chris_san_gong_waiguoyu",
+      "_chris_siwei100",
+      "_chris_small_toefl",
+      "_chris_usaco",
+      "_chris_xiaoshengchu_certificates_document",
+      "_chris_xiaoshengchu_milestone",
+      "_chris_xiaoshengchu_schools_document"
+    ],
+    "5": [
+      "_chris_basketball",
+      "_chris_daily_plan_document",
+      "_chris_daily_record_document",
+      "_chris_doubao_agents_concept",
+      "_chris_doubao_agents_document",
+      "_chris_memory_curve",
+      "_chris_new_concept_english",
+      "_chris_physical_fitness",
+      "_chris_pronunciation",
+      "_chris_reading_explorer",
+      "_chris_summer_plan_2026_document",
+      "_chris_swimming",
+      "_chris_table_tennis",
+      "_chris_wechat_feedback"
+    ],
+    "6": [
+      "chris_competition_goal",
+      "code_org",
+      "element_periodic_table",
+      "english_concept",
+      "english_skill",
+      "math_concept",
+      "math_skill",
+      "new_concept_english",
+      "olympiad_path",
+      "programming_concept",
+      "programming_skill",
+      "science_concept",
+      "science_skill",
+      "xes_math"
+    ],
+    "7": [
+      "temp_gen_day9_v2",
+      "temp_gen_day9_v2_add_para",
+      "temp_gen_day9_v2_block",
+      "temp_gen_day9_v2_cell_bg",
+      "temp_gen_day9_v2_cell_borders",
+      "temp_gen_day9_v2_cell_margins",
+      "temp_gen_day9_v2_fixed_layout",
+      "temp_gen_day9_v2_row_height",
+      "temp_gen_day9_v2_run",
+      "temp_gen_day9_v2_set_font"
+    ],
+    "8": [
+      "temp_gen_calligraphy",
+      "temp_gen_calligraphy_gen_html",
+      "temp_gen_calligraphy_list_guwen",
+      "temp_gen_calligraphy_rationale_179",
+      "temp_gen_calligraphy_rationale_67",
+      "temp_gen_calligraphy_save_to_pdf"
+    ],
+    "9": [
+      "dailyplan_20260709_backup"
+    ],
+    "10": [
+      "temp_extract_xes"
+    ],
+    "11": [
+      "temp_replace_agent"
+    ],
+    "12": [
+      "temp_replace_eval"
+    ]
+  },
+  "cohesion": {
+    "0": 0.09848484848484848,
+    "1": 0.08602150537634409,
+    "2": 0.12923076923076923,
+    "3": 0.18128654970760233,
+    "4": 0.175,
+    "5": 0.18681318681318682,
+    "6": 0.16483516483516483,
+    "7": 0.24444444444444444,
+    "8": 0.4,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0
+  },
+  "gods": [
+    {
+      "id": "chris_person",
+      "label": "杨邦彦 (Chris)",
+      "degree": 27
+    },
+    {
+      "id": "_chris_claude_document",
+      "label": "CLAUDE.md - Chris教学主配置文件",
+      "degree": 17
+    },
+    {
+      "id": "_chris_summer_plan_2026_document",
+      "label": "Chris的2026年暑假深度方案（优化版）",
+      "degree": 16
+    },
+    {
+      "id": "邦共用_md2pdf_md2pdf",
+      "label": "MD2PDF",
+      "degree": 11
+    },
+    {
+      "id": "邦共用_md2pdf_convert_md_to_pdf",
+      "label": "convert_md_to_pdf()",
+      "degree": 11
+    },
+    {
+      "id": "_chris_xiaoshengchu_schools_document",
+      "label": "邦共用_小升初学校与升学路径大全",
+      "degree": 10
+    },
+    {
+      "id": "chris_program",
+      "label": "Chris暑假计划体系",
+      "degree": 10
+    },
+    {
+      "id": "chris_execplan",
+      "label": "暑假计划执行版",
+      "degree": 10
+    },
+    {
+      "id": "_chris_person",
+      "label": "Chris (杨邦彦) - 7岁，上海松江一年级",
+      "degree": 8
+    },
+    {
+      "id": "_chris_annual_plan_document",
+      "label": "Chris的年度计划 (2026-2027)",
+      "degree": 7
+    }
+  ],
+  "surprises": [
+    {
+      "source": "字帖PDF集 - 练字实践材料",
+      "target": "古文背诵 - 小升初/人文素养储备",
+      "source_files": [
+        "字帖_03_为政第二.pdf",
+        "CLAUDE.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ paper); connects across different repos/directories; peripheral node `字帖PDF集 - 练字实践材料` unexpectedly reaches hub `古文背诵 - 小升初/人文素养储备`"
+    },
+    {
+      "source": "字帖PDF集 - 练字实践材料",
+      "target": "写字短板 - 需要策略性弥补",
+      "source_files": [
+        "字帖_03_为政第二.pdf",
+        "CLAUDE.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "conceptually_related_to",
+      "why": "crosses file types (doc ↔ paper); connects across different repos/directories; peripheral node `字帖PDF集 - 练字实践材料` unexpectedly reaches hub `写字短板 - 需要策略性弥补`"
+    },
+    {
+      "source": "Chris的每日记录 (完成日志)",
+      "target": "Chris (杨邦彦) - 7岁，上海松江一年级",
+      "source_files": [
+        "Chris的每日记录.md",
+        "Chris的profile.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "describes",
+      "why": "connects across different repos/directories; bridges separate communities; peripheral node `Chris的每日记录 (完成日志)` unexpectedly reaches hub `Chris (杨邦彦) - 7岁，上海松江一年级`"
+    },
+    {
+      "source": "邦共用_小升初学校与升学路径大全",
+      "target": "物理奥赛方向 - CPhO/IPhO",
+      "source_files": [
+        "邦共用_小升初学校与升学路径大全.md",
+        "CLAUDE.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "conceptually_related_to",
+      "why": "connects across different repos/directories; bridges separate communities; peripheral node `物理奥赛方向 - CPhO/IPhO` unexpectedly reaches hub `邦共用_小升初学校与升学路径大全`"
+    },
+    {
+      "source": "Chris暑假计划A4打印版",
+      "target": "暑假计划执行版",
+      "source_files": [
+        "__temp/print-plan.html",
+        "archive/暑假计划-执行版.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "renders",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `Chris暑假计划A4打印版` unexpectedly reaches hub `暑假计划执行版`"
+    }
+  ],
+  "questions": [
+    {
+      "type": "ambiguous_edge",
+      "question": "What is the exact relationship between `Chris的完整档案` and `thumbnail.jpeg`?",
+      "why": "Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `杨邦彦 (Chris)` connect `Community 0` to `Community 6`?",
+      "why": "High betweenness centrality (0.059) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `CLAUDE.md - Chris教学主配置文件` connect `Community 2` to `Community 4`, `Community 5`?",
+      "why": "High betweenness centrality (0.054) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `Chris的2026年暑假深度方案（优化版）` connect `Community 5` to `Community 2`?",
+      "why": "High betweenness centrality (0.035) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 11 inferred relationships involving `杨邦彦 (Chris)` (e.g. with `看图说话课程体系` and `第1课:认识图片要素`) actually correct?",
+      "why": "`杨邦彦 (Chris)` has 11 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `邦共用_字帖生成器.html - 衡水体字帖生成器`, `邦共用_字帖生成器古文.html - 古文专用字帖生成器`, `邦共用_豆包智能体设置` to the rest of the system?",
+      "why": "44 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.09848484848484848 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

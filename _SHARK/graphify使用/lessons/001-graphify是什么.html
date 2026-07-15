@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第1课 · graphify 是什么</title><style>body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:800px; margin:0 auto; padding:2rem 1.5rem; color:#1a1a2e; background:#fafafa; line-height:1.8; } h1 { font-size:1.6rem; border-left:4px solid #7c3aed; padding-left:1rem; margin-bottom:1.5rem; } h2 { font-size:1.2rem; margin-top:2rem; margin-bottom:0.5rem; color:#7c3aed; } h3 { font-size:1rem; margin-top:1.5rem; margin-bottom:0.3rem; } p { margin-bottom:1rem; } ul { margin-bottom:1rem; padding-left:1.5rem; } li { margin-bottom:0.3rem; } code { background:#f1f5f9; padding:0.15rem 0.4rem; border-radius:3px; font-size:0.9em; } pre { background:#1e293b; color:#e2e8f0; padding:1rem; border-radius:6px; overflow-x:auto; font-size:0.85rem; line-height:1.5; } .tip { background:#f5f3ff; border-left:3px solid #7c3aed; padding:0.75rem 1rem; margin:1rem 0; border-radius:0 6px 6px 0; font-size:0.9rem; } .nav { display:flex; justify-content:space-between; margin-top:2rem; padding-top:1rem; border-top:1px solid #e2e8f0; } .nav a { color:#7c3aed; text-decoration:none; font-weight:600; } .nav a:hover { text-decoration:underline; }</style></head><body>
+<h1>第 1 课 · graphify 是什么</h1>
+
+<h2>知识图谱是什么？</h2>
+<p>知识图谱把文件中的实体（函数、类、概念、文档）变成<strong>节点</strong>，把它们之间的关系（调用、引用、依赖、概念相关）变成<strong>边</strong>。结果是一个可导航、可查询的网络，而不是一堆孤立文件。</p>
+
+<h2>graphify 能做什么</h2>
+<ul>
+  <li><strong>全格式支持</strong> — 代码(.py/.ts/.go/...)、文档(.md/.txt)、PDF、图片、视频/音频</li>
+  <li><strong>自动提取</strong> — 代码走 AST 解析（免费、无 LLM），文档走 LLM 语义提取</li>
+  <li><strong>社区检测</strong> — 自动把相关节点聚成社区，发现跨文件的隐藏联系</li>
+  <li><strong>自然语言查询</strong> — 图建好后，用日常语言提问，图谱遍历找答案</li>
+  <li><strong>增量更新</strong> — 改文件后只用 --update，不用全量重跑</li>
+  <li><strong>多种导出</strong> — HTML 交互图、SVG、GraphML、Neo4j、Obsidian</li>
+</ul>
+
+<h2>安装</h2>
+<pre>pip install graphifyy
+graphify install</pre>
+<p>注册后，Claude Code 中输入 <code>/graphify</code> 即可使用。</p>
+
+<h2>运行原理</h2>
+<ol>
+  <li><strong>检测</strong> — 扫描目录，分类文件（代码/文档/PDF/图片/视频）</li>
+  <li><strong>AST 提取</strong> — 代码文件用语法树自动解析，零成本</li>
+  <li><strong>语义提取</strong> — 文档/PDF/图片由 LLM 提取概念和关系</li>
+  <li><strong>建图+聚类</strong> — 合并结果，构建图网络，自动社区检测</li>
+  <li><strong>报告+导出</strong> — 生成 GRAPH_REPORT.md 和 HTML 可视化</li>
+</ol>
+
+<div class="tip">
+<strong>💡 不需要 API Key：</strong> 纯代码项目完全免费（AST 解析）。文档项目用 Claude 自身的子 agent 提取，也不需要额外 API Key。如需加速可设置 GEMINI_API_KEY。
+</div>
+
+<h2>什么时候值得用</h2>
+<ul>
+  <li>项目文件超过 20 个，手动 grep 已不够用</li>
+  <li>需要跨文件理解架构和概念关系</li>
+  <li>整理学习资料，想看清知识之间的联系</li>
+  <li>新接手代码库，想快速上手</li>
+</ul>
+
+<div class="nav">
+  <span></span>
+  <a href="002-构建知识图谱.html">下一课：构建知识图谱 →</a>
+</div>
+</body></html>

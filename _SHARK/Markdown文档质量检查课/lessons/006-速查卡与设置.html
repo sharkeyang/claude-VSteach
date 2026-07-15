@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第6课 · 速查卡与 VS Code 设置</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:860px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}
+h1{font-size:1.6rem;margin-bottom:0.5rem;border-bottom:2px solid #b78b4a;padding-bottom:0.3rem}
+h2{font-size:1.15rem;margin:1.5rem 0 0.5rem 0;color:#2d3e50}
+.code{background:#1e1e2e;color:#cdd6f4;padding:0.8rem 1rem;border-radius:6px;font-size:0.85rem;overflow-x:auto;margin:0.5rem 0;font-family:"Cascadia Code","Fira Code",monospace;line-height:1.5}
+.code .cm{color:#6c7086}
+table{width:100%;border-collapse:collapse;margin:0.5rem 0}
+th{background:#b78b4a;color:#fff;padding:0.4rem 0.6rem;text-align:left;font-size:0.85rem}
+td{padding:0.4rem 0.6rem;border:1px solid #e2e8f0;font-size:0.85rem}
+tr:nth-child(even){background:#f8fafc}
+.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}
+.nav a{padding:0.4rem 1rem;background:#b78b4a;color:#fff;text-decoration:none;border-radius:4px;font-size:0.85rem}
+.nav a:hover{opacity:0.9}
+.tip{background:#f0f9ff;border-left:3px solid #0ea5e9;padding:0.6rem 1rem;margin:0.5rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+</style>
+</head>
+<body>
+<h1>第6课：速查卡与 VS Code 设置</h1>
+<p style="color:#64748b;margin-bottom:1rem">常用检查命令 · 编辑器优化 · 渲染测试模板</p>
+
+<h2>一、常用检查命令速查</h2>
+<div class="code"><span class="cm"># 检查表格列数是否一致</span>
+awk -F'|' '{print NF-1}' 文件名.md | sort | uniq -c
+
+<span class="cm"># 检查 &lt;small&gt; 是否闭合</span>
+grep -c '&lt;small&gt;' 文件名.md
+grep -c '&lt;/small&gt;' 文件名.md
+
+<span class="cm"># 检查代码块是否闭合（必须是偶数）</span>
+grep -c '```' 文件名.md
+
+<span class="cm"># 检查零宽空格</span>
+grep -Pn '\x{200b}' 文件名.md
+
+<span class="cm"># 检查文件编码</span>
+file 文件名.md</div>
+
+<h2>二、Markdown 语法速查表</h2>
+<table>
+<tr><th>语法</th><th>正确写法</th><th>常见错误</th></tr>
+<tr><td>标题</td><td><code># 标题</code>（有空格）</td><td><code>#标题</code>（无空格）</td></tr>
+<tr><td>列表</td><td><code>- 项目</code>（2空格缩进）</td><td>缩进不一致</td></tr>
+<tr><td>表格</td><td><code>| 列 | 列 |</code></td><td>列数不匹配</td></tr>
+<tr><td>代码块</td><td><code>```python</code>...<code>```</code></td><td>缺少结束符</td></tr>
+<tr><td>引用</td><td><code>&gt; 内容</code></td><td>忘记 &gt;</td></tr>
+<tr><td>粗体</td><td><code>**文字**</code></td><td><code>**文字*</code>（少一个*）</td></tr>
+<tr><td>斜体</td><td><code>*文字*</code></td><td><code>*文字</code>（未闭合）</td></tr>
+<tr><td>链接</td><td><code>[text](url)</code></td><td>格式错误</td></tr>
+</table>
+
+<h2>三、VS Code 推荐设置</h2>
+<p>将以下内容添加到 <code>settings.json</code>：</p>
+<div class="code">{<br>
+&nbsp;&nbsp;<span class="cm">// 自动检测文件编码</span><br>
+&nbsp;&nbsp;"files.autoGuessEncoding": true,<br><br>
+&nbsp;&nbsp;<span class="cm">// Markdown 预览换行</span><br>
+&nbsp;&nbsp;"markdown.preview.breaks": true,<br><br>
+&nbsp;&nbsp;<span class="cm">// 显示空格和制表符</span><br>
+&nbsp;&nbsp;"editor.renderWhitespace": "boundary",<br><br>
+&nbsp;&nbsp;<span class="cm">// 保存时自动格式化</span><br>
+&nbsp;&nbsp;"editor.formatOnSave": true<br>
+}</div>
+
+<h2>四、最常用的 3 个快捷键</h2>
+<table>
+<tr><th>快捷键</th><th>用途</th></tr>
+<tr><td><code>Ctrl+Shift+V</code></td><td>预览 Markdown 渲染效果</td></tr>
+<tr><td><code>Ctrl+F</code></td><td>搜索特殊字符（如零宽空格）</td></tr>
+<tr><td><code>Ctrl+Shift+P → 编码</code></td><td>检查/修改文件编码为 UTF-8</td></tr>
+</table>
+
+<h2>五、渲染测试模板</h2>
+<p>拿到新环境时，先跑一下这个文档确认渲染正常：</p>
+<div class="code"><span class="cm"># 标题测试</span>
+
+## 二级标题
+
+**粗体** *斜体* `代码`
+
+- 列表项
+  - 子列表
+
+| 列1 | 列2 |
+|:---|---:|
+| 左对齐 | 右对齐 |
+
+&gt; 引用测试</div>
+
+<div class="tip">💡 建议：把这 6 课的 lessons 文件夹整个放到浏览器书签，下次看到格式不对时直接对照查。</div>
+
+<div class="nav">
+  <a href="005-实战案例.html">← 第5课</a>
+  <a href="../index.html">← 目录</a>
+</div>
+</body>
+</html>
