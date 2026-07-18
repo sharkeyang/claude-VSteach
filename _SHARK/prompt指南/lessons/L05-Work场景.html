@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L5 · Work 场景</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#0ea5e9; --muted:#64748b; --border:#e2e8f0; --quiz-c:#16a34a; --quiz-w:#dc2626; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:780px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.8; font-size:1rem; }
+    h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+    .sub { color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; }
+    h2 { font-size:1.15rem; margin:1.8rem 0 0.5rem; border-bottom:1px solid var(--border); padding-bottom:0.25rem; }
+    h3 { font-size:1rem; margin:1.2rem 0 0.3rem; color:var(--accent); }
+    p { margin-bottom:0.8rem; }
+    ul,ol { margin-bottom:0.8rem; padding-left:1.5rem; }
+    li { margin-bottom:0.2rem; }
+    .choice-box { background:linear-gradient(135deg,#1e293b,#334155); color:#e2e8f0; border-radius:10px; padding:1.2rem 1.5rem; margin:1rem 0; }
+    .choice-box .option { display:flex; gap:1rem; margin-top:0.8rem; }
+    .choice-box .option div { flex:1; background:rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem; text-align:center; cursor:pointer; transition:0.15s; }
+    .choice-box .option div:hover { background:rgba(255,255,255,0.2); }
+    .story-box { background:#fdf2e9; border:1px solid #e8d5c4; padding:1rem 1.2rem; margin:1rem 0; border-radius:8px; }
+    .story-box strong { color:#b45309; }
+    .box { background:#f0f9ff; border-left:4px solid var(--accent); padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .warn { background:#fef9ef; border-left:4px solid #f59e0b; padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .exp { background:#f8fafc; border:1px solid var(--border); padding:0.8rem 1rem; margin:0.8rem 0; border-radius:8px; }
+    .exp strong { color:var(--accent); }
+    code { background:#f1f5f9; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.9em; }
+    table { width:100%; border-collapse:collapse; margin:0.8rem 0; font-size:0.88rem; }
+    th,td { border:1px solid var(--border); padding:0.35rem 0.6rem; text-align:left; }
+    th { background:#f8fafc; font-weight:600; }
+    .quiz { border:2px solid var(--border); border-radius:10px; padding:1rem 1.25rem; margin:1.2rem 0; background:#fff; }
+    .quiz p { margin-bottom:0.4rem; font-weight:600; }
+    .qopts { display:flex; flex-direction:column; gap:0.4rem; margin:0.5rem 0; }
+    .qopts label { display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0.75rem; border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+    .qopts label:hover { background:#f1f5f9; }
+    .qopts input[type="radio"] { accent-color:var(--accent); }
+    .qbtn { background:var(--accent); color:#fff; border:none; padding:0.35rem 1rem; border-radius:6px; cursor:pointer; font-size:0.85rem; }
+    .qbtn:hover { opacity:0.9; }
+    .qfb { margin-top:0.5rem; padding:0.5rem 0.75rem; border-radius:6px; display:none; }
+    .qfb.ok { display:block; background:#f0fdf4; border:1px solid var(--quiz-c); }
+    .qfb.no { display:block; background:#fef2f2; border:1px solid var(--quiz-w); }
+    .take { margin:1.2rem 0; border:1px dashed var(--accent); border-radius:8px; padding:0.8rem 1rem; }
+    .ref { color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border); padding-top:1.2rem; margin-top:1.5rem; }
+    .ref a { color:var(--accent); }
+  </style>
+</head>
+<body>
+
+<h1>L5 · Work 场景</h1>
+<p class="sub">Prompt 指南 | 场景篇 · 多步骤复杂任务 · 成品文件 · 调研决策</p>
+
+<div class="choice-box">
+  <p style="font-size:1.1rem;"><strong>🤔 你选：</strong></p>
+  <p style="font-size:0.95rem;">当任务需要多个来源、多步操作、或产出成品文件时，Chat 就不够了。<br>这时候要用 Work——让 AI 像项目经理一样工作。</p>
+  <div class="option">
+    <div onclick="document.getElementById('origin').scrollIntoView({behavior:'smooth'})"><strong>🔍 重头发现</strong><br><span style="font-size:0.8rem;">从"请助理 vs 请项目经理"的区别理解 Chat 和 Work 的分工</span></div>
+    <div onclick="document.getElementById('direct').scrollIntoView({behavior:'smooth'})"><strong>📖 直接学知识</strong><br><span style="font-size:0.8rem;">直接学 Work Prompt 的写法 + 三个实战案例</span></div>
+  </div>
+</div>
+
+<div id="origin"></div>
+<h2>📜 起源：什么时候该把 AI 当成"项目经理"？</h2>
+
+<div class="story-box">
+  <strong>👤 助理 vs 👔 项目经理</strong><br><br>
+  助理（Chat）：<br>
+  "帮我查一下复利是什么。" → 30 秒给你答案。<br>
+  "帮我写封邮件婉拒邀请。" → 2 分钟给你草稿。<br><br>
+  项目经理（Work）：<br>
+  "用这沓季度报告做一份管理层简报加六页幻灯片，受众是高管，每个数字标出来源，简报和幻灯片口径要一致。"<br>
+  → 他会先规划、收集信息、生成文件、交叉检查、终检——最终给你能直接用的成品。<br><br>
+  什么时候用 Work？OpenAI 官方说：<br>
+  <strong>需要调多个来源或工具、包含一串步骤、要做修改、或者要产出较大交付物的任务。</strong><br><br>
+  Work 会消耗更多 credits，但只要它省了时间、提了质量、帮你做了重要决定，就是值得的。
+</div>
+
+<div id="direct"></div>
+<h2>📖 Work Prompt 写法</h2>
+
+<div class="box">
+  <p><strong>Work Prompt 结构：</strong></p>
+  <ol>
+    <li><strong>描述你要的结果</strong> — 不是步骤，是最终产出</li>
+    <li><strong>给出源材料</strong> — 附件、链接、数据</li>
+    <li><strong>点名受众</strong> — 谁会用这个产出？</li>
+    <li><strong>说明你怎么审</strong> — 终检要求</li>
+    <li><strong>让 AI 先规划再执行</strong> — 做法重要时先要计划</li>
+    <li><strong>收尾前检查</strong> — 自查一遍再交</li>
+  </ol>
+</div>
+
+<h3>高效使用 Work 的要点</h3>
+<ul>
+  <li>只带相关的来源，合适的话限定日期范围</li>
+  <li>定好受众、输出格式和期望长度</li>
+  <li>把必须做的活，和可选的优化/润色分开</li>
+  <li>做法本身重要时，先要一份计划</li>
+  <li>AI 发送/发布/修改别人依赖的信息前，必须经你批准</li>
+  <li>它开始干你不再需要的活时，收窄任务或直接叫停</li>
+  <li>先审第一版结果，打磨指令，跑通了就复用这套流程</li>
+</ul>
+
+<h3>场景一：把源材料变成成品文件</h3>
+<div class="exp">
+  <p><strong>Prompt：</strong></p>
+  <p>用附件里的季度报告，做一份管理层简报和一份六页的演示文稿。受众是高管团队。开头先给他们需要拍板的三个决策，报告里的事实和你的分析要区分开，每个数字都注明来源文件，收尾前检查简报和幻灯片口径一致。</p>
+</div>
+<p>这条涵盖：🎯目标（简报+幻灯片）→ 📚上下文（季度报告）→ 📄输出（受众、格式、注明来源）→ 🚧边界（事实vs分析分开）→ ✅终检（口径一致）。</p>
+
+<h3>场景二：为一个决策做调研</h3>
+<div class="exp">
+  <p><strong>Prompt：</strong></p>
+  <p>为一家 50 人的公司调研三个客服平台。用最新的资料比较定价、安全性、集成能力和迁移成本。产出一份推荐备忘录，附上链接、假设，以及签合同前我们该回答的问题。</p>
+</div>
+
+<h3>场景三：协调一次发布</h3>
+<div class="exp">
+  <p><strong>Prompt：</strong></p>
+  <p>根据附件里的产品简报做一份发布计划。包含时间线、负责人、依赖项、风险、公告草稿、客户 FAQ 和发布日检查清单。产出最终文件之前，把还没定的决策标出来。</p>
+</div>
+
+<h3>重复性工作的 Work 流程</h3>
+<div class="box">
+  <p><strong>最佳实践：</strong></p>
+  <ol>
+    <li>先在普通任务里把 prompt 打磨好</li>
+    <li>输出稳定之后，从那个任务里设置<strong>定时执行</strong></li>
+    <li>如果每次定时运行都该新开一个任务，就单独建一个定时任务</li>
+  </ol>
+</div>
+
+<!-- Quiz -->
+<h2>✏️ 小测验</h2>
+
+<div class="quiz">
+  <p>Q1：Work 和 Chat 的核心区别是什么？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q1" value="a"> Work 更贵，Chat 更便宜</label>
+    <label><input type="radio" name="q1" value="b"> Work 适合需要多来源、多步骤、生成成品文件的复杂任务，Chat 适合轻量问答</label>
+    <label><input type="radio" name="q1" value="c"> Work 只能用在手机上</label>
+  </div>
+  <button class="qbtn" onclick="checkQ1()">检查答案</button>
+  <div class="qfb" id="q1fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q2：写 Work Prompt 时，以下哪个做法不对？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q2" value="a"> 把每一步怎么做都写死，不让 AI 自由发挥</label>
+    <label><input type="radio" name="q2" value="b"> 描述你要的结果，给出源材料，点名受众</label>
+    <label><input type="radio" name="q2" value="c"> 先让 AI 规划再执行，收尾前做终检</label>
+  </div>
+  <button class="qbtn" onclick="checkQ2()">检查答案</button>
+  <div class="qfb" id="q2fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q3：做重复性 Work 任务的最佳流程是？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q3" value="a"> 上来就设定时任务，省事</label>
+    <label><input type="radio" name="q3" value="b"> 先手动打磨 prompt 直到输出稳定，再设定时执行</label>
+    <label><input type="radio" name="q3" value="c"> 每次重写一遍 prompt，保证新鲜感</label>
+  </div>
+  <button class="qbtn" onclick="checkQ3()">检查答案</button>
+  <div class="qfb" id="q3fb"></div>
+</div>
+
+<div class="take">
+  <strong>🧑‍🏫 费曼测试：</strong> 假设你要让 AI 帮你做一份"下季度产品推广计划"，受众是市场总监。写一条完整的 Work Prompt（包含目标、上下文、输出、边界、终检）。
+</div>
+
+<div class="ref">
+  <p><strong>下一步：</strong> <a href="L06-附件与数据源.html">L6 · 附件与数据源 →</a></p>
+  <p><a href="../index.html">← 返回总目录</a> | <a href="../reference/OpenAI%20官方%20Prompt%20指南.md">参考原文</a></p>
+</div>
+
+<script>
+function checkQ1() {
+  const fb = document.getElementById('q1fb');
+  const sel = document.querySelector('input[name="q1"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！Chat 轻量快问，Work 复杂多步骤成品文件。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。核心区别是任务复杂度——Work 适合需要多来源、多步骤、成文件的场景。'; }
+}
+function checkQ2() {
+  const fb = document.getElementById('q2fb');
+  const sel = document.querySelector('input[name="q2"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='a') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！不要让每一步都写死——给 AI 留出空间去搜索、比对、调整。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。Work 也要面向结果描述，不要事无巨细写步骤——让 AI 自己规划执行路径。'; }
+}
+function checkQ3() {
+  const fb = document.getElementById('q3fb');
+  const sel = document.querySelector('input[name="q3"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！官方建议：先在普通任务里打磨 prompt → 输出稳定 → 再设定时执行。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。官方说：先在普通任务里把 prompt 打磨好，输出稳定之后再设定时。'; }
+}
+</script>
+
+</body>
+</html>

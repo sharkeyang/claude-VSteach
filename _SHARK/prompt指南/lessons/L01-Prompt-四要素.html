@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L1 · Prompt 四要素框架</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#0ea5e9; --muted:#64748b; --border:#e2e8f0; --quiz-c:#16a34a; --quiz-w:#dc2626; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:780px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.8; font-size:1rem; }
+    h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+    .sub { color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; }
+    h2 { font-size:1.15rem; margin:1.8rem 0 0.5rem; border-bottom:1px solid var(--border); padding-bottom:0.25rem; }
+    h3 { font-size:1rem; margin:1.2rem 0 0.3rem; color:var(--accent); }
+    p { margin-bottom:0.8rem; }
+    ul,ol { margin-bottom:0.8rem; padding-left:1.5rem; }
+    li { margin-bottom:0.2rem; }
+    .choice-box { background:linear-gradient(135deg,#1e293b,#334155); color:#e2e8f0; border-radius:10px; padding:1.2rem 1.5rem; margin:1rem 0; }
+    .choice-box .option { display:flex; gap:1rem; margin-top:0.8rem; }
+    .choice-box .option div { flex:1; background:rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem; text-align:center; cursor:pointer; transition:0.15s; }
+    .choice-box .option div:hover { background:rgba(255,255,255,0.2); }
+    .story-box { background:#fdf2e9; border:1px solid #e8d5c4; padding:1rem 1.2rem; margin:1rem 0; border-radius:8px; }
+    .story-box strong { color:#b45309; }
+    .box { background:#f0f9ff; border-left:4px solid var(--accent); padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .warn { background:#fef9ef; border-left:4px solid #f59e0b; padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .exp { background:#f8fafc; border:1px solid var(--border); padding:0.8rem 1rem; margin:0.8rem 0; border-radius:8px; }
+    .exp strong { color:var(--accent); }
+    code { background:#f1f5f9; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.9em; }
+    table { width:100%; border-collapse:collapse; margin:0.8rem 0; font-size:0.88rem; }
+    th,td { border:1px solid var(--border); padding:0.35rem 0.6rem; text-align:left; }
+    th { background:#f8fafc; font-weight:600; }
+    .quiz { border:2px solid var(--border); border-radius:10px; padding:1rem 1.25rem; margin:1.2rem 0; background:#fff; }
+    .quiz p { margin-bottom:0.4rem; font-weight:600; }
+    .qopts { display:flex; flex-direction:column; gap:0.4rem; margin:0.5rem 0; }
+    .qopts label { display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0.75rem; border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+    .qopts label:hover { background:#f1f5f9; }
+    .qopts input[type="radio"] { accent-color:var(--accent); }
+    .qbtn { background:var(--accent); color:#fff; border:none; padding:0.35rem 1rem; border-radius:6px; cursor:pointer; font-size:0.85rem; }
+    .qbtn:hover { opacity:0.9; }
+    .qfb { margin-top:0.5rem; padding:0.5rem 0.75rem; border-radius:6px; display:none; }
+    .qfb.ok { display:block; background:#f0fdf4; border:1px solid var(--quiz-c); }
+    .qfb.no { display:block; background:#fef2f2; border:1px solid var(--quiz-w); }
+    .take { margin:1.2rem 0; border:1px dashed var(--accent); border-radius:8px; padding:0.8rem 1rem; }
+    .ref { color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border); padding-top:1.2rem; margin-top:1.5rem; }
+    .ref a { color:var(--accent); }
+  </style>
+</head>
+<body>
+
+<h1>L1 · Prompt 四要素框架</h1>
+<p class="sub">Prompt 指南 | 基础篇 · Goal / Context / Output / Boundaries</p>
+
+<!-- 选择 -->
+<div class="choice-box">
+  <p style="font-size:1.1rem;"><strong>🤔 你选：</strong></p>
+  <p style="font-size:0.95rem;">写 Prompt 有没有固定套路？<br>很多人以为写 Prompt 全靠"感觉"，其实背后有一套清晰的框架。</p>
+  <div class="option">
+    <div onclick="document.getElementById('origin').scrollIntoView({behavior:'smooth'})"><strong>🔍 重头发现</strong><br><span style="font-size:0.8rem;">从"跟人说话"类比出发，理解 Prompt 四要素的由来</span></div>
+    <div onclick="document.getElementById('direct').scrollIntoView({behavior:'smooth'})"><strong>📖 直接学知识</strong><br><span style="font-size:0.8rem;">直接学四要素框架 + 示例</span></div>
+  </div>
+</div>
+
+<!-- 起源 -->
+<div id="origin"></div>
+<h2>📜 起源：Prompt 为什么需要框架？</h2>
+
+<div class="story-box">
+  <strong>🗣️ 想象一下：你让同事帮你写一份报告</strong><br><br>
+  假设你走到同事工位前，只说一句：<br>
+  <em>"帮我写一份报告。"</em><br><br>
+  同事会一脸茫然——<br>
+  <strong>什么报告？给谁看？多长？什么格式？哪些数据不能用？</strong><br><br>
+  你不得不补上：<br>
+  <em>"季度销售报告，给总监看的，一页纸，用最新的数据，预算数字不能动。"</em><br><br>
+  这就是 Prompt 的本质：<strong>你给 AI 的信息越完整，AI 的产出越接近你的预期。</strong><br><br>
+  OpenAI 官方把有效 Prompt 拆成四个要素：<strong>目标、上下文、输出、边界</strong>。<br>
+  这四个要素不是凭空发明的——它们就是"跟人交代工作时自然而然会说的那些话"。
+</div>
+
+<div class="box">
+  <strong>💡 核心洞见：</strong> 你不需要每次都填满四项。短 prompt 往往就够了。任务越大越重要，越需要把几个要素写清楚。
+</div>
+
+<!-- 直接学 -->
+<div id="direct"></div>
+<h2>📖 四要素框架</h2>
+
+<table>
+  <tr><th style="width:100px;">要素</th><th>英文</th><th>说明</th><th>类比</th></tr>
+  <tr><td><strong>🎯 目标</strong></td><td>Goal</td><td>ChatGPT 该做什么？</td><td>"帮我写一份报告"</td></tr>
+  <tr><td><strong>📚 上下文</strong></td><td>Context</td><td>哪些信息或来源能帮上忙？</td><td>"用最新的季度数据"</td></tr>
+  <tr><td><strong>📄 输出</strong></td><td>Output</td><td>你需要什么格式、多长、多细？</td><td>"一页纸，给总监看"</td></tr>
+  <tr><td><strong>🚧 边界</strong></td><td>Boundaries</td><td>哪些东西不能动？哪些事该避开？</td><td>"预算数字不能改"</td></tr>
+</table>
+
+<h3>🎯 目标（Goal）</h3>
+<p>最核心的要素。从结果说起，不要从一长串步骤说起。</p>
+
+<div class="exp">
+  <strong>❌ 差：</strong> 先打开会议记录，然后找出决策和下一步行动，然后整理成段落……<br>
+  <strong>✅ 好：</strong> 把这些会议记录整理成一份给项目组的简短进展通报。决策和下一步行动放在最前面。
+</div>
+
+<h3>📚 上下文（Context）</h3>
+<p>把可能改变结果的信息给它。只加真正相关的来源，并且说明每个来源里该取什么。</p>
+
+<div class="exp">
+  <strong>不带上下文：</strong> 写一份项目状态通报。<br>
+  <strong>带上下文：</strong> 用 Drive 里最新的项目计划，加上项目 Slack 频道里相关的决策和进展，准备一份状态通报。
+</div>
+
+<h3>📄 输出（Output）</h3>
+<p>告诉 ChatGPT 你打算怎么用这个结果。它就能选对长度、详细程度和组织方式。</p>
+
+<div class="exp">
+  <strong>指定输出：</strong> 做成一页纸的摘要，让总监开会前扫一眼就行。决策和下一步放最前面。<br>
+  <strong>指定格式：</strong> 做成一张计划支出和实际支出的对照表，差异超过 10% 的都标出来。
+</div>
+
+<h3>🚧 边界（Boundaries）</h3>
+<p>防止 ChatGPT 制造额外工作，或做出你没打算让它做的动作。</p>
+
+<div class="exp">
+  <strong>防错边界：</strong> 已批准的日期和预算数字保持不动。只用我提供的来源，信息缺了就标出来，不要猜。<br>
+  <strong>安全边界：</strong> 把消息准备成草稿，不要发出去。建议控制在说好的预算之内。
+</div>
+
+<h3>💡 四要素组合示例</h3>
+
+<div class="box">
+  <p><strong>完整的 Prompt：</strong></p>
+  <p style="font-size:0.95rem;color:#334155;">为周一的管理层会议准备一份一页纸的项目状态通报。<br>
+  用 Drive 里最新的项目计划，加上项目 Slack 频道里相关的决策和进展。<br>
+  管理层需要拍板的决策和下一步行动放在最前面。<br>
+  总结进度、风险、负责人和截止日期。<br>
+  已批准的日期和预算数字保持不动。<br>
+  有冲突或缺失的信息就标出来，任何东西都不要发送或发布。</p>
+  <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--muted);">
+    → 这条 Prompt 覆盖了🎯目标、📚上下文、📄输出、🚧边界，但没有把每一步都写死。
+  </p>
+</div>
+
+<!-- Quiz -->
+<h2>✏️ 小测验</h2>
+
+<div class="quiz">
+  <p>Q1：下面哪个是"边界（Boundaries）"的正确用法？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q1" value="a"> 让 ChatGPT 从头到尾写一份报告</label>
+    <label><input type="radio" name="q1" value="b"> 已批准的日期和预算数字保持不动，建议控制在预算之内</label>
+    <label><input type="radio" name="q1" value="c"> 用最新数据生成一份表格</label>
+  </div>
+  <button class="qbtn" onclick="checkQ1()">检查答案</button>
+  <div class="qfb" id="q1fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q2：四要素中哪个要素要求"从结果说起，不要从步骤说起"？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q2" value="a"> 上下文（Context）</label>
+    <label><input type="radio" name="q2" value="b"> 输出（Output）</label>
+    <label><input type="radio" name="q2" value="c"> 目标（Goal）</label>
+  </div>
+  <button class="qbtn" onclick="checkQ2()">检查答案</button>
+  <div class="qfb" id="q2fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q3：以下哪条关于框架的说法正确？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q3" value="a"> 每次写 Prompt 都必须填满四项</label>
+    <label><input type="radio" name="q3" value="b"> 短 prompt 往往就够了，任务越大才越需要补全要素</label>
+    <label><input type="radio" name="q3" value="c"> 边界是最重要的，其他三项可以省略</label>
+  </div>
+  <button class="qbtn" onclick="checkQ3()">检查答案</button>
+  <div class="qfb" id="q3fb"></div>
+</div>
+
+<!-- 费曼测试 -->
+<div class="take">
+  <strong>🧑‍🏫 费曼测试：</strong> 用你自己的话，向一个不懂 AI 的人解释"Prompt 四要素"。可以用"跟同事交代工作"做类比。
+</div>
+
+<!-- 下一步 -->
+<div class="ref">
+  <p><strong>下一步：</strong> <a href="L02-描述结果-上下文.html">L2 · 描述结果 + 补充上下文 →</a></p>
+  <p><a href="../index.html">← 返回总目录</a> | <a href="../reference/OpenAI%20官方%20Prompt%20指南.md">参考原文</a></p>
+</div>
+
+<script>
+function checkQ1() {
+  const fb = document.getElementById('q1fb');
+  const sel = document.querySelector('input[name="q1"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！边界就是"防止出错/防止做不该做的事"的指令。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。边界是防止 ChatGPT 做不该做的事——"已批准的日期不动"就是一个典型边界。'; }
+}
+function checkQ2() {
+  const fb = document.getElementById('q2fb');
+  const sel = document.querySelector('input[name="q2"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='c') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！目标（Goal）要求从结果说起，不是从步骤说起。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。"从结果说起"是目标（Goal）的要求。'; }
+}
+function checkQ3() {
+  const fb = document.getElementById('q3fb');
+  const sel = document.querySelector('input[name="q3"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！短 prompt 往往就够了，不需要每次都填满四项。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。OpenAI 官方说：短 prompt 往往就够了，只用对你有帮助的部分就行。'; }
+}
+</script>
+
+</body>
+</html>

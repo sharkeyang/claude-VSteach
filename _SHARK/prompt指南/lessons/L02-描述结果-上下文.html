@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L2 · 描述结果 + 补充上下文</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#0ea5e9; --muted:#64748b; --border:#e2e8f0; --quiz-c:#16a34a; --quiz-w:#dc2626; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:780px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.8; font-size:1rem; }
+    h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+    .sub { color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; }
+    h2 { font-size:1.15rem; margin:1.8rem 0 0.5rem; border-bottom:1px solid var(--border); padding-bottom:0.25rem; }
+    h3 { font-size:1rem; margin:1.2rem 0 0.3rem; color:var(--accent); }
+    p { margin-bottom:0.8rem; }
+    ul,ol { margin-bottom:0.8rem; padding-left:1.5rem; }
+    li { margin-bottom:0.2rem; }
+    .choice-box { background:linear-gradient(135deg,#1e293b,#334155); color:#e2e8f0; border-radius:10px; padding:1.2rem 1.5rem; margin:1rem 0; }
+    .choice-box .option { display:flex; gap:1rem; margin-top:0.8rem; }
+    .choice-box .option div { flex:1; background:rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem; text-align:center; cursor:pointer; transition:0.15s; }
+    .choice-box .option div:hover { background:rgba(255,255,255,0.2); }
+    .story-box { background:#fdf2e9; border:1px solid #e8d5c4; padding:1rem 1.2rem; margin:1rem 0; border-radius:8px; }
+    .story-box strong { color:#b45309; }
+    .box { background:#f0f9ff; border-left:4px solid var(--accent); padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .warn { background:#fef9ef; border-left:4px solid #f59e0b; padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .exp { background:#f8fafc; border:1px solid var(--border); padding:0.8rem 1rem; margin:0.8rem 0; border-radius:8px; }
+    .exp strong { color:var(--accent); }
+    code { background:#f1f5f9; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.9em; }
+    .diagram { text-align:center; margin:1rem 0; font-family:monospace; background:#1e293b; color:#e2e8f0; padding:1rem; border-radius:8px; line-height:1.5; font-size:0.88rem; }
+    .quiz { border:2px solid var(--border); border-radius:10px; padding:1rem 1.25rem; margin:1.2rem 0; background:#fff; }
+    .quiz p { margin-bottom:0.4rem; font-weight:600; }
+    .qopts { display:flex; flex-direction:column; gap:0.4rem; margin:0.5rem 0; }
+    .qopts label { display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0.75rem; border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+    .qopts label:hover { background:#f1f5f9; }
+    .qopts input[type="radio"] { accent-color:var(--accent); }
+    .qbtn { background:var(--accent); color:#fff; border:none; padding:0.35rem 1rem; border-radius:6px; cursor:pointer; font-size:0.85rem; }
+    .qbtn:hover { opacity:0.9; }
+    .qfb { margin-top:0.5rem; padding:0.5rem 0.75rem; border-radius:6px; display:none; }
+    .qfb.ok { display:block; background:#f0fdf4; border:1px solid var(--quiz-c); }
+    .qfb.no { display:block; background:#fef2f2; border:1px solid var(--quiz-w); }
+    .take { margin:1.2rem 0; border:1px dashed var(--accent); border-radius:8px; padding:0.8rem 1rem; }
+    .ref { color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border); padding-top:1.2rem; margin-top:1.5rem; }
+    .ref a { color:var(--accent); }
+  </style>
+</head>
+<body>
+
+<h1>L2 · 描述结果 + 补充上下文</h1>
+<p class="sub">Prompt 指南 | 基础篇 · 让你和 AI 对齐预期的关键两步</p>
+
+<div class="choice-box">
+  <p style="font-size:1.1rem;"><strong>🤔 你选：</strong></p>
+  <p style="font-size:0.95rem;">很多人写 Prompt 上来就说"帮我做 X"，但 AI 往往猜不到你要的具体样子。<br>关键在于两句：你要什么结果 + 我还带了什么信息。</p>
+  <div class="option">
+    <div onclick="document.getElementById('origin').scrollIntoView({behavior:'smooth'})"><strong>🔍 重头发现</strong><br><span style="font-size:0.8rem;">从"点菜"理解为什么结果描述 + 上下文如此关键</span></div>
+    <div onclick="document.getElementById('direct').scrollIntoView({behavior:'smooth'})"><strong>📖 直接学知识</strong><br><span style="font-size:0.8rem;">直接学"从结果说起"和"补充上下文"的技巧</span></div>
+  </div>
+</div>
+
+<div id="origin"></div>
+<h2>📜 起源：为什么 AI 猜不到你要什么？</h2>
+
+<div class="story-box">
+  <strong>🍜 想象你在面馆点餐</strong><br><br>
+  <em>"老板，来碗面。"</em><br>
+  老板：什么面？汤面还是拌面？粗面还是细面？要不要辣？<br><br>
+  <em>"来碗兰州牛肉面，二细，多一点香菜，不要辣。"</em><br>
+  老板：好嘞！<br><br>
+  写 Prompt 跟点餐一模一样——<br>
+  <strong>你说得越模糊，AI 猜偏的概率就越大。</strong><br><br>
+  但点餐时你不会事无巨细："第一步，烧水。第二步，下面。第三步，捞起来……"<br>
+  你说的是<strong>结果</strong>（"二细兰州牛肉面"），不是<strong>步骤</strong>（"第一步烧水"）。<br><br>
+  这就是 OpenAI 官方指南的第一条原则：<br>
+  <strong>「从结果说起，不要从一长串步骤说起。」</strong><br><br>
+  那上下文呢？就像你告诉老板"我血糖高，少放糖"——这个信息会改变他做面的方式。
+</div>
+
+<div id="direct"></div>
+<h2>📖 核心技巧</h2>
+
+<h3>一、从结果说起</h3>
+<p><strong>先说什么，再说怎么做。</strong> 只有当过程本身重要时，才去描述过程。其他时候，给 ChatGPT 留出空间，让它自己去搜索、比对、调整。</p>
+
+<div class="exp">
+  <p><strong>❌ 面向步骤：</strong> 打开上个月的销售数据，找出增长最快的产品，核对库存，排个序，然后放到表格里……</p>
+  <p><strong>✅ 面向结果：</strong> 做一张上个月各产品销量增长率的对照表，按增长率降序排列。把库存不足 100 的产品标红。</p>
+</div>
+
+<h3>二、补充有用的上下文</h3>
+<p><strong>只加真正相关的来源，并且说明每个来源里该取什么。</strong></p>
+
+<div class="box">
+  <p><strong>不加上下文：</strong> 写一份项目周报。</p>
+  <p><strong>加上下文：</strong> 用附件里的本周工时数据和 Jira 看板截图，写一份项目周报。重点关注里程碑延期的任务和原因。</p>
+  <p style="margin-top:0.3rem;font-size:0.85rem;color:var(--muted);">→ 第二行不仅给了来源，还说明了"从中取什么"（延期任务和原因）。</p>
+</div>
+
+<h3>三、附件的正确用法</h3>
+
+<table>
+  <tr><th>附件类型</th><th>适合场景</th><th>注意</th></tr>
+  <tr><td>文档 / PDF</td><td>总结、比对、转换内容</td><td>说明要从中取什么</td></tr>
+  <tr><td>图片 / 截图</td><td>依赖视觉信息的设计、界面还原</td><td>指出图里关键区域，不要只丢图过去</td></tr>
+  <tr><td>网页搜索</td><td>答案依赖最新信息</td><td>需要核对结果时，让 AI 给出来源</td></tr>
+</table>
+
+<div class="warn">
+  <strong>⚠️ 常见误区：</strong> 把几十个不相关的文件全部丢给 AI，以为它自己会挑。实际上，太多无关上下文会稀释注意力。只加真正相关的。
+</div>
+
+<h3>四、谁是受众</h3>
+<p>受众是决定输出风格的关键上下文。同一个内容，给不同的人看写法完全不同。</p>
+
+<div class="exp">
+  <strong>给技术团队：</strong> 把这些会议记录整理成一份技术决策文档，重点写架构变更和 API 调整。<br>
+  <strong>给总监：</strong> 做成一页纸的摘要，开会前扫一眼就行。决策和下一步放最前面。<br>
+  <strong>给客户：</strong> 写一封友好的进展通知邮件，避免技术术语。
+</div>
+
+<!-- Quiz -->
+<h2>✏️ 小测验</h2>
+
+<div class="quiz">
+  <p>Q1：以下哪个 Prompt 符合"从结果说起"的原则？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q1" value="a"> 先打开季度报告，然后提取关键数据，做成表格，再检查有没有异常</label>
+    <label><input type="radio" name="q1" value="b"> 做一张季度数据的异常检测表，差异超过 15% 的标红</label>
+    <label><input type="radio" name="q1" value="c"> 用 Excel 打开文件，筛选数据，排序，然后……</label>
+  </div>
+  <button class="qbtn" onclick="checkQ1()">检查答案</button>
+  <div class="qfb" id="q1fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q2：给 AI 附上图/文件时，下面哪种做法最好？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q2" value="a"> 把图丢过去就行，AI 自己会看</label>
+    <label><input type="radio" name="q2" value="b"> 把所有相关文件全部丢过去，让它自己挑</label>
+    <label><input type="radio" name="q2" value="c"> 只加相关来源，并指出图里关键区域或文件中该取什么</label>
+  </div>
+  <button class="qbtn" onclick="checkQ2()">检查答案</button>
+  <div class="qfb" id="q2fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q3：同一份数据，给总监看和给技术团队看应该怎么做？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q3" value="a"> 一模一样，内容不变</label>
+    <label><input type="radio" name="q3" value="b"> 在 Prompt 中指明受众，让 AI 调整输出的详细程度和侧重点</label>
+    <label><input type="radio" name="q3" value="c"> 把技术内容全部删掉再给总监</label>
+  </div>
+  <button class="qbtn" onclick="checkQ3()">检查答案</button>
+  <div class="qfb" id="q3fb"></div>
+</div>
+
+<div class="take">
+  <strong>🧑‍🏫 费曼测试：</strong> 用"点餐"的类比，向同学解释"为什么要面向结果描述 + 补充上下文"。你点餐时是怎么说的？写 Prompt 就应该怎么说。
+</div>
+
+<div class="ref">
+  <p><strong>下一步：</strong> <a href="L03-边界-终检-追问.html">L3 · 设定边界 + 终检 + 追问 →</a></p>
+  <p><a href="../index.html">← 返回总目录</a> | <a href="../reference/OpenAI%20官方%20Prompt%20指南.md">参考原文</a></p>
+</div>
+
+<script>
+function checkQ1() {
+  const fb = document.getElementById('q1fb');
+  const sel = document.querySelector('input[name="q1"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！"做一张表"是面向结果，"先打开→再提取→再检查"是面向步骤。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。面向步骤的写法（"先……再……再……"）正是官方说要避免的。从结果说起！'; }
+}
+function checkQ2() {
+  const fb = document.getElementById('q2fb');
+  const sel = document.querySelector('input[name="q2"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='c') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！只加相关来源，并说明从中取什么，这是最有效的做法。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。光丢图/文件不够，要指出关键区域或说明从中取什么。上下文过量也会稀释注意力。'; }
+}
+function checkQ3() {
+  const fb = document.getElementById('q3fb');
+  const sel = document.querySelector('input[name="q3"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！在 Prompt 中点明受众，AI 会自动调整格式、长度和详细程度。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。指明受众是补充上下文最有效的方式之一——受众不同，AI 的输出自然不同。'; }
+}
+</script>
+
+</body>
+</html>

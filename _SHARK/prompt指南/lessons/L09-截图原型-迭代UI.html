@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L9 · 截图做原型 + 迭代 UI</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#0ea5e9; --muted:#64748b; --border:#e2e8f0; --quiz-c:#16a34a; --quiz-w:#dc2626; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:780px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.8; font-size:1rem; }
+    h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+    .sub { color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; }
+    h2 { font-size:1.15rem; margin:1.8rem 0 0.5rem; border-bottom:1px solid var(--border); padding-bottom:0.25rem; }
+    h3 { font-size:1rem; margin:1.2rem 0 0.3rem; color:var(--accent); }
+    p { margin-bottom:0.8rem; }
+    ul,ol { margin-bottom:0.8rem; padding-left:1.5rem; }
+    li { margin-bottom:0.2rem; }
+    .choice-box { background:linear-gradient(135deg,#1e293b,#334155); color:#e2e8f0; border-radius:10px; padding:1.2rem 1.5rem; margin:1rem 0; }
+    .choice-box .option { display:flex; gap:1rem; margin-top:0.8rem; }
+    .choice-box .option div { flex:1; background:rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem; text-align:center; cursor:pointer; transition:0.15s; }
+    .choice-box .option div:hover { background:rgba(255,255,255,0.2); }
+    .story-box { background:#fdf2e9; border:1px solid #e8d5c4; padding:1rem 1.2rem; margin:1rem 0; border-radius:8px; }
+    .story-box strong { color:#b45309; }
+    .box { background:#f0f9ff; border-left:4px solid var(--accent); padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .warn { background:#fef9ef; border-left:4px solid #f59e0b; padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .exp { background:#f8fafc; border:1px solid var(--border); padding:0.8rem 1rem; margin:0.8rem 0; border-radius:8px; }
+    .exp strong { color:var(--accent); }
+    code { background:#f1f5f9; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.9em; }
+    .quiz { border:2px solid var(--border); border-radius:10px; padding:1rem 1.25rem; margin:1.2rem 0; background:#fff; }
+    .quiz p { margin-bottom:0.4rem; font-weight:600; }
+    .qopts { display:flex; flex-direction:column; gap:0.4rem; margin:0.5rem 0; }
+    .qopts label { display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0.75rem; border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+    .qopts label:hover { background:#f1f5f9; }
+    .qopts input[type="radio"] { accent-color:var(--accent); }
+    .qbtn { background:var(--accent); color:#fff; border:none; padding:0.35rem 1rem; border-radius:6px; cursor:pointer; font-size:0.85rem; }
+    .qbtn:hover { opacity:0.9; }
+    .qfb { margin-top:0.5rem; padding:0.5rem 0.75rem; border-radius:6px; display:none; }
+    .qfb.ok { display:block; background:#f0fdf4; border:1px solid var(--quiz-c); }
+    .qfb.no { display:block; background:#fef2f2; border:1px solid var(--quiz-w); }
+    .take { margin:1.2rem 0; border:1px dashed var(--accent); border-radius:8px; padding:0.8rem 1rem; }
+    .ref { color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border); padding-top:1.2rem; margin-top:1.5rem; }
+    .ref a { color:var(--accent); }
+  </style>
+</head>
+<body>
+
+<h1>L9 · 截图做原型 + 迭代 UI</h1>
+<p class="sub">Prompt 指南 | Codex 工程篇 · 从设计到代码的紧凑循环</p>
+
+<div class="choice-box">
+  <p style="font-size:1.1rem;"><strong>🤔 你选：</strong></p>
+  <p style="font-size:0.95rem;">把一个设计稿变成能跑起来的代码，再不断微调直到满意——<br>这是 Codex 最能体现生产力的场景之一。</p>
+  <div class="option">
+    <div onclick="document.getElementById('origin').scrollIntoView({behavior:'smooth'})"><strong>🔍 重头发现</strong><br><span style="font-size:0.8rem;">从"让设计师反复改稿"理解为什么迭代 UI 需要小步快跑</span></div>
+    <div onclick="document.getElementById('direct').scrollIntoView({behavior:'smooth'})"><strong>📖 直接学知识</strong><br><span style="font-size:0.8rem;">直接学截图做原型 + 迭代 UI 的最佳实践</span></div>
+  </div>
+</div>
+
+<div id="origin"></div>
+<h2>📜 起源：大包大揽 vs 小步快跑</h2>
+
+<div class="story-box">
+  <strong>🎨 设计迭代的两种模式</strong><br><br>
+  <strong>方式一（大包大揽）：</strong><br>
+  "帮我做个页面，要好看，要有动效，要有交互，要适配移动端，要……"<br>
+  设计师奋战三天，给你一个巨大的 Figma 文件。<br>
+  你看完说："颜色不太对，改一下。"<br>
+  设计师崩溃了——这个改动牵扯了整个设计系统的颜色变量。<br><br>
+  <strong>方式二（小步快跑）：</strong><br>
+  "先帮我做个基础的页面结构。"<br>
+  "颜色改成品牌蓝 #0ea5e9。"<br>
+  "间距再大一点。"<br>
+  "左边加个侧边栏。"<br>
+  每一步都很小，每一轮都看效果，方向不对随时调。<br><br>
+  Codex 推荐的 UI 迭代方式就是第二种——<br>
+  <strong>用小而具体的 prompt 迭代，每轮只改一个维度。</strong>
+</div>
+
+<div id="direct"></div>
+<h2>📖 截图做原型</h2>
+
+<h3>CLI 工作流（图 + prompt）</h3>
+<div class="exp">
+  <p><strong>步骤：</strong></p>
+  <ol>
+    <li>把截图存到本地（例如 ./specs/ui.png）</li>
+    <li>运行 Codex：<code>codex</code></li>
+    <li>把图片文件拖进终端，附到 prompt 上</li>
+    <li>给出约束和结构：</li>
+  </ol>
+  <p><strong>Prompt：</strong></p>
+  <p>照这张图做一个新的 dashboard。<br>
+  约束：用 react、vite 和 tailwind。代码写 typescript。间距、字体和布局尽量贴近原图。<br>
+  产出：一个渲染这个界面的新路由/页面，需要用到的小组件，README.md 写明本地怎么跑起来。</p>
+</div>
+
+<div class="warn">
+  <strong>⚠️ 两点注意：</strong>
+  <ol>
+    <li>图片给的是视觉要求，实现层面的约束（框架、路由、组件风格）还要你自己写清</li>
+    <li>图里看不出来的行为要用文字补上——悬停状态、校验规则、键盘交互</li>
+  </ol>
+</div>
+
+<p><strong>验证方式：</strong> 让 Codex 启动 dev server，告诉你在本地哪个 URL 能看到原型。</p>
+
+<h2>📖 迭代 UI：设计→微调→刷新→再微调</h2>
+
+<h3>CLI 工作流</h3>
+<div class="exp">
+  <ol>
+    <li>启动 Codex</li>
+    <li>另开一个终端窗口启动 dev server：<code>npm run dev</code></li>
+    <li>让 Codex 提改动：</li>
+  </ol>
+  <p><strong>第一轮：</strong> 给落地页提两三个样式改进方案。</p>
+  <p><strong>第二轮（挑一个方向，小步迭代）：</strong> 就按方案二来。只改头部：字体排印做得更有杂志感。留白加大。保证移动端依然好看。</p>
+  <p><strong>第三轮：</strong> 下一轮：降低视觉噪音。布局保持，颜色做减法，多余的边框都去掉。</p>
+</div>
+
+<h3>关键原则</h3>
+<table>
+  <tr><th>做</th><th>不要做</th></tr>
+  <tr><td>每轮只改一个维度（只改颜色、只改间距、只改字体）</td><td>一轮改十几个东西</td></tr>
+  <tr><td>在浏览器里实时看效果</td><td>等所有改动全写完了再看</td></tr>
+  <tr><td>喜欢的就提交，不喜欢的就回滚</td><td>保留所有改动不舍得删</td></tr>
+  <tr><td>你回滚或手改了某处，告诉 Codex</td><td>让 Codex 覆盖你的手工修改</td></tr>
+</table>
+
+<!-- Quiz -->
+<h2>✏️ 小测验</h2>
+
+<div class="quiz">
+  <p>Q1：给 Codex 截图做原型时，除了图片本身还需要给什么？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q1" value="a"> 什么也不用，图就够了</label>
+    <label><input type="radio" name="q1" value="b"> 实现约束（框架/路由/组件风格）和图里看不出来的行为</label>
+    <label><input type="radio" name="q1" value="c"> 完整的 UI 设计规范文档</label>
+  </div>
+  <button class="qbtn" onclick="checkQ1()">检查答案</button>
+  <div class="qfb" id="q1fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q2：迭代 UI 时最好的做法是？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q2" value="a"> 一次性把所有要求都写清楚</label>
+    <label><input type="radio" name="q2" value="b"> 用小而具体的 prompt 每轮只改一个维度，在浏览器里实时看效果</label>
+    <label><input type="radio" name="q2" value="c"> 让 Codex 自己发挥，最后再看</label>
+  </div>
+  <button class="qbtn" onclick="checkQ2()">检查答案</button>
+  <div class="qfb" id="q2fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q3：如果你手改了一处 Codex 之前生成的代码，接下来应该怎么做？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q3" value="a"> 什么都不用管</label>
+    <label><input type="radio" name="q3" value="b"> 告诉 Codex 你改了哪里，免得它下一条 prompt 时覆盖你的修改</label>
+    <label><input type="radio" name="q3" value="c"> 重新启动 Codex</label>
+  </div>
+  <button class="qbtn" onclick="checkQ3()">检查答案</button>
+  <div class="qfb" id="q3fb"></div>
+</div>
+
+<div class="take">
+  <strong>🧑‍🏫 费曼测试：</strong> 你在 Figma 上画了一个登录页草图。描述给 Codex 做原型时，你会怎么组织 Prompt？要包含哪些信息？
+</div>
+
+<div class="ref">
+  <p><strong>下一步：</strong> <a href="L10-CodeReview-审PR-更新文档.html">L10 · Code Review + 审 PR + 更新文档 →</a></p>
+  <p><a href="../index.html">← 返回总目录</a> | <a href="../reference/OpenAI%20官方%20Prompt%20指南.md">参考原文</a></p>
+</div>
+
+<script>
+function checkQ1() {
+  const fb = document.getElementById('q1fb');
+  const sel = document.querySelector('input[name="q1"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！图片给视觉，文字补实现约束和图里看不到的行为。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。图片给的是视觉要求，实现约束（框架、路由）和图里看不到的行为（悬停、校验）要文字说明。'; }
+}
+function checkQ2() {
+  const fb = document.getElementById('q2fb');
+  const sel = document.querySelector('input[name="q2"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！小步快跑——每轮只改一个维度，实时看效果，随时调整方向。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。官方推荐用小而具体的 prompt 迭代，每轮只改一个维度（颜色/间距/字体）。'; }
+}
+function checkQ3() {
+  const fb = document.getElementById('q3fb');
+  const sel = document.querySelector('input[name="q3"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！必须告诉 Codex，免得它覆盖你的手工修改。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。官方特别强调：回滚或手改了某处要告诉 Codex，免得它跑下一条 prompt 时覆盖掉。'; }
+}
+</script>
+
+</body>
+</html>

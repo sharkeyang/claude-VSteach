@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L10 · Code Review + 审 PR + 更新文档</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#0ea5e9; --muted:#64748b; --border:#e2e8f0; --quiz-c:#16a34a; --quiz-w:#dc2626; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:780px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.8; font-size:1rem; }
+    h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+    .sub { color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; }
+    h2 { font-size:1.15rem; margin:1.8rem 0 0.5rem; border-bottom:1px solid var(--border); padding-bottom:0.25rem; }
+    h3 { font-size:1rem; margin:1.2rem 0 0.3rem; color:var(--accent); }
+    p { margin-bottom:0.8rem; }
+    ul,ol { margin-bottom:0.8rem; padding-left:1.5rem; }
+    li { margin-bottom:0.2rem; }
+    .choice-box { background:linear-gradient(135deg,#1e293b,#334155); color:#e2e8f0; border-radius:10px; padding:1.2rem 1.5rem; margin:1rem 0; }
+    .choice-box .option { display:flex; gap:1rem; margin-top:0.8rem; }
+    .choice-box .option div { flex:1; background:rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem; text-align:center; cursor:pointer; transition:0.15s; }
+    .choice-box .option div:hover { background:rgba(255,255,255,0.2); }
+    .story-box { background:#fdf2e9; border:1px solid #e8d5c4; padding:1rem 1.2rem; margin:1rem 0; border-radius:8px; }
+    .story-box strong { color:#b45309; }
+    .box { background:#f0f9ff; border-left:4px solid var(--accent); padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .warn { background:#fef9ef; border-left:4px solid #f59e0b; padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .exp { background:#f8fafc; border:1px solid var(--border); padding:0.8rem 1rem; margin:0.8rem 0; border-radius:8px; }
+    .exp strong { color:var(--accent); }
+    code { background:#f1f5f9; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.9em; }
+    .quiz { border:2px solid var(--border); border-radius:10px; padding:1rem 1.25rem; margin:1.2rem 0; background:#fff; }
+    .quiz p { margin-bottom:0.4rem; font-weight:600; }
+    .qopts { display:flex; flex-direction:column; gap:0.4rem; margin:0.5rem 0; }
+    .qopts label { display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0.75rem; border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+    .qopts label:hover { background:#f1f5f9; }
+    .qopts input[type="radio"] { accent-color:var(--accent); }
+    .qbtn { background:var(--accent); color:#fff; border:none; padding:0.35rem 1rem; border-radius:6px; cursor:pointer; font-size:0.85rem; }
+    .qbtn:hover { opacity:0.9; }
+    .qfb { margin-top:0.5rem; padding:0.5rem 0.75rem; border-radius:6px; display:none; }
+    .qfb.ok { display:block; background:#f0fdf4; border:1px solid var(--quiz-c); }
+    .qfb.no { display:block; background:#fef2f2; border:1px solid var(--quiz-w); }
+    .take { margin:1.2rem 0; border:1px dashed var(--accent); border-radius:8px; padding:0.8rem 1rem; }
+    .ref { color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border); padding-top:1.2rem; margin-top:1.5rem; }
+    .ref a { color:var(--accent); }
+  </style>
+</head>
+<body>
+
+<h1>L10 · Code Review + 审 PR + 更新文档</h1>
+<p class="sub">Prompt 指南 | Codex 工程篇 · 质量把关 · 协作 · 知识沉淀</p>
+
+<div class="choice-box">
+  <p style="font-size:1.1rem;"><strong>🤔 你选：</strong></p>
+  <p style="font-size:0.95rem;">Code Review、审核 PR、更新文档——这些"非编码"工作最能体现 AI 作为"第二双眼睛"的价值。</p>
+  <div class="option">
+    <div onclick="document.getElementById('origin').scrollIntoView({behavior:'smooth'})"><strong>🔍 重头发现</strong><br><span style="font-size:0.8rem;">从"写完了要不要让别人看一眼"理解 Code Review 的本质</span></div>
+    <div onclick="document.getElementById('direct').scrollIntoView({behavior:'smooth'})"><strong>📖 直接学知识</strong><br><span style="font-size:0.8rem;">直接学本地 Review、GitHub PR 审查、文档更新的 Prompt</span></div>
+  </div>
+</div>
+
+<div id="origin"></div>
+<h2>📜 起源：为什么需要"第二双眼睛"？</h2>
+
+<div class="story-box">
+  <strong>👀 你写了一下午代码</strong><br><br>
+  你埋头写了四个小时的代码，终于跑通了。<br>
+  提交前你自己看了三遍——"没问题了。"<br>
+  把 PR 发出去，同事五分钟就发现了一个边界情况没处理。<br><br>
+  不是你不认真——是你太熟悉自己的代码了。<br>
+  <strong>熟视无睹是人性，Code Review 就是对抗这个的机制。</strong><br><br>
+  AI 做 Code Review 的优势：<br>
+  - 它不累——看第 1000 行和看第 1 行一样专注<br>
+  - 它不会"审美疲劳"——不会因为代码风格跟你一样就放过潜在问题<br>
+  - 你可以指定它重点看什么——安全、边界情况、性能……<br><br>
+  但要注意：<strong>AI 的 Review 是辅助，不是替代。</strong> 最终把关的还是你自己。
+</div>
+
+<div id="direct"></div>
+<h2>📖 三种 Codex 质量场景</h2>
+
+<h3>场景一：本地 Code Review</h3>
+<p><strong>适用场景：</strong> 提交或建 PR 之前，想找双眼睛帮你把把关。</p>
+
+<div class="exp">
+  <p><strong>CLI 工作流：</strong></p>
+  <ol>
+    <li>启动 Codex：<code>codex</code></li>
+    <li>跑审查命令：<code>/review</code></li>
+    <li>可选：给出自定义关注点</li>
+  </ol>
+  <p><strong>指定关注点：</strong> <code>/review 重点看边界情况和安全问题</code></p>
+  <p><strong>验证方式：</strong> 按审查反馈修完，再跑一遍 <code>/review</code>，确认问题都解决了。</p>
+</div>
+
+<h3>场景二：审一个 GitHub PR</h3>
+<p><strong>适用场景：</strong> 不想把分支拉到本地，也能拿到审查反馈。</p>
+
+<div class="warn">
+  <strong>前置条件：</strong> 先在仓库上启用 Codex Code review 功能。
+</div>
+
+<div class="exp">
+  <p><strong>GitHub 工作流（靠评论驱动）：</strong></p>
+  <ol>
+    <li>在 GitHub 上打开那个 PR</li>
+    <li>留一条评论 @ Codex，写明关注点：<code>@codex review</code></li>
+    <li>可选：给更明确的指令：<code>@codex review 重点审安全漏洞和安全隐患</code></li>
+  </ol>
+</div>
+
+<h3>场景三：更新文档</h3>
+<p><strong>适用场景：</strong> 需要一次准确、清晰的文档修改。</p>
+
+<div class="exp">
+  <p><strong>Prompt：</strong> 更新「高级功能」文档，补充鉴权排障指引。检查所有链接都有效。</p>
+  <p><strong>要点：</strong> 用 @ 指定要改的文档文件，写明范围和验证要求。</p>
+  <p><strong>验证方式：</strong> 读一遍渲染后的页面。</p>
+</div>
+
+<h3>速查表</h3>
+<table>
+  <tr><th>场景</th><th>用什么</th><th>关键 Prompt / 命令</th><th>验证方式</th></tr>
+  <tr><td>本地 Code Review</td><td><code>/review</code></td><td>/review 重点看边界情况和安全问题</td><td>再跑一遍 /review</td></tr>
+  <tr><td>GitHub PR 审查</td><td>@codex review</td><td>@codex review for security vulnerabilities</td><td>看评论区反馈</td></tr>
+  <tr><td>更新文档</td><td>自然语言 Prompt</td><td>更新 XX 文档，补充 YY 指引。检查所有链接有效。</td><td>读渲染后的页面</td></tr>
+</table>
+
+<!-- 额外：重构委派 -->
+<h2>🌩️ 补充：把重构交给云端</h2>
+<p>当重构任务太大，不想阻塞本地工作时，可以在本地规划好方案，交给云端执行。</p>
+
+<div class="exp">
+  <p><strong>本地规划（IDE）：</strong></p>
+  <p>$plan 我们要重构鉴权子系统，目标：拆分职责（token 解析、会话加载、权限各归各）。减少循环引用。提升可测试性。约束：用户可见的行为不能变。公开 API 保持稳定。给出分步骤的迁移计划。</p>
+  <p><strong>云端委派：</strong> 审完计划后，切到云环境，输入"实现计划里的里程碑一"。</p>
+  <p><strong>事后：</strong> 审云端的 diff，需要就迭代，最后直接从云端建 PR 或拉到本地测试收尾。</p>
+</div>
+
+<!-- Quiz -->
+<h2>✏️ 小测验</h2>
+
+<div class="quiz">
+  <p>Q1：本地做 Code Review 用什么命令？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q1" value="a"> /review</label>
+    <label><input type="radio" name="q1" value="b"> /check</label>
+    <label><input type="radio" name="q1" value="c"> /audit</label>
+  </div>
+  <button class="qbtn" onclick="checkQ1()">检查答案</button>
+  <div class="qfb" id="q1fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q2：在 GitHub 上触发 Codex PR 审查的方式是？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q2" value="a"> 在 PR 评论里 @codex review</label>
+    <label><input type="radio" name="q2" value="b"> 在本地跑 /review 然后发到 GitHub</label>
+    <label><input type="radio" name="q2" value="c"> 给 Codex 发邮件</label>
+  </div>
+  <button class="qbtn" onclick="checkQ2()">检查答案</button>
+  <div class="qfb" id="q2fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q3：更新文档时，除了写明要改什么，还应该做什么？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q3" value="a"> 不用做什么，写清楚就行</label>
+    <label><input type="radio" name="q3" value="b"> 要检查所有链接有效</label>
+    <label><input type="radio" name="q3" value="c"> 让 AI 同时改代码</label>
+  </div>
+  <button class="qbtn" onclick="checkQ3()">检查答案</button>
+  <div class="qfb" id="q3fb"></div>
+</div>
+
+<div class="take">
+  <strong>🧑‍🏫 费曼测试：</strong> 你刚写完一个支付模块的代码。描述你提交前会用哪几个步骤让 AI 帮你把关？每一步用什么 Prompt/命令？
+</div>
+
+<div class="ref">
+  <p><strong>下一步：</strong> <a href="L11-综合练习.html">L11 · 综合 Prompt 练习 →</a></p>
+  <p><a href="../index.html">← 返回总目录</a> | <a href="../reference/OpenAI%20官方%20Prompt%20指南.md">参考原文</a></p>
+</div>
+
+<script>
+function checkQ1() {
+  const fb = document.getElementById('q1fb');
+  const sel = document.querySelector('input[name="q1"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='a') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！本地 Code Review 用 /review 命令。还可自定义关注点。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。官方指定的命令就是 /review。还可以给关注点，比如 /review 重点看安全问题。'; }
+}
+function checkQ2() {
+  const fb = document.getElementById('q2fb');
+  const sel = document.querySelector('input[name="q2"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='a') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！在 PR 评论里 @codex review 触发审查。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。在 PR 评论里 @codex review 触发审查，可加关注点：@codex review for security。'; }
+}
+function checkQ3() {
+  const fb = document.getElementById('q3fb');
+  const sel = document.querySelector('input[name="q3"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！官方示例中除了改内容，还要"检查所有链接是否有效"。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。官方示例说：更新内容 + 检查所有链接有效。验证方式：读一遍渲染后的页面。'; }
+}
+</script>
+
+</body>
+</html>

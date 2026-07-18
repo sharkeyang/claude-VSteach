@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>第8课 · 艾森豪威尔矩阵</title><style>
+body{font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif;max-width:820px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;background:#fafafa;line-height:1.8}
+h1{font-size:1.6rem;border-left:4px solid #2563eb;padding-left:1rem;margin-bottom:0.25rem}
+.sub{color:#64748b;font-size:0.9rem;margin-bottom:1.5rem}
+h2{font-size:1.2rem;margin-top:2rem;margin-bottom:0.5rem;color:#2563eb;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem}
+h3{font-size:1.05rem;margin-top:1.5rem;margin-bottom:0.3rem;color:#333}
+p{margin-bottom:0.8rem}
+ul,ol{margin-bottom:0.8rem;padding-left:1.5rem}
+li{margin-bottom:0.3rem}
+.tip{background:#f0f9ff;border-left:3px solid #2563eb;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+.story{background:#fef9f0;border-left:3px solid #e67e22;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+.story2{background:#f0faf0;border-left:3px solid #22c55e;padding:0.75rem 1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-size:0.9rem}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem}
+th,td{border:1px solid #e2e8f0;padding:0.5rem 0.75rem;text-align:left;vertical-align:top}
+th{background:#eef2f7;font-weight:600}
+.code{background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:1rem 1.25rem;margin:1rem 0;font-family:'Courier New',monospace;font-size:0.85rem;line-height:1.7;overflow-x:auto}
+.nav{display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid #e2e8f0}
+.nav a{color:#2563eb;text-decoration:none;font-weight:600}
+.nav a:hover{text-decoration:underline}
+</style></head><body>
+<h1>📊 艾森豪威尔矩阵</h1>
+<p class="sub">第8课 · 重要/紧急四象限，分清优先级</p>
+<div class="tip"><strong>核心思想：</strong> 按重要性和紧急性分四类。<br>
+正确的策略：保证"重要不紧急"的时间，这样"紧急重要"会越来越少。</div>
+
+<h2>四象限</h2>
+<table>
+<tr><th></th><th>紧急 🔥</th><th>不紧急 🧊</th></tr>
+<tr><td><strong>重要 ⭐</strong></td><td>① 马上做</td><td>② 计划做</td></tr>
+<tr><td><strong>不重要 ➖</strong></td><td>③ 委托/简化</td><td>④ 不要做</td></tr>
+</table>
+
+<h2>🏀 场景案例：打篮球</h2>
+<div class="story">
+<p><strong>比赛前的优先级：</strong></p>
+<table>
+<tr><th>象限</th><th>内容</th><th>策略</th></tr>
+<tr><td><strong>① 马上做</strong></td><td>练投篮（命中率太低）</td><td>每天加练</td></tr>
+<tr><td><strong>② 计划做</strong></td><td>体能训练</td><td>每周固定时间</td></tr>
+<tr><td><strong>③ 简化</strong></td><td>帮同学捡球</td><td>有时间再帮</td></tr>
+<tr><td><strong>④ 不要做</strong></td><td>刷手机看球鞋评测</td><td>不看</td></tr>
+</table>
+</div>
+
+<h2>📖 场景案例：背诵</h2>
+<div class="story2">
+<table>
+<tr><th>象限</th><th>例子</th><th>策略</th></tr>
+<tr><td><strong>① 马上做</strong></td><td>明天要检查的古文</td><td>今天必须背完</td></tr>
+<tr><td><strong>② 计划做</strong></td><td>每天背5个单词</td><td>每天固定时间做</td></tr>
+<tr><td><strong>③ 简化</strong></td><td>同学让你帮他背</td><td>让他自己背</td></tr>
+<tr><td><strong>④ 不要做</strong></td><td>背课外冷知识</td><td>有时间再看</td></tr>
+</table>
+</div>
+
+<h2>📜 场景案例：学习历史</h2>
+<div class="story">
+<p><strong>平时学习 vs 考前突击：</strong></p>
+<ul>
+<li><strong>平时（第②象限）：</strong> 每周读1章历史故事，画时间线+人物图</li>
+<li><strong>考前（第①象限）：</strong> 复习时间线+做练习题</li>
+</ul>
+<p><strong>结果：</strong> 平时做好了第②象限，考前第①象限的事情就少了。</p>
+</div>
+
+<h2>💬 场景案例：回答问题 & 汇报</h2>
+<h3>回答问题的四象限</h3>
+<table>
+<tr><th>情况</th><th>象限</th><th>策略</th></tr>
+<tr><td>你确定会</td><td><strong>① 马上做</strong></td><td>举手回答</td></tr>
+<tr><td>不太确定，想试试</td><td><strong>② 计划做</strong></td><td>先听别人回答再补充</td></tr>
+<tr><td>完全不会</td><td><strong>④ 不要做</strong></td><td>记下来课后问</td></tr>
+</table>
+
+<h3>做汇报的优先级</h3>
+<p>Chris 同时有3件事：</p>
+<ol>
+<li><strong>① 明天交数学作业</strong>（重要紧急）→ 先做</li>
+<li><strong>② 准备下周汇报</strong>（重要不紧急）→ 每天准备一点</li>
+<li><strong>③ 帮同学画海报</strong>（紧急不重要）→ 做完自己事再帮</li>
+</ol>
+
+<h2>🤝 场景案例：人际交际</h2>
+<div class="story2">
+<table>
+<tr><th>象限</th><th>内容</th><th>策略</th></tr>
+<tr><td><strong>① 重要且紧急</strong></td><td>和好朋友吵架了</td><td>今天就去道歉</td></tr>
+<tr><td><strong>② 重要不紧急</strong></td><td>每天和好朋友聊天</td><td>每天课间聊一聊</td></tr>
+<tr><td><strong>③ 紧急不重要</strong></td><td>不熟的同学让你帮值日</td><td>偶尔帮，别耽误自己</td></tr>
+<tr><td><strong>④ 不重要不紧急</strong></td><td>争论哪个游戏更好玩</td><td>不争了，浪费时间</td></tr>
+</table>
+</div>
+
+<h2>日常练习</h2>
+<div class="code">每晚做作业前，把今天的任务填进四象限：
+
+　　🔥 紧急　　　　　🧊 不紧急
+　　┌──────────────────────────┐
+⭐  │① 马上做　　　② 计划做　 │
+　　│　数学作业(明天交)　练字　│
+　　│　背课文(明天检查)　读课外书│
+　　├──────────────────────────┤
+➖  │③ 简化/委托　④ 不要做　 │
+　　│　回消息(做完再说)　刷视频│
+　　└──────────────────────────┘</div>
+
+<h2>给家长的提示</h2>
+<ul>
+<li>帮孩子区分"重要"和"紧急"</li>
+<li>每天花5分钟做四象限分类</li>
+<li><strong>第②象限决定了长期成长</strong></li>
+<li>自己也可以用，全家一起用效果更好</li>
+</ul>
+
+<div class="nav">
+<a href="../07-番茄工作法/index.html">← 上一课</a>
+<a href="../../index.html">返回目录</a>
+<a href="../09-SWOT分析/index.html">下一课 →</a>
+</div>
+</body></html>

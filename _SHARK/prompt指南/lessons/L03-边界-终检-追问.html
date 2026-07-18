@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L3 · 设定边界 + 终检 + 追问</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#0ea5e9; --muted:#64748b; --border:#e2e8f0; --quiz-c:#16a34a; --quiz-w:#dc2626; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:780px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.8; font-size:1rem; }
+    h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+    .sub { color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; }
+    h2 { font-size:1.15rem; margin:1.8rem 0 0.5rem; border-bottom:1px solid var(--border); padding-bottom:0.25rem; }
+    h3 { font-size:1rem; margin:1.2rem 0 0.3rem; color:var(--accent); }
+    p { margin-bottom:0.8rem; }
+    ul,ol { margin-bottom:0.8rem; padding-left:1.5rem; }
+    li { margin-bottom:0.2rem; }
+    .choice-box { background:linear-gradient(135deg,#1e293b,#334155); color:#e2e8f0; border-radius:10px; padding:1.2rem 1.5rem; margin:1rem 0; }
+    .choice-box .option { display:flex; gap:1rem; margin-top:0.8rem; }
+    .choice-box .option div { flex:1; background:rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem; text-align:center; cursor:pointer; transition:0.15s; }
+    .choice-box .option div:hover { background:rgba(255,255,255,0.2); }
+    .story-box { background:#fdf2e9; border:1px solid #e8d5c4; padding:1rem 1.2rem; margin:1rem 0; border-radius:8px; }
+    .story-box strong { color:#b45309; }
+    .box { background:#f0f9ff; border-left:4px solid var(--accent); padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .warn { background:#fef9ef; border-left:4px solid #f59e0b; padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .exp { background:#f8fafc; border:1px solid var(--border); padding:0.8rem 1rem; margin:0.8rem 0; border-radius:8px; }
+    .exp strong { color:var(--accent); }
+    code { background:#f1f5f9; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.9em; }
+    table { width:100%; border-collapse:collapse; margin:0.8rem 0; font-size:0.88rem; }
+    th,td { border:1px solid var(--border); padding:0.35rem 0.6rem; text-align:left; }
+    th { background:#f8fafc; font-weight:600; }
+    .quiz { border:2px solid var(--border); border-radius:10px; padding:1rem 1.25rem; margin:1.2rem 0; background:#fff; }
+    .quiz p { margin-bottom:0.4rem; font-weight:600; }
+    .qopts { display:flex; flex-direction:column; gap:0.4rem; margin:0.5rem 0; }
+    .qopts label { display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0.75rem; border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+    .qopts label:hover { background:#f1f5f9; }
+    .qopts input[type="radio"] { accent-color:var(--accent); }
+    .qbtn { background:var(--accent); color:#fff; border:none; padding:0.35rem 1rem; border-radius:6px; cursor:pointer; font-size:0.85rem; }
+    .qbtn:hover { opacity:0.9; }
+    .qfb { margin-top:0.5rem; padding:0.5rem 0.75rem; border-radius:6px; display:none; }
+    .qfb.ok { display:block; background:#f0fdf4; border:1px solid var(--quiz-c); }
+    .qfb.no { display:block; background:#fef2f2; border:1px solid var(--quiz-w); }
+    .take { margin:1.2rem 0; border:1px dashed var(--accent); border-radius:8px; padding:0.8rem 1rem; }
+    .ref { color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border); padding-top:1.2rem; margin-top:1.5rem; }
+    .ref a { color:var(--accent); }
+  </style>
+</head>
+<body>
+
+<h1>L3 · 设定边界 + 终检 + 追问</h1>
+<p class="sub">Prompt 指南 | 基础篇 · 防错 · 收尾 · 迭代</p>
+
+<div class="choice-box">
+  <p style="font-size:1.1rem;"><strong>🤔 你选：</strong></p>
+  <p style="font-size:0.95rem;">大部分 Prompt 的问题不是写得不好，而是缺乏"防呆机制"和"迭代意识"。<br>边界是防护网，终检是质检员，追问是打磨刀。</p>
+  <div class="option">
+    <div onclick="document.getElementById('origin').scrollIntoView({behavior:'smooth'})"><strong>🔍 重头发现</strong><br><span style="font-size:0.8rem;">从"做菜"理解为什么需要边界 + 终检 + 追问</span></div>
+    <div onclick="document.getElementById('direct').scrollIntoView({behavior:'smooth'})"><strong>📖 直接学知识</strong><br><span style="font-size:0.8rem;">直接学边界写法、终检清单、Steer/Queue技巧</span></div>
+  </div>
+</div>
+
+<div id="origin"></div>
+<h2>📜 起源：为什么 AI 需要"防护网"？</h2>
+
+<div class="story-box">
+  <strong>👨‍🍳 想象你雇了一个厨师</strong><br><br>
+  你说"做一桌菜"，他欣然开干。结果：<br>
+  — 他用了冰箱里过期两天的牛奶<br>
+  — 他不小心放了三勺盐<br>
+  — 他做好了直接端出去给客人吃了（你还没尝过）<br><br>
+  这不是厨师不努力，是你没有给他<strong>边界</strong>（"别用过期的食材"）、<strong>终检</strong>（"上桌前我先尝一口"）。<br><br>
+  但第一道菜咸了，你会直接解雇他吗？不会。你会说：<br>
+  <em>"这道菜太咸了，下一道少放一半盐。"</em><br>
+  这就是<strong>追问</strong>——不推翻重来，只指正方向。<br><br>
+  OpenAI 官方指南的智慧就在于此：<br>
+  <strong>第一条 prompt 不需要完美。边界防大错，终检保质量，追问磨细节。</strong>
+</div>
+
+<div id="direct"></div>
+<h2>📖 核心技巧</h2>
+
+<h3>一、设定边界</h3>
+<p>边界是那么几条指令，用来防止 ChatGPT 制造额外工作，或做出你没打算让它做的动作。</p>
+
+<div class="box">
+  <p><strong>什么时候加边界？</strong></p>
+  <ul>
+    <li><strong>改错一个细节结果就没法用</strong>的时候 → "已批准的日期和预算数字保持不动"</li>
+    <li><strong>影响到别人之前你想先过目</strong>的时候 → "把消息准备成草稿，不要发出去"</li>
+  </ul>
+</div>
+
+<div class="exp">
+  <p><strong>常见的边界写法：</strong></p>
+  <ul>
+    <li>「只用我提供的来源。信息缺了就标出来，不要猜。」</li>
+    <li>「建议控制在说好的预算之内。」</li>
+    <li>「不要改任何代码，只输出分析结果。」</li>
+    <li>「不要发送或发布任何东西。」</li>
+  </ul>
+</div>
+
+<div class="warn">
+  <strong>⚠️ 边界要少而精：</strong> 盯住最要紧的一两条就好。不需要控制 AI 走的每一步，否则反而限制了它的能力。
+</div>
+
+<h3>二、终检</h3>
+<p>重要的工作，让 ChatGPT 收尾时做一次最终检查。</p>
+
+<div class="exp">
+  <p><strong>终检示例：</strong></p>
+  <ul>
+    <li>「确认每个行动项都有负责人和截止日期。」</li>
+    <li>「标记你没法核实的信息。」</li>
+    <li>「检查所有链接是否有效。」</li>
+    <li>「审一遍数据和结论是否一致。」</li>
+  </ul>
+</div>
+
+<p>终检之后，<strong>你自己再过一遍</strong>，再去用、再去分享。AI 的终检是辅助，不是替代。</p>
+
+<h3>三、用追问改进结果</h3>
+<p>第一条 prompt 不需要完美。看完结果，把你想要的具体改动说出来。</p>
+
+<div class="exp">
+  <p><strong>追问示例：</strong></p>
+  <ul>
+    <li>「开头写得更直接一点，证据保留，把建议挪到背景前面。」</li>
+    <li>「再加一个备选方案。」</li>
+    <li>「把详细程度降低，保持要点就行。」</li>
+    <li>「这里的数据不对，换成附件里的最新版本。」</li>
+  </ul>
+</div>
+
+<h3>四、Steer 与 Queue（Codex 独有）</h3>
+<p>Codex 干活的时候，你不用等当前这轮跑完，就能发下一条消息：</p>
+
+<table>
+  <tr><th>方式</th><th>说明</th><th>适合场景</th></tr>
+  <tr><td><strong>Steer（转向）</strong></td><td>把消息加进当前这一轮</td><td>改方向、补细节、给新信息</td></tr>
+  <tr><td><strong>Queue（排队）</strong></td><td>把消息留到下一轮</td><td>等当前工作干完再说的追问</td></tr>
+</table>
+
+<div class="box">
+  <p><strong>快捷键：</strong></p>
+  <ul>
+    <li><strong>Codex CLI：</strong> 按 <code>Enter</code> = Steer，按 <code>Tab</code> = Queue</li>
+    <li><strong>ChatGPT 桌面：</strong> 「设置 > 通用 > 追问行为」里选默认行为</li>
+  </ul>
+</div>
+
+<!-- Quiz -->
+<h2>✏️ 小测验</h2>
+
+<div class="quiz">
+  <p>Q1：以下哪条属于有效的边界？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q1" value="a"> 写得越详细越好</label>
+    <label><input type="radio" name="q1" value="b"> 已批准的日期和预算数字保持不动，只用我提供的来源</label>
+    <label><input type="radio" name="q1" value="c"> 每一步都要先问我再做</label>
+  </div>
+  <button class="qbtn" onclick="checkQ1()">检查答案</button>
+  <div class="qfb" id="q1fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q2：终检（final check）的目的是什么？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q2" value="a"> 让 AI 重做一遍</label>
+    <label><input type="radio" name="q2" value="b"> 确认遗漏项、标记无法核实的信息，然后你自己再过一遍</label>
+    <label><input type="radio" name="q2" value="c"> 替代人工审核，AI 说没问题就发出</label>
+  </div>
+  <button class="qbtn" onclick="checkQ2()">检查答案</button>
+  <div class="qfb" id="q2fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q3：Codex 正在改代码，你发现方向偏了，应该用？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q3" value="a"> 重新开一个新对话</label>
+    <label><input type="radio" name="q3" value="b"> Queue（排队），等它跑完再说</label>
+    <label><input type="radio" name="q3" value="c"> Steer（转向），把新指令加进当前这一轮</label>
+  </div>
+  <button class="qbtn" onclick="checkQ3()">检查答案</button>
+  <div class="qfb" id="q3fb"></div>
+</div>
+
+<div class="take">
+  <strong>🧑‍🏫 费曼测试：</strong> 用"雇厨师做菜"的比喻，向同学解释为什么需要边界、终检和追问。每个对应做菜的什么环节？
+</div>
+
+<div class="ref">
+  <p><strong>下一步：</strong> <a href="L04-Chat场景.html">L4 · Chat 场景 →</a></p>
+  <p><a href="../index.html">← 返回总目录</a> | <a href="../reference/OpenAI%20官方%20Prompt%20指南.md">参考原文</a></p>
+</div>
+
+<script>
+function checkQ1() {
+  const fb = document.getElementById('q1fb');
+  const sel = document.querySelector('input[name="q1"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！边界要少而精——保护最关键的一两条约束就行。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。边界要少而精，不需要控制每一步。"已批准的日期不动"是典型的有效边界。'; }
+}
+function checkQ2() {
+  const fb = document.getElementById('q2fb');
+  const sel = document.querySelector('input[name="q2"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！终检是辅助，不是替代——最后你还是要自己过一遍。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。终检是让 AI 做一次自查（确认遗漏、标记疑点），然后你亲自审一遍再发出。'; }
+}
+function checkQ3() {
+  const fb = document.getElementById('q3fb');
+  const sel = document.querySelector('input[name="q3"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='c') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！方向偏了应该用 Steer（转向），把新指令加进当前这一轮，不用从头再来。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。方向偏了应该用 Steer（转向）即时纠正。Queue 适合"等干完再说"的追问。'; }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt 指南 · 总目录</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#0ea5e9; --done:#16a34a; --current:#0ea5e9; --pending:#94a3b8; --border:#e2e8f0; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:860px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.7; }
+    h1 { font-size:2rem; margin-bottom:0.25rem; }
+    .sub { color:#64748b; font-size:0.95rem; margin-bottom:1.5rem; }
+    .standards { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin-bottom:2rem; }
+    .standard { border:1px solid var(--border); border-radius:8px; padding:0.75rem 1rem; background:#fff; }
+    .standard .badge { display:inline-block; padding:0.15rem 0.5rem; border-radius:4px; font-size:0.75rem; font-weight:700; color:#fff; margin-bottom:0.35rem; }
+    .standard.pass .badge { background:var(--done); }
+    .standard.good .badge { background:#f59e0b; }
+    .standard.master .badge { background:#dc2626; }
+    .standard p { font-size:0.8rem; color:#64748b; }
+
+    .phase { border:1px solid var(--border); border-radius:10px; margin-bottom:0.75rem; background:#fff; overflow:hidden; }
+    .phase-header { display:flex; align-items:center; gap:0.75rem; padding:0.75rem 1rem; background:#f8fafc; border-bottom:1px solid var(--border); }
+    .phase-header .num { width:2rem; height:2rem; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; color:#fff; flex-shrink:0; }
+    .phase.p1 .num { background:var(--accent); }
+    .phase.p2 .num { background:#059669; }
+    .phase.p3 .num { background:#d97706; }
+    .phase.p4 .num { background:#dc2626; }
+    .phase.pending .num { background:var(--pending); }
+    .phase-header .info { flex:1; }
+    .phase-header .info .name { font-weight:600; font-size:0.95rem; }
+    .phase-header .info .scope { font-size:0.75rem; color:#94a3b8; }
+    .phase-header .chip { font-size:0.7rem; padding:0.15rem 0.5rem; border-radius:4px; }
+    .phase.active .chip { background:#e0f2fe; color:var(--accent); }
+    .phase.pending .chip { background:#f8fafc; color:var(--pending); }
+
+    .lesson-list { list-style:none; padding:0 1rem 0.75rem 1rem; }
+    .lesson-item { display:flex; align-items:center; gap:0.75rem; padding:0.4rem 0.5rem; border-radius:6px; font-size:0.88rem; }
+    .lesson-item .dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+    .lesson-item .dot.done { background:var(--done); }
+    .lesson-item .dot.current { background:var(--current); }
+    .lesson-item .dot.pending { background:var(--pending); }
+    .lesson-item .desc { color:#64748b; font-size:0.78rem; }
+
+    a { color:var(--current); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .footer { border-top:1px solid var(--border); padding-top:1rem; margin-top:1.5rem; font-size:0.85rem; color:#94a3b8; }
+  </style>
+</head>
+<body>
+
+<h1>✍️ Prompt 指南</h1>
+<p class="sub">12 课完整学习路线 | 从零写出高质量 Prompt</p>
+
+<h2 style="font-size:1rem;margin-bottom:0.75rem;">📋 考核标准</h2>
+<div class="standards">
+  <div class="standard pass"><div class="badge">✅ 合格</div><p>理解 Prompt 四要素，能写出清晰可用的 Prompt</p></div>
+  <div class="standard good"><div class="badge">⭐ 良好</div><p>能根据场景选对 Chat/Work/Codex，写出带边界和终检的 Prompt</p></div>
+  <div class="standard master"><div class="badge">🏆 精通</div><p>能用 Steer/Queue 动态调整，熟练运用 Codex 工程工作流</p></div>
+</div>
+
+<!-- Phase 1 -->
+<div class="phase active p1">
+  <div class="phase-header">
+    <span class="num">1</span>
+    <div class="info">
+      <div class="name">Prompt 基础</div>
+      <div class="scope">四要素 · 结果描述 · 上下文 · 边界 · 终检 · 追问</div>
+    </div>
+    <span class="chip">当前 ⚡</span>
+  </div>
+  <ul class="lesson-list">
+    <li class="lesson-item"><span class="dot current"></span><a href="lessons/L01-Prompt-四要素.html">L1 · Prompt 四要素框架</a> <span class="desc">Goal / Context / Output / Boundaries</span></li>
+    <li class="lesson-item"><span class="dot pending"></span>L2 · 描述结果 + 补充上下文 <span class="desc">从结果说起，附件/图片/搜索/插件</span></li>
+    <li class="lesson-item"><span class="dot pending"></span>L3 · 设定边界 + 终检 + 追问 <span class="desc">防错边界，终检清单，Steer/Queue</span></li>
+  </ul>
+</div>
+
+<!-- Phase 2 -->
+<div class="phase pending p2">
+  <div class="phase-header">
+    <span class="num">2</span>
+    <div class="info">
+      <div class="name">场景实战</div>
+      <div class="scope">Chat · Work · 附件与数据源</div>
+    </div>
+    <span class="chip">待学习</span>
+  </div>
+  <ul class="lesson-list">
+    <li class="lesson-item"><span class="dot pending"></span>L4 · Chat 场景 <span class="desc">提问/起草/比较/计划</span></li>
+    <li class="lesson-item"><span class="dot pending"></span>L5 · Work 场景 <span class="desc">多步骤复杂任务、成品文件、调研决策</span></li>
+    <li class="lesson-item"><span class="dot pending"></span>L6 · 附件与数据源 <span class="desc">文件/图片/搜索/插件/Project</span></li>
+  </ul>
+</div>
+
+<!-- Phase 3 -->
+<div class="phase pending p3">
+  <div class="phase-header">
+    <span class="num">3</span>
+    <div class="info">
+      <div class="name">Codex 工程</div>
+      <div class="scope">解释代码 · 修 Bug · 写测试 · 原型 · Code Review</div>
+    </div>
+    <span class="chip">待学习</span>
+  </div>
+  <ul class="lesson-list">
+    <li class="lesson-item"><span class="dot pending"></span>L7 · 解释代码库 <span class="desc">IDE/CLI 工作流，请求链路分析</span></li>
+    <li class="lesson-item"><span class="dot pending"></span>L8 · 修 Bug + 写测试 <span class="desc">复现配方、约束、回归测试</span></li>
+    <li class="lesson-item"><span class="dot pending"></span>L9 · 截图做原型 + 迭代 UI <span class="desc">设计→微调→刷新的紧凑循环</span></li>
+    <li class="lesson-item"><span class="dot pending"></span>L10 · Code Review + 审 PR + 更新文档 <span class="desc">本地审查、GitHub 评论驱动、文档更新</span></li>
+  </ul>
+</div>
+
+<!-- Phase 4 -->
+<div class="phase pending p4">
+  <div class="phase-header">
+    <span class="num">4</span>
+    <div class="info">
+      <div class="name">综合实战</div>
+      <div class="scope">完整案例 · 模板速查 · 终检清单</div>
+    </div>
+    <span class="chip">待学习</span>
+  </div>
+  <ul class="lesson-list">
+    <li class="lesson-item"><span class="dot pending"></span>L11 · 综合 Prompt 练习 <span class="desc">从需求到完整 Prompt 的实战演练</span></li>
+    <li class="lesson-item"><span class="dot pending"></span>L12 · 终检清单 + 模板速查 <span class="desc">常用场景模板、常见坑、自查清单</span></li>
+  </ul>
+</div>
+
+<!-- 学习路线图 -->
+<h2 style="font-size:1rem;margin:2rem 0 0.75rem;">🗺️ 学习路线图</h2>
+<div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:1rem;">
+
+<div style="font-family:monospace;background:#1e293b;color:#e2e8f0;padding:0.8rem;border-radius:8px;font-size:0.88rem;line-height:1.6;margin-bottom:0.8rem;">
+┌─────────────────────────────────────────────────────────┐<br>
+│  Phase 1  Prompt 基础    <span style="color:#60a5fa;">四要素 · 边界 · 追问</span>          │<br>
+│  ├─ L1 四要素框架（Goal / Context / Output / Boundaries）   │<br>
+│  ├─ L2 描述结果 + 补充上下文                                │<br>
+│  └─ L3 设定边界 + 终检 + Steer/Queue                         │<br>
+├─────────────────────────────────────────────────────────┤<br>
+│  Phase 2  场景实战      <span style="color:#34d399;">Chat / Work / 数据源</span>             │<br>
+│  ├─ L4 Chat 场景（提问/起草/比较/计划）                       │<br>
+│  ├─ L5 Work 场景（多步骤/成品文件/调研）                      │<br>
+│  └─ L6 附件与数据源（图片/文件/搜索/插件/Project）            │<br>
+├─────────────────────────────────────────────────────────┤<br>
+│  Phase 3  Codex 工程    <span style="color:#f59e0b;">代码 Prompt 最佳实践</span>          │<br>
+│  ├─ L7 解释代码库                                           │<br>
+│  ├─ L8 修 Bug + 写测试                                      │<br>
+│  ├─ L9 截图做原型 + 迭代 UI                                 │<br>
+│  └─ L10 Code Review + 审 PR + 更新文档                      │<br>
+├─────────────────────────────────────────────────────────┤<br>
+│  Phase 4  综合实战      <span style="color:#f87171;">实战演练 + 模板速查</span>           │<br>
+│  ├─ L11 综合 Prompt 练习（完整案例）                          │<br>
+│  └─ L12 终检清单 + 常用模板速查                              │<br>
+└─────────────────────────────────────────────────────────┘
+</div>
+
+<div style="font-size:0.85rem;color:#64748b;">
+  <p style="margin:0.3rem 0;"><strong>每课包含：</strong>起源故事 → 核心知识 → 示例 → Quiz → 费曼复述</p>
+  <p style="margin:0.3rem 0;"><strong>建议进度：</strong>每周 3-4 课，每课 20-30 分钟</p>
+  <p style="margin:0.3rem 0;"><strong>参考资源：</strong><a href="reference/OpenAI 官方 Prompt 指南.md">OpenAI 官方 Prompt 指南</a>（原文全译）</p>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>📁 D:\@VSwork\VSteach\_SHARK\prompt指南\ | 每课包含：起源 · 知识 · 示例 · Quiz · 费曼测试</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L11 · 综合 Prompt 练习</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#0ea5e9; --muted:#64748b; --border:#e2e8f0; --quiz-c:#16a34a; --quiz-w:#dc2626; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:780px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.8; font-size:1rem; }
+    h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+    .sub { color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; }
+    h2 { font-size:1.15rem; margin:1.8rem 0 0.5rem; border-bottom:1px solid var(--border); padding-bottom:0.25rem; }
+    h3 { font-size:1rem; margin:1.2rem 0 0.3rem; color:var(--accent); }
+    p { margin-bottom:0.8rem; }
+    ul,ol { margin-bottom:0.8rem; padding-left:1.5rem; }
+    li { margin-bottom:0.2rem; }
+    .box { background:#f0f9ff; border-left:4px solid var(--accent); padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .warn { background:#fef9ef; border-left:4px solid #f59e0b; padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .exp { background:#f8fafc; border:1px solid var(--border); padding:0.8rem 1rem; margin:0.8rem 0; border-radius:8px; }
+    .exp strong { color:var(--accent); }
+    code { background:#f1f5f9; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.9em; }
+    table { width:100%; border-collapse:collapse; margin:0.8rem 0; font-size:0.88rem; }
+    th,td { border:1px solid var(--border); padding:0.35rem 0.6rem; text-align:left; }
+    th { background:#f8fafc; font-weight:600; }
+    .case { background:#fff; border:2px solid var(--border); border-radius:10px; padding:1rem 1.25rem; margin:1.2rem 0; }
+    .case h3 { margin-top:0; }
+    .checklist { background:#f0fdf4; border:1px solid #86efac; border-radius:8px; padding:0.8rem 1rem; margin:0.8rem 0; }
+    .ref { color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border); padding-top:1.2rem; margin-top:1.5rem; }
+    .ref a { color:var(--accent); }
+  </style>
+</head>
+<body>
+
+<h1>L11 · 综合 Prompt 练习</h1>
+<p class="sub">Prompt 指南 | 综合实战篇 · 从需求到完整 Prompt 的实战演练</p>
+
+<h2>📝 本课目标</h2>
+<p>把前面 10 课学到的所有技巧，应用到真实场景中。<br>
+每个案例给你需求背景，你来设计完整的 Prompt。</p>
+
+<div class="warn">
+  <strong>💡 自测方法：</strong> 每个案例先自己写 Prompt，然后看下方的参考答案。对比你的 Prompt 是否覆盖了目标、上下文、输出、边界、终检五个要素。
+</div>
+
+<hr style="margin:1.5rem 0;border-color:var(--border);">
+
+<!-- 案例 1 -->
+<div class="case">
+  <h3>案例一：管理层汇报</h3>
+  <p><strong>需求背景：</strong> 你是市场部主管，下周要向管理层汇报 Q2 的营销效果。你有三份附件：</p>
+  <ul>
+    <li>Q2 各渠道投放数据表（Excel）</li>
+    <li>Q2 社交媒体互动数据（PDF）</li>
+    <li>Q2 品牌知名度调研报告（PDF）</li>
+  </ul>
+  <p><strong>要求：</strong> 做一份一页纸的汇报摘要 + 五页幻灯片。</p>
+
+  <details>
+    <summary style="cursor:pointer;color:var(--accent);font-weight:600;">🔎 点击看参考答案</summary>
+    <div class="exp" style="margin-top:0.5rem;">
+      <p><strong>Work Prompt：</strong></p>
+      <p>用附件里的三份 Q2 资料——投放数据表、社交媒体互动数据、品牌调研报告——做一份管理层汇报。</p>
+      <p>产出：</p>
+      <ol>
+        <li>一份一页纸的汇报摘要（决策和关键发现放最前面）</li>
+        <li>五页演示文稿（概述、渠道表现、社交互动、品牌认知、建议）</li>
+      </ol>
+      <p>要求：</p>
+      <ul>
+        <li>受众是管理层——他们要拍板决策，不要细节堆砌</li>
+        <li>报告里的数据和你的分析要区分开</li>
+        <li>每个关键数字注明来源文件</li>
+        <li>投得最差的渠道和最好的渠道都标出来</li>
+        <li>收尾前检查摘要和幻灯片数据一致</li>
+        <li>任何东西都不要发送或发布，给我审完再说</li>
+      </ul>
+    </div>
+  </details>
+</div>
+
+<!-- 案例 2 -->
+<div class="case">
+  <h3>案例二：修 Bug</h3>
+  <p><strong>需求背景：</strong> 用户反馈"点击下载按钮后，文件没下载，浏览器控制台报 500 错误"。你是后端开发，怀疑是下载接口的问题。</p>
+  <ul>
+    <li>项目路径：~/projects/file-service</li>
+    <li>相关文件：routes/download.ts, services/fileStorage.ts</li>
+    <li>你可以在本地复现</li>
+  </ul>
+
+  <details>
+    <summary style="cursor:pointer;color:var(--accent);font-weight:600;">🔎 点击看参考答案</summary>
+    <div class="exp" style="margin-top:0.5rem;">
+      <p><strong>Codex Bug Prompt：</strong></p>
+      <p>Bug：点击下载按钮后文件没有下载，浏览器控制台报 500 错误。</p>
+      <p>Repro：</p>
+      <ol>
+        <li>启动服务：npm run dev</li>
+        <li>打开页面，找到带下载按钮的文件列表</li>
+        <li>点击任意文件的下载按钮</li>
+        <li>浏览器弹不出下载弹窗，控制台显示 500</li>
+      </ol>
+      <p>相关文件：routes/download.ts, services/fileStorage.ts</p>
+      <p>Constraints：</p>
+      <ul>
+        <li>不要改 API 的返回格式</li>
+        <li>修复保持最小化</li>
+        <li>加一个回归测试防止重复出现</li>
+      </ul>
+      <p>先在本地重现这个错误，定位根因，提出修复方案，跑测试验证。</p>
+    </div>
+  </details>
+</div>
+
+<!-- 案例 3 -->
+<div class="case">
+  <h3>案例三：从截图做原型</h3>
+  <p><strong>需求背景：</strong> 设计师给了你一张 Figma 截图——一个"个人资料编辑页"。</p>
+  <ul>
+    <li>截图上有：头像上传区、昵称输入框、个性签名文本区、保存按钮</li>
+    <li>头像区域有 hover 时的"更换头像"提示</li>
+    <li>保存时要做表单校验（昵称必填、签名最多 100 字）</li>
+  </ul>
+
+  <details>
+    <summary style="cursor:pointer;color:var(--accent);font-weight:600;">🔎 点击看参考答案</summary>
+    <div class="exp" style="margin-top:0.5rem;">
+      <p><strong>Codex 原型 Prompt：</strong></p>
+      <p>照这张截图做一个个人资料编辑页。</p>
+      <p>约束：</p>
+      <ul>
+        <li>用 react、vite 和 tailwind，TypeScript</li>
+        <li>间距、字体、布局尽量贴近截图</li>
+      </ul>
+      <p>截图里看不到但需要实现的行为：</p>
+      <ul>
+        <li>头像区域 hover 时显示"更换头像"的浮层</li>
+        <li>点击头像区域触发文件选择器（只接受图片格式）</li>
+        <li>保存时校验：昵称必填、个性签名最多 100 字</li>
+        <li>校验不通过时在对应字段下方显示红色错误提示</li>
+      </ul>
+      <p>产出标准：一份可直接运行的页面组件。</p>
+    </div>
+  </details>
+</div>
+
+<!-- 案例 4 -->
+<div class="case">
+  <h3>案例四：调研决策</h3>
+  <p><strong>需求背景：</strong> 你们团队想引入一个前端测试框架。备选方案：Vitest、Jest、Playwright（仅 E2E）。团队 6 人，主要用 React+TypeScript。</p>
+  <p><strong>要求：</strong> 出一份推荐报告。</p>
+
+  <details>
+    <summary style="cursor:pointer;color:var(--accent);font-weight:600;">🔎 点击看参考答案</summary>
+    <div class="exp" style="margin-top:0.5rem;">
+      <p><strong>Work Prompt：</strong></p>
+      <p>为一家 6 人 React+TypeScript 前端团队调研三个前端测试框架：Vitest、Jest、Playwright。</p>
+      <p>用网页搜索获取最新信息。比较维度：</p>
+      <ul>
+        <li>性能（测试速度）</li>
+        <li>React+TypeScript 的兼容性</li>
+        <li>与现有 CI/CD 集成的难度</li>
+        <li>社区活跃度和文档质量</li>
+        <li>学习曲线</li>
+      </ul>
+      <p>产出：一份两页的推荐备忘录。</p>
+      <ul>
+        <li>第一页：三个框架的对比表格 + 推荐方案 + 推荐理由</li>
+        <li>第二页：如果选推荐方案，迁移步骤、风险和不确定因素</li>
+      </ul>
+      <p>每条数据都注明来源链接。签合同前还需要回答的问题单独列出来。</p>
+    </div>
+  </details>
+</div>
+
+<!-- 综合 checklist -->
+<h2>✅ Prompt 自查清单</h2>
+<div class="checklist">
+  <p><strong>写完 Prompt 后，逐项检查：</strong></p>
+  <ol>
+    <li>☐ 我是否从结果说起，而不是从步骤说起？（L1-目标）</li>
+    <li>☐ 我是否给出了足够的相关上下文？（L2-上下文）</li>
+    <li>☐ 我是否指明了受众和输出格式？（L2-输出）</li>
+    <li>☐ 我是否设了关键边界防止 AI 跑偏？（L3-边界）</li>
+    <li>☐ 我是否要求了终检？（L3-终检）</li>
+    <li>☐ 这个任务适合 Chat、Work 还是 Codex？（L4-选择）</li>
+    <li>☐ 附件/图片是否只加了相关来源并说明了从中取什么？（L6-数据源）</li>
+    <li>☐ 如果是修 Bug，是否给了复现步骤、约束和验证方式？（L8-修 Bug）</li>
+  </ol>
+</div>
+
+<div class="box">
+  <p><strong>📌 记住：</strong> 第一条 prompt 不需要完美。审结果，追问问，迭代到满意为止。</p>
+</div>
+
+<div class="ref">
+  <p><strong>下一步：</strong> <a href="L12-终检清单-模板速查.html">L12 · 终检清单 + 模板速查 →</a></p>
+  <p><a href="../index.html">← 返回总目录</a> | <a href="../reference/OpenAI%20官方%20Prompt%20指南.md">参考原文</a></p>
+</div>
+
+</body>
+</html>

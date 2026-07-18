@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L4 · Chat 场景</title>
+  <style>
+    :root { --text:#1a1a2e; --bg:#fafafa; --accent:#0ea5e9; --muted:#64748b; --border:#e2e8f0; --quiz-c:#16a34a; --quiz-w:#dc2626; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Serif SC","Source Han Serif SC",Georgia,"Songti SC",serif; max-width:780px; margin:0 auto; padding:2rem 1.5rem; color:var(--text); background:var(--bg); line-height:1.8; font-size:1rem; }
+    h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+    .sub { color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem; }
+    h2 { font-size:1.15rem; margin:1.8rem 0 0.5rem; border-bottom:1px solid var(--border); padding-bottom:0.25rem; }
+    h3 { font-size:1rem; margin:1.2rem 0 0.3rem; color:var(--accent); }
+    p { margin-bottom:0.8rem; }
+    ul,ol { margin-bottom:0.8rem; padding-left:1.5rem; }
+    li { margin-bottom:0.2rem; }
+    .choice-box { background:linear-gradient(135deg,#1e293b,#334155); color:#e2e8f0; border-radius:10px; padding:1.2rem 1.5rem; margin:1rem 0; }
+    .choice-box .option { display:flex; gap:1rem; margin-top:0.8rem; }
+    .choice-box .option div { flex:1; background:rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem; text-align:center; cursor:pointer; transition:0.15s; }
+    .choice-box .option div:hover { background:rgba(255,255,255,0.2); }
+    .story-box { background:#fdf2e9; border:1px solid #e8d5c4; padding:1rem 1.2rem; margin:1rem 0; border-radius:8px; }
+    .story-box strong { color:#b45309; }
+    .box { background:#f0f9ff; border-left:4px solid var(--accent); padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .warn { background:#fef9ef; border-left:4px solid #f59e0b; padding:0.6rem 1rem; margin:0.8rem 0; border-radius:0 6px 6px 0; }
+    .exp { background:#f8fafc; border:1px solid var(--border); padding:0.8rem 1rem; margin:0.8rem 0; border-radius:8px; }
+    .exp strong { color:var(--accent); }
+    code { background:#f1f5f9; padding:0.1rem 0.3rem; border-radius:3px; font-size:0.9em; }
+    table { width:100%; border-collapse:collapse; margin:0.8rem 0; font-size:0.88rem; }
+    th,td { border:1px solid var(--border); padding:0.35rem 0.6rem; text-align:left; }
+    th { background:#f8fafc; font-weight:600; }
+    .quiz { border:2px solid var(--border); border-radius:10px; padding:1rem 1.25rem; margin:1.2rem 0; background:#fff; }
+    .quiz p { margin-bottom:0.4rem; font-weight:600; }
+    .qopts { display:flex; flex-direction:column; gap:0.4rem; margin:0.5rem 0; }
+    .qopts label { display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0.75rem; border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+    .qopts label:hover { background:#f1f5f9; }
+    .qopts input[type="radio"] { accent-color:var(--accent); }
+    .qbtn { background:var(--accent); color:#fff; border:none; padding:0.35rem 1rem; border-radius:6px; cursor:pointer; font-size:0.85rem; }
+    .qbtn:hover { opacity:0.9; }
+    .qfb { margin-top:0.5rem; padding:0.5rem 0.75rem; border-radius:6px; display:none; }
+    .qfb.ok { display:block; background:#f0fdf4; border:1px solid var(--quiz-c); }
+    .qfb.no { display:block; background:#fef2f2; border:1px solid var(--quiz-w); }
+    .take { margin:1.2rem 0; border:1px dashed var(--accent); border-radius:8px; padding:0.8rem 1rem; }
+    .ref { color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border); padding-top:1.2rem; margin-top:1.5rem; }
+    .ref a { color:var(--accent); }
+  </style>
+</head>
+<body>
+
+<h1>L4 · Chat 场景</h1>
+<p class="sub">Prompt 指南 | 场景篇 · 提问 · 起草 · 比较 · 计划</p>
+
+<div class="choice-box">
+  <p style="font-size:1.1rem;"><strong>🤔 你选：</strong></p>
+  <p style="font-size:0.95rem;">Chat 是最常用但最容易被低估的 AI 交互模式。<br>它适合哪些事？怎么写能让 Chat 一次就给对答案？</p>
+  <div class="option">
+    <div onclick="document.getElementById('origin').scrollIntoView({behavior:'smooth'})"><strong>🔍 重头发现</strong><br><span style="font-size:0.8rem;">从"跟朋友聊天"和"跟同事开会"的区别理解 Chat 的定位</span></div>
+    <div onclick="document.getElementById('direct').scrollIntoView({behavior:'smooth'})"><strong>📖 直接学知识</strong><br><span style="font-size:0.8rem;">直接学四种 Chat 场景的 Prompt 写法</span></div>
+  </div>
+</div>
+
+<div id="origin"></div>
+<h2>📜 起源：Chat 适合什么，不适合什么？</h2>
+
+<div class="story-box">
+  <strong>💬 朋友聊天 vs 同事开会</strong><br><br>
+  你跟朋友聊天：<br>
+  "周末干嘛了？" "没干嘛。" "那下周有啥计划？"<br>
+  — 话题随便跳，不需要背景介绍，没有 KPI。<br><br>
+  你跟同事开会：<br>
+  "好的，现在讨论 Q3 的预算调整。小王你先说。"<br>
+  — 有目标、有背景、有输出要求。<br><br>
+  Chat 模式对应的是"朋友聊天"——<br>
+  适合<strong>快问快答、找点子、打草稿、日常决策</strong>。<br>
+  不适合需要<strong>调多个来源、多步骤操作、生成成品文件</strong>的复杂任务。<br><br>
+  OpenAI 官方建议：正式复杂任务用 <strong>Work 模式</strong>（下一课学），日常轻量级交互用 <strong>Chat</strong>。<br>
+  Chat 的写法精髓：<strong>从你想要的结果说起，细节只在它会改变答案的时候再加</strong>。
+</div>
+
+<div id="direct"></div>
+<h2>📖 四大 Chat 场景</h2>
+
+<h3>场景一：理解一个话题</h3>
+<div class="exp">
+  <p><strong>Prompt：</strong></p>
+  <p>给一个从没投资过的人解释复利是怎么回事。用一个具体的例子，你引入的金融术语都要给出定义。</p>
+</div>
+<p>要点：<strong>指明受众</strong>（从没投资过的人）和<strong>表达方式</strong>（具体例子 + 术语定义）。</p>
+
+<h3>场景二：起草和打磨文字</h3>
+<div class="exp">
+  <p><strong>Prompt：</strong></p>
+  <p>起草一封友好的邮件，婉拒这个邀请，理由是我届时在外出差。控制在 120 词以内，给以后的活动留个口子。</p>
+</div>
+<p>要点：<strong>语气</strong>（友好）、<strong>理由</strong>（出差）、<strong>长度</strong>（120 词）、<strong>后续</strong>（留口子）。</p>
+
+<h3>场景三：比较选项</h3>
+<div class="exp">
+  <p><strong>Prompt：</strong></p>
+  <p>帮一个每年出国两次的人比较这两个手机套餐。重要差异用表格列出来，然后推荐一个，说清代价在哪。</p>
+</div>
+<p>要点：<strong>用户画像</strong>（每年出国两次）、<strong>输出格式</strong>（表格 + 推荐 + 代价分析）。</p>
+
+<h3>场景四：做一个实用的计划</h3>
+<div class="exp">
+  <p><strong>Prompt：</strong></p>
+  <p>规划五顿工作日晚餐，每顿 30 分钟以内做完。不要花生，食材尽量跨餐复用，最后汇总成一张购物清单。</p>
+</div>
+<p>要点：<strong>约束明确</strong>（30 分钟、不要花生、跨餐复用）、<strong>产出明确</strong>（购物清单）。</p>
+
+<h3>Chat Prompt 模板速查</h3>
+<table>
+  <tr><th>场景</th><th>固定要素</th><th>可选要素</th></tr>
+  <tr><td>理解话题</td><td>受众 + 解释方式</td><td>例子、术语定义</td></tr>
+  <tr><td>起草文字</td><td>语气 + 长度</td><td>理由、后续动作</td></tr>
+  <tr><td>比较选项</td><td>用户画像 + 输出格式</td><td>推荐、代价分析</td></tr>
+  <tr><td>做计划</td><td>约束 + 产出物</td><td>复用策略、时间限制</td></tr>
+</table>
+
+<!-- Quiz -->
+<h2>✏️ 小测验</h2>
+
+<div class="quiz">
+  <p>Q1：以下哪个任务适合用 Chat 模式？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q1" value="a"> 用一沓季度报告做一份管理层简报加幻灯片</label>
+    <label><input type="radio" name="q1" value="b"> 问"复利是什么"，让 AI 给一个简单解释</label>
+    <label><input type="radio" name="q1" value="c"> 改整个代码库的鉴权模块</label>
+  </div>
+  <button class="qbtn" onclick="checkQ1()">检查答案</button>
+  <div class="qfb" id="q1fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q2：写 Chat Prompt 的核心原则是？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q2" value="a"> 把每一步都写清楚，不给 AI 发挥空间</label>
+    <label><input type="radio" name="q2" value="b"> 从你想要的结果说起，细节只在它会改变答案时再加</label>
+    <label><input type="radio" name="q2" value="c"> 越短越好，最好三个字</label>
+  </div>
+  <button class="qbtn" onclick="checkQ2()">检查答案</button>
+  <div class="qfb" id="q2fb"></div>
+</div>
+
+<div class="quiz">
+  <p>Q3：比较两个选项时，除了列出差异还应该做什么？</p>
+  <div class="qopts">
+    <label><input type="radio" name="q3" value="a"> 让 AI 推荐一个并说清代价</label>
+    <label><input type="radio" name="q3" value="b"> 让 AI 两个都说好</label>
+    <label><input type="radio" name="q3" value="c"> 让 AI 再找第三个选项</label>
+  </div>
+  <button class="qbtn" onclick="checkQ3()">检查答案</button>
+  <div class="qfb" id="q3fb"></div>
+</div>
+
+<div class="take">
+  <strong>🧑‍🏫 费曼测试：</strong> 设计一条 Chat Prompt，让 AI 帮你比较两款手机（iPhone 16 vs 小米 15），受众是不懂参数的用户。
+</div>
+
+<div class="ref">
+  <p><strong>下一步：</strong> <a href="L05-Work场景.html">L5 · Work 场景 →</a></p>
+  <p><a href="../index.html">← 返回总目录</a> | <a href="../reference/OpenAI%20官方%20Prompt%20指南.md">参考原文</a></p>
+</div>
+
+<script>
+function checkQ1() {
+  const fb = document.getElementById('q1fb');
+  const sel = document.querySelector('input[name="q1"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！简单问答适合 Chat。复杂任务（多来源/多步骤/成文件）适合 Work。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。Chat 适合快问快答、轻量任务。多步骤生成成品文件应该用 Work。'; }
+}
+function checkQ2() {
+  const fb = document.getElementById('q2fb');
+  const sel = document.querySelector('input[name="q2"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='b') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！从结果说起，只在需要时加细节。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。Chat 不需要面面俱到，从结果说起，细节只在它会影响答案时才加。'; }
+}
+function checkQ3() {
+  const fb = document.getElementById('q3fb');
+  const sel = document.querySelector('input[name="q3"]:checked');
+  if (!sel) { fb.className='qfb no'; fb.innerHTML='请先选择一个答案。'; return; }
+  if (sel.value==='a') { fb.className='qfb ok'; fb.innerHTML='✅ 正确！比较之后推荐一个并说清代价，这是最有价值的输出。'; }
+  else { fb.className='qfb no'; fb.innerHTML='❌ 不对。官方示例说：比较重要差异 → 推荐一个 → 说清代价在哪。'; }
+}
+</script>
+
+</body>
+</html>
