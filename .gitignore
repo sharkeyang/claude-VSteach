@@ -10,3 +10,7 @@ Thumbs.db
 __pycache__/
 *.pyc
 *.pyo
+
+# Large kindergarten files (exceed GitHub 100MB limit)
+待整理目录/@幼儿园记录/**/*.pptx
+待整理目录/@幼儿园记录/**/*.ppt
